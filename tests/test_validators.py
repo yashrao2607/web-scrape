@@ -4,8 +4,7 @@ from core.validators import FDRateItem, BankFDScheme
 
 def test_rate_item_validation_success():
     item = FDRateItem(
-        tenure_raw="1 Year",
-        tenure_years=1.0,
+        tenure="1 Year",
         general_rate=7.25,
         senior_citizen_rate=7.75
     )
@@ -16,7 +15,7 @@ def test_rate_item_validation_failure():
     with pytest.raises(ValidationError):
         # general rate above 20%
         FDRateItem(
-            tenure_raw="1 Year",
+            tenure="1 Year",
             general_rate=22.0,
             senior_citizen_rate=7.75
         )
@@ -24,7 +23,7 @@ def test_rate_item_validation_failure():
     with pytest.raises(ValidationError):
         # negative rate
         FDRateItem(
-            tenure_raw="1 Year",
+            tenure="1 Year",
             general_rate=-1.0,
             senior_citizen_rate=7.75
         )
@@ -42,7 +41,7 @@ def test_bank_fd_scheme_quality_score():
         nomination_available=True,
         compounding_frequency="Quarterly",
         fd_rates=[
-            FDRateItem(tenure_raw="1 Year", tenure_years=1.0, general_rate=7.0, senior_citizen_rate=7.5)
+            FDRateItem(tenure="1 Year", general_rate=7.0, senior_citizen_rate=7.5)
         ]
     )
     assert scheme.data_quality_score == 1.0

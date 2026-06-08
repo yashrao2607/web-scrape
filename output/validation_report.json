@@ -1,13 +1,11 @@
 {
   "validation_summary": {
     "total_banks_checked": 3,
-    "banks_with_issues": 1
+    "banks_with_issues": 0
   },
   "failures_and_warnings": {
-    "SBI": [],
     "ICICI Bank": [],
-    "HDFC Bank": [
-      "Scraping failed with exception: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates\", waiting until \"load\"\n"
-    ]
+    "SBI": [],
+    "HDFC Bank": []
   }
 }

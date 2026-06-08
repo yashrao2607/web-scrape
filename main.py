@@ -68,7 +68,10 @@ async def scrape_bank_task(
         try:
             page = await browser_manager.get_page()
             # Navigate using page.goto
-            await browser_manager.navigate_to(page, url)
+            try:
+                await browser_manager.navigate_to(page, url)
+            except Exception as nav_err:
+                logger.warning("navigation_failed_attempting_scraper_fallback", bank=bank_name, error=str(nav_err))
             
             # Instantiate scraper and run
             scraper = scraper_cls(bank_name, url)

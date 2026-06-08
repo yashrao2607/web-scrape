@@ -26,7 +26,7 @@ def test_scraper_process_and_validate_success():
     assert scheme.minimum_deposit == 5000.0
     assert len(scheme.fd_rates) == 1
     rate = scheme.fd_rates[0]
-    assert rate.tenure_raw == "1 Year"
+    assert rate.tenure == "1 Year"
     assert rate.general_rate == 7.10
     assert rate.senior_citizen_rate == 7.60
 
@@ -47,7 +47,7 @@ def test_scraper_process_and_validate_with_warnings():
     # Warnings should be collected in errors list
     assert len(errors) > 0
     assert len(scheme.fd_rates) == 1  # Only the single valid row was added (duplicate skipped, invalid rate skipped)
-    assert scheme.fd_rates[0].tenure_raw == "1 Year"
+    assert scheme.fd_rates[0].tenure == "1 Year"
 
 def test_scraper_process_and_validate_global_error():
     scraper = HDFCScraper("HDFC Bank", "http://hdfc.com")

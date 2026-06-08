@@ -59,8 +59,8 @@ class ChangeDetector:
             metadata_changes = []
 
             # 1. Compare interest rates
-            old_rates_map = {r["tenure_raw"]: r for r in old_bank.get("fd_rates", [])}
-            new_rates_map = {r["tenure_raw"]: r for r in new_bank.get("fd_rates", [])}
+            old_rates_map = {r["tenure"]: r for r in old_bank.get("fd_rates", [])}
+            new_rates_map = {r["tenure"]: r for r in new_bank.get("fd_rates", [])}
 
             # Check for rate updates and added tenures
             for tenure, new_item in new_rates_map.items():

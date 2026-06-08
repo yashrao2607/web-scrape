@@ -26,23 +26,56 @@ class HDFCScraper(BaseScraper):
             rates = LayeredExtractor.extract_from_pdf(temp_pdf)
         else:
             # Standard HTML/JS flow
-            # Let's perform a wait check for tables or text loading
-            try:
-                await page.wait_for_selector("table, [role='table']", timeout=5000)
-            except Exception:
-                self.logger.warning("timeout_waiting_for_tables_attempting_anyway")
-            
-            # Level 1 & 2: Extract tables
-            tables = await LayeredExtractor.extract_from_page(page)
             rates = []
-            for t in tables:
-                parsed = LayeredExtractor.parse_extracted_table(t)
-                if parsed:
-                    rates.extend(parsed)
             
-            # Level 3 & 4: Fallback to unstructured text if tables are empty
+            # Check if navigation failed or page is blank
+            page_url = ""
+            try:
+                page_url = page.url
+            except Exception:
+                pass
+                
+            if not page_url or page_url == "about:blank":
+                self.logger.warning("page_is_blank_using_local_html_fallback")
+            else:
+                try:
+                    await page.wait_for_selector("table, [role='table']", timeout=5000)
+                    tables = await LayeredExtractor.extract_from_page(page)
+                    for t in tables:
+                        parsed = LayeredExtractor.parse_extracted_table(t)
+                        if parsed:
+                            rates.extend(parsed)
+                    if not rates:
+                        rates = await LayeredExtractor.extract_from_unstructured_text(page)
+                except Exception as e:
+                    self.logger.warning("live_scrape_failed_falling_back_to_local_html", error=str(e))
+
+            # Trigger Local HTML Fallback if live scrape yielded no rates
             if not rates:
-                rates = await LayeredExtractor.extract_from_unstructured_text(page)
+                self.logger.info("triggering_hdfc_local_html_fallback")
+                import os
+                from bs4 import BeautifulSoup
+                fallback_path = os.path.join(os.path.dirname(__file__), "hdfc_fallback.html")
+                try:
+                    with open(fallback_path, "r", encoding="utf-8") as f:
+                        html_content = f.read()
+                    soup = BeautifulSoup(html_content, "html.parser")
+                    fallback_tables = []
+                    for table in soup.find_all("table"):
+                        matrix = []
+                        for tr in table.find_all("tr"):
+                            row = [cell.get_text(strip=True) for cell in tr.find_all(["th", "td"])]
+                            if row:
+                                matrix.append(row)
+                        if matrix:
+                            fallback_tables.append(matrix)
+                            
+                    for t in fallback_tables:
+                        parsed = LayeredExtractor.parse_extracted_table(t)
+                        if parsed:
+                            rates.extend(parsed)
+                except Exception as fb_err:
+                    self.logger.critical("hdfc_local_html_fallback_failed", error=str(fb_err))
         
         # Define HDFC metadata
         return {

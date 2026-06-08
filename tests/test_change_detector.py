@@ -19,7 +19,7 @@ def test_detect_changes_no_changes():
             "source_url": "http://a.com",
             "minimum_deposit": 1000.0,
             "fd_rates": [
-                {"tenure_raw": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
+                {"tenure": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
             ]
         }
     ]
@@ -29,7 +29,7 @@ def test_detect_changes_no_changes():
             "source_url": "http://a.com",
             "minimum_deposit": 1000.0,
             "fd_rates": [
-                {"tenure_raw": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
+                {"tenure": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
             ]
         }
     ]
@@ -46,7 +46,7 @@ def test_detect_changes_rate_updated():
             "bank_name": "Bank A",
             "source_url": "http://a.com",
             "fd_rates": [
-                {"tenure_raw": "1 Year", "general_rate": 7.25, "senior_citizen_rate": 7.75}
+                {"tenure": "1 Year", "general_rate": 7.25, "senior_citizen_rate": 7.75}
             ]
         }
     ]
@@ -55,7 +55,7 @@ def test_detect_changes_rate_updated():
             "bank_name": "Bank A",
             "source_url": "http://a.com",
             "fd_rates": [
-                {"tenure_raw": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
+                {"tenure": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
             ]
         }
     ]
@@ -76,7 +76,7 @@ def test_detect_changes_tenure_added_and_removed():
             "bank_name": "Bank A",
             "source_url": "http://a.com",
             "fd_rates": [
-                {"tenure_raw": "2 Years", "general_rate": 7.5, "senior_citizen_rate": 8.0}
+                {"tenure": "2 Years", "general_rate": 7.5, "senior_citizen_rate": 8.0}
             ]
         }
     ]
@@ -85,7 +85,7 @@ def test_detect_changes_tenure_added_and_removed():
             "bank_name": "Bank A",
             "source_url": "http://a.com",
             "fd_rates": [
-                {"tenure_raw": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
+                {"tenure": "1 Year", "general_rate": 7.0, "senior_citizen_rate": 7.5}
             ]
         }
     ]

@@ -6,10 +6,7 @@ class FDRateItem(BaseModel):
     """
     Pydantic model representing a single fixed deposit rate row.
     """
-    tenure_raw: str = Field(..., description="The raw, unparsed tenure string from the page.")
-    tenure_days: Optional[float] = Field(None, description="The tenure equivalent in days.")
-    tenure_months: Optional[float] = Field(None, description="The tenure equivalent in months.")
-    tenure_years: Optional[float] = Field(None, description="The tenure equivalent in years.")
+    tenure: str = Field(..., description="The parsed tenure string (e.g. '3 Years 1 Day to 5 Years').")
     general_rate: float = Field(..., description="Interest rate for general public in percentage.")
     senior_citizen_rate: float = Field(..., description="Interest rate for senior citizens in percentage.")
     effective_from: Optional[str] = Field(None, description="The date from which the rate is effective.")
@@ -72,7 +69,7 @@ class BankFDScheme(BaseModel):
             # Check for anomalies or empty tenures
             unresolved_tenures = sum(
                 1 for r in self.fd_rates 
-                if r.tenure_days is None and r.tenure_months is None and r.tenure_years is None
+                if not r.tenure.strip()
             )
             if unresolved_tenures > 0:
                 score -= 0.15 * (unresolved_tenures / len(self.fd_rates))

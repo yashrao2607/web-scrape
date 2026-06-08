@@ -87,3 +87,20 @@ async def test_icici_scraper_pdf():
         assert res["minimum_deposit"] == 10000.0
         assert len(res["fd_rates"]) == 1
 
+@pytest.mark.asyncio
+async def test_hdfc_scraper_fallback():
+    scraper = HDFCScraper("HDFC Bank", "http://hdfc.com")
+    mock_page = AsyncMock()
+    mock_page.url = "about:blank"
+    
+    # Run scraper
+    res = await scraper.scrape(mock_page)
+    
+    assert res["minimum_deposit"] == 5000.0
+    # Fallback rates list should have 15 elements
+    assert len(res["fd_rates"]) == 15
+    assert res["fd_rates"][0]["tenure_raw"] == "7 days to 14 days"
+    assert res["fd_rates"][0]["general_raw"] == "2.75%"
+    assert res["fd_rates"][0]["senior_raw"] == "3.25%"
+
+

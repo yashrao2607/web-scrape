@@ -14,7 +14,7 @@ class LayeredExtractor:
     """
     
     # Keyword classification definitions
-    TENURE_KEYWORDS = ["tenure", "duration", "period", "days", "months", "years", "maturity", "term", "w.e.f"]
+    TENURE_KEYWORDS = ["tenure", "duration", "period", "days", "months", "years", "maturity", "term", "tenor", "tenors"]
     GENERAL_RATE_KEYWORDS = ["general", "public", "rate", "interest rate", "general public", "regular", "non-senior", "interest"]
     SENIOR_RATE_KEYWORDS = ["senior", "citizen", "sr. citizen", "sr", "seniors"]
     
@@ -32,17 +32,38 @@ class LayeredExtractor:
             () => {
                 const results = [];
                 
-                // 1. Standard HTML tables
+                // 1. Standard HTML tables with colspan/rowspan expansion
                 const standardTables = document.querySelectorAll('table');
                 standardTables.forEach(table => {
-                    const matrix = [];
-                    table.querySelectorAll('tr').forEach(tr => {
-                        const row = [];
+                    const rows = table.querySelectorAll('tr');
+                    const grid = [];
+                    for (let r = 0; r < rows.length; r++) {
+                        grid[r] = [];
+                    }
+                    
+                    rows.forEach((tr, rIndex) => {
+                        let colIndex = 0;
                         tr.querySelectorAll('th, td').forEach(cell => {
-                            row.push(cell.innerText.trim());
+                            while (grid[rIndex][colIndex] !== undefined) {
+                                colIndex++;
+                            }
+                            const text = cell.innerText.trim();
+                            const colspan = cell.colSpan || 1;
+                            const rowspan = cell.rowSpan || 1;
+                            
+                            for (let r = 0; r < rowspan; r++) {
+                                const targetRow = rIndex + r;
+                                if (targetRow < rows.length) {
+                                    for (let c = 0; c < colspan; c++) {
+                                        grid[targetRow][colIndex + c] = text;
+                                    }
+                                }
+                            }
+                            colIndex += colspan;
                         });
-                        if (row.length > 0) matrix.push(row);
                     });
+                    
+                    const matrix = grid.filter(row => row.length > 0);
                     if (matrix.length > 0) results.push(matrix);
                 });
                 

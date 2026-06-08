@@ -57,8 +57,7 @@ class BaseScraper(ABC):
                 continue
             seen_tenures.add(tenure_str)
 
-            # Normalize tenure and rate values
-            t_days, t_months, t_years = parse_tenure(tenure_str)
+            # Normalize rate values and assign consolidated tenure
             gen_rate = normalize_rate(gen_rate_str)
             sr_rate = normalize_rate(sr_rate_str) if sr_rate_str else gen_rate
 
@@ -70,10 +69,7 @@ class BaseScraper(ABC):
 
             try:
                 rate_item = FDRateItem(
-                    tenure_raw=tenure_str,
-                    tenure_days=t_days,
-                    tenure_months=t_months,
-                    tenure_years=t_years,
+                    tenure=tenure_str,
                     general_rate=gen_rate,
                     senior_citizen_rate=sr_rate if sr_rate is not None else gen_rate,
                     effective_from=raw_data.get("effective_from"),

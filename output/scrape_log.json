@@ -2,164 +2,172 @@
   {
     "event": "starting_scraping_pipeline",
     "level": "info",
-    "timestamp": "2026-06-08T13:22:31.381837Z"
-  },
-  {
-    "path": "input/banks.xlsx",
-    "event": "input_file_missing",
-    "level": "error",
-    "timestamp": "2026-06-08T13:22:31.381837Z"
-  },
-  {
-    "path": "input/banks.xlsx",
-    "event": "created_default_input_excel",
-    "level": "info",
-    "timestamp": "2026-06-08T13:22:34.549756Z"
+    "timestamp": "2026-06-08T19:22:06.555496Z"
   },
   {
     "count": 3,
     "event": "loaded_banks_from_excel",
     "level": "info",
-    "timestamp": "2026-06-08T13:22:34.607863Z"
+    "timestamp": "2026-06-08T19:22:11.098849Z"
   },
   {
     "headless": true,
     "event": "launching_browser",
     "level": "info",
-    "timestamp": "2026-06-08T13:22:34.607863Z"
+    "timestamp": "2026-06-08T19:22:11.098849Z"
   },
   {
     "bank": "HDFC Bank",
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-08T13:22:42.034390Z"
+    "timestamp": "2026-06-08T19:22:14.777274Z"
   },
   {
     "bank": "SBI",
     "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-08T13:22:42.036204Z"
+    "timestamp": "2026-06-08T19:22:14.879773Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-08T13:22:42.038092Z"
+    "timestamp": "2026-06-08T19:22:14.937709Z"
   },
   {
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T13:22:57.242052Z"
+    "timestamp": "2026-06-08T19:22:15.332249Z"
   },
   {
     "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:02.277292Z"
-  },
-  {
-    "bank": "SBI",
-    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
-    "event": "starting_sbi_scrape",
-    "level": "info",
-    "timestamp": "2026-06-08T13:23:06.506619Z"
-  },
-  {
-    "event": "level_1_semantic_table_detection",
-    "level": "info",
-    "timestamp": "2026-06-08T13:23:06.556179Z"
-  },
-  {
-    "header": [
-      "NON-CALLABLE TERM DEPOSIT RETAIL (From Rs.1.01 cr to less than Rs.3.00 cr)"
-    ],
-    "event": "failed_to_match_table_headers",
-    "level": "warning",
-    "timestamp": "2026-06-08T13:23:06.572775Z"
-  },
-  {
-    "bank": "SBI",
-    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
-    "event": "processing_and_validating_raw_data",
-    "level": "info",
-    "timestamp": "2026-06-08T13:23:06.572775Z"
+    "timestamp": "2026-06-08T19:22:15.488532Z"
   },
   {
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:07.021664Z"
+    "timestamp": "2026-06-08T19:22:15.512905Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "starting_icici_scrape",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:09.450133Z"
+    "timestamp": "2026-06-08T19:22:17.412132Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:09.488276Z"
+    "timestamp": "2026-06-08T19:22:17.672099Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:09.499752Z"
+    "timestamp": "2026-06-08T19:22:17.713271Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "event": "starting_sbi_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:22:18.171044Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:22:18.227011Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:22:18.281969Z"
   },
   {
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates\", waiting until \"networkidle\"\n",
     "event": "networkidle_failed_falling_back_to_load",
     "level": "warning",
-    "timestamp": "2026-06-08T13:23:27.249915Z"
+    "timestamp": "2026-06-08T19:22:45.492568Z"
   },
   {
     "bank": "HDFC Bank",
-    "error_reason": "Scraping failed with exception: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates\", waiting until \"load\"\n",
-    "event": "scraping_bank_failed",
-    "level": "error",
-    "timestamp": "2026-06-08T13:23:57.261400Z"
+    "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates\", waiting until \"load\"\n",
+    "event": "navigation_failed_attempting_scraper_fallback",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:23:15.501228Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "event": "starting_hdfc_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:23:15.501228Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "event": "page_is_blank_using_local_html_fallback",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:23:15.501228Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "event": "triggering_hdfc_local_html_fallback",
+    "level": "info",
+    "timestamp": "2026-06-08T19:23:15.501228Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:23:15.515354Z"
   },
   {
     "event": "closing_browser",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:57.274301Z"
+    "timestamp": "2026-06-08T19:23:15.537071Z"
   },
   {
     "path": "output/results.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:57.487212Z"
+    "timestamp": "2026-06-08T19:23:15.705451Z"
   },
   {
     "event": "running_change_detection",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:57.501457Z"
+    "timestamp": "2026-06-08T19:23:15.730274Z"
   },
   {
     "path": "output/change_report.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:57.505236Z"
+    "timestamp": "2026-06-08T19:23:15.731913Z"
   },
   {
     "path": "output/validation_report.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:57.506379Z"
+    "timestamp": "2026-06-08T19:23:15.733027Z"
   },
   {
-    "successful": 2,
+    "successful": 3,
     "total": 3,
     "event": "scraping_pipeline_complete",
     "level": "info",
-    "timestamp": "2026-06-08T13:23:57.506379Z"
+    "timestamp": "2026-06-08T19:23:15.733027Z"
   }
 ]
