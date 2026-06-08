@@ -36,6 +36,7 @@ async def test_icici_scraper_html():
     mock_page.wait_for_selector = AsyncMock()
     
     # Mock locator chain for "Less than 3 Cr" button
+    mock_page.locator = MagicMock()
     mock_btn = AsyncMock()
     mock_btn.count = AsyncMock(return_value=0)
     mock_page.locator.return_value.filter.return_value = mock_btn
