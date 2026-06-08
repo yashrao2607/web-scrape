@@ -1,0 +1,14 @@
+[
+  {
+    "bank": "SBI",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "ICICI Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  }
+]

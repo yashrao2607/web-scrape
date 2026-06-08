@@ -1,0 +1,185 @@
+[
+  {
+    "bank_name": "SBI",
+    "source_url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "scraped_at": "2026-06-08T13:23:06.575707Z",
+    "last_updated_on_page": null,
+    "fd_rates": [
+      {
+        "tenure_raw": "3.05",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 3.05,
+        "senior_citizen_rate": 3.55,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "4.90",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 4.9,
+        "senior_citizen_rate": 5.4,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "5.65",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 5.65,
+        "senior_citizen_rate": 6.15,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "5.90",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 5.9,
+        "senior_citizen_rate": 6.4,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "6.25",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 6.25,
+        "senior_citizen_rate": 6.75,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "6.45",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 6.4,
+        "senior_citizen_rate": 6.95,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "6.30",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 6.3,
+        "senior_citizen_rate": 6.8,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "6.05",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 6.05,
+        "senior_citizen_rate": 7.05,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      }
+    ],
+    "minimum_deposit": 1000.0,
+    "maximum_deposit": 20000000.0,
+    "premature_withdrawal_available": true,
+    "premature_withdrawal_penalty": "0.50% penalty for tenure < 1 yr, 1.00% penalty for tenure >= 1 yr",
+    "loan_against_fd_available": true,
+    "tax_saver_fd_available": true,
+    "tax_saver_tenure": "5 Years to 10 Years",
+    "nomination_available": true,
+    "compounding_frequency": "Quarterly",
+    "data_quality_score": 0.8,
+    "scraper_version": "1.0.0",
+    "status": "SUCCESS"
+  },
+  {
+    "bank_name": "ICICI Bank",
+    "source_url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "scraped_at": "2026-06-08T13:23:09.499752Z",
+    "last_updated_on_page": null,
+    "fd_rates": [
+      {
+        "tenure_raw": "3 Years 1 Day to 5 Years",
+        "tenure_days": 1096.0,
+        "tenure_months": 36.0,
+        "tenure_years": 3.0,
+        "general_rate": 6.5,
+        "senior_citizen_rate": 6.5,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "5 Years 1 Day to 10 Years",
+        "tenure_days": 1826.0,
+        "tenure_months": 60.0,
+        "tenure_years": 5.0,
+        "general_rate": 6.5,
+        "senior_citizen_rate": 6.5,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "Less than 1 year",
+        "tenure_days": null,
+        "tenure_months": null,
+        "tenure_years": null,
+        "general_rate": 0.5,
+        "senior_citizen_rate": 0.5,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "1 year and above but < 5 years",
+        "tenure_days": 365.0,
+        "tenure_months": 12.0,
+        "tenure_years": 1.0,
+        "general_rate": 1.0,
+        "senior_citizen_rate": 1.0,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      },
+      {
+        "tenure_raw": "5 years and above",
+        "tenure_days": 1825.0,
+        "tenure_months": 60.0,
+        "tenure_years": 5.0,
+        "general_rate": 1.0,
+        "senior_citizen_rate": 1.5,
+        "effective_from": null,
+        "effective_to": null,
+        "notes": null
+      }
+    ],
+    "minimum_deposit": 10000.0,
+    "maximum_deposit": 20000000.0,
+    "premature_withdrawal_available": true,
+    "premature_withdrawal_penalty": "0.50% to 1.00% depending on tenure and deposit value",
+    "loan_against_fd_available": true,
+    "tax_saver_fd_available": true,
+    "tax_saver_tenure": "5 Years",
+    "nomination_available": true,
+    "compounding_frequency": "Quarterly",
+    "data_quality_score": 0.92,
+    "scraper_version": "1.0.0",
+    "status": "SUCCESS"
+  }
+]
