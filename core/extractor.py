@@ -159,20 +159,33 @@ class LayeredExtractor:
         from core.normalizer import parse_tenure
 
         # Clean table cell strings
-        cleaned_table = []
+        raw_cleaned_table = []
         for row in table:
-            cleaned_table.append([cell.strip().replace("\xa0", " ") if cell else "" for cell in row])
+            raw_cleaned_table.append([cell.strip().replace("\xa0", " ") if cell else "" for cell in row])
 
-        # 1. Identify the first data row
+        # Pad all rows to the maximum row length to avoid truncation of columns
+        num_cols = max(len(row) for row in raw_cleaned_table) if raw_cleaned_table else 0
+        cleaned_table = []
+        for row in raw_cleaned_table:
+            padded_row = list(row)
+            while len(padded_row) < num_cols:
+                padded_row.append("")
+            cleaned_table.append(padded_row)
+
+        # 1. Identify the first data row and record which column matched
         first_data_idx = -1
+        detected_tenure_col = None
         for idx, row in enumerate(cleaned_table):
             if len(row) >= 2:
                 # Check the first few cells to see if one is successfully parsed as tenure
-                for cell in row[:3]:
-                    days, _, _ = parse_tenure(cell)
-                    if days is not None:
-                        first_data_idx = idx
-                        break
+                for col_idx, cell in enumerate(row[:3]):
+                    # Exclude note rows containing durations
+                    if len(cell) < 50 and not any(cell.lower().startswith(x) for x in ["note", "disclaimer", "effective", "interest", "table", "rates", "*"]):
+                        days, _, _ = parse_tenure(cell)
+                        if days is not None:
+                            first_data_idx = idx
+                            detected_tenure_col = col_idx
+                            break
             if first_data_idx != -1:
                 break
 
@@ -196,7 +209,6 @@ class LayeredExtractor:
             filtered_header_rows = [cleaned_table[0]]
 
         # Horizontal forward fill for colspans and vertical merge
-        num_cols = len(cleaned_table[0])
         filled_header_rows = []
         for hr in filtered_header_rows:
             filled_row = []
@@ -231,6 +243,10 @@ class LayeredExtractor:
         tenure_idx = mapping["tenure_idx"]
         general_idx = mapping["general_idx"]
         senior_idx = mapping["senior_idx"]
+
+        # Use the detected tenure column from the first data row as a refinement
+        if detected_tenure_col is not None:
+            tenure_idx = detected_tenure_col
 
         if tenure_idx is None or general_idx is None:
             logger.warning("failed_to_match_table_headers", header=flattened_header)

@@ -19,10 +19,14 @@ def parse_tenure(tenure_str: str) -> Tuple[Optional[float], Optional[float], Opt
     # Clean the string
     cleaned = tenure_str.strip()
 
+    # Exclude typical note indicator prefixes if they are at the very beginning of the string
+    # e.g., "Less than 1 year" -> "1 year", "Up to 15 days" -> "15 days"
+    cleaned_tmp = re.sub(r'^(?:less\s+than|below|up\s+to|under)\s+', '', cleaned, flags=re.IGNORECASE)
+
     # If it's a range like "12 to 24 Months", extract the first range component
-    # Let's split on common range delimiters: "to", "-", "less than"
+    # Let's split on common range delimiters: "to", "-"
     # Example: "1 Year to 15 Months" -> Split to "1 Year" and "15 Months"
-    parts = re.split(r'\b(?:to|less\s+than|-)\b', cleaned, flags=re.IGNORECASE)
+    parts = re.split(r'\b(?:to|less\s+than|-)\b', cleaned_tmp, flags=re.IGNORECASE)
     primary_part = parts[0].strip()
 
     total_days = 0.0

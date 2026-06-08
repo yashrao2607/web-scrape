@@ -35,6 +35,11 @@ async def test_icici_scraper_html():
     mock_page = AsyncMock()
     mock_page.wait_for_selector = AsyncMock()
     
+    # Mock locator chain for "Less than 3 Cr" button
+    mock_btn = AsyncMock()
+    mock_btn.count = AsyncMock(return_value=0)
+    mock_page.locator.return_value.filter.return_value = mock_btn
+    
     with patch("core.extractor.LayeredExtractor.extract_from_page", return_value=[[["Tenure", "Rate"], ["1 Year", "7.10%"]]]), \
          patch("core.extractor.LayeredExtractor.parse_extracted_table", return_value=[{"tenure_raw": "1 Year", "general_raw": "7.10%", "senior_raw": "7.60%"}]):
         res = await scraper.scrape(mock_page)

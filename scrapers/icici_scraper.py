@@ -23,6 +23,16 @@ class ICICIScraper(BaseScraper):
             except Exception:
                 self.logger.warning("timeout_waiting_for_tables_attempting_anyway")
             
+            # Click "Less than 3 Cr." button if it exists to show full retail interest rates table
+            try:
+                btn = page.locator("button:has-text('Less than')").filter(has_text="3 Cr")
+                if await btn.count() > 0:
+                    self.logger.info("clicking_less_than_3cr_button_for_icici")
+                    await btn.first.click()
+                    await page.wait_for_timeout(2000)
+            except Exception as e:
+                self.logger.warning("failed_to_click_less_than_3cr_button", error=str(e))
+                
             tables = await LayeredExtractor.extract_from_page(page)
             rates = []
             for t in tables:
