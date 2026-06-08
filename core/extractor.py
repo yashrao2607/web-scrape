@@ -14,9 +14,9 @@ class LayeredExtractor:
     """
     
     # Keyword classification definitions
-    TENURE_KEYWORDS = ["tenure", "duration", "period", "days", "months", "years", "maturity", "term", "tenor", "tenors"]
-    GENERAL_RATE_KEYWORDS = ["general", "public", "rate", "interest rate", "general public", "regular", "non-senior", "interest"]
-    SENIOR_RATE_KEYWORDS = ["senior", "citizen", "sr. citizen", "sr", "seniors"]
+    TENURE_KEYWORDS = ["tenure", "duration", "period", "days", "months", "years", "maturity", "term", "tenor", "tenors", "maturity period"]
+    GENERAL_RATE_KEYWORDS = ["general", "public", "rate", "interest rate", "general public", "regular", "non-senior", "interest", "card rate", "%", "roi"]
+    SENIOR_RATE_KEYWORDS = ["senior", "sr. citizen", "sr", "seniors", "sr citizen", "senior citizen"]
     
     @classmethod
     async def extract_from_page(cls, page: Page) -> List[List[List[str]]]:
@@ -105,17 +105,25 @@ class LayeredExtractor:
                 mapping["tenure_idx"] = idx
                 break
                 
+        if mapping["tenure_idx"] is None:
+            return mapping
+
         # Step 2: Find General Rate Column
-        # Prefer headers containing "general" or "public" or "regular" or "non-senior"
         best_general_score = -1
         for idx, h in enumerate(header_lower):
             if idx == mapping["tenure_idx"]:
                 continue
+            
+            # Must contain at least one general or interest rate keyword to be considered
+            if not any(k in h for k in cls.GENERAL_RATE_KEYWORDS):
+                continue
+                
             score = 0
             if any(k in h for k in cls.GENERAL_RATE_KEYWORDS):
-                score += 1
+                score += 10
             if "senior" not in h and "sr" not in h:
                 score += 2  # Boost if it does not belong to senior citizen
+                
             if score > best_general_score:
                 best_general_score = score
                 mapping["general_idx"] = idx
@@ -125,9 +133,15 @@ class LayeredExtractor:
         for idx, h in enumerate(header_lower):
             if idx == mapping["tenure_idx"] or idx == mapping["general_idx"]:
                 continue
+                
+            # Must contain at least one senior keyword to be considered
+            if not any(k in h for k in cls.SENIOR_RATE_KEYWORDS):
+                continue
+                
             score = 0
             if any(k in h for k in cls.SENIOR_RATE_KEYWORDS):
-                score += 3
+                score += 10
+                
             if score > best_senior_score:
                 best_senior_score = score
                 mapping["senior_idx"] = idx
@@ -141,37 +155,108 @@ class LayeredExtractor:
         """
         if len(table) < 2:
             return []
-            
-        header = table[0]
-        mapping = cls.match_headers(header)
-        
+
+        from core.normalizer import parse_tenure
+
+        # Clean table cell strings
+        cleaned_table = []
+        for row in table:
+            cleaned_table.append([cell.strip().replace("\xa0", " ") if cell else "" for cell in row])
+
+        # 1. Identify the first data row
+        first_data_idx = -1
+        for idx, row in enumerate(cleaned_table):
+            if len(row) >= 2:
+                # Check the first few cells to see if one is successfully parsed as tenure
+                for cell in row[:3]:
+                    days, _, _ = parse_tenure(cell)
+                    if days is not None:
+                        first_data_idx = idx
+                        break
+            if first_data_idx != -1:
+                break
+
+        # Fallback if no data row found or if it starts at 0
+        if first_data_idx <= 0:
+            first_data_idx = 1
+
+        # 2. Extract and flatten header rows
+        header_rows = cleaned_table[:first_data_idx]
+        data_rows = cleaned_table[first_data_idx:]
+
+        # Filter out rows with low column diversity (title/note rows)
+        filtered_header_rows = []
+        for hr in header_rows:
+            non_empty = [c for c in hr if c]
+            if len(set(non_empty)) >= 2:
+                filtered_header_rows.append(hr)
+
+        if not filtered_header_rows:
+            # Fallback to the first row as header
+            filtered_header_rows = [cleaned_table[0]]
+
+        # Horizontal forward fill for colspans and vertical merge
+        num_cols = len(cleaned_table[0])
+        filled_header_rows = []
+        for hr in filtered_header_rows:
+            filled_row = []
+            current_val = ""
+            for cell in hr:
+                if cell:
+                    current_val = cell
+                filled_row.append(current_val)
+            # Pad filled_row to match num_cols just in case
+            while len(filled_row) < num_cols:
+                filled_row.append("")
+            filled_header_rows.append(filled_row)
+
+        flattened_header = []
+        for col_idx in range(num_cols):
+            col_cells = []
+            for hr in filled_header_rows:
+                val = hr[col_idx]
+                if val and (not col_cells or col_cells[-1] != val):
+                    col_cells.append(val)
+            flattened_header.append(" ".join(col_cells))
+
+        # 3. Check for penalty/charges keywords in the flattened header
+        penalty_keywords = ["penalty", "penal", "charges", "fee", "fore closure"]
+        header_str = " ".join(flattened_header).lower()
+        if any(pk in header_str for pk in penalty_keywords):
+            logger.info("skipping_penalty_or_charges_table", header=flattened_header)
+            return []
+
+        # 4. Match headers
+        mapping = cls.match_headers(flattened_header)
         tenure_idx = mapping["tenure_idx"]
         general_idx = mapping["general_idx"]
         senior_idx = mapping["senior_idx"]
-        
-        # If we failed to find tenure or general rate, this table might not be the FD rate table
+
         if tenure_idx is None or general_idx is None:
-            logger.warning("failed_to_match_table_headers", header=header)
+            logger.warning("failed_to_match_table_headers", header=flattened_header)
             return []
-            
+
         parsed_rows = []
-        for r_idx in range(1, len(table)):
-            row = table[r_idx]
+        for r_idx, row in enumerate(data_rows):
             # Ensure index safety
             if len(row) <= max(tenure_idx, general_idx, senior_idx or 0):
                 continue
-                
+
             tenure_raw = row[tenure_idx].strip()
             general_raw = row[general_idx].strip()
             senior_raw = row[senior_idx].strip() if senior_idx is not None else ""
-            
-            if not tenure_raw or not general_raw:
+
+            # Skip if tenure is empty or matches a header keyword
+            if not tenure_raw or any(k == tenure_raw.lower() for k in cls.TENURE_KEYWORDS):
                 continue
-                
+
+            if not general_raw or general_raw.lower() in ["-", "nil", "n.a.", "na"]:
+                continue
+
             parsed_rows.append({
                 "tenure_raw": tenure_raw,
                 "general_raw": general_raw,
-                "senior_raw": senior_raw or general_raw # Fallback senior citizen rate to general rate if omitted
+                "senior_raw": senior_raw or general_raw
             })
             
         return parsed_rows
