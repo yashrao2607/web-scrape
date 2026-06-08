@@ -16,5 +16,59 @@
     "changes_detected": false,
     "rate_changes": [],
     "metadata_changes": []
+  },
+  {
+    "bank": "Axis Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Kotak Mahindra Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "PNB",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "IndusInd Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Yes Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "IDFC First Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "South Indian Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Federal Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
   }
 ]

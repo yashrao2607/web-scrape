@@ -2,172 +2,2272 @@
   {
     "event": "starting_scraping_pipeline",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:06.555496Z"
+    "timestamp": "2026-06-08T19:45:29.397493Z"
   },
   {
-    "count": 3,
+    "path": "input/banks.xlsx",
+    "event": "initialized_input_excel_with_12_banks",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:29.881959Z"
+  },
+  {
+    "count": 12,
     "event": "loaded_banks_from_excel",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:11.098849Z"
+    "timestamp": "2026-06-08T19:45:29.942427Z"
   },
   {
     "headless": true,
     "event": "launching_browser",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:11.098849Z"
+    "timestamp": "2026-06-08T19:45:29.942427Z"
   },
   {
     "bank": "HDFC Bank",
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:14.777274Z"
+    "timestamp": "2026-06-08T19:45:31.135109Z"
   },
   {
     "bank": "SBI",
     "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:14.879773Z"
+    "timestamp": "2026-06-08T19:45:31.139161Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:14.937709Z"
+    "timestamp": "2026-06-08T19:45:31.141169Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:31.141169Z"
+  },
+  {
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:31.143378Z"
   },
   {
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:15.332249Z"
+    "timestamp": "2026-06-08T19:45:31.242920Z"
   },
   {
     "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:15.488532Z"
+    "timestamp": "2026-06-08T19:45:31.258361Z"
   },
   {
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:15.512905Z"
+    "timestamp": "2026-06-08T19:45:31.258868Z"
   },
   {
-    "bank": "ICICI Bank",
-    "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
-    "event": "starting_icici_scrape",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:17.412132Z"
+    "timestamp": "2026-06-08T19:45:31.267397Z"
   },
   {
-    "event": "level_1_semantic_table_detection",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:17.672099Z"
+    "timestamp": "2026-06-08T19:45:31.274559Z"
   },
   {
-    "bank": "ICICI Bank",
-    "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "error": "Page.goto: Download is starting\nCall log:\n  - navigating to \"https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1\", waiting until \"networkidle\"\n",
+    "event": "networkidle_failed_falling_back_to_load",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:31.329821Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "error": "Page.goto: Download is starting\nCall log:\n  - navigating to \"https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1\", waiting until \"load\"\n",
+    "event": "navigation_failed_attempting_scraper_fallback",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:31.337143Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "event": "starting_axis_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:31.337143Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "path": "C:\\Users\\yashr\\AppData\\Local\\Temp/axis_rates.pdf",
+    "event": "downloaded_axis_pdf",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:31.459896Z"
+  },
+  {
+    "path": "C:\\Users\\yashr\\AppData\\Local\\Temp/axis_rates.pdf",
+    "event": "level_5_pdf_table_extraction",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:31.462118Z"
+  },
+  {
+    "page": 0,
+    "count": 1,
+    "event": "extracted_pdf_tables_on_page",
+    "level": "debug",
+    "timestamp": "2026-06-08T19:45:32.607146Z"
+  },
+  {
+    "page": 1,
+    "count": 8,
+    "event": "extracted_pdf_tables_on_page",
+    "level": "debug",
+    "timestamp": "2026-06-08T19:45:33.827541Z"
+  },
+  {
+    "header": [
+      "₹ 5 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:33.830775Z"
+  },
+  {
+    "header": [
+      "₹ 25 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:33.830775Z"
+  },
+  {
+    "header": [
+      "₹ 50 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:33.830775Z"
+  },
+  {
+    "header": [
+      "₹ 100 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:33.830775Z"
+  },
+  {
+    "header": [
+      "₹ 200 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:33.830775Z"
+  },
+  {
+    "header": [
+      "₹ 500 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:33.830775Z"
+  },
+  {
+    "header": [
+      "₹ 1000 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:33.831758Z"
+  },
+  {
+    "page": 2,
+    "count": 8,
+    "event": "extracted_pdf_tables_on_page",
+    "level": "debug",
+    "timestamp": "2026-06-08T19:45:35.491485Z"
+  },
+  {
+    "header": [
+      "₹ 5 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:35.494664Z"
+  },
+  {
+    "header": [
+      "₹ 25 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:35.494664Z"
+  },
+  {
+    "header": [
+      "₹ 50 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:35.494664Z"
+  },
+  {
+    "header": [
+      "₹ 100 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:35.494664Z"
+  },
+  {
+    "header": [
+      "₹ 200 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:35.494664Z"
+  },
+  {
+    "header": [
+      "₹ 500 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:35.494664Z"
+  },
+  {
+    "header": [
+      "₹ 1000 Cr"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:35.494664Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:17.713271Z"
+    "timestamp": "2026-06-08T19:45:35.495426Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:35.849110Z"
+  },
+  {
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:36.063564Z"
+  },
+  {
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "event": "starting_kotak_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:36.334797Z"
   },
   {
     "bank": "SBI",
     "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
     "event": "starting_sbi_scrape",
     "level": "info",
-    "timestamp": "2026-06-08T19:22:18.171044Z"
-  },
-  {
-    "event": "level_1_semantic_table_detection",
-    "level": "info",
-    "timestamp": "2026-06-08T19:22:18.227011Z"
-  },
-  {
-    "bank": "SBI",
-    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
-    "event": "processing_and_validating_raw_data",
-    "level": "info",
-    "timestamp": "2026-06-08T19:22:18.281969Z"
-  },
-  {
-    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
-    "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates\", waiting until \"networkidle\"\n",
-    "event": "networkidle_failed_falling_back_to_load",
-    "level": "warning",
-    "timestamp": "2026-06-08T19:22:45.492568Z"
-  },
-  {
-    "bank": "HDFC Bank",
-    "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates\", waiting until \"load\"\n",
-    "event": "navigation_failed_attempting_scraper_fallback",
-    "level": "warning",
-    "timestamp": "2026-06-08T19:23:15.501228Z"
+    "timestamp": "2026-06-08T19:45:36.392112Z"
   },
   {
     "bank": "HDFC Bank",
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "starting_hdfc_scrape",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.501228Z"
+    "timestamp": "2026-06-08T19:45:36.443280Z"
+  },
+  {
+    "bank": "ICICI Bank",
+    "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "event": "starting_icici_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:36.537806Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.178019Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.314756Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.538846Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.638462Z"
+  },
+  {
+    "bank": "ICICI Bank",
+    "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.663616Z"
+  },
+  {
+    "header": [
+      "Savings Bank A/c",
+      "Savings Bank A/c"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.686695Z"
+  },
+  {
+    "header": [
+      "Amount Slabs",
+      "Saving Account rates"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.686695Z"
+  },
+  {
+    "header": [
+      "Maturity Period - Premature Withdrawal Allowed",
+      "Rs. 5 Crores and above but less than 10 Crores#",
+      "Rs. 10 Crores & above but below 25 Crores #",
+      "Rs. 25 Cr & above but below 100 cr #",
+      "Rs. 100 Cr & above but below 300 Cr #",
+      "Rs. 300 Cr and above #",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.688705Z"
+  },
+  {
+    "header": [
+      "Maturity Period - Premature Withdrawal Not Allowed",
+      "Rs. 3 Crores and above but less than 5 Crores#",
+      "Rs. 5 Crores and above but less than 10 Crores#",
+      "Rs. 10 Crores & above But below 25 Crores #",
+      "Rs. 25 Cr & above but below 100 cr #",
+      "Rs. 100 Cr & above but below 300 Cr #",
+      "Rs. 300 Cr and above #",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.692226Z"
+  },
+  {
+    "header": [
+      "Tenure of Fixed Deposit Less than 181 days",
+      "Penalty Nil"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.692226Z"
+  },
+  {
+    "header": [
+      "Tenure of Fixed Deposit Less than equal to 180 days",
+      "Penalty Nil"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.694080Z"
+  },
+  {
+    "header": [
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26",
+      "FCNR(B) Deposit Interest Rates w.e.f 1st June ’26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.696922Z"
+  },
+  {
+    "header": [
+      "Premature Penalty",
+      "USD",
+      "USD",
+      "GBP",
+      "EURO",
+      "YEN",
+      "AUD",
+      "SGD"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.697428Z"
+  },
+  {
+    "header": [
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26",
+      "RFC Deposit Interest Rates w.e.f 1st June ’26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.697428Z"
+  },
+  {
+    "header": [
+      "Product",
+      "Rate of Interest",
+      "Rate of Interest",
+      "Rate of Interest",
+      "Processing fees (excluding GST)"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.698451Z"
+  },
+  {
+    "header": [
+      "Name of the Product",
+      "Interest Range of Contracted Loans Minimum (%)",
+      "Interest Range of Contracted Loans Maximum (%)",
+      "Interest Range of Contracted Loans Mean (%)"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.700464Z"
+  },
+  {
+    "header": [
+      "Name of the Product",
+      "Interest Rate of Contracted Loans",
+      "Interest Rate of Contracted Loans",
+      "Interest Rate of Contracted Loans"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.702477Z"
+  },
+  {
+    "header": [
+      "For Savings Accounts",
+      "Issue (INR)",
+      "Rs. 2.5 per 1000 Min Rs. 50 Max Rs. 10, 000"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.703043Z"
+  },
+  {
+    "header": [
+      "Savings Account",
+      "For Branch Locations (Non-Speed clearing locations): Free"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.708052Z"
+  },
+  {
+    "header": [
+      "For Savings Accounts",
+      "Inward",
+      "Free"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.708557Z"
+  },
+  {
+    "header": [
+      "Savings Accounts",
+      "Inward",
+      "Free"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.708557Z"
+  },
+  {
+    "header": [
+      "Cheque Return Charges",
+      "Outward Returns",
+      "Inward Returns"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.711157Z"
+  },
+  {
+    "header": [
+      "Savings Account",
+      "For BSBDA & Small Account, first cheque book of 5 leaves Free, thereafter charged @ Rs. 5 per cheque leaf. Edge, Nova and Synergy Savings Account 25 leaves per quarter Free thereafter it is charged @ Rs. 1.5 per leaf. For all other Accounts it is Free."
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.711157Z"
+  },
+  {
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.711157Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.727697Z"
+  },
+  {
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.736318Z"
+  },
+  {
+    "bank": "IDFC First Bank",
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.745917Z"
+  },
+  {
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.844216Z"
+  },
+  {
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.879052Z"
+  },
+  {
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:37.895073Z"
+  },
+  {
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\nCall log:\n  - navigating to \"https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\", waiting until \"networkidle\"\n",
+    "event": "networkidle_failed_falling_back_to_load",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:37.986890Z"
+  },
+  {
+    "bank": "Yes Bank",
+    "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\nCall log:\n  - navigating to \"https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\", waiting until \"load\"\n",
+    "event": "navigation_failed_attempting_scraper_fallback",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:38.055291Z"
+  },
+  {
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "event": "starting_yes_bank_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:38.055291Z"
+  },
+  {
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\nCall log:\n  - navigating to \"https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\", waiting until \"domcontentloaded\"\n",
+    "event": "live_yes_bank_scrape_failed_falling_back",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:38.132490Z"
+  },
+  {
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "event": "triggering_yes_bank_local_html_fallback",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:38.132490Z"
+  },
+  {
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:38.141707Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:38.152549Z"
+  },
+  {
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:38.251997Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "starting_pnb_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:39.690182Z"
+  },
+  {
+    "bank": "IDFC First Bank",
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "event": "starting_idfc_first_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:41.129043Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:41.526500Z"
   },
   {
     "bank": "HDFC Bank",
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
-    "event": "page_is_blank_using_local_html_fallback",
+    "error": "Page.wait_for_selector: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"table, [role='table']\") to be visible\n",
+    "event": "live_scrape_failed_falling_back_to_local_html",
     "level": "warning",
-    "timestamp": "2026-06-08T19:23:15.501228Z"
+    "timestamp": "2026-06-08T19:45:41.799697Z"
   },
   {
     "bank": "HDFC Bank",
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "triggering_hdfc_local_html_fallback",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.501228Z"
+    "timestamp": "2026-06-08T19:45:41.799697Z"
   },
   {
     "bank": "HDFC Bank",
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.515354Z"
+    "timestamp": "2026-06-08T19:45:41.918516Z"
+  },
+  {
+    "header": [
+      "Interest Rates for Domestic / NRO / NRE Fixed Deposits of less than ₹3 Crore w.e.f. 18th April 2026*",
+      "Interest Rates for Domestic / NRO / NRE Fixed Deposits of less than ₹3 Crore w.e.f. 18th April 2026*",
+      "Interest Rates for Domestic / NRO / NRE Fixed Deposits of less than ₹3 Crore w.e.f. 18th April 2026*"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:41.939114Z"
+  },
+  {
+    "header": [
+      "Tax Saver Deposit\n(Only for Resident customers)",
+      "Rate of Interest (per annum) w.e.f. 18th April 2026* General",
+      "Rate of Interest (per annum) w.e.f. 18th April 2026* Senior Citizen"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:41.939114Z"
+  },
+  {
+    "header": [
+      "Green Deposits\n(Only for Resident customers)",
+      "Rate of Interest (per annum) w.e.f. 18th April 2026* General",
+      "Rate of Interest (per annum) w.e.f. 18th April 2026* Senior Citizen"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:41.939114Z"
+  },
+  {
+    "event": "level_3_4_unstructured_text_extraction",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:41.939114Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:41.954153Z"
+  },
+  {
+    "bank": "IDFC First Bank",
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:42.181986Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:42.282493Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "event": "starting_iob_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:42.719952Z"
+  },
+  {
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:42.794361Z"
+  },
+  {
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:42.910113Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:43.070895Z"
+  },
+  {
+    "header": [
+      "Description",
+      "Fore Closure Charges"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:43.183489Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:43.183489Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 14: Duplicate tenure raw string '1 Year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:43.183489Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 16: Duplicate tenure raw string '444 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:43.183489Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 17: Duplicate tenure raw string '2 Years to < 3 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:43.183489Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 28: Duplicate tenure raw string '1 Year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:43.183489Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "event": "starting_indusind_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:44.545033Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "timeout_waiting_for_tables_attempting_anyway",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:44.707983Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:44.707983Z"
+  },
+  {
+    "header": [
+      "Saving Deposit Interest Rate",
+      "Saving Deposit Interest Rate",
+      "Saving Deposit Interest Rate"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:44.945472Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.006139Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.006667Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.006667Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.006667Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.007173Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.007173Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.007173Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.007173Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.007173Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.027896Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.027896Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.036966Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.036966Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.036966Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.036966Z"
+  },
+  {
+    "header": [
+      "",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.036966Z"
+  },
+  {
+    "header": [
+      "",
+      "Public\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t(General) Existing (% p.a.) 01.09.25",
+      "Public\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t(General) Revised (% p.a.) 01.02.26",
+      "Sr. Citizen\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t(General) Existing (% p.a.) 01.09.25",
+      "Sr. Citizen\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t(General) Revised (% p.a.) 01.02.26",
+      "Staff Members Existing (% p.a.) 01.09.25",
+      "Staff Members Revised (% p.a.) 01.02.26",
+      "Retired Staff*\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t(Sr. Citizen) Existing (% p.a.) 01.09.25",
+      "Retired Staff*\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t(Sr. Citizen) Revised (% p.a.) 01.02.26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.047096Z"
+  },
+  {
+    "header": [
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026",
+      "FCNR Deposit w.e.f. 01.06.2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.049128Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:45.049128Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 23: Duplicate tenure raw string '91 to 154 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.089013Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 24: Duplicate tenure raw string '155 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.089013Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 25: Duplicate tenure raw string '156 Days to 179 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.089013Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 27: Duplicate tenure raw string '271 Days to 302 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 28: Duplicate tenure raw string '303 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 29: Duplicate tenure raw string '304 Days to >1 Year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 30: Duplicate tenure raw string '1 Year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 31: Duplicate tenure raw string '>1 Year to 389 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 32: Duplicate tenure raw string '390 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 33: Duplicate tenure raw string '391 Days to 443 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 34: Duplicate tenure raw string '444 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 35: Duplicate tenure raw string '445 Days to 665 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 36: Duplicate tenure raw string '666 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 37: Duplicate tenure raw string '667 Days to 2 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 38: Duplicate tenure raw string '>2 to 3 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 39: Duplicate tenure raw string '>3 Years to 1203 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 40: Duplicate tenure raw string '1204 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 41: Duplicate tenure raw string '1205 Days to 5 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.092442Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 42: Duplicate tenure raw string '>5 Years to 10 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 53: Duplicate tenure raw string '1 Year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 54: Duplicate tenure raw string '>1 Year to 389 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 55: Duplicate tenure raw string '390 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 56: Duplicate tenure raw string '391 Days to 443 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 57: Duplicate tenure raw string '444 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 61: Duplicate tenure raw string '1204 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 62: Duplicate tenure raw string '1205 Days to 5 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 63: Duplicate tenure raw string '>5 Years to 10 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 69: Duplicate tenure raw string '1 Year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 71: Duplicate tenure raw string '390 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 72: Duplicate tenure raw string '391 Days to 443 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 73: Duplicate tenure raw string '444 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 74: Duplicate tenure raw string '445 Days to 665 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 75: Duplicate tenure raw string '666 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 76: Duplicate tenure raw string '667 Days to 2 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 77: Duplicate tenure raw string '>2 Years to 3 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 78: Duplicate tenure raw string '>3 Years to 1203 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 79: Duplicate tenure raw string '1204 Days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 80: Duplicate tenure raw string '1205 Days to 5 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Row 81: Duplicate tenure raw string '>5 Years to 10 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:45.125378Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "event": "timeout_waiting_for_tables_attempting_anyway",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.636931Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:49.636931Z"
+  },
+  {
+    "header": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.942122Z"
+  },
+  {
+    "header": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:49.942122Z"
+  },
+  {
+    "header": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.942122Z"
+  },
+  {
+    "header": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:49.942122Z"
+  },
+  {
+    "header": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Period / Currency",
+      "USD < 1 Mio",
+      "USD 1 Mio < 10 Mio",
+      "USD 10 Mio < 25 Mio",
+      "USD 25 Mio & Above",
+      "GBP",
+      "EUR",
+      "JPY",
+      "CAD",
+      "AUD"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "IBU RATE < 1 Mio",
+      "USD",
+      "EURO",
+      "GBP"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "IBU RATE < 1 Mio",
+      "USD",
+      "EURO",
+      "GBP"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Savings Bank Account Interest Rates Domestic / Non Resident (NRO/NRE)",
+      "Rate p.a. w.e.f. 1st March 2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Savings Account Amount Slabs",
+      "Rate p.a. w.e.f. 27th March 2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Indus Global Savings Account USD",
+      "Rate p.a w.e.f 5th May 2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.944109Z"
+  },
+  {
+    "header": [
+      "Indus Global Savings Account GBP",
+      "Rate p.a. w.e.f. 30th Dec 2024"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.950197Z"
+  },
+  {
+    "header": [
+      "MCLR Overnight",
+      "Benchmark MCLR (%) 9.65%"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.950197Z"
+  },
+  {
+    "header": [
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)",
+      "As on 08-06-2026 (Major Currencies)"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.955150Z"
+  },
+  {
+    "header": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.955662Z"
+  },
+  {
+    "header": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.955662Z"
+  },
+  {
+    "header": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.955662Z"
+  },
+  {
+    "header": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.955662Z"
+  },
+  {
+    "header": [
+      "Interest Rate – Q4 2025-26",
+      "Interest Rate – Q4 2025-26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.955662Z"
+  },
+  {
+    "header": [
+      "Annual Percentage Rate (FY25-26)*",
+      "Annual Percentage Rate (FY25-26)*"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.955662Z"
+  },
+  {
+    "header": [
+      "Interest Rate Q4 2025-26",
+      "Interest Rate Q4 2025-26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.957588Z"
+  },
+  {
+    "header": [
+      "Annual Percentage Rate FY26",
+      "Annual Percentage Rate FY26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.957588Z"
+  },
+  {
+    "header": [
+      "Interest Rate – Q4 2025-2026",
+      "Interest Rate – Q4 2025-2026"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "header": [
+      "Interest Rate Q4 2025-26",
+      "Interest Rate Q4 2025-26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "header": [
+      "Annual Percentage Rate FY26",
+      "Annual Percentage Rate FY26"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 17: Duplicate tenure raw string '31 days to 45 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 18: Duplicate tenure raw string '46 days to 60 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 19: Duplicate tenure raw string '61 days to 90 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 22: Duplicate tenure raw string '181 days to 210 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 28: Duplicate tenure raw string '7 days to 14 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 29: Duplicate tenure raw string '15 days to 30 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 30: Duplicate tenure raw string '31 days to 45 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.958100Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 31: Duplicate tenure raw string '46 days to 60 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.959776Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 32: Duplicate tenure raw string '61 days to 90 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.959776Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 33: Duplicate tenure raw string '91 days to 120 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.959776Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 34: Duplicate tenure raw string '121 days to 180 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.959776Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 35: Duplicate tenure raw string '181 days to 210 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.959776Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 36: Duplicate tenure raw string '211 days to 269 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.959776Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 39: Duplicate tenure raw string '1 year to below 1 year 1 month' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 43: Duplicate tenure raw string 'Above 3 years to below 61 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 44: Duplicate tenure raw string '61 months and above' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 45: Duplicate tenure raw string '7 days to 14 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 46: Duplicate tenure raw string '15 days to 30 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 47: Duplicate tenure raw string '31 days to 45 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 48: Duplicate tenure raw string '46 days to 60 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 49: Duplicate tenure raw string '61 days to 90 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 50: Duplicate tenure raw string '91 days to 120 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 51: Duplicate tenure raw string '121 days to 180 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 52: Duplicate tenure raw string '181 days to 210 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 54: Duplicate tenure raw string '355 days to 364 days' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.960727Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 55: Duplicate tenure raw string '1 year to below 1 year 1 month' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.961484Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 56: Duplicate tenure raw string '1 year 1 month to 3 Years' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.961484Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 57: Duplicate tenure raw string 'Above 3 years to below 61 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.961484Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 58: Duplicate tenure raw string '61 months and above' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.961484Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Row 70: Duplicate tenure raw string '61 Months and above' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:45:49.962462Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "event": "starting_south_indian_bank_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:45:55.498547Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "event": "timeout_waiting_for_tables_attempting_anyway",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.506296Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:46:00.506296Z"
+  },
+  {
+    "header": [
+      "End of the day Balance",
+      "Rate of Interest"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.554465Z"
+  },
+  {
+    "header": [
+      "Period",
+      "Single Deposit less than Rs.3 crore"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.555974Z"
+  },
+  {
+    "header": [
+      "Maturity period/Currency Amount",
+      "USD Up to & including 5L",
+      "USD Above 5L",
+      "GBP Above 5L",
+      "EUR Above 5L",
+      "AUD Above 5L",
+      "CHF Above 5L",
+      "JPY Above 5L",
+      "CAD Above 5L"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.556649Z"
+  },
+  {
+    "header": [
+      "Maturity period/Currency Amount",
+      "USD Up to & including 5L",
+      "USD Above 5L",
+      "GBP Above 5L",
+      "EUR Above 5L",
+      "AUD Above 5L",
+      "CHF Above 5L",
+      "JPY Above 5L"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.557234Z"
+  },
+  {
+    "header": [
+      "",
+      "USD",
+      "GBP",
+      "EURO",
+      "AUD",
+      "CHF",
+      "JPY"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.557234Z"
+  },
+  {
+    "header": [
+      "Sl No:",
+      "PRODUCT",
+      "Category",
+      "Interest rate"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.557234Z"
+  },
+  {
+    "header": [
+      "Sl No:",
+      "Category",
+      "Interest rate"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.557234Z"
+  },
+  {
+    "header": [
+      "Sl No:",
+      "Category",
+      "Interest rate"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.557760Z"
+  },
+  {
+    "header": [
+      "Interest Rate Range of contracted loans for the past quarter (Jan - Mar 2026) for different categories of advances granted to individual borrowers:",
+      "Interest Rate Range of contracted loans for the past quarter (Jan - Mar 2026) for different categories of advances granted to individual borrowers:",
+      "Interest Rate Range of contracted loans for the past quarter (Jan - Mar 2026) for different categories of advances granted to individual borrowers:"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.557760Z"
+  },
+  {
+    "header": [
+      "Tenor",
+      "Rs. 3.00 Cr to less than Rs. 5.00 Cr",
+      "Rs. 5.00 Cr to less than Rs. 10.00 Cr",
+      "Rs. 10.00 Cr to less than Rs. 25.00 Cr",
+      "Rs. 25 Cr to less than Rs. 50.00 Cr",
+      "Rs. 50.00 Cr to less than Rs. 100 cr",
+      "Rs. 100 cr to less than Rs. 200 cr",
+      "Rs. 200 cr and above"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.563435Z"
+  },
+  {
+    "header": [
+      "Tenor",
+      "Rs. 3.00 Cr to less than Rs. 5.00 Cr",
+      "Rs. 5.00 Cr to less than Rs. 10.00 Cr",
+      "Rs. 10.00 Cr to less than Rs. 25.00 Cr",
+      "Rs. 25 Cr to less than Rs. 50.00 Cr",
+      "Rs. 50.00 Cr to less than Rs. 100 cr",
+      "Rs. 100 cr to less than Rs. 200 cr",
+      "Rs. 200 cr and above"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.563949Z"
+  },
+  {
+    "header": [
+      "Tenor",
+      "Rs. 3.00 Cr to less than Rs. 5.00 Cr",
+      "Rs. 5.00 Cr to less than Rs. 10.00 Cr",
+      "Rs. 10.00 Cr to less than Rs. 25.00 Cr",
+      "Rs. 25 Cr to less than Rs. 50.00 Cr",
+      "Rs. 50.00 Cr to less than Rs. 100 cr",
+      "Rs. 100 cr to less than Rs. 200 cr",
+      "Rs. 200 cr and above"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.563949Z"
+  },
+  {
+    "header": [
+      "Tenor",
+      "Rs. 3.00 Cr to less than Rs. 5.00 Cr",
+      "Rs. 5.00 Cr to less than Rs. 10.00 Cr",
+      "Rs. 10.00 Cr to less than Rs. 25.00 Cr",
+      "Rs. 25 Cr to less than Rs. 50.00 Cr",
+      "Rs. 50.00 Cr to less than Rs. 100 cr",
+      "Rs. 100 cr to less than Rs. 200 cr",
+      "Rs. 200 cr and above"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.563949Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:46:00.565250Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 18: Duplicate tenure raw string '1 year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.566710Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 19: Duplicate tenure raw string '30 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.566710Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 21: Duplicate tenure raw string '1 year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.566710Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 22: Duplicate tenure raw string '18 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.567035Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 24: Duplicate tenure raw string '30 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.567035Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 34 (Annualized Rate of Return at minimum quarterly multiple of the maturity bucket for NRE KND* Deposits): Could not parse general rate 'Annualized Rate of Return at minimum quarterly multiple of the maturity bucket for NRE KND* Deposits'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.567035Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 35: Duplicate tenure raw string '1 year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.567540Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 36: Duplicate tenure raw string '18 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.567540Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 38: Duplicate tenure raw string '30 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.567540Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Row 42: Duplicate tenure raw string '66 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:00.567540Z"
+  },
+  {
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.federalbank.co.in/interest-rates\", waiting until \"networkidle\"\n",
+    "event": "networkidle_failed_falling_back_to_load",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:13.024898Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "event": "starting_federal_bank_scrape",
+    "level": "info",
+    "timestamp": "2026-06-08T19:46:14.455592Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-08T19:46:14.491448Z"
+  },
+  {
+    "header": [
+      "File name",
+      "Description",
+      "Description"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:14.506851Z"
+  },
+  {
+    "header": [
+      "File name",
+      "Description",
+      "Description"
+    ],
+    "event": "failed_to_match_table_headers",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:14.506851Z"
+  },
+  {
+    "header": [
+      "Period of Deposit* Up to and including 15 days",
+      "Penal Interest Single deposit of less than ₹3 Crores 0%",
+      "Penal Interest Single deposit of ₹3 Crores and above 1%"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:46:14.506851Z"
+  },
+  {
+    "header": [
+      "Period of Deposit Up to and including 90 days",
+      "Penal Interest 0%"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-08T19:46:14.506851Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-08T19:46:14.506851Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Row 15: Duplicate tenure raw string '1 year' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:14.508850Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Row 18: Duplicate tenure raw string 'Above 15 months to less than 36 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:14.508850Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Row 19: Duplicate tenure raw string '36 months' detected.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-08T19:46:14.508850Z"
   },
   {
     "event": "closing_browser",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.537071Z"
+    "timestamp": "2026-06-08T19:46:14.514573Z"
   },
   {
     "path": "output/results.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.705451Z"
+    "timestamp": "2026-06-08T19:46:15.040635Z"
   },
   {
     "event": "running_change_detection",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.730274Z"
+    "timestamp": "2026-06-08T19:46:15.050845Z"
   },
   {
     "path": "output/change_report.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.731913Z"
+    "timestamp": "2026-06-08T19:46:15.052047Z"
   },
   {
     "path": "output/validation_report.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.733027Z"
+    "timestamp": "2026-06-08T19:46:15.052701Z"
   },
   {
-    "successful": 3,
-    "total": 3,
+    "successful": 12,
+    "total": 12,
     "event": "scraping_pipeline_complete",
     "level": "info",
-    "timestamp": "2026-06-08T19:23:15.733027Z"
+    "timestamp": "2026-06-08T19:46:15.052701Z"
   }
 ]
