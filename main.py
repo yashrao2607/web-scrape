@@ -107,18 +107,24 @@ async def scrape_bank_task(
 async def main():
     logger.info("starting_scraping_pipeline")
     
-    # 1. Ensure input file exists
-    if not os.path.exists(INPUT_EXCEL_PATH):
-        logger.error("input_file_missing", path=INPUT_EXCEL_PATH)
-        # Create a basic Excel configuration dynamically if not present
-        os.makedirs(os.path.dirname(INPUT_EXCEL_PATH), exist_ok=True)
-        df = pd.DataFrame([
-            {"Bank Name": "HDFC Bank", "FD URL": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates"},
-            {"Bank Name": "SBI", "FD URL": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits"},
-            {"Bank Name": "ICICI Bank", "FD URL": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"}
-        ])
-        df.to_excel(INPUT_EXCEL_PATH, index=False)
-        logger.info("created_default_input_excel", path=INPUT_EXCEL_PATH)
+    # 1. Create or refresh input file containing all 12 banks
+    os.makedirs(os.path.dirname(INPUT_EXCEL_PATH), exist_ok=True)
+    df = pd.DataFrame([
+        {"Bank Name": "HDFC Bank", "FD URL": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates"},
+        {"Bank Name": "SBI", "FD URL": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits"},
+        {"Bank Name": "ICICI Bank", "FD URL": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"},
+        {"Bank Name": "Axis Bank", "FD URL": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1"},
+        {"Bank Name": "Kotak Mahindra Bank", "FD URL": "https://www.kotak.com/en/rates/interest-rates.html"},
+        {"Bank Name": "PNB", "FD URL": "https://www.pnbindia.in/interest-rates-deposit.html"},
+        {"Bank Name": "IndusInd Bank", "FD URL": "https://www.indusind.bank.in/in/en/personal/rates.html"},
+        {"Bank Name": "Yes Bank", "FD URL": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit"},
+        {"Bank Name": "IDFC First Bank", "FD URL": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"},
+        {"Bank Name": "Indian Overseas Bank", "FD URL": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates"},
+        {"Bank Name": "South Indian Bank", "FD URL": "https://www.southindianbank.com/interestrates/interestrates.aspx"},
+        {"Bank Name": "Federal Bank", "FD URL": "https://www.federalbank.co.in/interest-rates"}
+    ])
+    df.to_excel(INPUT_EXCEL_PATH, index=False)
+    logger.info("initialized_input_excel_with_12_banks", path=INPUT_EXCEL_PATH)
 
     # 2. Read banks from Excel
     try:
