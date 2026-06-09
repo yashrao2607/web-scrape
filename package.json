@@ -1,13 +1,12 @@
 {
-  "name": "fd-web-scraper",
+  "name": "web-scraper",
   "version": "1.0.0",
-  "description": "Enterprise Fixed Deposit rate scraper for 12 Indian banks — Playwright + Cheerio + Zod + Pino.",
+  "description": "Fixed Deposit rate scraper for 12 Indian banks — Playwright + Cheerio + Zod + Pino.",
   "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "test": "node --test tests/normalizer.test.js tests/validators.test.js",
-    "scrape": "node main.js"
+    "test": "node --test tests/normalizer.test.js tests/validators.test.js"
   },
   "engines": {
     "node": ">=20"
