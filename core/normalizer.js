@@ -279,7 +279,7 @@ export function classifyFDProduct(sectionName, tableName, tenureRaw) {
   let schemeType = "regular_fd";
   let schemeName = null;
 
-  const isRange = ["to", "-", "less", "below", "above", "or more", "<", ">"].some(k => tenLower.includes(k));
+  const isRange = ["to", "-", "–", "—", "less", "below", "above", "or more", "<", ">"].some(k => tenLower.includes(k));
   let isSpecial = false;
 
   if (secLower.includes("green") || tblLower.includes("green")) {

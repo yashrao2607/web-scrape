@@ -607,6 +607,31 @@
     "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "rates": [
       {
+        "tenure": "7 days – 14 days",
+        "interest_rate": 3.25,
+        "senior_citizen_interest_rate": 3.5
+      },
+      {
+        "tenure": "15 days – 29 days",
+        "interest_rate": 3.25,
+        "senior_citizen_interest_rate": 3.5
+      },
+      {
+        "tenure": "30 days – 45 days",
+        "interest_rate": 3.5,
+        "senior_citizen_interest_rate": 3.75
+      },
+      {
+        "tenure": "46 days – 90 days",
+        "interest_rate": 4.5,
+        "senior_citizen_interest_rate": 4.75
+      },
+      {
+        "tenure": "91 days – 180 days",
+        "interest_rate": 5,
+        "senior_citizen_interest_rate": 5.25
+      },
+      {
         "tenure": "181 days – less than 1 Year",
         "interest_rate": 6.5,
         "senior_citizen_interest_rate": 6.75
@@ -615,6 +640,36 @@
         "tenure": "1 year",
         "interest_rate": 6.5,
         "senior_citizen_interest_rate": 6.75
+      },
+      {
+        "tenure": "1 year 1 day – 370 days",
+        "interest_rate": 6.5,
+        "senior_citizen_interest_rate": 6.75
+      },
+      {
+        "tenure": "371 days – 499 days",
+        "interest_rate": 7,
+        "senior_citizen_interest_rate": 7.25
+      },
+      {
+        "tenure": "500 days – 2 years",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.5
+      },
+      {
+        "tenure": "2 years 1 day – 3 years",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.5
+      },
+      {
+        "tenure": "3 years 1 day – 5 years",
+        "interest_rate": 7.15,
+        "senior_citizen_interest_rate": 7.4
+      },
+      {
+        "tenure": "5 years 1 day – 10 years",
+        "interest_rate": 6,
+        "senior_citizen_interest_rate": 6.25
       }
     ]
   },
