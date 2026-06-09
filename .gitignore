@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# runtime artifacts
+output/
+output.backup/
+scratch/
+
+# local PostgreSQL cluster + logs
+pgdata/
+pglogs/
+
+# logs / temp
+*.log
+.DS_Store
+.env
+.env.local
+
+# editor / OS junk
+.vscode/
+.idea/
+*.swp

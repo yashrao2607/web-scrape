@@ -1,0 +1,25 @@
+{
+  "name": "fd-web-scraper",
+  "version": "1.0.0",
+  "description": "Enterprise Fixed Deposit rate scraper for 12 Indian banks — Playwright + Cheerio + Zod + Pino.",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node --test tests/normalizer.test.js tests/validators.test.js",
+    "scrape": "node main.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "p-limit": "^3.1.0",
+    "pdf-parse": "^1.1.1",
+    "pg": "^8.21.0",
+    "pino": "^9.0.0",
+    "playwright": "^1.48.0",
+    "xlsx": "^0.18.5",
+    "zod": "^3.23.0"
+  }
+}
