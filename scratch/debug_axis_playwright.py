@@ -11,17 +11,17 @@ async def run():
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
         page = await context.new_page()
-        url = "https://www.axisbank.com/docs/default-source/default-document-library/interest-rates/fixed-deposits/domestic-fixed-deposits.pdf"
+        url = "https://www.axisbank.com/docs/default-source/interest-rate/interest-rates-on-deposits.pdf"
         
         try:
             print("Requesting with playwright context...")
             response = await page.context.request.get(url)
             body = await response.body()
             print("Status:", response.status)
+            print("Content-Type:", response.headers.get("content-type"))
             print("Content Length:", len(body))
-            print("First 200 bytes:", body[:200].decode('utf-8', errors='ignore'))
             
-            temp_pdf = f"{tempfile.gettempdir()}/axis_rates_test.pdf"
+            temp_pdf = f"{tempfile.gettempdir()}/axis_rates_deposits_test.pdf"
             with open(temp_pdf, "wb") as f:
                 f.write(body)
             print("Saved to:", temp_pdf)

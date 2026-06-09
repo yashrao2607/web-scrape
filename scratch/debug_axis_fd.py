@@ -14,22 +14,13 @@ async def run():
         url = "https://www.axisbank.com/fixed-deposit-interest-rate"
         try:
             print(f"Navigating to {url}...")
-            await page.goto(url, wait_until="load", timeout=30000)
-            await page.wait_for_timeout(2000)
-            
-            # Check if there are tables
-            tables_count = await page.locator("table").count()
-            print(f"Number of HTML tables found: {tables_count}")
-            
-            # Check all links ending in .pdf or containing interest rates
-            links = await page.eval_on_selector_all("a", "elements => elements.map(el => ({text: el.innerText, href: el.href}))")
-            print(f"Total links on page: {len(links)}")
-            
-            pdf_links = [l for l in links if ".pdf" in l['href'].lower() or "deposit" in l['href'].lower() and "rate" in l['href'].lower()]
-            print("Filtered links:")
-            for l in pdf_links:
-                print(f"  Text: {l['text'].strip()} | Link: {l['href']}")
-                
+            response = await page.goto(url, wait_until="load", timeout=30000)
+            print("Response Status:", response.status)
+            print("Title:", await page.title())
+            html = await page.content()
+            print("Content Length:", len(html))
+            print("Content Preview (first 1000 chars):")
+            print(html[:1000])
         except Exception as e:
             print("Error:", e)
             
