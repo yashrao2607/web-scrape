@@ -1,7 +1,7 @@
 {
   "name": "web-scraper",
   "version": "1.0.0",
-  "description": "Fixed Deposit rate scraper for 12 Indian banks — Playwright + Cheerio + Zod + Pino.",
+  "description": "Fixed Deposit rate scraper for 12 Indian banks — Playwright + Cheerio + Zod, with Postgres persistence and a generated CommonJS reference file consumed by mig.js.",
   "type": "module",
   "main": "main.js",
   "scripts": {
