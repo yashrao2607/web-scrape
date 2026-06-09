@@ -1,6 +1,3 @@
-import os from 'fs';
-import path from 'path';
-import XLSX from 'xlsx';
 import pLimit from 'p-limit';
 import { PlaywrightBrowserManager } from './core/browser.js';
 import { getScraperForBank } from './scrapers/registry.js';
@@ -10,11 +7,9 @@ import { ingestResults, closeDb, pingDb } from './core/db.js';
 import { generateReferenceBanks } from './scripts/generate-reference-banks.js';
 
 const CONCURRENCY_LIMIT = 5;
-const INPUT_EXCEL_PATH = "input/banks.xlsx";
 const OUTPUT_RESULTS_PATH = "output/results.json";
 const OUTPUT_CHANGES_PATH = "output/change_report.json";
 const OUTPUT_VALIDATION_PATH = "output/validation_report.json";
-const OUTPUT_LOG_PATH = "output/scrape_log.json";
 
 async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
   const bankName = bankInfo["Bank Name"];
@@ -78,13 +73,7 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
 
 async function main() {
 
-  // 1. Initialize input file containing all 12 banks
-  const inputDir = path.dirname(INPUT_EXCEL_PATH);
-  if (!os.existsSync(inputDir)) {
-    os.mkdirSync(inputDir, { recursive: true });
-  }
-
-  const wb = XLSX.utils.book_new();
+  // 1. Bank URLs — the source of truth. Add/remove banks here.
   const wsData = [
     ["Bank Name", "FD URL"],
     ["HDFC Bank", "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates"],
@@ -100,20 +89,11 @@ async function main() {
     ["South Indian Bank", "https://www.southindianbank.com/interestrates/interestrates.aspx"],
     ["Federal Bank", "https://www.federalbank.co.in/interest-rates"]
   ];
-  const ws = XLSX.utils.aoa_to_sheet(wsData);
-  XLSX.utils.book_append_sheet(wb, ws, "Banks");
-  XLSX.writeFile(wb, INPUT_EXCEL_PATH);
-
-  // 2. Read banks list from Excel
-  let banksList = [];
-  try {
-    const workbook = XLSX.readFile(INPUT_EXCEL_PATH);
-    const sheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[sheetName];
-    banksList = XLSX.utils.sheet_to_json(worksheet);
-  } catch (e) {
-    process.exit(1);
-  }
+  // 2. Build banksList directly from the array (no xlsx round-trip)
+  const banksList = wsData.slice(1).map(([bankName, url]) => ({
+    "Bank Name": bankName,
+    "FD URL": url
+  }));
 
 
   // 3. Setup Playwright browser manager
