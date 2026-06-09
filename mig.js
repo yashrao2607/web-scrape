@@ -244,63 +244,7 @@ const TENURE_BUCKETS = [
 
 const QUICK_PICK_LABELS = ['Ultra short-term', 'Short-term', 'Medium-term', 'Long-term', 'Extended'];
 
-const REFERENCE_BANKS = {
-  SBI: {
-    name: 'SBI',
-    peakRate: 7.0,
-    rates: {
-      '7 Days - 90 Days': 3.0,
-      '91 Days - 365 Days': 6.8,
-      '366 Days - 730 Days': 7.0,
-      '731 Days - 1095 Days': 6.5,
-      '1096 Days - 1825 Days': 6.5,
-    },
-  },
-  HDFC: {
-    name: 'HDFC',
-    peakRate: 7.25,
-    rates: {
-      '7 Days - 90 Days': 3.0,
-      '91 Days - 365 Days': 7.0,
-      '366 Days - 730 Days': 7.25,
-      '731 Days - 1095 Days': 7.0,
-      '1096 Days - 1825 Days': 7.0,
-    },
-  },
-  Axis: {
-    name: 'Axis',
-    peakRate: 7.1,
-    rates: {
-      '7 Days - 90 Days': 3.0,
-      '91 Days - 365 Days': 6.7,
-      '366 Days - 730 Days': 7.1,
-      '731 Days - 1095 Days': 7.1,
-      '1096 Days - 1825 Days': 7.0,
-    },
-  },
-  ICICI: {
-    name: 'ICICI',
-    peakRate: 7.2,
-    rates: {
-      '7 Days - 90 Days': 3.0,
-      '91 Days - 365 Days': 6.9,
-      '366 Days - 730 Days': 7.2,
-      '731 Days - 1095 Days': 7.0,
-      '1096 Days - 1825 Days': 7.0,
-    },
-  },
-  Kotak: {
-    name: 'Kotak',
-    peakRate: 7.2,
-    rates: {
-      '7 Days - 90 Days': 2.75,
-      '91 Days - 365 Days': 6.5,
-      '366 Days - 730 Days': 7.2,
-      '731 Days - 1095 Days': 7.2,
-      '1096 Days - 1825 Days': 6.5,
-    },
-  },
-};
+const { REFERENCE_BANKS } = require('./reference-banks.cjs');
 
 /**
  * Compare interest rates across banks

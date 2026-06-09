@@ -6,6 +6,11 @@ output/
 output.backup/
 scratch/
 
+# generated file (committed; this is the source of truth for mig.js's
+# REFERENCE_BANKS — do not delete from .gitignore. Regenerate with:
+#   node scripts/generate-reference-banks.js
+!reference-banks.cjs
+
 # local PostgreSQL cluster + logs
 pgdata/
 pglogs/

@@ -8,6 +8,7 @@ import { getScraperForBank } from './scrapers/registry.js';
 import { ChangeDetector } from './core/changeDetector.js';
 import { JsonWriter } from './core/jsonWriter.js';
 import { ingestResults, closeDb, pingDb } from './core/db.js';
+import { generateReferenceBanks } from './scripts/generate-reference-banks.js';
 
 const CONCURRENCY_LIMIT = 5;
 const INPUT_EXCEL_PATH = "input/banks.xlsx";
@@ -207,6 +208,21 @@ async function main() {
       });
     } finally {
       await closeDb();
+    }
+  }
+
+  // 6. Regenerate reference-banks.js from the latest DB rates.
+  //    mig.js requires this file, so every successful scrape keeps it fresh.
+  //    Non-fatal: if the generator fails, the existing reference-banks.js is unchanged.
+  if (!skipDb) {
+    try {
+      const ref = await generateReferenceBanks();
+      logger.info("reference_banks_generated", ref);
+    } catch (refErr) {
+      logger.warn("reference_banks_generation_failed", {
+        error: refErr.message,
+        hint: "reference-banks.js unchanged. Re-run with: node scripts/generate-reference-banks.js"
+      });
     }
   }
 
