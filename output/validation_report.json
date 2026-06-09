@@ -30,23 +30,41 @@
       "Interval overlap detected: '2 years to less than 3 years' (max_days 1095) overlaps with '2 Years' (min_days 730) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '3 years to less than 5 years' (max_days 1825) overlaps with '5 years and up to 10 years' (min_days 1825) for group retail_fd|regular|resident|true."
     ],
-    "ICICI Bank": [
-      "Interval overlap detected: '185 to < 1 Year' (max_days 365) overlaps with '1 Year to < 18 Months' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 Year to < 18 Months' (max_days 548) overlaps with '18 Months to 2 Years' (min_days 548) for group retail_fd|regular|resident|true."
-    ],
     "Yes Bank": [
       "Interval overlap detected: '18 months 1 day to less than 24 months' (max_days 730) overlaps with '24 months to less than 36 months' (min_days 730) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '24 months to less than 36 months' (max_days 1095) overlaps with '36 months to less than 60 months' (min_days 1095) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '36 months to less than 60 months' (max_days 1825) overlaps with '60 months to 120 months' (min_days 1825) for group retail_fd|regular|resident|true."
     ],
+    "ICICI Bank": [
+      "Interval overlap detected: '185 to < 1 Year' (max_days 365) overlaps with '1 Year to < 18 Months' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 Year to < 18 Months' (max_days 548) overlaps with '18 Months to 2 Years' (min_days 548) for group retail_fd|regular|resident|true."
+    ],
     "IDFC First Bank": [
       "Interval overlap detected: '181 days – less than 1 Year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true."
     ],
-    "HDFC Bank": [
-      "Interval overlap detected: '9 months 1 day to less than 1 year' (max_days 365) overlaps with '1 Year to less than 15 Months' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 Year to less than 15 Months' (max_days 456) overlaps with '15 Months to less than 18 Months' (min_days 456) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '15 Months to less than 18 Months' (max_days 548) overlaps with '18 Months to less than 21 Months' (min_days 548) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '18 Months to less than 21 Months' (max_days 639) overlaps with '21 Months to 2 Years' (min_days 639) for group retail_fd|regular|resident|true."
+    "Indian Overseas Bank": [
+      "Row 14: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 15: Duplicate tenure '> 1 Year to < 2 Years (Except 444 Days)' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 16: Duplicate tenure '444 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 17: Duplicate tenure '2 Years to < 3 Years' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 18: Duplicate tenure '3 Years and Above' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 19: Duplicate tenure '7 Days - 14 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 20: Duplicate tenure '15 Days - 29 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 21: Duplicate tenure '30 Days - 45 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 22: Duplicate tenure '46 Days - 60 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 23: Duplicate tenure '61 Days - 90 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 24: Duplicate tenure '91 Days - 120 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 25: Duplicate tenure '121 Days - 179 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 26: Duplicate tenure '180 Days - 269 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 27: Duplicate tenure '270 Days < 1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 28: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Row 30: Duplicate tenure '2 Year to 3 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+      "Interval overlap detected: '270 Days to < 1 Year' (max_days 365) overlaps with '1 Year' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 Year' (max_days 365) overlaps with '> 1 Year to < 2 Years\n(Except 444 Days)' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '> 1 Year to < 2 Years\n(Except 444 Days)' (max_days 1174) overlaps with 'Above 1 Year <2 Year' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 1 Year <2 Year' (max_days 730) overlaps with '2 Years to < 3 Years' (min_days 730) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '2 Years to < 3 Years' (max_days 1095) overlaps with '3 Years and above' (min_days 1095) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '3 Years and above' (max_days 36500) overlaps with '>3 Year & above' (min_days 1095) for group retail_fd|regular|resident|true."
     ],
     "PNB": [
       "Row 18 (>2 to 3 Years): Rejected due to invalid/unparseable tenure.",
@@ -115,29 +133,11 @@
       "Interval overlap detected: '>2 Years to 3 Years' (max_days 1095) overlaps with '>3 Years to 1203 Days' (min_days 1095) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '1205 Days to 5 Years' (max_days 1825) overlaps with '>5 Years to 10 Years' (min_days 1825) for group retail_fd|regular|resident|true."
     ],
-    "Indian Overseas Bank": [
-      "Row 14: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 15: Duplicate tenure '> 1 Year to < 2 Years (Except 444 Days)' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 16: Duplicate tenure '444 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 17: Duplicate tenure '2 Years to < 3 Years' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 18: Duplicate tenure '3 Years and Above' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 19: Duplicate tenure '7 Days - 14 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 20: Duplicate tenure '15 Days - 29 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 21: Duplicate tenure '30 Days - 45 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 22: Duplicate tenure '46 Days - 60 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 23: Duplicate tenure '61 Days - 90 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 24: Duplicate tenure '91 Days - 120 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 25: Duplicate tenure '121 Days - 179 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 26: Duplicate tenure '180 Days - 269 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 27: Duplicate tenure '270 Days < 1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 28: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Row 30: Duplicate tenure '2 Year to 3 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-      "Interval overlap detected: '270 Days to < 1 Year' (max_days 365) overlaps with '1 Year' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 Year' (max_days 365) overlaps with '> 1 Year to < 2 Years\n(Except 444 Days)' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '> 1 Year to < 2 Years\n(Except 444 Days)' (max_days 1174) overlaps with 'Above 1 Year <2 Year' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 1 Year <2 Year' (max_days 730) overlaps with '2 Years to < 3 Years' (min_days 730) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '2 Years to < 3 Years' (max_days 1095) overlaps with '3 Years and above' (min_days 1095) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '3 Years and above' (max_days 36500) overlaps with '>3 Year & above' (min_days 1095) for group retail_fd|regular|resident|true."
+    "HDFC Bank": [
+      "Interval overlap detected: '9 months 1 day to less than 1 year' (max_days 365) overlaps with '1 Year to less than 15 Months' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 Year to less than 15 Months' (max_days 456) overlaps with '15 Months to less than 18 Months' (min_days 456) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '15 Months to less than 18 Months' (max_days 548) overlaps with '18 Months to less than 21 Months' (min_days 548) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '18 Months to less than 21 Months' (max_days 639) overlaps with '21 Months to 2 Years' (min_days 639) for group retail_fd|regular|resident|true."
     ],
     "South Indian Bank": [
       "Row 34 (Annualized Rate of Return at minimum quarterly multiple of the maturity bucket for NRE KND* Deposits): Rejected due to invalid/unparseable tenure.",
@@ -162,6 +162,20 @@
       "Interval overlap detected: 'Above 30 months to less than 5 years' (max_days 1825) overlaps with '3 years' (min_days 1095) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '5 years to less than 66 months' (max_days 2008) overlaps with '5 years' (min_days 1825) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: 'Above 66 months to upto and including 10 years' (max_days 3650) overlaps with '6 years' (min_days 2190) for group retail_fd|regular|resident|true."
+    ],
+    "Federal Bank": [
+      "Row 15: Duplicate tenure '1 year' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
+      "Row 16: Duplicate tenure 'Above 1 year to less than 15 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
+      "Row 17: Duplicate tenure '15 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
+      "Row 18: Duplicate tenure 'Above 15 months to less than 36 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
+      "Row 19: Duplicate tenure '36 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
+      "Interval overlap detected: '271 days to less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to less than 15 Months' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 1 year to less than 15 Months' (max_days 456) overlaps with 'Above 15 months to less than 36 months' (min_days 456) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 15 months to less than 36 months' (max_days 1095) overlaps with 'Above 36 months to 10 years' (min_days 1095) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 36 months to 10 years' (max_days 3650) overlaps with 'Above 36 months to 5 years' (min_days 1095) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 36 months to 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '5 years to 10 years' (max_days 3650) overlaps with 'Above 10 years to 20 years' (min_days 3650) for group retail_fd|regular|resident|true."
     ],
     "IndusInd Bank": [
       "Interval overlap detected: '7 days to 30 days' (max_days 30) overlaps with '7 days to 14 days' (min_days 7) for group retail_fd|regular|mixed|true.",
@@ -211,20 +225,6 @@
       "Interval overlap detected: '61 Months and above' (max_days 36500) overlaps with '61 months and above' (min_days 1855) for group retail_fd|regular|mixed|true.",
       "Interval overlap detected: '61 months and above' (max_days 36500) overlaps with '61 months and above' (min_days 1855) for group retail_fd|regular|mixed|true.",
       "Interval overlap detected: '61 months and above' (max_days 36500) overlaps with '61 months and above' (min_days 1855) for group retail_fd|regular|mixed|true."
-    ],
-    "Federal Bank": [
-      "Row 15: Duplicate tenure '1 year' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
-      "Row 16: Duplicate tenure 'Above 1 year to less than 15 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
-      "Row 17: Duplicate tenure '15 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
-      "Row 18: Duplicate tenure 'Above 15 months to less than 36 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
-      "Row 19: Duplicate tenure '36 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
-      "Interval overlap detected: '271 days to less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to less than 15 Months' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 1 year to less than 15 Months' (max_days 456) overlaps with 'Above 15 months to less than 36 months' (min_days 456) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 15 months to less than 36 months' (max_days 1095) overlaps with 'Above 36 months to 10 years' (min_days 1095) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 36 months to 10 years' (max_days 3650) overlaps with 'Above 36 months to 5 years' (min_days 1095) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 36 months to 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '5 years to 10 years' (max_days 3650) overlaps with 'Above 10 years to 20 years' (min_days 3650) for group retail_fd|regular|resident|true."
     ]
   }
 }

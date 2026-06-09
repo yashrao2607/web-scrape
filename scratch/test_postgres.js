@@ -40,13 +40,13 @@ async function testPostgresPipeline() {
     // 3. Query the data back to verify correctness
     console.log("\nVerifying data by querying it back from 'json_import'...");
     const res = await pool.query(
-      `SELECT id, jsonb_pretty(data) AS pretty_data, created_at FROM json_import WHERE id = $1`,
+      `SELECT id, jsonb_pretty(data) AS pretty_data FROM json_import WHERE id = $1`,
       [newRowId]
     );
 
     if (res.rows.length > 0) {
       const row = res.rows[0];
-      console.log(`\nFound Record ID: ${row.id} (Created At: ${row.created_at})`);
+      console.log(`\nFound Record ID: ${row.id}`);
       // Display a snippet of the JSONB to confirm it works
       const prettyJson = row.pretty_data;
       const lines = prettyJson.split('\n');
