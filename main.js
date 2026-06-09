@@ -135,7 +135,6 @@ async function main() {
     limit(() => scrapeBankTask(bankInfo, browserManager, validationRecords))
   );
 
-  // Run all scrapers concurrently
   const results = await Promise.all(tasks);
 
   await browserManager.close();
@@ -143,14 +142,25 @@ async function main() {
   // 4. Process successful results
   const successfulResults = results.filter(r => r && r.status === "SUCCESS");
 
+  // Map to simplified schema containing only: bank_name, url, rates (tenure, interest_rate, senior_citizen_interest_rate)
+  const simplifiedResults = successfulResults.map(bank => ({
+    bank_name: bank.bank_name,
+    url: bank.source_url,
+    rates: bank.fd_rates.map(r => ({
+      tenure: r.tenure,
+      interest_rate: r.general_rate,
+      senior_citizen_interest_rate: r.senior_citizen_rate
+    }))
+  }));
+
   // Load historical data first before overwriting results.json
   const oldData = ChangeDetector.loadHistoricalData(OUTPUT_RESULTS_PATH);
 
-  // Write new results.json
-  JsonWriter.writeJson(successfulResults, OUTPUT_RESULTS_PATH);
+  // Write new simplified results.json
+  JsonWriter.writeJson(simplifiedResults, OUTPUT_RESULTS_PATH);
 
   // Run Change Detection
-  const changes = ChangeDetector.detectChanges(successfulResults, oldData);
+  const changes = ChangeDetector.detectChanges(simplifiedResults, oldData);
   JsonWriter.writeJson(changes, OUTPUT_CHANGES_PATH);
 
   // Write Validation Report

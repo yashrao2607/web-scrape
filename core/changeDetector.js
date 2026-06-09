@@ -51,26 +51,25 @@ export class ChangeDetector {
       const oldBank = oldBanks[bankName];
       let changesDetected = false;
       const rateChanges = [];
-      const metadataChanges = [];
 
-      // Compare rates
+      // Compare rates using simplified keys
       const oldRatesMap = {};
-      (oldBank.fd_rates || []).forEach(r => {
+      (oldBank.rates || []).forEach(r => {
         if (r && r.tenure) {
           oldRatesMap[r.tenure] = r;
         }
       });
 
       const newRatesMap = {};
-      (newBank.fd_rates || []).forEach(r => {
+      (newBank.rates || []).forEach(r => {
         if (r && r.tenure) {
           newRatesMap[r.tenure] = r;
         }
       });
 
       for (const [tenure, newVal] of Object.entries(newRatesMap)) {
-        const newGen = newVal.general_rate;
-        const newSr = newVal.senior_citizen_rate;
+        const newGen = newVal.interest_rate;
+        const newSr = newVal.senior_citizen_interest_rate;
 
         if (!oldRatesMap[tenure]) {
           rateChanges.push({
@@ -84,8 +83,8 @@ export class ChangeDetector {
           changesDetected = true;
         } else {
           const oldVal = oldRatesMap[tenure];
-          const oldGen = oldVal.general_rate;
-          const oldSr = oldVal.senior_citizen_rate;
+          const oldGen = oldVal.interest_rate;
+          const oldSr = oldVal.senior_citizen_interest_rate;
 
           if (oldGen !== newGen || oldSr !== newSr) {
             rateChanges.push({
@@ -107,47 +106,21 @@ export class ChangeDetector {
           rateChanges.push({
             tenure: tenure,
             change_type: "removed",
-            old_general_rate: oldVal.general_rate,
+            old_general_rate: oldVal.interest_rate,
             new_general_rate: null,
-            old_senior_rate: oldVal.senior_citizen_rate,
+            old_senior_rate: oldVal.senior_citizen_interest_rate,
             new_senior_rate: null
           });
           changesDetected = true;
         }
       }
 
-      // Compare metadata
-      const metadataFields = [
-        "minimum_deposit",
-        "maximum_deposit",
-        "premature_withdrawal_available",
-        "premature_withdrawal_penalty",
-        "loan_against_fd_available",
-        "tax_saver_fd_available",
-        "tax_saver_tenure",
-        "nomination_available",
-        "compounding_frequency"
-      ];
-
-      metadataFields.forEach(field => {
-        const oldVal = oldBank[field];
-        const newVal = newBank[field];
-        if (oldVal !== newVal) {
-          metadataChanges.push({
-            field: field,
-            old_value: oldVal === undefined ? null : oldVal,
-            new_value: newVal === undefined ? null : newVal
-          });
-          changesDetected = true;
-        }
-      });
-
       if (changesDetected) {
         report.push({
           bank: bankName,
           changes_detected: true,
           rate_changes: rateChanges,
-          metadata_changes: metadataChanges
+          metadata_changes: []
         });
       } else {
         report.push({
