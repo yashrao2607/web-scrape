@@ -1,5 +1,5 @@
 import re
-from typing import Tuple, Optional
+from typing import Tuple, Optional, Dict, Any
 
 # Regex patterns for matching numbers and units
 DAYS_PATTERNS = [re.compile(r"(\d+)\s*d(ay)?s?", re.IGNORECASE)]
@@ -18,6 +18,21 @@ def parse_tenure(tenure_str: str) -> Tuple[Optional[float], Optional[float], Opt
 
     # Clean the string
     cleaned = tenure_str.strip()
+    
+    if not cleaned:
+        return None, None, None
+        
+    if cleaned.isdigit():
+        if int(cleaned) < 15:
+            return None, None, None
+    else:
+        if not any(c.isdigit() for c in cleaned):
+            return None, None, None
+        if len(cleaned) < 3:
+            has_digit = any(c.isdigit() for c in cleaned)
+            has_unit = any(u in cleaned.lower() for u in ['y', 'm', 'd', 'w'])
+            if not (has_digit and has_unit):
+                return None, None, None
 
     # Exclude typical note indicator prefixes if they are at the very beginning of the string
     # e.g., "Less than 1 year" -> "1 year", "Up to 15 days" -> "15 days"
@@ -104,4 +119,186 @@ def normalize_rate(rate_str: str) -> Optional[float]:
             return float(match.group(1))
         except ValueError:
             return None
+    return None
+
+
+def parse_tenure_to_days(bound_str: str) -> Optional[int]:
+    """Helper to convert a single tenure block string to integer days."""
+    cleaned = bound_str.strip()
+    if not cleaned:
+        return None
+        
+    total_days = 0.0
+    found_any = False
+    
+    # Extract years
+    for pattern in YEARS_PATTERNS:
+        match = pattern.search(cleaned)
+        if match:
+            years = float(match.group(1))
+            total_days += years * 365.0
+            found_any = True
+            cleaned = pattern.sub("", cleaned)
+            
+    # Extract months
+    for pattern in MONTHS_PATTERNS:
+        match = pattern.search(cleaned)
+        if match:
+            months = float(match.group(1))
+            total_days += months * 30.417
+            found_any = True
+            cleaned = pattern.sub("", cleaned)
+            
+    # Extract days
+    for pattern in DAYS_PATTERNS:
+        match = pattern.search(cleaned)
+        if match:
+            days = float(match.group(1))
+            total_days += days
+            found_any = True
+            cleaned = pattern.sub("", cleaned)
+            
+    if not found_any:
+        digits = re.search(r'^(\d+)$', cleaned.strip())
+        if digits:
+            total_days = float(digits.group(1))
+            found_any = True
+            
+    if found_any:
+        return int(round(total_days))
+    return None
+
+
+def parse_tenure_range(tenure_str: str) -> Tuple[Optional[int], Optional[int]]:
+    """Parses a tenure range to determine min_days and max_days bounds."""
+    if not tenure_str:
+        return None, None
+        
+    cleaned = tenure_str.strip()
+    cleaned_tmp = re.sub(r'^(?:less\s+than|below|up\s+to|under)\s+', '', cleaned, flags=re.IGNORECASE)
+    
+    # Check for "and above" or "+"
+    if re.search(r'\band\s+above\b|\b&\s+above\b|\b\+\b', cleaned, re.IGNORECASE):
+        base_days = parse_tenure_to_days(cleaned_tmp)
+        if base_days is not None:
+            return base_days, 36500  # Cap at 100 years
+            
+    # Split range delimiters
+    parts = re.split(r'\b(?:to|less\s+than|-)\b|(?:\bbut\s+<\b)|[<>-]', cleaned_tmp, flags=re.IGNORECASE)
+    parts = [p.strip() for p in parts if p.strip()]
+    
+    if len(parts) >= 2:
+        part1 = parts[0]
+        part2 = parts[1]
+        
+        days2 = parse_tenure_to_days(part2)
+        days1 = parse_tenure_to_days(part1)
+        
+        if days1 is not None and days2 is not None:
+            p1_lower = part1.lower()
+            p2_lower = part2.lower()
+            has_unit1 = any(u in p1_lower for u in ["day", "month", "year", "week", "yr", "mth"]) or \
+                        any(re.search(rf'\b{u}\b', p1_lower) for u in ["d", "m", "y", "w"])
+            if not has_unit1:
+                # Inherit unit of part2
+                if "year" in p2_lower or "yr" in p2_lower or re.search(r'\by\b', p2_lower):
+                    days1 = days1 * 365
+                elif "month" in p2_lower or "mth" in p2_lower or re.search(r'\bm\b', p2_lower):
+                    days1 = int(round(days1 * 30.417))
+            return days1, days2
+            
+    elif len(parts) == 1:
+        days = parse_tenure_to_days(parts[0])
+        if days is not None:
+            return days, days
+            
+    return None, None
+
+
+def classify_fd_product(section_name: str, table_name: str, tenure_raw: str) -> Dict[str, Any]:
+    """Classifies an FD product mapping its properties from table headings and tenure patterns."""
+    sec_lower = section_name.lower() if section_name else ""
+    tbl_lower = table_name.lower() if table_name else ""
+    ten_lower = tenure_raw.lower() if tenure_raw else ""
+    
+    # 1. product_type
+    bulk_keywords = [
+        "bulk", "above 2 crore", "above 2cr", "above rs. 2 crore", "above rs 2 crore",
+        "above rs. 1 crore", "above 1 crore", "3 cr. to 10 cr.", "above rs 5 crore",
+        "above rs. 5 crore", "5 cr", "10 cr", "25 cr", "50 cr", "100 cr", "200 cr", "500 cr", "1000 cr",
+        "above 2.00 crore", "above 1.00 crore", "above 5.00 crore"
+    ]
+    is_bulk = False
+    for bk in bulk_keywords:
+        if bk in sec_lower or bk in tbl_lower:
+            is_bulk = True
+            break
+            
+    product_type = "bulk_fd" if is_bulk else "retail_fd"
+    
+    # 2. deposit_category
+    deposit_category = "regular"
+    if "tax saver" in sec_lower or "tax saver" in tbl_lower or "tax-saver" in sec_lower or "tax-saver" in tbl_lower or "80c" in sec_lower or "80c" in tbl_lower:
+        deposit_category = "tax_saver"
+    elif "green" in sec_lower or "green" in tbl_lower or "eco" in sec_lower or "eco" in tbl_lower:
+        deposit_category = "green_deposit"
+        
+    # 3. customer_segment
+    customer_segment = "resident"
+    if "nre" in sec_lower or "nre" in tbl_lower:
+        customer_segment = "nre"
+    elif "nro" in sec_lower or "nro" in tbl_lower:
+        customer_segment = "nro"
+    elif "fcnr" in sec_lower or "fcnr" in tbl_lower:
+        customer_segment = "fcnr"
+    elif "senior citizen special" in sec_lower or "senior citizen special" in tbl_lower or "senior special" in sec_lower or "senior special" in tbl_lower:
+        customer_segment = "senior_citizen"
+        
+    # 4. callable
+    callable_val = True
+    non_callable_keywords = ["non-callable", "non callable", "without premature", "no premature", "uttam"]
+    if any(k in sec_lower or k in tbl_lower for k in non_callable_keywords):
+        callable_val = False
+        
+    # 5. scheme_type & scheme_name
+    scheme_type = "regular_fd"
+    scheme_name = None
+    
+    is_range = "to" in ten_lower or "-" in ten_lower or "less" in ten_lower or "below" in ten_lower or "above" in ten_lower or "or more" in ten_lower or "<" in ten_lower or ">" in ten_lower
+    
+    is_special = False
+    if "green" in sec_lower or "green" in tbl_lower:
+        is_special = True
+        scheme_name = "Green Deposit"
+    elif deposit_category == "tax_saver":
+        is_special = True
+        scheme_name = "Tax Saver FD"
+    elif not is_range and any(k in ten_lower for k in ["day", "month", "year"]):
+        cleaned_ten = re.sub(r'[*#$\s]+$', '', ten_lower).strip()
+        if cleaned_ten not in ["1 year", "2 years", "3 years", "4 years", "5 years", "6 years", "7 years", "8 years", "9 years", "10 years", "7 days", "15 days", "30 days", "45 days", "90 days", "180 days"]:
+            is_special = True
+            scheme_name = tenure_raw.strip() + " FD"
+            
+    if is_special:
+        scheme_type = "special_fd"
+        
+    return {
+        "product_type": product_type,
+        "deposit_category": deposit_category,
+        "customer_segment": customer_segment,
+        "callable": callable_val,
+        "scheme_type": scheme_type,
+        "scheme_name": scheme_name
+    }
+
+
+def extract_effective_date(text: str) -> Optional[str]:
+    """Attempts to match an effective date pattern from page headings or footnotes."""
+    if not text:
+        return None
+    match = re.search(r'\bw\.e\.f\.?\s*(?:from|date)?\s*([A-Za-z0-9\.\-\/\,\s]{6,25})', text, re.IGNORECASE)
+    if match:
+        date_str = match.group(1).strip()
+        date_str = re.sub(r'[*#$\s]+$', '', date_str)
+        return date_str
     return None

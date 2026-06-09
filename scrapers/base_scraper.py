@@ -34,14 +34,29 @@ class BaseScraper(ABC):
         """
         self.logger.info("processing_and_validating_raw_data")
         
+        from core.normalizer import parse_tenure_range, classify_fd_product
+        
         rates_raw = raw_data.get("fd_rates", [])
         validated_rates: List[FDRateItem] = []
-        seen_tenures = set()
+        seen_keys = set()
+        
+        duplicate_count = 0
+        anomaly_count = 0
+        
+        # Collect first available rate effective date from rows
+        effective_date = raw_data.get("effective_from") or raw_data.get("rate_effective_date")
 
         for idx, item in enumerate(rates_raw):
             tenure_str = item.get("tenure_raw", "").strip()
             gen_rate_str = str(item.get("general_raw", "")).strip()
             sr_rate_str = str(item.get("senior_raw", "")).strip()
+            
+            section_name = item.get("section_name", "")
+            table_name = item.get("table_name", "")
+            row_effective_date = item.get("rate_effective_date")
+            
+            if row_effective_date and not effective_date:
+                effective_date = row_effective_date
 
             if not tenure_str:
                 msg = f"Row {idx}: Empty tenure string."
@@ -49,15 +64,15 @@ class BaseScraper(ABC):
                 self.logger.warning("validation_warning", detail=msg)
                 continue
 
-            # Check for duplicate tenures in the same scrape
-            if tenure_str in seen_tenures:
-                msg = f"Row {idx}: Duplicate tenure raw string '{tenure_str}' detected."
+            # Parse tenure to validate
+            days, months, years = parse_tenure(tenure_str)
+            if days is None:
+                msg = f"Row {idx} ({tenure_str}): Rejected due to invalid/unparseable tenure."
                 validation_errors.append(msg)
-                self.logger.warning("validation_warning", detail=msg)
+                self.logger.warning("row_rejected", detail=msg)
                 continue
-            seen_tenures.add(tenure_str)
 
-            # Normalize rate values and assign consolidated tenure
+            # Normalize rate values
             gen_rate = normalize_rate(gen_rate_str)
             sr_rate = normalize_rate(sr_rate_str) if sr_rate_str else gen_rate
 
@@ -67,14 +82,53 @@ class BaseScraper(ABC):
                 self.logger.warning("validation_warning", detail=msg)
                 continue
 
+            # Classify context
+            classified = classify_fd_product(section_name, table_name, tenure_str)
+            
+            # Outlier / Anomaly Detection
+            if gen_rate < 2.0 or gen_rate > 12.0:
+                anomaly_count += 1
+                self.logger.warning("rate_anomaly_detected", rate=gen_rate, tenure=tenure_str)
+                
+            # Reject row rule: rate < 2.0 for retail FD datasets
+            if gen_rate < 2.0 and classified["product_type"] == "retail_fd":
+                msg = f"Row {idx} ({tenure_str}): Rejected retail rate {gen_rate}% below 2.0%."
+                validation_errors.append(msg)
+                self.logger.warning("row_rejected", detail=msg)
+                continue
+                
+            # Parse tenure bounds
+            min_days, max_days = parse_tenure_range(tenure_str)
+            
+            # Check for duplicate tenures based on compound key
+            normalized_tenure_str = f"{min_days}-{max_days}" if min_days is not None else tenure_str
+            compound_key = (self.bank_name, normalized_tenure_str, classified["product_type"], section_name)
+            if compound_key in seen_keys:
+                duplicate_count += 1
+                msg = f"Row {idx}: Duplicate tenure '{tenure_str}' for product {classified['product_type']} in section '{section_name}'."
+                validation_errors.append(msg)
+                self.logger.warning("validation_warning", detail=msg)
+                continue
+            seen_keys.add(compound_key)
+
             try:
                 rate_item = FDRateItem(
                     tenure=tenure_str,
                     general_rate=gen_rate,
                     senior_citizen_rate=sr_rate if sr_rate is not None else gen_rate,
-                    effective_from=raw_data.get("effective_from"),
-                    effective_to=raw_data.get("effective_to"),
-                    notes=item.get("notes")
+                    effective_from=row_effective_date or effective_date,
+                    effective_to=item.get("effective_to") or raw_data.get("effective_to"),
+                    notes=item.get("notes"),
+                    product_type=classified["product_type"],
+                    deposit_category=classified["deposit_category"],
+                    customer_segment=classified["customer_segment"],
+                    callable=classified["callable"],
+                    scheme_type=classified["scheme_type"],
+                    scheme_name=classified["scheme_name"],
+                    section_name=section_name,
+                    table_name=table_name,
+                    min_days=min_days,
+                    max_days=max_days
                 )
                 validated_rates.append(rate_item)
             except ValidationError as e:
@@ -83,12 +137,24 @@ class BaseScraper(ABC):
                     validation_errors.append(msg)
                     self.logger.warning("validation_warning", detail=msg)
 
+        # Scrape source confidence calculation
+        base_confidence = 1.0
+        if raw_data.get("fallback_used") or raw_data.get("is_fallback"):
+            base_confidence = 0.5
+        elif raw_data.get("unstructured_fallback_used"):
+            base_confidence = 0.4
+        elif self.url.lower().endswith(".pdf"):
+            base_confidence = 0.85
+
+        scrape_confidence = max(0.1, round(base_confidence - (duplicate_count * 0.02) - (anomaly_count * 0.05), 2))
+
         # Build full bank schema
         try:
             scheme = BankFDScheme(
                 bank_name=self.bank_name,
                 source_url=self.url,
-                last_updated_on_page=raw_data.get("last_updated_on_page"),
+                rate_effective_date=effective_date or raw_data.get("rate_effective_date"),
+                page_last_updated=raw_data.get("last_updated_on_page") or effective_date,
                 fd_rates=validated_rates,
                 minimum_deposit=raw_data.get("minimum_deposit"),
                 maximum_deposit=raw_data.get("maximum_deposit"),
@@ -99,6 +165,9 @@ class BaseScraper(ABC):
                 tax_saver_tenure=raw_data.get("tax_saver_tenure"),
                 nomination_available=raw_data.get("nomination_available"),
                 compounding_frequency=raw_data.get("compounding_frequency"),
+                scrape_confidence=scrape_confidence,
+                duplicate_count=duplicate_count,
+                anomaly_count=anomaly_count,
                 scraper_version=raw_data.get("scraper_version", "1.0.0")
             )
             return scheme
@@ -108,7 +177,6 @@ class BaseScraper(ABC):
                 validation_errors.append(msg)
                 self.logger.error("validation_error", detail=msg)
             
-            # Return a blank model with basic data
             return BankFDScheme(
                 bank_name=self.bank_name,
                 source_url=self.url,

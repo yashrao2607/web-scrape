@@ -19,11 +19,11 @@ class LayeredExtractor:
     SENIOR_RATE_KEYWORDS = ["senior", "sr. citizen", "sr", "seniors", "sr citizen", "senior citizen"]
     
     @classmethod
-    async def extract_from_page(cls, page: Page) -> List[List[List[str]]]:
+    async def extract_from_page(cls, page: Page) -> List[Dict[str, Any]]:
         """
         Level 1: Semantic table detection directly in the browser DOM.
         Detects <table> elements, flex/grid rows, and ARIA table roles.
-        Returns a list of 2D string matrices (tables).
+        Returns a list of dictionaries containing table matrices and context (section_name, table_name).
         """
         logger.info("level_1_semantic_table_detection")
         
@@ -31,6 +31,25 @@ class LayeredExtractor:
         tables = await page.evaluate("""
             () => {
                 const results = [];
+                
+                function getPrecedingHeading(el) {
+                    let current = el;
+                    while (current) {
+                        let sibling = current.previousElementSibling;
+                        while (sibling) {
+                            if (/^(H[1-6])$/i.test(sibling.tagName)) {
+                                return sibling.innerText.trim();
+                            }
+                            const heading = sibling.querySelector('h1, h2, h3, h4, h5, h6');
+                            if (heading) {
+                                return heading.innerText.trim();
+                            }
+                            sibling = sibling.previousElementSibling;
+                        }
+                        current = current.parentElement;
+                    }
+                    return "";
+                }
                 
                 // 1. Standard HTML tables with colspan/rowspan expansion
                 const standardTables = document.querySelectorAll('table');
@@ -64,7 +83,15 @@ class LayeredExtractor:
                     });
                     
                     const matrix = grid.filter(row => row.length > 0);
-                    if (matrix.length > 0) results.push(matrix);
+                    if (matrix.length > 0) {
+                        const sectionName = getPrecedingHeading(table);
+                        const caption = table.querySelector('caption')?.innerText.trim() || "";
+                        results.push({
+                            matrix: matrix,
+                            section_name: sectionName,
+                            table_name: caption || (matrix[0].length === 1 ? matrix[0][0] : "")
+                        });
+                    }
                 });
                 
                 // 2. Custom grid/flex layouts acting as tables (detect by ARIA or structural similarity)
@@ -78,7 +105,14 @@ class LayeredExtractor:
                         });
                         if (cols.length > 0) matrix.push(cols);
                     });
-                    if (matrix.length > 0) results.push(matrix);
+                    if (matrix.length > 0) {
+                        const sectionName = getPrecedingHeading(grid);
+                        results.push({
+                            matrix: matrix,
+                            section_name: sectionName,
+                            table_name: matrix[0].length === 1 ? matrix[0][0] : ""
+                        });
+                    }
                 });
                 
                 return results;
@@ -149,18 +183,28 @@ class LayeredExtractor:
         return mapping
 
     @classmethod
-    def parse_extracted_table(cls, table: List[List[str]]) -> List[Dict[str, Any]]:
+    def parse_extracted_table(cls, table_data: Any) -> List[Dict[str, Any]]:
         """
-        Applies Level 2 column matching to parse a 2D matrix into a structured list of records.
+        Applies Level 2 column matching to parse a 2D matrix (or table data dictionary)
+        into a structured list of records, preserving table context.
         """
-        if len(table) < 2:
+        if isinstance(table_data, dict):
+            matrix = table_data.get("matrix", [])
+            section_name = table_data.get("section_name", "")
+            table_name = table_data.get("table_name", "")
+        else:
+            matrix = table_data
+            section_name = ""
+            table_name = ""
+
+        if len(matrix) < 2:
             return []
 
-        from core.normalizer import parse_tenure
+        from core.normalizer import parse_tenure, extract_effective_date
 
         # Clean table cell strings
         raw_cleaned_table = []
-        for row in table:
+        for row in matrix:
             raw_cleaned_table.append([cell.strip().replace("\xa0", " ") if cell else "" for cell in row])
 
         # Pad all rows to the maximum row length to avoid truncation of columns
@@ -231,6 +275,11 @@ class LayeredExtractor:
                     col_cells.append(val)
             flattened_header.append(" ".join(col_cells))
 
+        # Try to extract effective date from flattened header or section name
+        effective_date = extract_effective_date(" ".join(flattened_header))
+        if not effective_date and section_name:
+            effective_date = extract_effective_date(section_name)
+
         # 3. Check for penalty/charges keywords in the flattened header
         penalty_keywords = ["penalty", "penal", "charges", "fee", "fore closure"]
         header_str = " ".join(flattened_header).lower()
@@ -272,7 +321,10 @@ class LayeredExtractor:
             parsed_rows.append({
                 "tenure_raw": tenure_raw,
                 "general_raw": general_raw,
-                "senior_raw": senior_raw or general_raw
+                "senior_raw": senior_raw or general_raw,
+                "section_name": section_name,
+                "table_name": table_name,
+                "rate_effective_date": effective_date
             })
             
         return parsed_rows
