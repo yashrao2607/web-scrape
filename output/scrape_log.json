@@ -2,116 +2,238 @@
   {
     "event": "starting_scraping_pipeline",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:57.412515Z"
+    "timestamp": "2026-06-09T05:50:07.689268Z"
   },
   {
     "path": "input/banks.xlsx",
     "event": "initialized_input_excel_with_12_banks",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:57.662637Z"
+    "timestamp": "2026-06-09T05:50:07.859433Z"
   },
   {
     "count": 12,
     "event": "loaded_banks_from_excel",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:57.686169Z"
+    "timestamp": "2026-06-09T05:50:07.885737Z"
   },
   {
     "headless": true,
     "event": "launching_browser",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:57.686169Z"
+    "timestamp": "2026-06-09T05:50:07.885737Z"
   },
   {
     "bank": "HDFC Bank",
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.510645Z"
+    "timestamp": "2026-06-09T05:50:08.665771Z"
   },
   {
     "bank": "SBI",
     "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.512654Z"
+    "timestamp": "2026-06-09T05:50:08.668029Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.514070Z"
+    "timestamp": "2026-06-09T05:50:08.671155Z"
   },
   {
     "bank": "Axis Bank",
     "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.514700Z"
+    "timestamp": "2026-06-09T05:50:08.674267Z"
   },
   {
     "bank": "Kotak Mahindra Bank",
     "url": "https://www.kotak.com/en/rates/interest-rates.html",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.516710Z"
+    "timestamp": "2026-06-09T05:50:08.676492Z"
   },
   {
     "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.603896Z"
+    "timestamp": "2026-06-09T05:50:08.773464Z"
   },
   {
     "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.622188Z"
+    "timestamp": "2026-06-09T05:50:08.790429Z"
   },
   {
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.645800Z"
+    "timestamp": "2026-06-09T05:50:08.801625Z"
   },
   {
     "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.671776Z"
+    "timestamp": "2026-06-09T05:50:08.822100Z"
   },
   {
     "url": "https://www.kotak.com/en/rates/interest-rates.html",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:53:58.691939Z"
+    "timestamp": "2026-06-09T05:50:08.829841Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "event": "starting_axis_scrape",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:09.429312Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "status": 403,
+    "event": "axis_pdf_download_returned_invalid_content",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.562492Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "event": "triggering_axis_local_html_fallback",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:09.562492Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:09.566549Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '3 months 25 days to less than 4 months' (max_days 122) overlaps with '4 months to less than 6 months' (min_days 122) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '4 months to less than 6 months' (max_days 183) overlaps with '6 months to less than 9 months' (min_days 183) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '6 months to less than 9 months' (max_days 274) overlaps with '9 months to less than 1 year' (min_days 274) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '9 months to less than 1 year' (max_days 365) overlaps with '1 year to 1 year 10 days' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '1 year 11 days to less than 13 months' (max_days 395) overlaps with '13 months to less than 15 months' (min_days 395) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '13 months to less than 15 months' (max_days 456) overlaps with '15 months to less than 18 months' (min_days 456) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '15 months to less than 18 months' (max_days 548) overlaps with '18 months to 2 years' (min_days 548) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '18 months to 2 years' (max_days 730) overlaps with '2 years to less than 3 years' (min_days 730) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '2 years to less than 3 years' (max_days 1095) overlaps with '3 years to less than 5 years' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "Axis Bank",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
+    "detail": "Interval overlap detected: '3 years to less than 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:09.567790Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:09.572616Z"
+  },
+  {
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:09.623031Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "starting_icici_scrape",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.405518Z"
+    "timestamp": "2026-06-09T05:50:11.165717Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "clicking_less_than_3cr_button_for_icici",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.457255Z"
+    "timestamp": "2026-06-09T05:50:11.240814Z"
   },
   {
     "bank": "Kotak Mahindra Bank",
     "url": "https://www.kotak.com/en/rates/interest-rates.html",
     "event": "starting_kotak_scrape",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.662823Z"
+    "timestamp": "2026-06-09T05:50:11.757500Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.702570Z"
+    "timestamp": "2026-06-09T05:50:11.815030Z"
   },
   {
     "header": [
@@ -120,7 +242,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.726920Z"
+    "timestamp": "2026-06-09T05:50:11.872729Z"
   },
   {
     "header": [
@@ -129,7 +251,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.728709Z"
+    "timestamp": "2026-06-09T05:50:11.873697Z"
   },
   {
     "header": [
@@ -147,7 +269,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.728709Z"
+    "timestamp": "2026-06-09T05:50:11.876905Z"
   },
   {
     "header": [
@@ -165,7 +287,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.729217Z"
+    "timestamp": "2026-06-09T05:50:11.878133Z"
   },
   {
     "header": [
@@ -174,7 +296,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.729217Z"
+    "timestamp": "2026-06-09T05:50:11.878719Z"
   },
   {
     "header": [
@@ -183,7 +305,14 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.729217Z"
+    "timestamp": "2026-06-09T05:50:11.879293Z"
+  },
+  {
+    "section": "INTEREST RATES FOR RECURRING DEPOSITS (For Resident Individuals & HUF only)",
+    "table": "",
+    "event": "skipping_recurring_deposit_table",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:11.880501Z"
   },
   {
     "header": [
@@ -201,7 +330,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.729217Z"
+    "timestamp": "2026-06-09T05:50:11.881079Z"
   },
   {
     "header": [
@@ -217,7 +346,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.729740Z"
+    "timestamp": "2026-06-09T05:50:11.881079Z"
   },
   {
     "header": [
@@ -235,7 +364,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.729740Z"
+    "timestamp": "2026-06-09T05:50:11.881748Z"
   },
   {
     "header": [
@@ -247,7 +376,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.729740Z"
+    "timestamp": "2026-06-09T05:50:11.882451Z"
   },
   {
     "header": [
@@ -258,7 +387,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.730252Z"
+    "timestamp": "2026-06-09T05:50:11.883098Z"
   },
   {
     "header": [
@@ -269,7 +398,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.730252Z"
+    "timestamp": "2026-06-09T05:50:11.883663Z"
   },
   {
     "header": [
@@ -279,7 +408,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.730252Z"
+    "timestamp": "2026-06-09T05:50:11.884219Z"
   },
   {
     "header": [
@@ -288,7 +417,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.730252Z"
+    "timestamp": "2026-06-09T05:50:11.884870Z"
   },
   {
     "header": [
@@ -298,7 +427,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.730777Z"
+    "timestamp": "2026-06-09T05:50:11.885418Z"
   },
   {
     "header": [
@@ -308,7 +437,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.730777Z"
+    "timestamp": "2026-06-09T05:50:11.885418Z"
   },
   {
     "header": [
@@ -318,7 +447,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.730777Z"
+    "timestamp": "2026-06-09T05:50:11.885955Z"
   },
   {
     "header": [
@@ -327,64 +456,151 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:00.730777Z"
+    "timestamp": "2026-06-09T05:50:11.886518Z"
   },
   {
     "bank": "Kotak Mahindra Bank",
     "url": "https://www.kotak.com/en/rates/interest-rates.html",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:00.730777Z"
+    "timestamp": "2026-06-09T05:50:11.887059Z"
   },
   {
-    "bank": "PNB",
-    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
-    "event": "scraping_bank_start",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:00.741112Z"
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "detail": "Interval overlap detected: '365 Days to less than 15 Months' (max_days 456) overlaps with '15 Months - less than 18 Months' (min_days 456) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:11.888673Z"
   },
   {
-    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
-    "event": "navigating_to_url",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:00.808734Z"
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "detail": "Interval overlap detected: '15 Months - less than 18 Months' (max_days 548) overlaps with '18 months - less than 2 years' (min_days 548) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:11.888673Z"
   },
   {
-    "bank": "SBI",
-    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
-    "event": "starting_sbi_scrape",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:01.114198Z"
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "detail": "Interval overlap detected: '18 months - less than 2 years' (max_days 730) overlaps with '2 years- less than 3 years' (min_days 730) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:11.888673Z"
   },
   {
-    "event": "level_1_semantic_table_detection",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:01.142715Z"
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "detail": "Interval overlap detected: '2 years- less than 3 years' (max_days 1095) overlaps with '3 years and above but less than 4 years' (min_days 1095) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:11.888673Z"
   },
   {
-    "bank": "SBI",
-    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
-    "event": "processing_and_validating_raw_data",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:01.158712Z"
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "detail": "Interval overlap detected: '3 years and above but less than 4 years' (max_days 36500) overlaps with '4 years and above but less than 5 years' (min_days 1460) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:11.888673Z"
+  },
+  {
+    "bank": "Kotak Mahindra Bank",
+    "url": "https://www.kotak.com/en/rates/interest-rates.html",
+    "detail": "Interval overlap detected: '4 years and above but less than 5 years' (max_days 36500) overlaps with '5 years and above upto and inclusive of 10 years' (min_days 1825) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:11.888673Z"
   },
   {
     "bank": "IndusInd Bank",
     "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:01.166740Z"
+    "timestamp": "2026-06-09T05:50:11.902344Z"
   },
   {
     "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:01.240630Z"
+    "timestamp": "2026-06-09T05:50:11.981720Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "event": "starting_pnb_scrape",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:12.155667Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "event": "starting_sbi_scrape",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:13.059426Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:02.557043Z"
+    "timestamp": "2026-06-09T05:50:13.125630Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:13.157596Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "detail": "Interval overlap detected: '211 days to less than 1 year' (max_days 365) overlaps with '1 Year to less than 2 years' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.159226Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "detail": "Interval overlap detected: '1 Year to less than 2 years' (max_days 730) overlaps with '1 Year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.159226Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "detail": "Interval overlap detected: '2 years to less than 3 years' (max_days 1095) overlaps with '2 Years' (min_days 730) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.159226Z"
+  },
+  {
+    "bank": "SBI",
+    "url": "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits",
+    "detail": "Interval overlap detected: '3 years to less than 5 years' (max_days 1825) overlaps with '5 years and up to 10 years' (min_days 1825) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.159226Z"
+  },
+  {
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:13.178376Z"
+  },
+  {
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:13.262862Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:13.326595Z"
   },
   {
     "header": [
@@ -394,69 +610,64 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:02.562808Z"
+    "timestamp": "2026-06-09T05:50:13.339927Z"
   },
   {
     "bank": "ICICI Bank",
     "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:02.562808Z"
+    "timestamp": "2026-06-09T05:50:13.339927Z"
   },
   {
-    "bank": "Yes Bank",
-    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "bank": "ICICI Bank",
+    "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "detail": "Interval overlap detected: '185 to < 1 Year' (max_days 365) overlaps with '1 Year to < 18 Months' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.340776Z"
+  },
+  {
+    "bank": "ICICI Bank",
+    "url": "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "detail": "Interval overlap detected: '1 Year to < 18 Months' (max_days 548) overlaps with '18 Months to 2 Years' (min_days 548) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.341351Z"
+  },
+  {
+    "bank": "IDFC First Bank",
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:02.572326Z"
+    "timestamp": "2026-06-09T05:50:13.351636Z"
   },
   {
-    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:02.654024Z"
+    "timestamp": "2026-06-09T05:50:13.421415Z"
   },
   {
     "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
     "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\nCall log:\n  - navigating to \"https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\", waiting until \"networkidle\"\n",
     "event": "networkidle_failed_falling_back_to_load",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:02.725346Z"
-  },
-  {
-    "bank": "Axis Bank",
-    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
-    "event": "starting_axis_scrape",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:02.741541Z"
-  },
-  {
-    "bank": "PNB",
-    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
-    "event": "starting_pnb_scrape",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:02.748416Z"
-  },
-  {
-    "bank": "HDFC Bank",
-    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
-    "event": "starting_hdfc_scrape",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:02.766015Z"
+    "timestamp": "2026-06-09T05:50:13.449592Z"
   },
   {
     "bank": "Yes Bank",
     "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\nCall log:\n  - navigating to \"https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\", waiting until \"load\"\n",
     "event": "navigation_failed_attempting_scraper_fallback",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:02.805270Z"
+    "timestamp": "2026-06-09T05:50:13.503357Z"
   },
   {
     "bank": "Yes Bank",
     "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
     "event": "starting_yes_bank_scrape",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:02.805270Z"
+    "timestamp": "2026-06-09T05:50:13.503357Z"
   },
   {
     "bank": "Yes Bank",
@@ -464,81 +675,77 @@
     "error": "Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\nCall log:\n  - navigating to \"https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit\", waiting until \"domcontentloaded\"\n",
     "event": "live_yes_bank_scrape_failed_falling_back",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:02.831871Z"
+    "timestamp": "2026-06-09T05:50:13.542327Z"
   },
   {
     "bank": "Yes Bank",
     "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
     "event": "triggering_yes_bank_local_html_fallback",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:02.831871Z"
+    "timestamp": "2026-06-09T05:50:13.542327Z"
   },
   {
     "bank": "Yes Bank",
     "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:02.837561Z"
+    "timestamp": "2026-06-09T05:50:13.550381Z"
   },
   {
-    "bank": "IDFC First Bank",
-    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
-    "event": "scraping_bank_start",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:02.845528Z"
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "detail": "Interval overlap detected: '18 months 1 day to less than 24 months' (max_days 730) overlaps with '24 months to less than 36 months' (min_days 730) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.552549Z"
   },
   {
-    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
-    "event": "navigating_to_url",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:02.963966Z"
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "detail": "Interval overlap detected: '24 months to less than 36 months' (max_days 1095) overlaps with '36 months to less than 60 months' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.552549Z"
   },
   {
-    "bank": "Axis Bank",
-    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
-    "path": "C:\\Users\\yashr\\AppData\\Local\\Temp/axis_rates.pdf",
-    "event": "downloaded_axis_pdf",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:04.687949Z"
-  },
-  {
-    "path": "C:\\Users\\yashr\\AppData\\Local\\Temp/axis_rates.pdf",
-    "event": "level_5_pdf_table_extraction",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:04.687949Z"
-  },
-  {
-    "path": "C:\\Users\\yashr\\AppData\\Local\\Temp/axis_rates.pdf",
-    "error": "No /Root object! - Is this really a PDF?",
-    "event": "pdf_extraction_failed",
-    "level": "error",
-    "timestamp": "2026-06-09T04:54:04.976142Z"
-  },
-  {
-    "bank": "Axis Bank",
-    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1",
-    "event": "processing_and_validating_raw_data",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:04.976142Z"
-  },
-  {
-    "bank": "IDFC First Bank",
-    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
-    "event": "starting_idfc_first_scrape",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:04.978671Z"
+    "bank": "Yes Bank",
+    "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
+    "detail": "Interval overlap detected: '36 months to less than 60 months' (max_days 1825) overlaps with '60 months to 120 months' (min_days 1825) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:13.552549Z"
   },
   {
     "bank": "Indian Overseas Bank",
     "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:04.986678Z"
+    "timestamp": "2026-06-09T05:50:13.562355Z"
+  },
+  {
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "event": "navigating_to_url",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:13.643864Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "event": "starting_hdfc_scrape",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:14.188247Z"
+  },
+  {
+    "bank": "IDFC First Bank",
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "event": "starting_idfc_first_scrape",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:15.705862Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:05.019030Z"
+    "timestamp": "2026-06-09T05:50:15.754134Z"
   },
   {
     "header": [
@@ -548,7 +755,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:05.038425Z"
+    "timestamp": "2026-06-09T05:50:15.779185Z"
   },
   {
     "header": [
@@ -558,230 +765,47 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:05.038425Z"
+    "timestamp": "2026-06-09T05:50:15.780566Z"
   },
   {
     "bank": "IDFC First Bank",
     "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:05.038425Z"
+    "timestamp": "2026-06-09T05:50:15.780566Z"
+  },
+  {
+    "bank": "IDFC First Bank",
+    "url": "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates",
+    "detail": "Interval overlap detected: '181 days – less than 1 Year' (max_days 365) overlaps with '1 year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:15.783107Z"
   },
   {
     "bank": "South Indian Bank",
     "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
     "event": "scraping_bank_start",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:05.043520Z"
-  },
-  {
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "event": "navigating_to_url",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:05.052752Z"
+    "timestamp": "2026-06-09T05:50:15.801384Z"
   },
   {
     "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:05.098664Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "event": "starting_iob_scrape",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:07.671099Z"
-  },
-  {
-    "event": "level_1_semantic_table_detection",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:07.722958Z"
-  },
-  {
-    "header": [
-      "Description",
-      "Fore Closure Charges"
-    ],
-    "event": "skipping_penalty_or_charges_table",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:07.745112Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "event": "processing_and_validating_raw_data",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:07.745112Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 14: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.747185Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 15: Duplicate tenure '> 1 Year to < 2 Years (Except 444 Days)' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.747724Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 16: Duplicate tenure '444 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.747724Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 17: Duplicate tenure '2 Years to < 3 Years' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748084Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 18: Duplicate tenure '3 Years and Above' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748084Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 19: Duplicate tenure '7 Days - 14 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748084Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 20: Duplicate tenure '15 Days - 29 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748084Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 21: Duplicate tenure '30 Days - 45 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 22: Duplicate tenure '46 Days - 60 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 23: Duplicate tenure '61 Days - 90 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 24: Duplicate tenure '91 Days - 120 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 25: Duplicate tenure '121 Days - 179 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 26: Duplicate tenure '180 Days - 269 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 27: Duplicate tenure '270 Days < 1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 28: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.748588Z"
-  },
-  {
-    "bank": "Indian Overseas Bank",
-    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
-    "detail": "Row 30: Duplicate tenure '2 Year to 3 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
-    "event": "validation_warning",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.749114Z"
-  },
-  {
-    "bank": "Federal Bank",
-    "url": "https://www.federalbank.co.in/interest-rates",
-    "event": "scraping_bank_start",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:07.757312Z"
+    "timestamp": "2026-06-09T05:50:15.889223Z"
   },
   {
     "bank": "PNB",
     "url": "https://www.pnbindia.in/interest-rates-deposit.html",
     "event": "timeout_waiting_for_tables_attempting_anyway",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.768321Z"
+    "timestamp": "2026-06-09T05:50:17.172163Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:07.768321Z"
-  },
-  {
-    "bank": "HDFC Bank",
-    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
-    "error": "Page.wait_for_selector: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"table, [role='table']\") to be visible\n",
-    "event": "live_scrape_failed_falling_back_to_local_html",
-    "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.771568Z"
-  },
-  {
-    "bank": "HDFC Bank",
-    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
-    "event": "triggering_hdfc_local_html_fallback",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:07.771568Z"
-  },
-  {
-    "bank": "HDFC Bank",
-    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
-    "event": "processing_and_validating_raw_data",
-    "level": "info",
-    "timestamp": "2026-06-09T04:54:07.773766Z"
+    "timestamp": "2026-06-09T05:50:17.172163Z"
   },
   {
     "header": [
@@ -791,7 +815,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.781765Z"
+    "timestamp": "2026-06-09T05:50:17.222476Z"
   },
   {
     "header": [
@@ -800,7 +824,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.781765Z"
+    "timestamp": "2026-06-09T05:50:17.223114Z"
   },
   {
     "header": [
@@ -809,7 +833,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.783773Z"
+    "timestamp": "2026-06-09T05:50:17.223620Z"
   },
   {
     "header": [
@@ -818,7 +842,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.783773Z"
+    "timestamp": "2026-06-09T05:50:17.224178Z"
   },
   {
     "header": [
@@ -827,7 +851,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.783773Z"
+    "timestamp": "2026-06-09T05:50:17.224738Z"
   },
   {
     "header": [
@@ -836,7 +860,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.783773Z"
+    "timestamp": "2026-06-09T05:50:17.225358Z"
   },
   {
     "header": [
@@ -845,7 +869,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.783773Z"
+    "timestamp": "2026-06-09T05:50:17.225973Z"
   },
   {
     "header": [
@@ -854,7 +878,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.783773Z"
+    "timestamp": "2026-06-09T05:50:17.227460Z"
   },
   {
     "header": [
@@ -863,7 +887,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.227990Z"
   },
   {
     "header": [
@@ -872,7 +896,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.229017Z"
   },
   {
     "header": [
@@ -881,7 +905,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.229650Z"
   },
   {
     "header": [
@@ -890,7 +914,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.230248Z"
   },
   {
     "header": [
@@ -899,7 +923,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.231284Z"
   },
   {
     "header": [
@@ -908,7 +932,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.231284Z"
   },
   {
     "header": [
@@ -917,7 +941,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.232601Z"
   },
   {
     "header": [
@@ -926,7 +950,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.233615Z"
   },
   {
     "header": [
@@ -935,7 +959,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.784400Z"
+    "timestamp": "2026-06-09T05:50:17.234415Z"
   },
   {
     "header": [
@@ -951,7 +975,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.785183Z"
+    "timestamp": "2026-06-09T05:50:17.238032Z"
   },
   {
     "header": [
@@ -970,14 +994,14 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.785721Z"
+    "timestamp": "2026-06-09T05:50:17.239389Z"
   },
   {
     "bank": "PNB",
     "url": "https://www.pnbindia.in/interest-rates-deposit.html",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:07.785721Z"
+    "timestamp": "2026-06-09T05:50:17.239389Z"
   },
   {
     "bank": "PNB",
@@ -985,7 +1009,7 @@
     "detail": "Row 18 (>2 to 3 Years): Rejected due to invalid/unparseable tenure.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786272Z"
+    "timestamp": "2026-06-09T05:50:17.241072Z"
   },
   {
     "bank": "PNB",
@@ -993,7 +1017,7 @@
     "detail": "Row 23: Duplicate tenure '91 to 154 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786831Z"
+    "timestamp": "2026-06-09T05:50:17.241072Z"
   },
   {
     "bank": "PNB",
@@ -1001,7 +1025,7 @@
     "detail": "Row 24: Duplicate tenure '155 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786831Z"
+    "timestamp": "2026-06-09T05:50:17.241633Z"
   },
   {
     "bank": "PNB",
@@ -1009,7 +1033,7 @@
     "detail": "Row 25: Duplicate tenure '156 Days to 179 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786831Z"
+    "timestamp": "2026-06-09T05:50:17.241633Z"
   },
   {
     "bank": "PNB",
@@ -1017,7 +1041,7 @@
     "detail": "Row 26: Duplicate tenure '180 Days to 270 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786831Z"
+    "timestamp": "2026-06-09T05:50:17.241633Z"
   },
   {
     "bank": "PNB",
@@ -1025,7 +1049,7 @@
     "detail": "Row 27: Duplicate tenure '271 Days to 302 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786831Z"
+    "timestamp": "2026-06-09T05:50:17.242177Z"
   },
   {
     "bank": "PNB",
@@ -1033,7 +1057,7 @@
     "detail": "Row 28: Duplicate tenure '303 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786831Z"
+    "timestamp": "2026-06-09T05:50:17.242177Z"
   },
   {
     "bank": "PNB",
@@ -1041,7 +1065,7 @@
     "detail": "Row 29: Duplicate tenure '304 Days to >1 Year' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.786831Z"
+    "timestamp": "2026-06-09T05:50:17.242177Z"
   },
   {
     "bank": "PNB",
@@ -1049,7 +1073,7 @@
     "detail": "Row 30: Duplicate tenure '1 Year' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.242766Z"
   },
   {
     "bank": "PNB",
@@ -1057,7 +1081,7 @@
     "detail": "Row 31: Duplicate tenure '>1 Year to 389 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.242766Z"
   },
   {
     "bank": "PNB",
@@ -1065,7 +1089,7 @@
     "detail": "Row 32: Duplicate tenure '390 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.242766Z"
   },
   {
     "bank": "PNB",
@@ -1073,7 +1097,7 @@
     "detail": "Row 33: Duplicate tenure '391 Days to 443 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.243355Z"
   },
   {
     "bank": "PNB",
@@ -1081,7 +1105,7 @@
     "detail": "Row 34: Duplicate tenure '444 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.243355Z"
   },
   {
     "bank": "PNB",
@@ -1089,7 +1113,7 @@
     "detail": "Row 35: Duplicate tenure '445 Days to 665 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.244092Z"
   },
   {
     "bank": "PNB",
@@ -1097,7 +1121,7 @@
     "detail": "Row 36: Duplicate tenure '666 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.244092Z"
   },
   {
     "bank": "PNB",
@@ -1105,7 +1129,7 @@
     "detail": "Row 37: Duplicate tenure '667 Days to 2 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.244804Z"
   },
   {
     "bank": "PNB",
@@ -1113,7 +1137,7 @@
     "detail": "Row 38 (>2 to 3 Years): Rejected due to invalid/unparseable tenure.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.244804Z"
   },
   {
     "bank": "PNB",
@@ -1121,7 +1145,7 @@
     "detail": "Row 39: Duplicate tenure '>3 Years to 1203 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.244804Z"
   },
   {
     "bank": "PNB",
@@ -1129,7 +1153,7 @@
     "detail": "Row 40: Duplicate tenure '1204 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.245356Z"
   },
   {
     "bank": "PNB",
@@ -1137,7 +1161,7 @@
     "detail": "Row 41: Duplicate tenure '1205 Days to 5 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.245356Z"
   },
   {
     "bank": "PNB",
@@ -1145,7 +1169,7 @@
     "detail": "Row 42: Duplicate tenure '>5 Years to 10 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787343Z"
+    "timestamp": "2026-06-09T05:50:17.246468Z"
   },
   {
     "bank": "PNB",
@@ -1153,7 +1177,7 @@
     "detail": "Row 43: Duplicate tenure '7 days to 14 days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.246468Z"
   },
   {
     "bank": "PNB",
@@ -1161,7 +1185,7 @@
     "detail": "Row 44: Duplicate tenure '15 days to 45 days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.246468Z"
   },
   {
     "bank": "PNB",
@@ -1169,7 +1193,7 @@
     "detail": "Row 45: Duplicate tenure '46 days to 90 days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.246468Z"
   },
   {
     "bank": "PNB",
@@ -1177,7 +1201,7 @@
     "detail": "Row 46: Duplicate tenure '91 days to 154 days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.248969Z"
   },
   {
     "bank": "PNB",
@@ -1185,7 +1209,7 @@
     "detail": "Row 47: Duplicate tenure '155 days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.249403Z"
   },
   {
     "bank": "PNB",
@@ -1193,7 +1217,7 @@
     "detail": "Row 48: Duplicate tenure '156 to 179 days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.249403Z"
   },
   {
     "bank": "PNB",
@@ -1201,7 +1225,7 @@
     "detail": "Row 49: Duplicate tenure '180 days to 270 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.250083Z"
   },
   {
     "bank": "PNB",
@@ -1209,7 +1233,7 @@
     "detail": "Row 50: Duplicate tenure '271 days to 302 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.250083Z"
   },
   {
     "bank": "PNB",
@@ -1217,7 +1241,7 @@
     "detail": "Row 51: Duplicate tenure '303Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.250603Z"
   },
   {
     "bank": "PNB",
@@ -1225,7 +1249,7 @@
     "detail": "Row 52: Duplicate tenure '304 Days to < 1 Year' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.251039Z"
   },
   {
     "bank": "PNB",
@@ -1233,7 +1257,7 @@
     "detail": "Row 53: Duplicate tenure '1 Year' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.251039Z"
   },
   {
     "bank": "PNB",
@@ -1241,7 +1265,7 @@
     "detail": "Row 54: Duplicate tenure '>1 Year to 389 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.251649Z"
   },
   {
     "bank": "PNB",
@@ -1249,7 +1273,7 @@
     "detail": "Row 55: Duplicate tenure '390 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.787870Z"
+    "timestamp": "2026-06-09T05:50:17.252543Z"
   },
   {
     "bank": "PNB",
@@ -1257,7 +1281,7 @@
     "detail": "Row 56: Duplicate tenure '391 Days to 443 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.253057Z"
   },
   {
     "bank": "PNB",
@@ -1265,7 +1289,7 @@
     "detail": "Row 57: Duplicate tenure '444 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.253530Z"
   },
   {
     "bank": "PNB",
@@ -1273,7 +1297,7 @@
     "detail": "Row 60: Duplicate tenure '>3Years to 1203 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.254199Z"
   },
   {
     "bank": "PNB",
@@ -1281,7 +1305,7 @@
     "detail": "Row 61: Duplicate tenure '1204 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.254904Z"
   },
   {
     "bank": "PNB",
@@ -1289,7 +1313,7 @@
     "detail": "Row 62: Duplicate tenure '1205 Days to 5 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.254904Z"
   },
   {
     "bank": "PNB",
@@ -1297,7 +1321,7 @@
     "detail": "Row 63: Duplicate tenure '>5 Years to 10 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.254904Z"
   },
   {
     "bank": "PNB",
@@ -1306,7 +1330,7 @@
     "tenure": "1 year",
     "event": "rate_anomaly_detected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.255558Z"
   },
   {
     "bank": "PNB",
@@ -1314,7 +1338,7 @@
     "detail": "Row 64 (1 year): Rejected retail rate 0.5% below 2.0%.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.255558Z"
   },
   {
     "bank": "PNB",
@@ -1323,7 +1347,7 @@
     "tenure": "Above 1 year up to 2 years",
     "event": "rate_anomaly_detected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.255558Z"
   },
   {
     "bank": "PNB",
@@ -1331,7 +1355,7 @@
     "detail": "Row 65 (Above 1 year up to 2 years): Rejected retail rate 0.6% below 2.0%.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.256213Z"
   },
   {
     "bank": "PNB",
@@ -1340,7 +1364,7 @@
     "tenure": "Above 2 years up to 3 years",
     "event": "rate_anomaly_detected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.256213Z"
   },
   {
     "bank": "PNB",
@@ -1348,7 +1372,7 @@
     "detail": "Row 66 (Above 2 years up to 3 years): Rejected retail rate 0.75% below 2.0%.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.256213Z"
   },
   {
     "bank": "PNB",
@@ -1356,7 +1380,7 @@
     "detail": "Row 67 (Medium Term Government Deposit): Rejected due to invalid/unparseable tenure.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.256213Z"
   },
   {
     "bank": "PNB",
@@ -1364,7 +1388,7 @@
     "detail": "Row 68 (Long Term Government Deposit): Rejected due to invalid/unparseable tenure.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.256213Z"
   },
   {
     "bank": "PNB",
@@ -1372,7 +1396,7 @@
     "detail": "Row 69: Duplicate tenure '1 Year' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788407Z"
+    "timestamp": "2026-06-09T05:50:17.256914Z"
   },
   {
     "bank": "PNB",
@@ -1380,7 +1404,7 @@
     "detail": "Row 70: Duplicate tenure '> 1 Year to 389 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.256914Z"
   },
   {
     "bank": "PNB",
@@ -1388,7 +1412,7 @@
     "detail": "Row 71: Duplicate tenure '390 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.257427Z"
   },
   {
     "bank": "PNB",
@@ -1396,7 +1420,7 @@
     "detail": "Row 72: Duplicate tenure '391 Days to 443 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.257427Z"
   },
   {
     "bank": "PNB",
@@ -1404,7 +1428,7 @@
     "detail": "Row 73: Duplicate tenure '444 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.257427Z"
   },
   {
     "bank": "PNB",
@@ -1412,7 +1436,7 @@
     "detail": "Row 74: Duplicate tenure '445 Days to 665 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.258136Z"
   },
   {
     "bank": "PNB",
@@ -1420,7 +1444,7 @@
     "detail": "Row 75: Duplicate tenure '666 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.258543Z"
   },
   {
     "bank": "PNB",
@@ -1428,7 +1452,7 @@
     "detail": "Row 76: Duplicate tenure '667 Days to 2 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.258543Z"
   },
   {
     "bank": "PNB",
@@ -1436,7 +1460,7 @@
     "detail": "Row 77: Duplicate tenure '>2 Years to 3 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.259052Z"
   },
   {
     "bank": "PNB",
@@ -1444,7 +1468,7 @@
     "detail": "Row 78: Duplicate tenure '>3 Years to 1203 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.259052Z"
   },
   {
     "bank": "PNB",
@@ -1452,7 +1476,7 @@
     "detail": "Row 79: Duplicate tenure '1204 Days' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.260061Z"
   },
   {
     "bank": "PNB",
@@ -1460,7 +1484,7 @@
     "detail": "Row 80: Duplicate tenure '1205 Days to 5 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.260061Z"
   },
   {
     "bank": "PNB",
@@ -1468,32 +1492,353 @@
     "detail": "Row 81: Duplicate tenure '>5 Years to 10 Years' for product retail_fd in section 'w.e.f. 01.07.25'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:07.788962Z"
+    "timestamp": "2026-06-09T05:50:17.260644Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Interval overlap detected: '304 Days to >1 Year' (max_days 365) overlaps with '1 Year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:17.260644Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Interval overlap detected: '1 Year' (max_days 365) overlaps with '>1 Year to 389 Days' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:17.260644Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Interval overlap detected: '445 Days to 665 Days' (max_days 665) overlaps with '445 Days to 2 Years' (min_days 445) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:17.261607Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Interval overlap detected: '445 Days to 2 Years' (max_days 730) overlaps with '667 Days to 2 Years' (min_days 667) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:17.261607Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Interval overlap detected: '667 Days to 2 Years' (max_days 730) overlaps with '>2 Years to 3 Years' (min_days 730) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:17.261607Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Interval overlap detected: '>2 Years to 3 Years' (max_days 1095) overlaps with '>3 Years to 1203 Days' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:17.261607Z"
+  },
+  {
+    "bank": "PNB",
+    "url": "https://www.pnbindia.in/interest-rates-deposit.html",
+    "detail": "Interval overlap detected: '1205 Days to 5 Years' (max_days 1825) overlaps with '>5 Years to 10 Years' (min_days 1825) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:17.261607Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "event": "scraping_bank_start",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:17.318390Z"
   },
   {
     "url": "https://www.federalbank.co.in/interest-rates",
     "event": "navigating_to_url",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:07.823810Z"
+    "timestamp": "2026-06-09T05:50:17.410496Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "event": "starting_iob_scrape",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:18.023631Z"
+  },
+  {
+    "event": "level_1_semantic_table_detection",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:18.099452Z"
+  },
+  {
+    "header": [
+      "Description",
+      "Fore Closure Charges"
+    ],
+    "event": "skipping_penalty_or_charges_table",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:18.130157Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:18.130157Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 14: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.132303Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 15: Duplicate tenure '> 1 Year to < 2 Years (Except 444 Days)' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.132303Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 16: Duplicate tenure '444 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.132851Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 17: Duplicate tenure '2 Years to < 3 Years' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.132851Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 18: Duplicate tenure '3 Years and Above' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.132851Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 19: Duplicate tenure '7 Days - 14 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.132851Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 20: Duplicate tenure '15 Days - 29 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133389Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 21: Duplicate tenure '30 Days - 45 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133389Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 22: Duplicate tenure '46 Days - 60 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133389Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 23: Duplicate tenure '61 Days - 90 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133389Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 24: Duplicate tenure '91 Days - 120 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133389Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 25: Duplicate tenure '121 Days - 179 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133971Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 26: Duplicate tenure '180 Days - 269 Days' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133971Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 27: Duplicate tenure '270 Days < 1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133971Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 28: Duplicate tenure '1 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133971Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Row 30: Duplicate tenure '2 Year to 3 Year' for product retail_fd in section 'iob_bank_domestic_rates'.",
+    "event": "validation_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.133971Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Interval overlap detected: '270 Days to < 1 Year' (max_days 365) overlaps with '1 Year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.134550Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Interval overlap detected: '1 Year' (max_days 365) overlaps with '> 1 Year to < 2 Years\n(Except 444 Days)' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.134550Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Interval overlap detected: '> 1 Year to < 2 Years\n(Except 444 Days)' (max_days 1174) overlaps with 'Above 1 Year <2 Year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.134550Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Interval overlap detected: 'Above 1 Year <2 Year' (max_days 730) overlaps with '2 Years to < 3 Years' (min_days 730) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.134550Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Interval overlap detected: '2 Years to < 3 Years' (max_days 1095) overlaps with '3 Years and above' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.134550Z"
+  },
+  {
+    "bank": "Indian Overseas Bank",
+    "url": "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates",
+    "detail": "Interval overlap detected: '3 Years and above' (max_days 36500) overlaps with '>3 Year & above' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:18.134550Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "error": "Page.wait_for_selector: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"table, [role='table']\") to be visible\n",
+    "event": "live_scrape_failed_falling_back_to_local_html",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:19.196214Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "event": "triggering_hdfc_local_html_fallback",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:19.196214Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "event": "processing_and_validating_raw_data",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:19.208274Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "detail": "Interval overlap detected: '9 months 1 day to less than 1 year' (max_days 365) overlaps with '1 Year to less than 15 Months' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:19.211910Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "detail": "Interval overlap detected: '1 Year to less than 15 Months' (max_days 456) overlaps with '15 Months to less than 18 Months' (min_days 456) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:19.212627Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "detail": "Interval overlap detected: '15 Months to less than 18 Months' (max_days 548) overlaps with '18 Months to less than 21 Months' (min_days 548) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:19.212627Z"
+  },
+  {
+    "bank": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "detail": "Interval overlap detected: '18 Months to less than 21 Months' (max_days 639) overlaps with '21 Months to 2 Years' (min_days 639) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:19.212627Z"
   },
   {
     "bank": "South Indian Bank",
     "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
     "event": "starting_south_indian_bank_scrape",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:09.434884Z"
+    "timestamp": "2026-06-09T05:50:21.244672Z"
   },
   {
     "bank": "South Indian Bank",
     "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
     "event": "timeout_waiting_for_tables_attempting_anyway",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.456882Z"
+    "timestamp": "2026-06-09T05:50:26.260733Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:14.456882Z"
+    "timestamp": "2026-06-09T05:50:26.260733Z"
   },
   {
     "header": [
@@ -1502,7 +1847,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.483296Z"
+    "timestamp": "2026-06-09T05:50:26.325883Z"
   },
   {
     "header": [
@@ -1511,7 +1856,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.327489Z"
   },
   {
     "header": [
@@ -1527,7 +1872,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.329968Z"
   },
   {
     "header": [
@@ -1542,7 +1887,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.330643Z"
   },
   {
     "header": [
@@ -1556,7 +1901,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.331299Z"
   },
   {
     "header": [
@@ -1567,7 +1912,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.333264Z"
   },
   {
     "header": [
@@ -1577,7 +1922,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.333916Z"
   },
   {
     "header": [
@@ -1587,7 +1932,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.333916Z"
   },
   {
     "header": [
@@ -1597,7 +1942,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.335881Z"
   },
   {
     "header": [
@@ -1612,7 +1957,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.336558Z"
   },
   {
     "header": [
@@ -1627,7 +1972,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.337846Z"
   },
   {
     "header": [
@@ -1642,7 +1987,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.338522Z"
   },
   {
     "header": [
@@ -1657,14 +2002,14 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.339802Z"
   },
   {
     "bank": "South Indian Bank",
     "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:14.485303Z"
+    "timestamp": "2026-06-09T05:50:26.339802Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1672,7 +2017,7 @@
     "detail": "Row 34 (Annualized Rate of Return at minimum quarterly multiple of the maturity bucket for NRE KND* Deposits): Rejected due to invalid/unparseable tenure.",
     "event": "row_rejected",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.487310Z"
+    "timestamp": "2026-06-09T05:50:26.343714Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1680,7 +2025,7 @@
     "detail": "Row 35: Duplicate tenure '1 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.492702Z"
+    "timestamp": "2026-06-09T05:50:26.343714Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1688,7 +2033,7 @@
     "detail": "Row 36: Duplicate tenure '18 months' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.492702Z"
+    "timestamp": "2026-06-09T05:50:26.343714Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1696,7 +2041,7 @@
     "detail": "Row 37: Duplicate tenure '2 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.492702Z"
+    "timestamp": "2026-06-09T05:50:26.344398Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1704,7 +2049,7 @@
     "detail": "Row 38: Duplicate tenure '30 months' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.492702Z"
+    "timestamp": "2026-06-09T05:50:26.344398Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1712,7 +2057,7 @@
     "detail": "Row 39: Duplicate tenure '3 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.344398Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1720,7 +2065,7 @@
     "detail": "Row 40: Duplicate tenure '4 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345016Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1728,7 +2073,7 @@
     "detail": "Row 41: Duplicate tenure '5 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345016Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1736,7 +2081,7 @@
     "detail": "Row 42: Duplicate tenure '66 months' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345016Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1744,7 +2089,7 @@
     "detail": "Row 43: Duplicate tenure '6 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345666Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1752,7 +2097,7 @@
     "detail": "Row 44: Duplicate tenure '7 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345666Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1760,7 +2105,7 @@
     "detail": "Row 45: Duplicate tenure '8 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345666Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1768,7 +2113,7 @@
     "detail": "Row 46: Duplicate tenure '9 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345666Z"
   },
   {
     "bank": "South Indian Bank",
@@ -1776,33 +2121,104 @@
     "detail": "Row 47: Duplicate tenure '10 year' for product retail_fd in section 'Effective annualized rate of return for the Kalpakanidhi* (KND- Quarterly Compounding) deposits'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:14.493207Z"
+    "timestamp": "2026-06-09T05:50:26.345666Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: '271 days to less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to 371 days' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: 'Above 1 year to 371 days' (max_days 371) overlaps with '1 year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: '373 days to less than 18 months' (max_days 548) overlaps with 'Above 18 months to less than 30 months' (min_days 548) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: 'Above 18 months to less than 30 months' (max_days 913) overlaps with '2 years' (min_days 730) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: 'Above 30 months to less than 5 years' (max_days 1825) overlaps with '3 years' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: '5 years to less than 66 months' (max_days 2008) overlaps with '5 years' (min_days 1825) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
+  },
+  {
+    "bank": "South Indian Bank",
+    "url": "https://www.southindianbank.com/interestrates/interestrates.aspx",
+    "detail": "Interval overlap detected: 'Above 66 months to upto and including 10 years' (max_days 3650) overlaps with '6 years' (min_days 2190) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:26.346359Z"
   },
   {
     "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.indusind.bank.in/in/en/personal/rates.html\", waiting until \"networkidle\"\n",
     "event": "networkidle_failed_falling_back_to_load",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:31.249241Z"
+    "timestamp": "2026-06-09T05:50:41.989394Z"
   },
   {
     "bank": "IndusInd Bank",
     "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
     "event": "starting_indusind_scrape",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:32.455566Z"
+    "timestamp": "2026-06-09T05:50:43.643371Z"
+  },
+  {
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.federalbank.co.in/interest-rates\", waiting until \"networkidle\"\n",
+    "event": "networkidle_failed_falling_back_to_load",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:47.432147Z"
   },
   {
     "bank": "IndusInd Bank",
     "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
     "event": "timeout_waiting_for_tables_attempting_anyway",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.465887Z"
+    "timestamp": "2026-06-09T05:50:48.656313Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:37.465887Z"
+    "timestamp": "2026-06-09T05:50:48.656313Z"
   },
   {
     "header": [
@@ -1810,7 +2226,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.498043Z"
+    "timestamp": "2026-06-09T05:50:48.717965Z"
   },
   {
     "header": [
@@ -1818,7 +2234,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:37.498043Z"
+    "timestamp": "2026-06-09T05:50:48.718966Z"
   },
   {
     "header": [
@@ -1826,7 +2242,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.501031Z"
+    "timestamp": "2026-06-09T05:50:48.719680Z"
   },
   {
     "header": [
@@ -1834,7 +2250,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:37.501031Z"
+    "timestamp": "2026-06-09T05:50:48.720545Z"
   },
   {
     "header": [
@@ -1842,7 +2258,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.501031Z"
+    "timestamp": "2026-06-09T05:50:48.722536Z"
   },
   {
     "header": [
@@ -1850,7 +2266,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:37.501031Z"
+    "timestamp": "2026-06-09T05:50:48.723143Z"
   },
   {
     "header": [
@@ -1858,7 +2274,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.501601Z"
+    "timestamp": "2026-06-09T05:50:48.726161Z"
   },
   {
     "header": [
@@ -1866,7 +2282,14 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:37.501601Z"
+    "timestamp": "2026-06-09T05:50:48.726893Z"
+  },
+  {
+    "section": "Interest Rates on RECURRING DEPOSITS w.e.f. 1st June’26",
+    "table": "",
+    "event": "skipping_recurring_deposit_table",
+    "level": "info",
+    "timestamp": "2026-06-09T05:50:48.727535Z"
   },
   {
     "header": [
@@ -1883,7 +2306,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.501601Z"
+    "timestamp": "2026-06-09T05:50:48.729018Z"
   },
   {
     "header": [
@@ -1894,7 +2317,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.501601Z"
+    "timestamp": "2026-06-09T05:50:48.729608Z"
   },
   {
     "header": [
@@ -1905,7 +2328,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.502264Z"
+    "timestamp": "2026-06-09T05:50:48.729608Z"
   },
   {
     "header": [
@@ -1914,7 +2337,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.502264Z"
+    "timestamp": "2026-06-09T05:50:48.731217Z"
   },
   {
     "header": [
@@ -1923,7 +2346,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.502264Z"
+    "timestamp": "2026-06-09T05:50:48.732346Z"
   },
   {
     "header": [
@@ -1932,7 +2355,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.502264Z"
+    "timestamp": "2026-06-09T05:50:48.732346Z"
   },
   {
     "header": [
@@ -1941,7 +2364,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.502903Z"
+    "timestamp": "2026-06-09T05:50:48.733075Z"
   },
   {
     "header": [
@@ -1950,7 +2373,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.502903Z"
+    "timestamp": "2026-06-09T05:50:48.733075Z"
   },
   {
     "header": [
@@ -1967,7 +2390,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.502903Z"
+    "timestamp": "2026-06-09T05:50:48.733075Z"
   },
   {
     "header": [
@@ -1978,7 +2401,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.503468Z"
+    "timestamp": "2026-06-09T05:50:48.734753Z"
   },
   {
     "header": [
@@ -1989,7 +2412,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.503468Z"
+    "timestamp": "2026-06-09T05:50:48.735373Z"
   },
   {
     "header": [
@@ -2000,7 +2423,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504009Z"
+    "timestamp": "2026-06-09T05:50:48.736113Z"
   },
   {
     "header": [
@@ -2011,7 +2434,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504009Z"
+    "timestamp": "2026-06-09T05:50:48.736680Z"
   },
   {
     "header": [
@@ -2020,7 +2443,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504009Z"
+    "timestamp": "2026-06-09T05:50:48.736680Z"
   },
   {
     "header": [
@@ -2029,7 +2452,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504778Z"
+    "timestamp": "2026-06-09T05:50:48.737450Z"
   },
   {
     "header": [
@@ -2038,7 +2461,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504778Z"
+    "timestamp": "2026-06-09T05:50:48.737450Z"
   },
   {
     "header": [
@@ -2047,7 +2470,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504778Z"
+    "timestamp": "2026-06-09T05:50:48.738195Z"
   },
   {
     "header": [
@@ -2056,7 +2479,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504778Z"
+    "timestamp": "2026-06-09T05:50:48.738195Z"
   },
   {
     "header": [
@@ -2065,7 +2488,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504778Z"
+    "timestamp": "2026-06-09T05:50:48.738957Z"
   },
   {
     "header": [
@@ -2074,33 +2497,402 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.504778Z"
+    "timestamp": "2026-06-09T05:50:48.738957Z"
   },
   {
     "bank": "IndusInd Bank",
     "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:37.504778Z"
+    "timestamp": "2026-06-09T05:50:48.738957Z"
   },
   {
-    "url": "https://www.federalbank.co.in/interest-rates",
-    "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.federalbank.co.in/interest-rates\", waiting until \"networkidle\"\n",
-    "event": "networkidle_failed_falling_back_to_load",
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '7 days to 30 days' (max_days 30) overlaps with '7 days to 14 days' (min_days 7) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:37.830479Z"
+    "timestamp": "2026-06-09T05:50:48.745572Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '7 days to 14 days' (max_days 14) overlaps with '7 days to 14 days' (min_days 7) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.745572Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '7 days to 14 days' (max_days 14) overlaps with '7 days to 14 days' (min_days 7) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.745572Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '15 days to 30 days' (max_days 30) overlaps with '15 days to 30 days' (min_days 15) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.745572Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '15 days to 30 days' (max_days 30) overlaps with '15 days to 30 days' (min_days 15) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.745572Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '31 days to 45 days' (max_days 45) overlaps with '31 days to 45 days' (min_days 31) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '31 days to 45 days' (max_days 45) overlaps with '31 days to 45 days' (min_days 31) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '31 days to 45 days' (max_days 45) overlaps with '31 days to 45 days' (min_days 31) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '46 days to 60 days' (max_days 60) overlaps with '46 days to 60 days' (min_days 46) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '46 days to 60 days' (max_days 60) overlaps with '46 days to 60 days' (min_days 46) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '46 days to 60 days' (max_days 60) overlaps with '46 days to 60 days' (min_days 46) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '61 days to 90 days' (max_days 90) overlaps with '61 days to 90 days' (min_days 61) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '61 days to 90 days' (max_days 90) overlaps with '61 days to 90 days' (min_days 61) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '61 days to 90 days' (max_days 90) overlaps with '61 days to 90 days' (min_days 61) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '91 days to 180 days' (max_days 180) overlaps with '91 days to 120 days' (min_days 91) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '91 days to 120 days' (max_days 120) overlaps with '91 days to 120 days' (min_days 91) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '91 days to 120 days' (max_days 120) overlaps with '91 days to 120 days' (min_days 91) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '121 days to 180 days' (max_days 180) overlaps with '121 days to 180 days' (min_days 121) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746165Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '121 days to 180 days' (max_days 180) overlaps with '121 days to 180 days' (min_days 121) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '181 days to 210 days' (max_days 210) overlaps with '181 days to 210 days' (min_days 181) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '181 days to 210 days' (max_days 210) overlaps with '181 days to 210 days' (min_days 181) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '181 days to 210 days' (max_days 210) overlaps with '181 days to 210 days' (min_days 181) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '211 days to 269 days' (max_days 269) overlaps with '211 days to 364 days' (min_days 211) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '211 days to 364 days' (max_days 364) overlaps with '211 days to 269 days' (min_days 211) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '211 days to 269 days' (max_days 269) overlaps with '211 days to 354 days' (min_days 211) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '211 days to 354 days' (max_days 354) overlaps with '270 days to 364 days' (min_days 270) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '270 days to 364 days' (max_days 364) overlaps with '270 days to 354 days' (min_days 270) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '355 days to 364 days' (max_days 364) overlaps with '355 days to 364 days' (min_days 355) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 Year to below 1 Year 6 Month' (max_days 548) overlaps with '1 year to below 1 year 1 month' (min_days 365) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 year to below 1 year 1 month' (max_days 395) overlaps with '1 year to below 1 year 1 month' (min_days 365) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 year to below 1 year 1 month' (max_days 395) overlaps with '1 year to below 1 year 1 month' (min_days 365) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 year to below 1 year 1 month' (max_days 395) overlaps with '1 year 1 month to 3 Years' (min_days 395) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 year 1 month to 3 Years' (max_days 1095) overlaps with '1 year 1 month to below 1 year 6 months' (min_days 395) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 year 1 month to below 1 year 6 months' (max_days 548) overlaps with '1 year 1 month to 3 Years' (min_days 395) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 year 1 month to 3 Years' (max_days 1095) overlaps with '1 Year 6 months to below 1 Year 7 months' (min_days 548) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 Year 6 months to below 1 Year 7 months' (max_days 578) overlaps with '1 year 6 months to below 1 Year 7 months' (min_days 548) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 year 6 months to below 1 Year 7 months' (max_days 578) overlaps with '1 Year 7 months to below 2 Years' (min_days 578) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 Year 7 months to below 2 Years' (max_days 730) overlaps with '1 Year 7 months to 3 Years' (min_days 578) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.746985Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '1 Year 7 months to 3 Years' (max_days 1095) overlaps with '2 Years to 3 Years' (min_days 730) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '2 Years to 3 Years' (max_days 1095) overlaps with 'Above 3 Years up to below 61 Months' (min_days 1095) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: 'Above 3 Years up to below 61 Months' (max_days 1855) overlaps with 'Above 3 years to below 61 months' (min_days 1095) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: 'Above 3 years to below 61 months' (max_days 1855) overlaps with 'Above 3 years to below 61 months' (min_days 1095) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: 'Above 3 years to below 61 months' (max_days 1855) overlaps with 'Above 3 years to below 61 months' (min_days 1095) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: 'Above 3 years to below 61 months' (max_days 1855) overlaps with '61 Months and above' (min_days 1855) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '61 Months and above' (max_days 36500) overlaps with '61 months and above' (min_days 1855) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '61 months and above' (max_days 36500) overlaps with '61 months and above' (min_days 1855) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
+  },
+  {
+    "bank": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "detail": "Interval overlap detected: '61 months and above' (max_days 36500) overlaps with '61 months and above' (min_days 1855) for group ('retail_fd', 'regular', 'mixed', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:48.747697Z"
   },
   {
     "bank": "Federal Bank",
     "url": "https://www.federalbank.co.in/interest-rates",
     "event": "starting_federal_bank_scrape",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.198866Z"
+    "timestamp": "2026-06-09T05:50:49.648055Z"
   },
   {
     "event": "level_1_semantic_table_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.231887Z"
+    "timestamp": "2026-06-09T05:50:49.704156Z"
   },
   {
     "header": [
@@ -2110,7 +2902,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:39.248034Z"
+    "timestamp": "2026-06-09T05:50:49.735375Z"
   },
   {
     "header": [
@@ -2120,7 +2912,7 @@
     ],
     "event": "failed_to_match_table_headers",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:39.249850Z"
+    "timestamp": "2026-06-09T05:50:49.735375Z"
   },
   {
     "header": [
@@ -2130,7 +2922,7 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.249850Z"
+    "timestamp": "2026-06-09T05:50:49.736101Z"
   },
   {
     "header": [
@@ -2139,14 +2931,14 @@
     ],
     "event": "skipping_penalty_or_charges_table",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.249850Z"
+    "timestamp": "2026-06-09T05:50:49.736611Z"
   },
   {
     "bank": "Federal Bank",
     "url": "https://www.federalbank.co.in/interest-rates",
     "event": "processing_and_validating_raw_data",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.249850Z"
+    "timestamp": "2026-06-09T05:50:49.736611Z"
   },
   {
     "bank": "Federal Bank",
@@ -2154,7 +2946,7 @@
     "detail": "Row 15: Duplicate tenure '1 year' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:39.250897Z"
+    "timestamp": "2026-06-09T05:50:49.738298Z"
   },
   {
     "bank": "Federal Bank",
@@ -2162,7 +2954,7 @@
     "detail": "Row 16: Duplicate tenure 'Above 1 year to less than 15 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:39.250897Z"
+    "timestamp": "2026-06-09T05:50:49.738298Z"
   },
   {
     "bank": "Federal Bank",
@@ -2170,7 +2962,7 @@
     "detail": "Row 17: Duplicate tenure '15 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:39.250897Z"
+    "timestamp": "2026-06-09T05:50:49.738298Z"
   },
   {
     "bank": "Federal Bank",
@@ -2178,7 +2970,7 @@
     "detail": "Row 18: Duplicate tenure 'Above 15 months to less than 36 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:39.250897Z"
+    "timestamp": "2026-06-09T05:50:49.738298Z"
   },
   {
     "bank": "Federal Bank",
@@ -2186,41 +2978,97 @@
     "detail": "Row 19: Duplicate tenure '36 months' for product retail_fd in section 'RESIDENT TERM DEPOSIT INTEREST RATES'.",
     "event": "validation_warning",
     "level": "warning",
-    "timestamp": "2026-06-09T04:54:39.250897Z"
+    "timestamp": "2026-06-09T05:50:49.738902Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Interval overlap detected: '271 days to less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:49.738902Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to less than 15 Months' (min_days 365) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:49.738902Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Interval overlap detected: 'Above 1 year to less than 15 Months' (max_days 456) overlaps with 'Above 15 months to less than 36 months' (min_days 456) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:49.738902Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Interval overlap detected: 'Above 15 months to less than 36 months' (max_days 1095) overlaps with 'Above 36 months to 10 years' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:49.738902Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Interval overlap detected: 'Above 36 months to 10 years' (max_days 3650) overlaps with 'Above 36 months to 5 years' (min_days 1095) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:49.738902Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Interval overlap detected: 'Above 36 months to 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:49.738902Z"
+  },
+  {
+    "bank": "Federal Bank",
+    "url": "https://www.federalbank.co.in/interest-rates",
+    "detail": "Interval overlap detected: '5 years to 10 years' (max_days 3650) overlaps with 'Above 10 years to 20 years' (min_days 3650) for group ('retail_fd', 'regular', 'resident', True).",
+    "event": "interval_overlap_warning",
+    "level": "warning",
+    "timestamp": "2026-06-09T05:50:49.738902Z"
   },
   {
     "event": "closing_browser",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.257002Z"
+    "timestamp": "2026-06-09T05:50:49.750068Z"
   },
   {
     "path": "output/results.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.449107Z"
+    "timestamp": "2026-06-09T05:50:49.969360Z"
   },
   {
     "event": "running_change_detection",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.460365Z"
+    "timestamp": "2026-06-09T05:50:49.992446Z"
   },
   {
     "path": "output/change_report.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.462716Z"
+    "timestamp": "2026-06-09T05:50:49.995637Z"
   },
   {
     "path": "output/validation_report.json",
     "event": "file_write_success",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.463775Z"
+    "timestamp": "2026-06-09T05:50:49.999140Z"
   },
   {
     "successful": 12,
     "total": 12,
     "event": "scraping_pipeline_complete",
     "level": "info",
-    "timestamp": "2026-06-09T04:54:39.463775Z"
+    "timestamp": "2026-06-09T05:50:49.999140Z"
   }
 ]

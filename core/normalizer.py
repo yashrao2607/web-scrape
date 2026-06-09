@@ -202,9 +202,13 @@ def parse_tenure_range(tenure_str: str) -> Tuple[Optional[int], Optional[int]]:
             if not has_unit1:
                 # Inherit unit of part2
                 if "year" in p2_lower or "yr" in p2_lower or re.search(r'\by\b', p2_lower):
-                    days1 = days1 * 365
+                    # Only inherit year if the raw number is small (e.g. < 12)
+                    if days1 < 12:
+                        days1 = days1 * 365
                 elif "month" in p2_lower or "mth" in p2_lower or re.search(r'\bm\b', p2_lower):
-                    days1 = int(round(days1 * 30.417))
+                    # Only inherit month if the raw number is small (e.g. < 120)
+                    if days1 < 120:
+                        days1 = int(round(days1 * 30.417))
             return days1, days2
             
     elif len(parts) == 1:
@@ -244,15 +248,30 @@ def classify_fd_product(section_name: str, table_name: str, tenure_raw: str) -> 
         deposit_category = "green_deposit"
         
     # 3. customer_segment
-    customer_segment = "resident"
-    if "nre" in sec_lower or "nre" in tbl_lower:
-        customer_segment = "nre"
-    elif "nro" in sec_lower or "nro" in tbl_lower:
-        customer_segment = "nro"
-    elif "fcnr" in sec_lower or "fcnr" in tbl_lower:
-        customer_segment = "fcnr"
-    elif "senior citizen special" in sec_lower or "senior citizen special" in tbl_lower or "senior special" in sec_lower or "senior special" in tbl_lower:
-        customer_segment = "senior_citizen"
+    has_resident = any(k in sec_lower or k in tbl_lower for k in ["domestic", "resident"])
+    has_nre = "nre" in sec_lower or "nre" in tbl_lower
+    has_nro = "nro" in sec_lower or "nro" in tbl_lower
+    has_fcnr = "fcnr" in sec_lower or "fcnr" in tbl_lower
+    
+    matched_segments = []
+    if has_resident:
+        matched_segments.append("resident")
+    if has_nre:
+        matched_segments.append("nre")
+    if has_nro:
+        matched_segments.append("nro")
+    if has_fcnr:
+        matched_segments.append("fcnr")
+        
+    if len(matched_segments) > 1:
+        customer_segment = "mixed"
+    elif len(matched_segments) == 1:
+        customer_segment = matched_segments[0]
+    else:
+        if "senior citizen special" in sec_lower or "senior citizen special" in tbl_lower or "senior special" in sec_lower or "senior special" in tbl_lower:
+            customer_segment = "senior_citizen"
+        else:
+            customer_segment = "resident"
         
     # 4. callable
     callable_val = True
@@ -270,8 +289,9 @@ def classify_fd_product(section_name: str, table_name: str, tenure_raw: str) -> 
     if "green" in sec_lower or "green" in tbl_lower:
         is_special = True
         scheme_name = "Green Deposit"
-    elif deposit_category == "tax_saver":
+    elif deposit_category == "tax_saver" or "tax saver" in ten_lower or "tax-saver" in ten_lower:
         is_special = True
+        scheme_type = "tax_saver_fd"
         scheme_name = "Tax Saver FD"
     elif not is_range and any(k in ten_lower for k in ["day", "month", "year"]):
         cleaned_ten = re.sub(r'[*#$\s]+$', '', ten_lower).strip()
@@ -279,7 +299,7 @@ def classify_fd_product(section_name: str, table_name: str, tenure_raw: str) -> 
             is_special = True
             scheme_name = tenure_raw.strip() + " FD"
             
-    if is_special:
+    if is_special and scheme_type == "regular_fd":
         scheme_type = "special_fd"
         
     return {
@@ -292,6 +312,67 @@ def classify_fd_product(section_name: str, table_name: str, tenure_raw: str) -> 
     }
 
 
+def normalize_date_string(date_str: str) -> Optional[str]:
+    """Normalizes a raw date string to YYYY-MM-DD format."""
+    if not date_str:
+        return None
+    import datetime
+    
+    # Clean the string
+    cleaned = date_str.strip()
+    # Remove ordinal suffixes like 1st, 2nd, 3rd, 4th
+    cleaned = re.sub(r'\b(\d+)(st|nd|rd|th)\b', r'\1', cleaned, flags=re.IGNORECASE)
+    # Remove trailing/leading special characters
+    cleaned = re.sub(r'[*#$\s]+$', '', cleaned)
+    cleaned = re.sub(r'^\s*[:\-\/\.\s]+', '', cleaned)
+    cleaned = re.sub(r'\s+', ' ', cleaned)
+    
+    # 1. Try DD.MM.YYYY or DD/MM/YYYY or DD-MM-YYYY
+    match = re.search(r'\b(\d{1,2})[\.\-\/](\d{1,2})[\.\-\/](\d{4})\b', cleaned)
+    if match:
+        d, m, y = match.groups()
+        try:
+            dt = datetime.date(int(y), int(m), int(d))
+            return dt.isoformat()
+        except ValueError:
+            pass
+            
+    # 2. Text month formats: e.g. "June 9, 2026", "1 June 2026", "June 2026"
+    months_map = {
+        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+        "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+        "january": 1, "february": 2, "march": 3, "april": 4, "june": 6,
+        "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12
+    }
+    
+    month_num = None
+    for m_name, m_val in months_map.items():
+        if re.search(r'\b' + m_name + r'\b', cleaned.lower()):
+            month_num = m_val
+            break
+            
+    if month_num is not None:
+        # Try to find year
+        year_match = re.search(r'\b(20\d{2})\b', cleaned)
+        year = int(year_match.group(1)) if year_match else 2026  # Default to current year 2026
+        
+        # Try to find day
+        numbers = re.findall(r'\b(\d{1,2})\b', cleaned)
+        day = 1
+        for num in numbers:
+            val = int(num)
+            if val != year and 1 <= val <= 31:
+                day = val
+                break
+        try:
+            dt = datetime.date(year, month_num, day)
+            return dt.isoformat()
+        except ValueError:
+            pass
+            
+    return None
+
+
 def extract_effective_date(text: str) -> Optional[str]:
     """Attempts to match an effective date pattern from page headings or footnotes."""
     if not text:
@@ -299,6 +380,11 @@ def extract_effective_date(text: str) -> Optional[str]:
     match = re.search(r'\bw\.e\.f\.?\s*(?:from|date)?\s*([A-Za-z0-9\.\-\/\,\s]{6,25})', text, re.IGNORECASE)
     if match:
         date_str = match.group(1).strip()
-        date_str = re.sub(r'[*#$\s]+$', '', date_str)
-        return date_str
+        return normalize_date_string(date_str)
+    
+    # Try direct date formats in the text as a backup
+    direct_normalized = normalize_date_string(text)
+    if direct_normalized:
+        return direct_normalized
+        
     return None

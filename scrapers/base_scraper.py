@@ -100,6 +100,12 @@ class BaseScraper(ABC):
             # Parse tenure bounds
             min_days, max_days = parse_tenure_range(tenure_str)
             
+            if min_days is not None and max_days is not None and min_days > max_days:
+                msg = f"Row {idx} ({tenure_str}): Rejected due to range boundary inversion (min_days {min_days} > max_days {max_days})."
+                validation_errors.append(msg)
+                self.logger.warning("row_rejected", detail=msg)
+                continue
+                
             # Check for duplicate tenures based on compound key
             normalized_tenure_str = f"{min_days}-{max_days}" if min_days is not None else tenure_str
             compound_key = (self.bank_name, normalized_tenure_str, classified["product_type"], section_name)
@@ -137,16 +143,38 @@ class BaseScraper(ABC):
                     validation_errors.append(msg)
                     self.logger.warning("validation_warning", detail=msg)
 
-        # Scrape source confidence calculation
-        base_confidence = 1.0
-        if raw_data.get("fallback_used") or raw_data.get("is_fallback"):
-            base_confidence = 0.5
-        elif raw_data.get("unstructured_fallback_used"):
-            base_confidence = 0.4
-        elif self.url.lower().endswith(".pdf"):
-            base_confidence = 0.85
+        # Group rates to detect interval overlaps (e.g., current.max_days >= next.min_days)
+        from collections import defaultdict
+        groups = defaultdict(list)
+        for r in validated_rates:
+            if r.scheme_type == "regular_fd" and r.min_days is not None and r.max_days is not None:
+                g_key = (r.product_type, r.deposit_category, r.customer_segment, r.callable)
+                groups[g_key].append(r)
+                
+        for g_key, g_rates in groups.items():
+            g_rates.sort(key=lambda x: x.min_days)
+            for i in range(len(g_rates) - 1):
+                curr = g_rates[i]
+                nxt = g_rates[i+1]
+                if curr.max_days >= nxt.min_days:
+                    anomaly_count += 1
+                    msg = f"Interval overlap detected: '{curr.tenure}' (max_days {curr.max_days}) overlaps with '{nxt.tenure}' (min_days {nxt.min_days}) for group {g_key}."
+                    validation_errors.append(msg)
+                    self.logger.warning("interval_overlap_warning", detail=msg)
 
-        scrape_confidence = max(0.1, round(base_confidence - (duplicate_count * 0.02) - (anomaly_count * 0.05), 2))
+        # Scrape source confidence calculation
+        if not validated_rates:
+            scrape_confidence = 0.0
+        else:
+            base_confidence = 1.0
+            if raw_data.get("fallback_used") or raw_data.get("is_fallback"):
+                base_confidence = 0.5
+            elif raw_data.get("unstructured_fallback_used"):
+                base_confidence = 0.4
+            elif self.url.lower().endswith(".pdf"):
+                base_confidence = 0.85
+
+            scrape_confidence = max(0.1, round(base_confidence - (duplicate_count * 0.02) - (anomaly_count * 0.05), 2))
 
         # Build full bank schema
         try:

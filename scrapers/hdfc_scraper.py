@@ -68,7 +68,15 @@ class HDFCScraper(BaseScraper):
                             if row:
                                 matrix.append(row)
                         if matrix:
-                            fallback_tables.append(matrix)
+                            heading = ""
+                            prev = table.find_previous(["h1", "h2", "h3", "h4", "h5", "h6"])
+                            if prev:
+                                heading = prev.get_text(strip=True)
+                            fallback_tables.append({
+                                "matrix": matrix,
+                                "section_name": heading or "HDFC Fallback Rates",
+                                "table_name": table.find("caption").get_text(strip=True) if table.find("caption") else "Retail Fixed Deposit Rates"
+                            })
                             
                     for t in fallback_tables:
                         parsed = LayeredExtractor.parse_extracted_table(t)

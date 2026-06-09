@@ -84,7 +84,14 @@ async def scrape_bank_task(
             validation_records[bank_name] = errors
             
             scheme_dict = validated_scheme.model_dump()
-            scheme_dict["status"] = "SUCCESS"
+            if not scheme_dict.get("fd_rates"):
+                error_msg = "Scraping yielded zero valid interest rates."
+                validation_records[bank_name].append(error_msg)
+                scheme_dict["status"] = "FAILED"
+                scheme_dict["error_reason"] = error_msg
+                logger.error("scraping_bank_failed_empty_rates", bank=bank_name)
+            else:
+                scheme_dict["status"] = "SUCCESS"
             return scheme_dict
             
         except Exception as e:

@@ -280,7 +280,14 @@ class LayeredExtractor:
         if not effective_date and section_name:
             effective_date = extract_effective_date(section_name)
 
-        # 3. Check for penalty/charges keywords in the flattened header
+        # 3. Check if recurring deposit keywords are present
+        sec_upper = section_name.upper() if section_name else ""
+        tbl_upper = table_name.upper() if table_name else ""
+        if "RECURRING DEPOSIT" in sec_upper or "RECURRING DEPOSIT" in tbl_upper:
+            logger.info("skipping_recurring_deposit_table", section=section_name, table=table_name)
+            return []
+
+        # 4. Check for penalty/charges keywords in the flattened header
         penalty_keywords = ["penalty", "penal", "charges", "fee", "fore closure"]
         header_str = " ".join(flattened_header).lower()
         if any(pk in header_str for pk in penalty_keywords):

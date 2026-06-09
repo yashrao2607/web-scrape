@@ -110,6 +110,12 @@ class BankFDScheme(BaseModel):
         if not (self.rate_effective_date or self.page_last_updated or self.last_updated_on_page):
             score -= 0.05
 
+        # Deduct for duplicates and anomalies (capped)
+        if self.duplicate_count > 0:
+            score -= min(0.40, self.duplicate_count * 0.01)
+        if self.anomaly_count > 0:
+            score -= min(0.30, self.anomaly_count * 0.05)
+
         self.validation_score = max(0.0, round(score, 2))
         return self
 
