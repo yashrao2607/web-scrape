@@ -2,7 +2,6 @@ import os from 'fs';
 import path from 'path';
 import XLSX from 'xlsx';
 import pLimit from 'p-limit';
-import { logger, logAccumulator } from './core/logger.js';
 import { PlaywrightBrowserManager } from './core/browser.js';
 import { getScraperForBank } from './scrapers/registry.js';
 import { ChangeDetector } from './core/changeDetector.js';
@@ -21,13 +20,11 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
   const bankName = bankInfo["Bank Name"];
   const url = bankInfo["FD URL"];
 
-  logger.info("scraping_bank_start", { bank: bankName, url });
 
   const ScraperCls = getScraperForBank(bankName);
   if (!ScraperCls) {
     const errorMsg = `No scraper registered for bank '${bankName}'.`;
     validationRecords[bankName] = [errorMsg];
-    logger.error("scraper_not_found", { bank: bankName, error_reason: errorMsg });
     return {
       bank_name: bankName,
       source_url: url,
@@ -42,7 +39,6 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
     try {
       await browserManager.navigateTo(page, url);
     } catch (navErr) {
-      logger.warn("navigation_failed_attempting_scraper_fallback", { bank: bankName, error: navErr.message });
     }
 
     const scraper = new ScraperCls(bankName, url);
@@ -57,7 +53,6 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
       validationRecords[bankName].push(errorMsg);
       validatedScheme.status = "FAILED";
       validatedScheme.error_reason = errorMsg;
-      logger.error("scraping_bank_failed_empty_rates", { bank: bankName });
     } else {
       validatedScheme.status = "SUCCESS";
     }
@@ -66,7 +61,6 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
   } catch (e) {
     const errorMsg = `Scraping failed with exception: ${e.message}`;
     validationRecords[bankName] = [errorMsg];
-    logger.error("scraping_bank_failed", { bank: bankName, error_reason: errorMsg });
     return {
       bank_name: bankName,
       source_url: url,
@@ -83,7 +77,6 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
 }
 
 async function main() {
-  logger.info("starting_scraping_pipeline");
 
   // 1. Initialize input file containing all 12 banks
   const inputDir = path.dirname(INPUT_EXCEL_PATH);
@@ -110,7 +103,6 @@ async function main() {
   const ws = XLSX.utils.aoa_to_sheet(wsData);
   XLSX.utils.book_append_sheet(wb, ws, "Banks");
   XLSX.writeFile(wb, INPUT_EXCEL_PATH);
-  logger.info("initialized_input_excel_with_12_banks", { path: INPUT_EXCEL_PATH });
 
   // 2. Read banks list from Excel
   let banksList = [];
@@ -120,11 +112,9 @@ async function main() {
     const worksheet = workbook.Sheets[sheetName];
     banksList = XLSX.utils.sheet_to_json(worksheet);
   } catch (e) {
-    logger.error("failed_to_read_input_excel", { error: e.message });
     process.exit(1);
   }
 
-  logger.info("loaded_banks_from_excel", { count: banksList.length });
 
   // 3. Setup Playwright browser manager
   const browserManager = new PlaywrightBrowserManager(true);
@@ -199,13 +189,8 @@ async function main() {
         resultsPath: OUTPUT_RESULTS_PATH,
         scraperVersion: "1.0.0"
       });
-      logger.info("db_ingest_complete", ingest);
     } catch (dbErr) {
       // DB failure is non-fatal: JSON file is the source of truth, scrape still succeeded.
-      logger.error("db_ingest_skipped_after_failure", {
-        error: dbErr.message,
-        hint: "JSON output is intact. Re-run with --skip-db to skip ingestion, or fix DB and re-ingest."
-      });
     } finally {
       await closeDb();
     }
@@ -217,22 +202,12 @@ async function main() {
   if (!skipDb) {
     try {
       const ref = await generateReferenceBanks();
-      logger.info("reference_banks_generated", ref);
     } catch (refErr) {
-      logger.warn("reference_banks_generation_failed", {
-        error: refErr.message,
-        hint: "reference-banks.js unchanged. Re-run with: node scripts/generate-reference-banks.js"
-      });
     }
   }
 
-  logger.info("scraping_pipeline_complete", { successful: successfulResults.length, total: banksList.length });
-
-  // Write accumulated logs to scrape_log.json
-  JsonWriter.writeJson(logAccumulator, OUTPUT_LOG_PATH);
 }
 
 main().catch(e => {
-  console.error("Critical pipeline failure:", e);
   process.exit(1);
 });

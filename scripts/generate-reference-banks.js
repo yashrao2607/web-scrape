@@ -138,7 +138,6 @@ function aggregateRates(rows) {
   for (const row of rows) {
     const mapping = BANK_MAPPING[row.bank_name];
     if (!mapping) {
-      console.warn(`[skip] bank '${row.bank_name}' not in BANK_MAPPING`);
       continue;
     }
     const key = mapping.key;
@@ -150,7 +149,6 @@ function aggregateRates(rows) {
 
     const bucket = assignBucket(row.tenure);
     if (!bucket) {
-      console.warn(`[skip] '${row.bank_name}' tenure '${row.tenure}' doesn't fit any bucket`);
       continue;
     }
     const rate = parseFloat(row.general_rate);
@@ -222,7 +220,6 @@ export async function generateReferenceBanks({ outputPath } = {}) {
       dbName => !aggregated[Object.entries(BANK_MAPPING).find(([k]) => k === dbName)?.[1]?.key]
     );
     if (missingBanks.length > 0) {
-      console.warn(`[warn] ${missingBanks.length} bank(s) had no data: ${missingBanks.join(', ')}`);
     }
 
     // Atomic write: write to .tmp then rename
@@ -244,13 +241,9 @@ export async function generateReferenceBanks({ outputPath } = {}) {
 if (import.meta.url === `file://${process.argv[1]}`) {
   generateReferenceBanks()
     .then(r => {
-      console.log(`✓ reference-banks.cjs generated`);
-      console.log(`  ${r.banksEmitted} banks, ${r.ratesRead} raw rate rows read`);
-      console.log(`  output: ${r.outputPath}`);
       process.exit(0);
     })
     .catch(e => {
-      console.error('✗ Failed to generate reference-banks.js:', e.message);
       process.exit(1);
     });
 }

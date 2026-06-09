@@ -11,7 +11,6 @@ const __dirname = path.dirname(__filename);
 
 export class AxisScraper extends BaseScraper {
   async scrape(page) {
-    this.logger.info("starting_axis_scrape");
     let rates = [];
     let isFallback = false;
     let pdfCapturedUrl = null;
@@ -36,23 +35,16 @@ export class AxisScraper extends BaseScraper {
 
       pdfCapturedUrl = dl.downloadUrl;
       source = dl.downloadUrl;
-      this.logger.info("axis_live_pdf_captured", {
-        url: dl.downloadUrl,
-        filename: dl.suggestedName
-      });
 
       rates = await LayeredExtractor.extractFromPdf(dl.filePath);
-      this.logger.info("axis_pdf_parsed", { rows: rates.length });
 
       // Cleanup temp PDF
       try { fs.unlinkSync(dl.filePath); } catch (e) { /* ignore */ }
     } catch (e) {
-      this.logger.warn("axis_live_click_failed", { error: e.message });
     }
 
     // 2. Fallback to local HTML if live click failed or yielded 0 rows
     if (rates.length === 0) {
-      this.logger.info("triggering_axis_local_html_fallback");
       isFallback = true;
       scrapeSource = "fallback";
       source = this.url;
@@ -109,7 +101,6 @@ export class AxisScraper extends BaseScraper {
           }
         }
       } catch (fbErr) {
-        this.logger.error("axis_local_html_fallback_failed", { error: fbErr.message });
       }
     }
 

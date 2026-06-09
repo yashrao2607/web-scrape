@@ -1,5 +1,4 @@
 import { parseTenure, extractEffectiveDate } from './normalizer.js';
-import { logger } from './logger.js';
 import fs from 'fs';
 import pdf from 'pdf-parse';
 
@@ -9,7 +8,6 @@ export class LayeredExtractor {
   static SENIOR_RATE_KEYWORDS = ["senior", "sr. citizen", "sr", "seniors", "sr citizen", "senior citizen"];
 
   static async extractFromPage(page) {
-    logger.info("level_1_semantic_table_detection");
 
     const tables = await page.evaluate(() => {
       const results = [];
@@ -278,7 +276,6 @@ export class LayeredExtractor {
     const secUpper = sectionName.toUpperCase();
     const tblUpper = tableName.toUpperCase();
     if (secUpper.includes("RECURRING DEPOSIT") || tblUpper.includes("RECURRING DEPOSIT")) {
-      logger.info("skipping_recurring_deposit_table", { section: sectionName, table: tableName });
       return [];
     }
 
@@ -286,7 +283,6 @@ export class LayeredExtractor {
     const penaltyKeywords = ["penalty", "penal", "charges", "fee", "fore closure"];
     const headerStr = flattenedHeader.join(" ").toLowerCase();
     if (penaltyKeywords.some(pk => headerStr.includes(pk))) {
-      logger.info("skipping_penalty_or_charges_table", { header: flattenedHeader });
       return [];
     }
 
@@ -301,7 +297,6 @@ export class LayeredExtractor {
     }
 
     if (tenureIdx === null || generalIdx === null) {
-      logger.warn("failed_to_match_table_headers", { header: flattenedHeader });
       return [];
     }
 
@@ -337,7 +332,6 @@ export class LayeredExtractor {
   }
 
   static async extractFromUnstructuredText(page) {
-    logger.info("level_3_4_unstructured_text_extraction");
     let textContent = "";
     try {
       textContent = await page.innerText("body");
@@ -370,7 +364,6 @@ export class LayeredExtractor {
   }
 
   static async extractFromPdf(pdfPath) {
-    logger.info("level_5_pdf_table_extraction", { path: pdfPath });
     const aggregatedRows = [];
 
     try {
@@ -466,7 +459,6 @@ export class LayeredExtractor {
         }
       }
     } catch (e) {
-      logger.error("pdf_extraction_failed", { path: pdfPath, error: e.message });
     }
 
     return aggregatedRows;

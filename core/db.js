@@ -6,7 +6,6 @@
 
 import pg from 'pg';
 import fs from 'fs';
-import { logger } from './logger.js';
 
 const { Pool } = pg;
 
@@ -155,11 +154,6 @@ export async function ingestResults({ resultsPath, scraperVersion = '1.0.0' }) {
     );
 
     await client.query('COMMIT');
-    logger.info('db_ingest_success', {
-      scrape_run_id: scrapeRunId,
-      banks: results.length,
-      rates: totalRates
-    });
     return { scrape_run_id: scrapeRunId, banks_inserted: results.length, rates_inserted: totalRates };
   } catch (e) {
     await client.query('ROLLBACK').catch(() => {});
@@ -175,7 +169,6 @@ export async function ingestResults({ resultsPath, scraperVersion = '1.0.0' }) {
         c2.release();
       }
     }
-    logger.error('db_ingest_failed', { error: e.message, scrape_run_id: scrapeRunId });
     throw e;
   } finally {
     client.release();

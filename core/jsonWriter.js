@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { logger } from './logger.js';
 
 export class JsonWriter {
   static writeJson(data, filepath) {
@@ -11,9 +10,7 @@ export class JsonWriter {
 
     try {
       fs.writeFileSync(filepath, JSON.stringify(data, null, 2), "utf-8");
-      logger.info("file_write_success", { path: filepath });
     } catch (e) {
-      logger.error("file_write_failed", { path: filepath, error: e.message });
       throw e;
     }
   }
