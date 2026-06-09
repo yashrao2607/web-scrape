@@ -511,6 +511,307 @@
     ]
   },
   {
+    "bank_name": "IndusInd Bank",
+    "url": "https://www.indusind.bank.in/in/en/personal/rates.html",
+    "rates": [
+      {
+        "tenure": "7 days to 30 days",
+        "interest_rate": 3.25,
+        "senior_citizen_interest_rate": 3.75
+      },
+      {
+        "tenure": "31 days to 45 days",
+        "interest_rate": 3.5,
+        "senior_citizen_interest_rate": 4
+      },
+      {
+        "tenure": "46 days to 60 days",
+        "interest_rate": 4.5,
+        "senior_citizen_interest_rate": 5
+      },
+      {
+        "tenure": "61 days to 90 days",
+        "interest_rate": 4.75,
+        "senior_citizen_interest_rate": 5.25
+      },
+      {
+        "tenure": "91 days to 180 days",
+        "interest_rate": 5,
+        "senior_citizen_interest_rate": 5.5
+      },
+      {
+        "tenure": "181 days to 210 days",
+        "interest_rate": 5.75,
+        "senior_citizen_interest_rate": 6.25
+      },
+      {
+        "tenure": "211 days to 269 days",
+        "interest_rate": 6,
+        "senior_citizen_interest_rate": 6.5
+      },
+      {
+        "tenure": "270 days to 364 days",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75
+      },
+      {
+        "tenure": "1 Year to below 1 Year 6 Month",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25
+      },
+      {
+        "tenure": "1 Year 6 months to below 1 Year 7 months",
+        "interest_rate": 6.9,
+        "senior_citizen_interest_rate": 7.4
+      },
+      {
+        "tenure": "1 Year 7 months to below 2 Years",
+        "interest_rate": 6.9,
+        "senior_citizen_interest_rate": 7.4
+      },
+      {
+        "tenure": "2 Years to 3 Years",
+        "interest_rate": 7,
+        "senior_citizen_interest_rate": 7.75
+      },
+      {
+        "tenure": "Above 3 Years up to below 61 Months",
+        "interest_rate": 6.65,
+        "senior_citizen_interest_rate": 7.15
+      },
+      {
+        "tenure": "61 Months and above",
+        "interest_rate": 6.5,
+        "senior_citizen_interest_rate": 7
+      },
+      {
+        "tenure": "Tax Saver (5 years)",
+        "interest_rate": 6.65,
+        "senior_citizen_interest_rate": 7.15
+      },
+      {
+        "tenure": "7 days to 14 days",
+        "interest_rate": 4.4,
+        "senior_citizen_interest_rate": 4.9
+      },
+      {
+        "tenure": "15 days to 30 days",
+        "interest_rate": 4.5,
+        "senior_citizen_interest_rate": 5
+      },
+      {
+        "tenure": "31 days to 45 days",
+        "interest_rate": 4.95,
+        "senior_citizen_interest_rate": 5.45
+      },
+      {
+        "tenure": "46 days to 60 days",
+        "interest_rate": 5.45,
+        "senior_citizen_interest_rate": 5.95
+      },
+      {
+        "tenure": "61 days to 90 days",
+        "interest_rate": 5.7,
+        "senior_citizen_interest_rate": 6.2
+      },
+      {
+        "tenure": "91 days to 120 days",
+        "interest_rate": 5.85,
+        "senior_citizen_interest_rate": 6.35
+      },
+      {
+        "tenure": "121 days to 180 days",
+        "interest_rate": 5.95,
+        "senior_citizen_interest_rate": 6.45
+      },
+      {
+        "tenure": "181 days to 210 days",
+        "interest_rate": 6.1,
+        "senior_citizen_interest_rate": 6.6
+      },
+      {
+        "tenure": "211 days to 364 days",
+        "interest_rate": 6.2,
+        "senior_citizen_interest_rate": 6.7
+      },
+      {
+        "tenure": "1 year to below 1 year 1 month",
+        "interest_rate": 6.55,
+        "senior_citizen_interest_rate": 7.05
+      },
+      {
+        "tenure": "1 year 1 month to 3 Years",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25
+      },
+      {
+        "tenure": "Above 3 years to below 61 months",
+        "interest_rate": 6.45,
+        "senior_citizen_interest_rate": 6.95
+      },
+      {
+        "tenure": "61 months and above",
+        "interest_rate": 6.35,
+        "senior_citizen_interest_rate": 6.85
+      },
+      {
+        "tenure": "7 days to 14 days",
+        "interest_rate": 4.5,
+        "senior_citizen_interest_rate": 5
+      },
+      {
+        "tenure": "15 days to 30 days",
+        "interest_rate": 4.6,
+        "senior_citizen_interest_rate": 5.1
+      },
+      {
+        "tenure": "31 days to 45 days",
+        "interest_rate": 5.05,
+        "senior_citizen_interest_rate": 5.55
+      },
+      {
+        "tenure": "46 days to 60 days",
+        "interest_rate": 5.55,
+        "senior_citizen_interest_rate": 6.05
+      },
+      {
+        "tenure": "61 days to 90 days",
+        "interest_rate": 5.8,
+        "senior_citizen_interest_rate": 6.3
+      },
+      {
+        "tenure": "91 days to 120 days",
+        "interest_rate": 5.95,
+        "senior_citizen_interest_rate": 6.45
+      },
+      {
+        "tenure": "121 days to 180 days",
+        "interest_rate": 6.05,
+        "senior_citizen_interest_rate": 6.55
+      },
+      {
+        "tenure": "181 days to 210 days",
+        "interest_rate": 6.2,
+        "senior_citizen_interest_rate": 6.7
+      },
+      {
+        "tenure": "211 days to 269 days",
+        "interest_rate": 6.3,
+        "senior_citizen_interest_rate": 6.8
+      },
+      {
+        "tenure": "270 days to 354 days",
+        "interest_rate": 6.45,
+        "senior_citizen_interest_rate": 6.95
+      },
+      {
+        "tenure": "355 days to 364 days",
+        "interest_rate": 6.6,
+        "senior_citizen_interest_rate": 7.1
+      },
+      {
+        "tenure": "1 year to below 1 year 1 month",
+        "interest_rate": 6.85,
+        "senior_citizen_interest_rate": 7.35
+      },
+      {
+        "tenure": "1 year 1 month to below 1 year 6 months",
+        "interest_rate": 6.8,
+        "senior_citizen_interest_rate": 7.3
+      },
+      {
+        "tenure": "1 year 6 months to below 1 Year 7 months",
+        "interest_rate": 7,
+        "senior_citizen_interest_rate": 7.5
+      },
+      {
+        "tenure": "1 Year 7 months to 3 Years",
+        "interest_rate": 6.95,
+        "senior_citizen_interest_rate": 7.45
+      },
+      {
+        "tenure": "Above 3 years to below 61 months",
+        "interest_rate": 6.7,
+        "senior_citizen_interest_rate": 7.2
+      },
+      {
+        "tenure": "61 months and above",
+        "interest_rate": 6.55,
+        "senior_citizen_interest_rate": 7.05
+      },
+      {
+        "tenure": "7 days to 14 days",
+        "interest_rate": 4.5,
+        "senior_citizen_interest_rate": 5
+      },
+      {
+        "tenure": "15 days to 30 days",
+        "interest_rate": 4.6,
+        "senior_citizen_interest_rate": 5.1
+      },
+      {
+        "tenure": "31 days to 45 days",
+        "interest_rate": 5.05,
+        "senior_citizen_interest_rate": 5.55
+      },
+      {
+        "tenure": "46 days to 60 days",
+        "interest_rate": 5.55,
+        "senior_citizen_interest_rate": 6.05
+      },
+      {
+        "tenure": "61 days to 90 days",
+        "interest_rate": 5.8,
+        "senior_citizen_interest_rate": 6.3
+      },
+      {
+        "tenure": "91 days to 120 days",
+        "interest_rate": 5.9,
+        "senior_citizen_interest_rate": 6.4
+      },
+      {
+        "tenure": "121 days to 180 days",
+        "interest_rate": 6.05,
+        "senior_citizen_interest_rate": 6.55
+      },
+      {
+        "tenure": "181 days to 210 days",
+        "interest_rate": 6.2,
+        "senior_citizen_interest_rate": 6.7
+      },
+      {
+        "tenure": "211 days to 354 days",
+        "interest_rate": 6.3,
+        "senior_citizen_interest_rate": 6.8
+      },
+      {
+        "tenure": "355 days to 364 days",
+        "interest_rate": 6.4,
+        "senior_citizen_interest_rate": 6.9
+      },
+      {
+        "tenure": "1 year to below 1 year 1 month",
+        "interest_rate": 6.65,
+        "senior_citizen_interest_rate": 7.15
+      },
+      {
+        "tenure": "1 year 1 month to 3 Years",
+        "interest_rate": 6.85,
+        "senior_citizen_interest_rate": 7.35
+      },
+      {
+        "tenure": "Above 3 years to below 61 months",
+        "interest_rate": 6.55,
+        "senior_citizen_interest_rate": 7.05
+      },
+      {
+        "tenure": "61 months and above",
+        "interest_rate": 6.45,
+        "senior_citizen_interest_rate": 6.95
+      }
+    ]
+  },
+  {
     "bank_name": "Yes Bank",
     "url": "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit",
     "rates": [

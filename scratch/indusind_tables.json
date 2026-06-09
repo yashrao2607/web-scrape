@@ -1,0 +1,393 @@
+[
+  {
+    "index": 0,
+    "headingText": "Domestic /NRO/ NRE/Senior Citizen Fixed Deposit Rates (all in %) w.e.f. 1st June’26",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "< 3 Cr* DOMESTIC (RESIDENT) NRE/NRO deposits < 3 Cr* (Senior Citizen) Not applicable for NRE/NRO deposits",
+      "Tenure Rate Rate"
+    ]
+  },
+  {
+    "index": 1,
+    "headingText": "Note: No interest pay-out if the deposit doesn’t complete atleast one full year for NRE FDs.",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits",
+      "*Please note the additional 0.75% over and above card rates are applicable for Term Deposits of Senior Citizens (age 60 years and above) for value below Rs. 3 Cr (Callable) (Not applicable for NRO/NRE Deposits) and tenure 2 Years to 3 Years only. For rest of the tenure, 0.50% additional benefit will be applicable."
+    ]
+  },
+  {
+    "index": 2,
+    "headingText": "Senior Citizens - Additional interest rate on Domestic Term Deposits *Please note the additional 0.7",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions",
+      "Above mentioned rates are not applicable for Call/Notice/Term Money market participants (both as lenders and borrowers). For FI & Coop Banks: Please confirm rate with Treasury at prior to any quote. Interest on Fixed Deposit can be paid for a period of less than a quarter (monthly interest payout) at the discounted interest rates as per regulatory directives. For example, For 1 year FD, basis current rate (6.75%), the discounted rate is 6.71% (The formula used is =NOMINAL(EFFECT(6.75%,4),12), i.e. 6.75% being effective rate, 4 being no’s of quarter & 12 being no’s of months (payments)) In case of High Value Deposit (>= 5 crore), the interest rate offered for the particular deposit is only valid for that day for the deposit and only for the particular tenure. In the event of Premature withdrawal before the specified tenure, the offered interest rate applicable will be the Interest rate published on the website for < 3 crore (withdrawable), if the withdrawn amount is < 3 crore else the interest rate applicable would be that of 3 < 5 crore (withdrawable) as published on the Bank’s website https://www.indusind.bank.in/ on the day of booking of the deposit. A penal interest rate charge of 1% would be applicable on premature withdrawal. However, the same is waived off for Resident Senior Citizen Fixed Deposits (<₹5Cr) with tenure 1 year or above."
+    ]
+  },
+  {
+    "index": 3,
+    "headingText": "Domestic /NRO/ NRE Fixed Deposit Rates (all in %) w.e.f. 25th Sept’2025",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "3 crore to less than 5 crores - Premature Withdrawal Allowed* Senior Citizen Rate 3 crore to less than 5 crores - Premature Withdrawal Allowed*",
+      "Tenure Rate Annualized Yield Rate Annualized Yield"
+    ]
+  },
+  {
+    "index": 4,
+    "headingText": "Note: No interest pay-out if the deposit doesn’t complete atleast one full year for NRE FDs.",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits",
+      "*Please note the additional 0.50% over and above card rates are applicable for Term Deposits of Senior Citizens (age 60 years and above) for value between Rs. 3 Cr to less than 5 Cr (callable) (Not applicable for NRO/NRE Deposits)"
+    ]
+  },
+  {
+    "index": 5,
+    "headingText": "Senior Citizens - Additional interest rate on Domestic Term Deposits *Please note the additional 0.5",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions",
+      "Above mentioned rates are not applicable for Call/Notice/Term Money market participants (both as lenders and borrowers). For FI & Coop Banks: Please confirm rate with Treasury at prior to any quote. Interest on Fixed Deposit can be paid for a period of less than a quarter (monthly interest payout) at the discounted interest rates as per regulatory directives. For example, For 1 year FD, basis current rate (6.55%), the discounted rate is 6.51% (The formula used is =NOMINAL(EFFECT(6.55%,4),12), i.e. 6.55% being effective rate, 4 being no’s of quarter & 12 being no’s of months (payments)) In case of High Value Deposit (>= 5 crore), the interest rate offered for the particular deposit is only valid for that day for the deposit and only for the particular tenure. In the event of Premature withdrawal before the specified tenure, the offered interest rate applicable will be the Interest rate published on the website for < 3 crore (withdrawable), if the withdrawn amount is < 3 crore else the interest rate applicable would be that of 3 < 5 crore (withdrawable) as published on the Bank’s website https://www.indusind.bank.in/ on the day of booking of the deposit. A penal interest rate charge of 1% would be applicable on premature withdrawal. However, the same is waived off for Resident Senior Citizen Fixed Deposits (<₹5Cr) with tenure 1 year or above."
+    ]
+  },
+  {
+    "index": 6,
+    "headingText": "Domestic /NRO/ NRE Fixed Deposit Rates (all in %) w.e.f. 25th Sept’2025",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Above 1 crore to less than 3 crores (Domestic /NRO/NRE deposits) - Premature Withdrawal Not Allowed*** Senior Citizen Rate Above 1 crore to less than 3 crores (Not applicable for NRE/NRO deposits) - Premature Withdrawal Not Allowed***",
+      "Tenure Rate Annualized Yield Rate Annualized Yield"
+    ]
+  },
+  {
+    "index": 7,
+    "headingText": "Note: No interest pay-out if the deposit doesn’t complete atleast one full year for NRE FDs.",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits",
+      "*Please note the additional 0.50% over and above card rates are applicable for Term Deposits of Senior Citizens (age 60 years and above) for value between Rs.1 Cr to less than 3 Cr(Non-Callable) (Not applicable for NRO/NRE Deposits)"
+    ]
+  },
+  {
+    "index": 8,
+    "headingText": "Senior Citizens - Additional interest rate on Domestic Term Deposits *Please note the additional 0.5",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions",
+      "Above mentioned rates are not applicable for Call/Notice/Term Money market participants (both as lenders and borrowers). For FI & Coop Banks: Please confirm rate with Treasury at prior to any quote. Interest on Fixed Deposit can be paid for a period of less than a quarter (monthly interest payout) at the discounted interest rates as per regulatory directives. For example, For 1 year FD, basis current rate (6.85%), the discounted rate is 6.81% (The formula used is =NOMINAL(EFFECT(6.85%,4),12), i.e. 6.85% being effective rate, 4 being no’s of quarter & 12 being no’s of months (payments)) In case of High Value Deposit (>= 5 crore), the interest rate offered for the particular deposit is only valid for that day for the deposit and only for the particular tenure. In the event of Premature withdrawal before the specified tenure, the offered interest rate applicable will be the Interest rate published on the website for < 3 crore (withdrawable), if the withdrawn amount is < 3 crore else the interest rate applicable would be that of 3 < 5 crore (withdrawable) as published on the Bank’s website https://www.indusind.bank.in/ on the day of booking of the deposit. A penal interest rate charge of 1% would be applicable on premature withdrawal. However, the same is waived off for Resident Senior Citizen Fixed Deposits (<₹5Cr) with tenure 1 year or above."
+    ]
+  },
+  {
+    "index": 9,
+    "headingText": "Domestic /NRO/ NRE Fixed Deposit Rates (all in %) w.e.f. 25th Sept’2025",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "3 crore to less than 5 crores (Domestic /NRO/NRE deposits) - Premature Withdrawal Not Allowed*** Senior Citizen Rate 3 crore to less than 5 crores (Not applicable for NRE/NRO deposits) - Premature Withdrawal Not Allowed***",
+      "Tenure Rate Annualized Yield Rate Annualized Yield"
+    ]
+  },
+  {
+    "index": 10,
+    "headingText": "Note: No interest pay-out if the deposit doesn’t complete atleast one full year for NRE FDs.",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Senior Citizens - Additional interest rate on Domestic Term Deposits",
+      "*Please note the additional 0.50% over and above card rates are applicable for Term Deposits of Senior Citizens (age 60 years and above) for value between Rs. 3 Cr to less than 5 Cr (Non-Callable) (Not applicable for NRO/NRE Deposits)"
+    ]
+  },
+  {
+    "index": 11,
+    "headingText": "Senior Citizens - Additional interest rate on Domestic Term Deposits *Please note the additional 0.5",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Method of Calculation of Interest, Penalty on Premature Withdrawal and Other Terms & Conditions",
+      "Above mentioned rates are not applicable for Call/Notice/Term Money market participants (both as lenders and borrowers). For FI & Coop Banks: Please confirm rate with Treasury at prior to any quote. Interest on Fixed Deposit can be paid for a period of less than a quarter (monthly interest payout) at the discounted interest rates as per regulatory directives. For example, For 1 year FD, basis current rate (6.65%), the discounted rate is 6.61% (The formula used is =NOMINAL(EFFECT(6.65%,4),12), i.e. 6.65% being effective rate, 4 being no’s of quarter & 12 being no’s of months (payments)) In case of High Value Deposit (>= 5 crore), the interest rate offered for the particular deposit is only valid for that day for the deposit and only for the particular tenure. In the event of Premature withdrawal before the specified tenure, the offered interest rate applicable will be the Interest rate published on the website for < 3 crore (withdrawable), if the withdrawn amount is < 3 crore else the interest rate applicable would be that of 3 < 5 crore (withdrawable) as published on the Bank’s website https://www.indusind.bank.in/ on the day of booking of the deposit. A penal interest rate charge of 1% would be applicable on premature withdrawal. However, the same is waived off for Senior Citizen Fixed Deposits (<₹5Cr) with tenure 1 year or above."
+    ]
+  },
+  {
+    "index": 12,
+    "headingText": "Interest Rates on RECURRING DEPOSITS w.e.f. 1st June’26",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Tenure Interest Rates p.a. (%) Senior Citizen Rates p.a. (%)",
+      "09 Months 6.25 6.75"
+    ]
+  },
+  {
+    "index": 13,
+    "headingText": "FCNR / RFC* Deposits - w.e.f. 5th May 2026",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Period / Currency USD < 1 Mio USD 1 Mio < 10 Mio USD 10 Mio < 25 Mio USD 25 Mio & Above GBP EUR JPY CAD AUD",
+      "1yr < 2 yrs 4.50 4.60 4.60 4.60 4.40 2.60 0.01 2.65 4.80"
+    ]
+  },
+  {
+    "index": 14,
+    "headingText": "GIFT City IBU Term Deposit Rates (<1Mio) w.e.f. 23rd Apr 2026",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": []
+  },
+  {
+    "index": 15,
+    "headingText": "GIFT City IBU Term Deposit Rates (<1Mio) w.e.f. 23rd Apr 2026",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "IBU RATE < 1 Mio USD EURO GBP",
+      "TENURE CALLABLE CALLABLE CALLABLE"
+    ]
+  },
+  {
+    "index": 16,
+    "headingText": "IBU RATE < 1 Mio USD EURO GBP TENURE CALLABLE CALLABLE CALLABLE 7 days to 14 days 3.50% 1.70% 3.50% ",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "IBU RATE < 1 Mio USD EURO GBP",
+      "TENURE NON CALLABLE NON CALLABLE NON CALLABLE"
+    ]
+  },
+  {
+    "index": 17,
+    "headingText": "Savings Bank Account Interest Rates",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Savings Bank Account Interest Rates Domestic / Non Resident (NRO/NRE) Rate p.a. w.e.f. 1st March 2026",
+      "Daily balance upto Rs. 1 Lakh 2.50%"
+    ]
+  },
+  {
+    "index": 18,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Savings Account Amount Slabs Rate p.a. w.e.f. 27th March 2026",
+      "*Above 1400 Cr up to 2000 Cr OVERNIGHT MIBOR p.a.*"
+    ]
+  },
+  {
+    "index": 19,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Indus Global Savings Account USD Rate p.a w.e.f 5th May 2026",
+      "<=1 Mio 4.25%"
+    ]
+  },
+  {
+    "index": 20,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Indus Global Savings Account GBP Rate p.a. w.e.f. 30th Dec 2024",
+      "< =10 Mio 2.75%"
+    ]
+  },
+  {
+    "index": 21,
+    "headingText": "MCLR Rate",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "MCLR Benchmark MCLR (%)",
+      "Overnight 9.65%"
+    ]
+  },
+  {
+    "index": 22,
+    "headingText": "Base Rate",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Base Rate 9.75% p.a. with effect from Mar 03, 2026"
+    ]
+  },
+  {
+    "index": 23,
+    "headingText": "BPL Rate",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Benchmark PLR 20.60% p.a. with effect from 19th October 2015."
+    ]
+  },
+  {
+    "index": 24,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "As on 09-06-2026 (Major Currencies)",
+      "Currency Description TT Buy TT Sell Fx Card / TC Buy Fx Card / TC Sell Cash Buy Cash Sell Bills Buy Bills Sell"
+    ]
+  },
+  {
+    "index": 25,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "New Min % Max % Mean %"
+    ]
+  },
+  {
+    "index": 26,
+    "headingText": "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026 New Min % Max % Mean ",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "Category Min % Max % Mean %"
+    ]
+  },
+  {
+    "index": 27,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "New Min % Max % Mean %"
+    ]
+  },
+  {
+    "index": 28,
+    "headingText": "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026 New Min % Max % Mean ",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "The minimum and maximum and mean rate - Individuals - 01-01-2026 To 31-03-2026",
+      "Category Min % Max % Mean %"
+    ]
+  },
+  {
+    "index": 29,
+    "headingText": "Line of Credit",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Interest Rate – Q4 2025-26",
+      "Minimum 9.99%"
+    ]
+  },
+  {
+    "index": 30,
+    "headingText": "Line of Credit",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Annual Percentage Rate (FY25-26)*",
+      "Minimum 10.00%"
+    ]
+  },
+  {
+    "index": 31,
+    "headingText": "Line of Credit",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Interest Rate Q4 2025-26",
+      "Minimum 13.00%"
+    ]
+  },
+  {
+    "index": 32,
+    "headingText": "Line of Credit",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Annual Percentage Rate FY26",
+      "Minimum 13.00%"
+    ]
+  },
+  {
+    "index": 33,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Interest Rate – Q4 2025-2026",
+      "Minimum IRR % 12.00%"
+    ]
+  },
+  {
+    "index": 34,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Interest Rate Q4 2025-26",
+      "Minimum 13.00%"
+    ]
+  },
+  {
+    "index": 35,
+    "headingText": "",
+    "tagName": "TABLE",
+    "isVisible": false,
+    "display": "table",
+    "headers": [
+      "Annual Percentage Rate FY26",
+      "Minimum 13.00%"
+    ]
+  }
+]

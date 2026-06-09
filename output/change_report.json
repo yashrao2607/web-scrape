@@ -36,6 +36,13 @@
     "metadata_changes": []
   },
   {
+    "bank": "IndusInd Bank",
+    "changes_detected": true,
+    "event": "new_bank_added",
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
     "bank": "Yes Bank",
     "changes_detected": false,
     "rate_changes": [],
