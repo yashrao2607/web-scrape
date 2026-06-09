@@ -7,7 +7,7 @@ import { PlaywrightBrowserManager } from './core/browser.js';
 import { getScraperForBank } from './scrapers/registry.js';
 import { ChangeDetector } from './core/changeDetector.js';
 import { JsonWriter } from './core/jsonWriter.js';
-import { insertScrapedData, pool } from './core/postgres.js';
+import { saveScrapedDataToDb, sequelize } from './core/postgres.js';
 
 const CONCURRENCY_LIMIT = 5;
 const INPUT_EXCEL_PATH = "input/banks.xlsx";
@@ -169,24 +169,24 @@ async function main() {
 
   logger.info("scraping_pipeline_complete", { successful: successfulResults.length, total: banksList.length });
 
-  // Write to PostgreSQL database
+  // Write to PostgreSQL database using Sequelize
   try {
-    logger.info("writing_scraped_data_to_postgres");
-    const rowId = await insertScrapedData(simplifiedResults);
-    logger.info("postgres_write_success", { rowId });
+    logger.info("writing_scraped_data_to_postgres_sequelize");
+    await saveScrapedDataToDb(simplifiedResults);
+    logger.info("postgres_sequelize_write_success");
   } catch (dbErr) {
-    logger.error("postgres_write_failed", { error: dbErr.message });
+    logger.error("postgres_sequelize_write_failed", { error: dbErr.message });
   }
 
   // Write accumulated logs to scrape_log.json
   JsonWriter.writeJson(logAccumulator, OUTPUT_LOG_PATH);
 
-  // Close PostgreSQL pool connections
+  // Close Sequelize connection pool
   try {
-    await pool.end();
-    logger.info("postgres_pool_closed_successfully");
+    await sequelize.close();
+    logger.info("postgres_sequelize_pool_closed_successfully");
   } catch (dbEndErr) {
-    logger.error("failed_to_close_postgres_pool", { error: dbEndErr.message });
+    logger.error("failed_to_close_postgres_sequelize_pool", { error: dbEndErr.message });
   }
 }
 
