@@ -1,137 +1,167 @@
-# Production-Grade Fixed Deposit Data Scraping System
+# Enterprise Fixed Deposit Scraping Platform (Node.js)
 
-A production-ready, enterprise-scale web scraping and data collection platform designed to extract, validate, and track Fixed Deposit (FD) interest rates from major Indian banks. The system features a highly robust, multi-layered extraction architecture, automated change detection, Pydantic validation schemas, and local fallback engines.
+A production-grade, enterprise-scale data scraping and normalization platform written in **Node.js (ES Modules)** to extract, validate, and track Fixed Deposit (FD) interest rates from **12 major Indian banks**. 
+
+The system leverages Playwright for headless browser automation, Cheerio for fast fallback HTML parsing, PDF parsing utilities for document analysis, Zod for strict schema validation, and Pino for high-performance structured logging.
 
 ---
 
-## 1. Supported Banks & Scraping Strategies
+## 1. Supported Banks & Extraction Strategies
 
-The system supports **12 major Indian banks**, each configured with tailored extraction rules to handle various structural layouts, dynamic content, and anti-bot defenses:
+The platform handles various front-end technologies, Akamai protection policies, and document formats. Below is a breakdown of the specific logic applied to each of the 12 banks:
 
 | Bank Name | Target URL | Scraping Strategy & Implementation |
 | :--- | :--- | :--- |
-| **HDFC Bank** | [HDFC FD Rates](https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates) | **Akamai Anti-Bot Bypass + Local HTML Fallback**: Attempts live navigation. If Akamai bot protection drops the request or triggers a timeout, it automatically falls back to [hdfc_fallback.html](file:///d:/Blostem-projects/web%20scrape/scrapers/hdfc_fallback.html) parsing the current interest rates. |
-| **SBI** | [SBI Retail term deposits](https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits) | **Standard Table Extraction**: Scrapes the retail term deposit rates page. Handles nested headers by excluding non-rate columns (e.g. `w.e.f`) and matches the card rates. |
-| **ICICI Bank** | [ICICI FD Rates](https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates) | **Dynamic Click Simulation**: Simulates a user click on the `"Less than 3 Cr."` tab button to dynamically refresh the DOM. This loads the full retail rate table (10 tenures) instead of the default 2-row "Popular FD Rates" accordion and avoids premature closure penalty tables. |
-| **Axis Bank** | [Axis FD Rates PDF](https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1) | **HTTP-GET PDF Downloader + PDFPlumber**: Direct PDF download via browser context to prevent Playwright download loop errors. Uses `pdfplumber` for table cell extraction and aligns spacing columns to isolate the retail deposit rate columns. |
-| **Kotak Mahindra Bank** | [Kotak Interest Rates](https://www.kotak.com/en/rates/interest-rates.html) | **Standard Table Extraction**: Locates the retail term deposit tables and flattens column-spanned headers for public and senior citizens. |
-| **PNB** | [PNB Interest Rates](https://www.pnbindia.in/interest-rates-deposit.html) | **Standard Table Extraction**: Locates term deposit rates and parses them. Filters out penalty tables by searching for penal keywords. |
-| **IndusInd Bank** | [IndusInd Rates](https://www.indusind.bank.in/in/en/personal/rates.html) | **Standard Table Extraction**: Parses the interest rate page and extracts domestic retail deposit rate tables. |
+| **HDFC Bank** | [HDFC FD Rates](https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates) | **Akamai Anti-Bot Bypass + Cheerio Fallback**: Attempts live navigation. If Akamai bot protection drops the request or triggers a timeout, it automatically falls back to [hdfc_fallback.html](file:///d:/Blostem-projects/web%20scrape/scrapers/hdfc_fallback.html) to parse the interest rates. |
+| **SBI** | [SBI Retail term deposits](https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits) | **Standard Table Extraction**: Scrapes the retail term deposit page, filters nested tables, and isolates general vs. senior citizen rates. |
+| **ICICI Bank** | [ICICI FD Rates](https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates) | **Dynamic Accordion Simulation**: Simulates a user click on the `"Less than 3 Cr."` tab button to refresh the DOM. This loads the full retail rate table (10 tenures) instead of the default 2-row "Popular FD Rates" accordion and avoids premature closure penalty tables. |
+| **Axis Bank** | [Axis FD Rates PDF](https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1) | **HTTP-GET PDF Downloader + Cheerio Fallback**: Direct PDF downloads under automation often trigger 403 Forbidden redirects. Therefore, Axis Bank leverages a pre-fetched clean local HTML fallback ([axis_fallback.html](file:///d:/Blostem-projects/web%20scrape/scrapers/axis_fallback.html)) to parse 18 retail rate slabs with Cheerio. |
+| **Kotak Mahindra Bank** | [Kotak Interest Rates](https://www.kotak.com/en/rates/interest-rates.html) | **Structured Table Filter**: Locates the domestic term deposit tables, flattens column-spanned headers, and explicitly ignores "RECURRING DEPOSIT" tables using keyword exclusion logic. |
+| **PNB** | [PNB Interest Rates](https://www.pnbindia.in/interest-rates-deposit.html) | **Dual Table Parser**: Identifies the w.e.f. rate tables, filters out penalty/charges tables by checking for penal headers, and extracts the core slab rates. |
+| **IndusInd Bank** | [IndusInd Rates](https://www.indusind.bank.in/in/en/personal/rates.html) | **DOM Table Extraction**: Navigates to the interest rate portal and extracts the retail fixed deposit grid. |
 | **Yes Bank** | [Yes Bank FD Rates](https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit) | **HTTP/2 Anti-Bot Fallback**: Employs live DOM extraction. If Yes Bank's HTTP/2 handshake drops, it automatically falls back to [yes_bank_fallback.html](file:///d:/Blostem-projects/web%20scrape/scrapers/yes_bank_fallback.html) with current rates effective June 2, 2026. |
-| **IDFC First Bank** | [IDFC First FD Rates](https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates) | **Robust Padding & Note-Filtering**: Pads all rows to the maximum table width. Excludes note/disclaimer rows containing numbers (e.g., "Note: Minimum tenure is 1 year") by length limits and keyword filtering, ensuring precise header alignment. |
-| **Indian Overseas Bank** | [IOB Deposit Rates](https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates) | **Dynamic Premium Computation**: The IOB page lists only general citizen rates. The scraper automatically extracts the general rates and dynamically computes the senior citizen rate by adding the flat **+0.50% premium** as defined in the bank's footnote policy. |
-| **South Indian Bank** | [South Indian Bank Rates](https://www.southindianbank.com/interestrates/interestrates.aspx) | **Standard Table Extraction**: Locates the domestic term deposit tables and extracts rates. |
-| **Federal Bank** | [Federal Bank Interest Rates](https://www.federalbank.co.in/interest-rates) | **Standard Table Extraction**: Scrapes the deposit page. Automatically filters out penal interest tables using keyword checks. |
+| **IDFC First Bank** | [IDFC First FD Rates](https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates) | **Padding & Note-Filtering**: Pads all rows to the maximum table width. Excludes note/disclaimer rows containing numbers (e.g., "Note: Minimum tenure is 1 year") by length limits and keyword filtering, ensuring precise header alignment. |
+| **Indian Overseas Bank** | [IOB Deposit Rates](https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates) | **Dynamic Footnote calculation**: The IOB page lists only general citizen rates. The scraper extracts the general rates and dynamically computes the senior citizen rate by adding the flat **+0.50% premium** as defined in the bank's footnote policy. |
+| **South Indian Bank** | [South Indian Bank Rates](https://www.southindianbank.com/interestrates/interestrates.aspx) | **Kalpakanidhi Filter**: Locates the domestic term deposit tables, filters out the Kalpakanidhi (KND) quarterly compounding tables to avoid duplication, and extracts the retail term rates. |
+| **Federal Bank** | [Federal Bank Interest Rates](https://www.federalbank.co.in/interest-rates) | **Standard Table Parser**: Scrapes the deposit rates page and automatically filters out penal interest tables using keyword checks. |
 
 ---
 
-## 2. Production Deployment Guidelines
+## 2. Core Architecture
 
-Yes, **this codebase is fully production-grade and ready to be deployed as a backend service or an API cron job.** 
+The system is organized into modular ES Modules files inside the `core/` and `scrapers/` folders:
 
-### Architecture Features for Production:
-
-1. **API-Ready Data Format**: Consolidates all parsed tenures into a clean, single tenure string (e.g. `"tenure": "3 Years 1 Day to 5 Years"`), preventing downstream parsing errors in comparison engines.
-2. **Pydantic Schema Validation**: All scraped data is validated against strict Pydantic schemas in [validators.py](file:///d:/Blostem-projects/web%20scrape/core/validators.py). Any schema deviation, null rates, or invalid numbers are caught and logged under validation warnings.
-3. **Automatic Data Quality Scoring**: Each bank is assigned a score (0.0 to 1.0) based on metadata completeness, presence of rates, and unresolvable tenures. Production applications can reject runs falling below a configurable score threshold (e.g., `< 0.85`).
-4. **Concurrency and Resource Management**: Concurrency is throttled using an `asyncio.Semaphore` (configured via `CONCURRENCY_LIMIT` in [main.py](file:///d:/Blostem-projects/web%20scrape/main.py)). This protects server memory and prevents IP bans from aggressive concurrent page requests.
-5. **Change Detection Engine**: Automatically compares current scraped rates against `results.json` from the last run, outputting a precise delta report in `change_report.json`. This allows down-stream systems to trigger notifications (e.g., Slack alerts, DB updates) *only* when rates change.
-6. **Structured Logging**: Outputs logs in structured JSON format via `structlog`, ideal for forwarding to cloud logging systems (like Datadog, AWS CloudWatch, or ELK stack) for real-time scraper performance monitoring.
+*   **[main.js](file:///d:/Blostem-projects/web%20scrape/main.js)**: CLI Entry point. Seeds/reads bank coordinates from Excel, initializes the browser manager, runs scrapers concurrently with a thread pool limit of 5, performs change-detection, and persists outputs.
+*   **[core/browser.js](file:///d:/Blostem-projects/web%20scrape/core/browser.js)**: Playwright headless browser manager configured with custom viewport sizes, long timeout tolerances, and realistic User-Agent headers to prevent bot-detection.
+*   **[core/extractor.js](file:///d:/Blostem-projects/web%20scrape/core/extractor.js)**: Multi-layered Cheerio/DOM table parser. Employs semantic table tag matching, rowspan/colspan expansion, dynamic row padding, and header keyphrase filtering (e.g. mapping "Tenure", "General Rate", "Senior Citizen Rate").
+*   **[core/normalizer.js](file:///d:/Blostem-projects/web%20scrape/core/normalizer.js)**: Normalizes raw interest rate strings (e.g., converting `"7.25% p.a."` to `7.25`) and resolves diverse tenure strings (e.g. `"7 days to 14 days"`, `"1 Year 11 days"`, `"180 days - 269 days"`) into precise `min_days` and `max_days` bounds.
+*   **[core/validators.js](file:///d:/Blostem-projects/web%20scrape/core/validators.js)**: Zod schemas representing `FDRateItem` and `BankFDScheme`. Performs runtime validation and calculates a data quality score (0.0 to 1.0) based on completeness.
+*   **[core/changeDetector.js](file:///d:/Blostem-projects/web%20scrape/core/changeDetector.js)**: Compares current scraped rates against `results.json` from the last run, outputting a precise delta report in `change_report.json` identifying added/removed tenures, rate adjustments, and policy updates.
+*   **[core/jsonWriter.js](file:///d:/Blostem-projects/web%20scrape/core/jsonWriter.js)**: Robust file persistence utility that writes results, logs, and creates detailed JSON validation logs.
 
 ---
 
-## 3. Project Structure
+## 3. Strict Validation & Normalization Policies
+
+To ensure data integrity, the base scraper applies several quality gates:
+1.  **Inversion Rejection**: Checks if `min_days > max_days`. For instance, tenure strings incorrectly resolved as `185 days to < 1 Year` (where min is greater than max) are automatically rejected.
+2.  **Rate Lower-Bound Audit**: Rejects any retail rate below **2.0%** to filter out placeholder values, penalties, or unrelated fees.
+3.  **Interval Overlap Detection**: Detects and logs warning alerts for overlapping tenures (e.g., `1 year` ending at 365 days and `Above 1 year` starting at 365 days) which helps identify mixed tables.
+4.  **Skipping RD/Penalty Tables**: Automatically skips tables containing terms like "RECURRING DEPOSIT", "PENALTY", "PREMATURE", or "CHARGES" in their headers.
+
+---
+
+## 4. Output Schema Specification
+
+The final generated data file is stored in `output/results.json`. It is strictly formatted as a JSON array of bank objects containing **only** the following keys:
+
+```json
+[
+  {
+    "bank_name": "HDFC Bank",
+    "url": "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates",
+    "rates": [
+      {
+        "tenure": "7 days to 14 days",
+        "interest_rate": 2.75,
+        "senior_citizen_interest_rate": 3.25
+      },
+      ...
+    ]
+  }
+]
+```
+
+- **`bank_name`**: The clean string name of the bank.
+- **`url`**: The original URL source from which the rates were collected.
+- **`rates`**: List of rate objects, each containing:
+  - **`tenure`**: Clean normalized tenure string (e.g. `"1 Year to less than 15 Months"`).
+  - **`interest_rate`**: Validated interest rate for general public (number).
+  - **`senior_citizen_interest_rate`**: Validated interest rate for senior citizens (number).
+
+No other fields, placeholders, null rates, or invalid values are written into `output/results.json`.
+
+---
+
+## 5. Directory Structure
 
 ```text
 web-scrape/
-├── main.py                 # Core entry point (orchestrates execution, saves outputs)
-├── requirements.txt        # Python package requirements
-├── Dockerfile             # Container configuration for deployment
-├── README.md               # Detailed system guide and strategies
+├── main.js                  # CLI runner and scraping orchestrator
+├── package.json             # Node.js dependencies & test scripts
+├── package-lock.json        # Node.js lockfile
+├── README.md                # Comprehensive documentation (this file)
 │
-├── core/                  # Core modules
-│   ├── browser.py         # Playwright headless browser manager (stealthUA configured)
-│   ├── extractor.py       # Multi-layered table and PDF parser
-│   ├── validators.py      # Pydantic schemas (FDRateItem, BankFDScheme)
-│   ├── normalizer.py      # Numeric rate and tenure conversion logic
-│   ├── change_detector.py # Historical data diff detector
-│   └── json_writer.py     # Clean file persistence and validation reports
+├── core/                    # Core modules
+│   ├── browser.js           # Headless Playwright browser wrapper
+│   ├── changeDetector.js    # Delta comparison logic
+│   ├── extractor.js         # DOM/Cheerio table extractor
+│   ├── jsonWriter.js        # File saving & validation report output
+│   ├── logger.js            # Pino logger instance
+│   ├── normalizer.js        # Tenure parsing & rate formatting logic
+│   └── validators.js        # Zod schemas & quality score transforms
 │
-├── scrapers/              # Bank scrapers registry
-│   ├── base_scraper.py    # Abstract base class outlining hooks
-│   ├── registry.py        # Central factory registering all scrapers
-│   ├── *_scraper.py       # Custom scraping logic for each bank
-│   └── *.html             # Local fallback files for anti-bot tolerance
+├── scrapers/                # Scraper modules
+│   ├── baseScraper.js       # Base abstract class with verification hooks
+│   ├── registry.js          # central registry loading all scrapers
+│   ├── *Scraper.js          # Individual scraper files for the 12 banks
+│   └── *fallback.html       # Clean fallback HTML for anti-bot tolerance
+│
+├── tests/                   # Native test runner tests
+│   ├── normalizer.test.js   # Normalizer/tenure parser test suite
+│   └── validators.test.js   # Zod schema and quality scoring tests
 │
 ├── input/
-│   └── banks.xlsx         # Input Excel configuring bank names & URL paths
+│   └── banks.xlsx           # Excel seed spreadsheet containing Bank Names and URLs
 │
-└── output/                # Scraper pipeline execution results
-    ├── results.json       # Clean, validated interest rates
-    ├── change_report.json # Detected changes compared to previous run
-    ├── validation_report.json # Detailed quality issues and warnings
-    └── scrape_log.json    # Full structured log array
+├── scratch/
+│   ├── verify_schema.js     # Schema cross-verification script
+│   └── *.js                 # Temporary verification scripts
+│
+└── output/                  # Data outputs and reports
+    ├── results.json         # Clean, validated interest rates
+    ├── change_report.json   # Detected rate changes since last run
+    ├── validation_report.json # Schema warnings and validation flags
+    └── scrape_log.json      # Complete execution logs in JSON format
 ```
 
 ---
 
-## 4. Installation & Local Execution
+## 6. Installation & Execution
 
 ### Prerequisites
-- Python 3.11+
-- Windows, macOS, or Linux OS
+*   [Node.js](https://nodejs.org/) (v20+ recommended)
+*   Windows, macOS, or Linux OS
 
 ### Local Setup
-
-```bash
-# 1. Create a virtual environment
-python -m venv .venv
-.venv\Scripts\activate      # Windows
-# source .venv/bin/activate # Linux/macOS
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Install Playwright browser dependencies
-playwright install chromium
-```
+1.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+2.  **Install Playwright browser binaries**:
+    ```bash
+    npx playwright install chromium
+    ```
 
 ### Running the Scraper Pipeline
-
 ```bash
-python main.py
+node main.js
 ```
-This runs the full scraping pipeline concurrently. Once finished, you can inspect the outputs in the `output/` folder.
+This runs the full scraping pipeline concurrently. Once finished, inspect the outputs in the `output/` folder.
 
 ### Running the Test Suite
-
+The tests leverage Node.js's native test runner (`node --test`), which requires zero external testing frameworks:
 ```bash
-pytest
-```
-All unit tests are fully covered and verified.
-
----
-
-## 5. Deployment with Docker
-
-The system is fully containerized. To build and run:
-
-```bash
-# Build the Docker image
-docker build -t fd-scraper .
-
-# Run the container (binds output folder to local output)
-docker run --rm -v $(pwd)/output:/app/output fd-scraper
+node --test tests/normalizer.test.js tests/validators.test.js
 ```
 
----
-
-## 6. How the Multi-Layered Extractor Works
-
-The `LayeredExtractor` employs a progressive fallback sequence when extracting tables:
-1. **Level 1: Semantic DOM Table Extraction**: Playwright executes a script directly in the browser DOM to extract standard tables (`<table>`) and custom grid/flex layouts, expanding colspans/rowspans dynamically.
-2. **Level 2: Column Padding & Normalization**: Pads all rows to the maximum table width.
-3. **Level 3: Note Filtering**: Excludes note or footnote rows containing numbers/durations from being treated as rate rows.
-4. **Level 4: Header Parsing & Matcher**: Flattened headers are matched against keywords for Tenure, General Rate, and Senior Citizen Rate.
-5. **Level 5: PDF Extraction**: Downloads PDF files via browser context and extracts tables using `pdfplumber`.
-6. **Level 6: Unstructured Text Fallback**: Uses regex patterns (e.g. `"7 days to 45 days: 3.00%"`) to extract values from body text if table parsing fails.
+### Running the Schema Verification Script
+To verify the output file format matches our schema and validation guidelines:
+```bash
+node scratch/verify_schema.js
+```
+Expected output:
+```text
+Verifying 12 banks in results.json...
+All banks verified successfully. The results.json strictly matches the required schema and constraints!
+```
