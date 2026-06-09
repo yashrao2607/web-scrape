@@ -20,6 +20,28 @@ export class IndusIndScraper extends BaseScraper {
       }
     }
 
+    // Filter out older historical FD tables if multiple effective dates are present
+    const fdRates = rates.filter(r => 
+      r.section_name && 
+      (r.section_name.toLowerCase().includes("fixed deposit") || r.section_name.toLowerCase().includes("term deposit"))
+    );
+    
+    const fdDates = fdRates
+      .map(r => r.rate_effective_date)
+      .filter(d => d && /^\d{4}-\d{2}-\d{2}$/.test(d));
+      
+    if (fdDates.length > 0) {
+      fdDates.sort();
+      const latestFdDate = fdDates[fdDates.length - 1];
+      this.logger.info("filtering_historical_indusind_fd_tables", { latest_date: latestFdDate });
+      rates = rates.filter(r => {
+        const isFd = r.section_name && 
+          (r.section_name.toLowerCase().includes("fixed deposit") || r.section_name.toLowerCase().includes("term deposit"));
+        if (!isFd) return true;
+        return r.rate_effective_date === latestFdDate;
+      });
+    }
+
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);
     }

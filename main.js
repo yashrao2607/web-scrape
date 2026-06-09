@@ -144,15 +144,31 @@ async function main() {
   const successfulResults = results.filter(r => r && r.status === "SUCCESS");
 
   // Map to simplified schema containing only: bank_name, url, rates (tenure, interest_rate, senior_citizen_interest_rate)
-  const simplifiedResults = successfulResults.map(bank => ({
-    bank_name: bank.bank_name,
-    url: bank.source_url,
-    rates: bank.fd_rates.map(r => ({
-      tenure: r.tenure,
-      interest_rate: r.general_rate,
-      senior_citizen_interest_rate: r.senior_citizen_rate
-    }))
-  }));
+  const simplifiedResults = successfulResults.map(bank => {
+    // Apply strict filtering to keep only standard, callable, regular resident retail FD rates
+    let filteredRates = (bank.fd_rates || []).filter(r => 
+      r.product_type === "retail_fd" &&
+      r.deposit_category === "regular" &&
+      (r.customer_segment === "resident" || r.customer_segment === "mixed") &&
+      r.callable === true &&
+      r.scheme_type === "regular_fd"
+    );
+
+    // Fall back to all rates if the filtered list is empty to prevent wiping out data for other banks
+    if (filteredRates.length === 0) {
+      filteredRates = bank.fd_rates || [];
+    }
+
+    return {
+      bank_name: bank.bank_name,
+      url: bank.source_url,
+      rates: filteredRates.map(r => ({
+        tenure: r.tenure,
+        interest_rate: r.general_rate,
+        senior_citizen_interest_rate: r.senior_citizen_rate
+      }))
+    };
+  });
 
   // Load historical data first before overwriting results.json
   const oldData = ChangeDetector.loadHistoricalData(OUTPUT_RESULTS_PATH);
