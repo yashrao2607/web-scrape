@@ -22,9 +22,9 @@ const sequelize = new Sequelize(
 // Define Bank Model
 const Bank = sequelize.define('Bank', {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
-    autoIncrement: true,
   },
   bankName: {
     type: DataTypes.STRING,
@@ -43,12 +43,12 @@ const Bank = sequelize.define('Bank', {
 // Define FDRate Model
 const FDRate = sequelize.define('FDRate', {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
-    autoIncrement: true,
   },
   bankId: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     allowNull: false,
     references: {
       model: Bank,
