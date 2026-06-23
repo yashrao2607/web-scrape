@@ -175,7 +175,19 @@ async function main() {
       filteredRates = bank.fd_rates || [];
     }
 
-    // Apply tier indexing for multiple rates on same tenure (e.g. Axis/IndusInd multiple brackets)
+    // Dedup: keep first occurrence of each unique (tenure, general_rate) pair
+    const seen = new Set();
+    const deduped = [];
+    for (const r of filteredRates) {
+      const key = r.tenure + '||' + r.general_rate;
+      if (!seen.has(key)) {
+        seen.add(key);
+        deduped.push(r);
+      }
+    }
+    filteredRates = deduped;
+
+    // Apply tier indexing for genuinely different rates on same tenure (e.g. Axis/IndusInd multiple brackets)
     const counts = new Map();
     for (const r of filteredRates) {
       counts.set(r.tenure, (counts.get(r.tenure) || 0) + 1);
