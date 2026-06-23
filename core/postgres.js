@@ -2,6 +2,8 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { logger } from './logger.js';
 import fs from 'fs';
 
+const isProduction = process.env.NODE_ENV === 'production' || !!process.env.PGHOST;
+
 // Initialize Sequelize Connection Pool
 const sequelize = new Sequelize(
   process.env.PGDATABASE || 'fd_rates',
@@ -11,13 +13,19 @@ const sequelize = new Sequelize(
     host: process.env.PGHOST || 'localhost',
     port: parseInt(process.env.PGPORT || '5432', 10),
     dialect: 'postgres',
-    logging: false, // Set to console.log to debug query logs in development
+    logging: false,
     pool: {
       max: 5,
       min: 0,
       acquire: 30000,
       idle: 10000,
     },
+    dialectOptions: isProduction ? {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    } : {},
   }
 );
 
@@ -318,6 +326,62 @@ export async function ingestResults({ resultsPath, scraperVersion = '1.0.0' }) {
         // ignore log error
       }
     }
+    throw error;
+  }
+}
+
+/**
+ * Saves simplified scraped data (called directly by main.js).
+ * Creates a scrape run, finds/creates banks, bulk-inserts rates.
+ * @param {Array} simplifiedResults - Array of { bank_name, url, rates }
+ */
+export async function saveScrapedDataToDb(simplifiedResults) {
+  await ensureTablesExist();
+
+  const startedAt = new Date();
+  const transaction = await sequelize.transaction();
+
+  try {
+    const scrapeRun = await ScrapeRun.create({
+      startedAt,
+      banksTotal: simplifiedResults.length,
+    }, { transaction });
+
+    for (const bankInfo of simplifiedResults) {
+      const [bank] = await Bank.findOrCreate({
+        where: { bankName: bankInfo.bank_name },
+        defaults: { sourceUrl: bankInfo.url },
+        transaction,
+      });
+
+      if (bank.sourceUrl !== bankInfo.url) {
+        bank.sourceUrl = bankInfo.url;
+        await bank.save({ transaction });
+      }
+
+      if (bankInfo.rates && bankInfo.rates.length > 0) {
+        const rateRecords = bankInfo.rates.map(rate => ({
+          scrapeRunId: scrapeRun.scrapeRunId,
+          bankId: bank.bankId,
+          tenure: rate.tenure,
+          generalRate: rate.interest_rate,
+          seniorCitizenRate: rate.senior_citizen_interest_rate,
+          sourceUrl: bankInfo.url,
+        }));
+
+        await FDRate.bulkCreate(rateRecords, { transaction, ignoreDuplicates: true });
+      }
+    }
+
+    scrapeRun.finishedAt = new Date();
+    scrapeRun.banksSuccessful = simplifiedResults.length;
+    await scrapeRun.save({ transaction });
+
+    await transaction.commit();
+    logger.info("db_save_complete", { banks: simplifiedResults.length });
+  } catch (error) {
+    await transaction.rollback();
+    logger.error("db_save_failed", { error: error.message });
     throw error;
   }
 }
