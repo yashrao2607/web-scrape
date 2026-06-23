@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { saveScrapedDataToDb, sequelize, Bank, FDRate } from '../core/postgres.js';
+import { ingestResults, sequelize, Bank, ScrapeRun, FDRate } from '../core/postgres.js';
 
 const resultsPath = path.resolve('output/results.json');
 
-async function testSequelizePipeline() {
-  console.log("=== Sequelize Database Ingestion Verification ===");
+async function testSequelizeHybridPipeline() {
+  console.log("=== Sequelize Hybrid Database Ingestion Verification ===");
 
   // 1. Read scraped JSON results
   if (!fs.existsSync(resultsPath)) {
@@ -13,62 +13,52 @@ async function testSequelizePipeline() {
     process.exit(1);
   }
 
-  let resultsData;
-  try {
-    const rawContent = fs.readFileSync(resultsPath, 'utf8');
-    resultsData = JSON.parse(rawContent);
-    console.log(`Read ${resultsData.length} banks from results.json.`);
-  } catch (err) {
-    console.error("Error reading results.json:", err.message);
-    process.exit(1);
-  }
-
   // 2. Run Database Ingestion
   try {
     console.log("\nConnecting and synchronizing database schema via Sequelize...");
-    // Authenticate
     await sequelize.authenticate();
     console.log("Database connection authenticated successfully.");
 
-    console.log("Saving records to normalized tables (banks & fd_rates)...");
-    await saveScrapedDataToDb(resultsData);
-    console.log("Database transaction committed successfully!");
+    console.log("Saving records to normalized tables (banks, scrape_runs, rates)...");
+    const ingest = await ingestResults({
+      resultsPath,
+      scraperVersion: '1.0.0'
+    });
+    console.log("Database transaction committed successfully! Ingest results:", ingest);
 
     // 3. Query back counts
     const banksCount = await Bank.count();
+    const runsCount = await ScrapeRun.count();
     const ratesCount = await FDRate.count();
 
     console.log("\n=== Database Statistics ===");
     console.log(`Total banks stored: ${banksCount}`);
+    console.log(`Total scrape runs: ${runsCount}`);
     console.log(`Total FD interest rate slabs stored: ${ratesCount}`);
 
-    // Query a sample of rates joined with bank name
-    console.log("\nQuerying a sample of stored records (first 10 rates):");
-    const sampleRates = await FDRate.findAll({
-      limit: 10,
-      include: [{
-        model: Bank,
-        as: 'bank',
-        attributes: ['bankName']
-      }],
-      order: [['id', 'ASC']]
+    // Query from the view v_latest_rates
+    console.log("\nQuerying v_latest_rates view sample (first 10 rates):");
+    const [viewRates] = await sequelize.query(`
+      SELECT bank_name, tenure, tier, general_rate, senior_citizen_rate
+      FROM v_latest_rates
+      ORDER BY bank_name, tier NULLS FIRST, tenure
+      LIMIT 10
+    `);
+
+    viewRates.forEach(rate => {
+      console.log(`- [${rate.bank_name}] Tenure: "${rate.tenure}" | Tier: ${rate.tier ?? 'N/A'} | General: ${rate.general_rate}% | Senior: ${rate.senior_citizen_rate}%`);
     });
 
-    sampleRates.forEach(rate => {
-      console.log(`- [${rate.bank.bankName}] Tenure: "${rate.tenure}" | General: ${rate.interestRate}% | Senior: ${rate.seniorCitizenInterestRate}%`);
-    });
-
-    console.log("\n=== Success! The Sequelize pipeline is functioning perfectly. ===");
-    console.log("Every rate slab is stored as its own distinct row, eliminating pgAdmin cell truncation.");
+    console.log("\n=== Success! The Sequelize Hybrid pipeline is functioning perfectly. ===");
+    console.log("History is preserved in append-only mode, and the v_latest_rates view is active.");
 
   } catch (err) {
     console.error("\nDatabase execution error:", err.message);
-    console.error("Please ensure your PGPASSWORD environment variable is set and correct.");
+    console.error("Please ensure your PostgreSQL database is running and credentials are correct.");
     process.exit(1);
   } finally {
-    // Gracefully shut down Sequelize
     await sequelize.close();
   }
 }
 
-testSequelizePipeline();
+testSequelizeHybridPipeline();

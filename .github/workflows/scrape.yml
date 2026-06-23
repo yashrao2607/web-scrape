@@ -29,11 +29,7 @@ jobs:
       - name: Run scraper
         run: node main.js
         env:
-          PGUSER: postgres
-          PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-          PGHOST: ${{ secrets.SUPABASE_DB_HOST }}
-          PGPORT: ${{ secrets.SUPABASE_DB_PORT }}
-          PGDATABASE: ${{ secrets.SUPABASE_DB_NAME }}
+          DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
 
       - name: Upload output artifacts
         uses: actions/upload-artifact@v4

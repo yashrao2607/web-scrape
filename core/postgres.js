@@ -2,32 +2,43 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { logger } from './logger.js';
 import fs from 'fs';
 
-const isProduction = process.env.NODE_ENV === 'production' || !!process.env.PGHOST;
+const DATABASE_URL = process.env.DATABASE_URL;
+const isProduction = !!(DATABASE_URL || process.env.PGHOST);
 
 // Initialize Sequelize Connection Pool
-const sequelize = new Sequelize(
-  process.env.PGDATABASE || 'fd_rates',
-  process.env.PGUSER || 'postgres',
-  process.env.PGPASSWORD || '',
-  {
-    host: process.env.PGHOST || 'localhost',
-    port: parseInt(process.env.PGPORT || '5432', 10),
+let sequelize;
+if (DATABASE_URL) {
+  sequelize = new Sequelize(DATABASE_URL, {
     dialect: 'postgres',
     logging: false,
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000,
-    },
-    dialectOptions: isProduction ? {
+    dialectOptions: {
       ssl: {
         require: true,
         rejectUnauthorized: false,
       },
-    } : {},
-  }
-);
+    },
+    pool: { max: 5, min: 0, acquire: 30000, idle: 10000 },
+  });
+} else {
+  sequelize = new Sequelize(
+    process.env.PGDATABASE || 'fd_rates',
+    process.env.PGUSER || 'postgres',
+    process.env.PGPASSWORD || '',
+    {
+      host: process.env.PGHOST || 'localhost',
+      port: parseInt(process.env.PGPORT || '5432', 10),
+      dialect: 'postgres',
+      logging: false,
+      pool: { max: 5, min: 0, acquire: 30000, idle: 10000 },
+      dialectOptions: isProduction ? {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      } : {},
+    }
+  );
+}
 
 // Define Bank Model
 const Bank = sequelize.define('Bank', {
