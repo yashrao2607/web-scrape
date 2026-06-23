@@ -197,7 +197,13 @@ export async function pingDb() {
 }
 
 export async function ensureTablesExist() {
-  await sequelize.sync({ alter: true });
+  try {
+    await sequelize.sync({ alter: false });
+  } catch (err) {
+    logger.warn("table_sync_failed_dropping_and_recreating", { error: err.message });
+    await sequelize.drop();
+    await sequelize.sync();
+  }
 }
 
 export async function ensureLatestRatesViewExists() {
