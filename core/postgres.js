@@ -201,7 +201,7 @@ export async function ensureTablesExist() {
     await sequelize.sync({ alter: false });
   } catch (err) {
     logger.warn("table_sync_failed_dropping_and_recreating", { error: err.message });
-    await sequelize.drop();
+    await sequelize.drop({ cascade: true });
     await sequelize.sync();
   }
 }
