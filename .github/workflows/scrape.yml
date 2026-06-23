@@ -1,6 +1,8 @@
 name: FD Rate Scraper
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: '0 6,18 * * *'
   workflow_dispatch:
