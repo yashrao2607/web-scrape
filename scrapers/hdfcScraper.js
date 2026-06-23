@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 
 export class HDFCScraper extends BaseScraper {
   async scrape(page) {
+    this.logger.info("starting_hdfc_scrape");
     let rates = [];
 
     if (this.url.toLowerCase().endsWith(".pdf")) {
@@ -25,6 +26,7 @@ export class HDFCScraper extends BaseScraper {
       } catch (e) {}
 
       if (!pageUrl || pageUrl === "about:blank") {
+        this.logger.warn("page_is_blank_using_local_html_fallback");
       } else {
         try {
           await page.waitForSelector("table, [role='table']", { timeout: 5000 });
@@ -39,10 +41,12 @@ export class HDFCScraper extends BaseScraper {
             rates = await LayeredExtractor.extractFromUnstructuredText(page);
           }
         } catch (e) {
+          this.logger.warn("live_scrape_failed_falling_back_to_local_html", { error: e.message });
         }
       }
 
       if (rates.length === 0) {
+        this.logger.info("triggering_hdfc_local_html_fallback");
         const fallbackPath = path.join(__dirname, "hdfc_fallback.html");
         try {
           const htmlContent = fs.readFileSync(fallbackPath, "utf-8");
@@ -96,6 +100,7 @@ export class HDFCScraper extends BaseScraper {
             }
           }
         } catch (fbErr) {
+          this.logger.error("hdfc_local_html_fallback_failed", { error: fbErr.message });
         }
       }
     }

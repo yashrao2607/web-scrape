@@ -1,3 +1,4 @@
+import { logger } from '../core/logger.js';
 import { parseTenure, parseTenureRange, classifyFDProduct, normalizeRate } from '../core/normalizer.js';
 import { bankFdSchemeSchema } from '../core/validators.js';
 
@@ -5,6 +6,7 @@ export class BaseScraper {
   constructor(bankName, url) {
     this.bankName = bankName;
     this.url = url;
+    this.logger = logger.child({ bank: bankName, url: url });
   }
 
   async scrape(page) {
@@ -12,6 +14,7 @@ export class BaseScraper {
   }
 
   processAndValidate(rawData, validationErrors) {
+    this.logger.info("processing_and_validating_raw_data");
 
     const ratesRaw = rawData.fd_rates || [];
     const validatedRates = [];
@@ -39,6 +42,7 @@ export class BaseScraper {
       if (!tenureStr) {
         const msg = `Row ${idx}: Empty tenure string.`;
         validationErrors.push(msg);
+        this.logger.warn("validation_warning", { detail: msg });
         return;
       }
 
@@ -47,6 +51,7 @@ export class BaseScraper {
       if (days === null) {
         const msg = `Row ${idx} (${tenureStr}): Rejected due to invalid/unparseable tenure.`;
         validationErrors.push(msg);
+        this.logger.warn("row_rejected", { detail: msg });
         return;
       }
 
@@ -57,6 +62,7 @@ export class BaseScraper {
       if (genRate === null) {
         const msg = `Row ${idx} (${tenureStr}): Could not parse general rate '${genRateStr}'.`;
         validationErrors.push(msg);
+        this.logger.warn("validation_warning", { detail: msg });
         return;
       }
 
@@ -66,12 +72,14 @@ export class BaseScraper {
       // Outlier / Anomaly Detection
       if (genRate < 2.0 || genRate > 12.0) {
         anomalyCount++;
+        this.logger.warn("rate_anomaly_detected", { rate: genRate, tenure: tenureStr });
       }
 
       // Reject row: rate < 2.0% for retail FD datasets
       if (genRate < 2.0 && classified.product_type === "retail_fd") {
         const msg = `Row ${idx} (${tenureStr}): Rejected retail rate ${genRate}% below 2.0%.`;
         validationErrors.push(msg);
+        this.logger.warn("row_rejected", { detail: msg });
         return;
       }
 
@@ -81,6 +89,7 @@ export class BaseScraper {
       if (minDays !== null && maxDays !== null && minDays > maxDays) {
         const msg = `Row ${idx} (${tenureStr}): Rejected due to range boundary inversion (min_days ${minDays} > max_days ${maxDays}).`;
         validationErrors.push(msg);
+        this.logger.warn("row_rejected", { detail: msg });
         return;
       }
 
@@ -91,6 +100,7 @@ export class BaseScraper {
         duplicateCount++;
         const msg = `Row ${idx}: Duplicate tenure '${tenureStr}' for product ${classified.product_type} in section '${sectionName}'.`;
         validationErrors.push(msg);
+        this.logger.warn("validation_warning", { detail: msg });
         return;
       }
       seenKeys.add(compoundKey);
@@ -134,6 +144,7 @@ export class BaseScraper {
           anomalyCount++;
           const msg = `Interval overlap detected: '${curr.tenure}' (max_days ${curr.max_days}) overlaps with '${nxt.tenure}' (min_days ${nxt.min_days}) for group ${gKey}.`;
           validationErrors.push(msg);
+          this.logger.warn("interval_overlap_warning", { detail: msg });
         }
       }
     }
@@ -183,9 +194,11 @@ export class BaseScraper {
         e.errors.forEach(err => {
           const msg = `Global model metadata validation: Field ${err.path.join(".")} - ${err.message}`;
           validationErrors.push(msg);
+          this.logger.error("validation_error", { detail: msg });
         });
       } else {
         validationErrors.push(e.message);
+        this.logger.error("validation_error", { detail: e.message });
       }
       return {
         bank_name: this.bankName,

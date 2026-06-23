@@ -1,8 +1,10 @@
 import fs from 'fs';
+import { logger } from './logger.js';
 
 export class ChangeDetector {
   static loadHistoricalData(filepath) {
     if (!fs.existsSync(filepath)) {
+      logger.info("historical_data_not_found", { path: filepath });
       return [];
     }
     try {
@@ -15,11 +17,13 @@ export class ChangeDetector {
       }
       return [];
     } catch (e) {
+      logger.error("failed_to_load_historical_data", { path: filepath, error: e.message });
       return [];
     }
   }
 
   static detectChanges(newData, oldData) {
+    logger.info("running_change_detection");
 
     const oldBanks = {};
     oldData.forEach(b => {

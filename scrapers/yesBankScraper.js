@@ -10,6 +10,7 @@ const __dirname = path.dirname(__filename);
 
 export class YesBankScraper extends BaseScraper {
   async scrape(page) {
+    this.logger.info("starting_yes_bank_scrape");
     let rates = [];
 
     try {
@@ -26,9 +27,11 @@ export class YesBankScraper extends BaseScraper {
         rates = await LayeredExtractor.extractFromUnstructuredText(page);
       }
     } catch (e) {
+      this.logger.warn("live_yes_bank_scrape_failed_falling_back", { error: e.message });
     }
 
     if (rates.length === 0) {
+      this.logger.info("triggering_yes_bank_local_html_fallback");
       const fallbackPath = path.join(__dirname, "yes_bank_fallback.html");
       try {
         const htmlContent = fs.readFileSync(fallbackPath, "utf-8");
@@ -81,6 +84,7 @@ export class YesBankScraper extends BaseScraper {
           }
         }
       } catch (fbErr) {
+        this.logger.error("yes_bank_local_html_fallback_failed", { error: fbErr.message });
       }
     }
 

@@ -1,22 +1,25 @@
 {
-  "name": "web-scraper",
+  "name": "fixed-deposit-scraper",
   "version": "1.0.0",
-  "description": "Fixed Deposit rate scraper for 12 Indian banks — Playwright + Cheerio + Zod, with Postgres persistence and a generated CommonJS reference file consumed by mig.js.",
+  "description": "Production-grade Fixed Deposit interest rate scraping and normalization system in Node.js",
   "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "test": "node --test tests/normalizer.test.js tests/validators.test.js"
+    "test": "node --test tests/**/*.test.js"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
     "cheerio": "^1.0.0",
-    "p-limit": "^3.1.0",
+    "p-limit": "^5.0.0",
     "pdf-parse": "^1.1.1",
     "pg": "^8.21.0",
+    "pino": "^9.1.0",
     "playwright": "^1.48.0",
-    "zod": "^3.23.0"
+    "sequelize": "^6.37.8",
+    "xlsx": "^0.18.5",
+    "zod": "^3.23.8"
   }
 }

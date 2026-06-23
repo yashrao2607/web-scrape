@@ -6,6 +6,7 @@ import { LayeredExtractor } from '../core/extractor.js';
 
 export class SBIScraper extends BaseScraper {
   async scrape(page) {
+    this.logger.info("starting_sbi_scrape");
     let rates = [];
 
     if (this.url.toLowerCase().endsWith(".pdf")) {
@@ -17,6 +18,7 @@ export class SBIScraper extends BaseScraper {
       try {
         await page.waitForSelector("table, [role='table']", { timeout: 5000 });
       } catch (e) {
+        this.logger.warn("timeout_waiting_for_tables_attempting_anyway");
       }
 
       const tables = await LayeredExtractor.extractFromPage(page);

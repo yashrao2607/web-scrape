@@ -279,7 +279,7 @@ export function classifyFDProduct(sectionName, tableName, tenureRaw) {
   let schemeType = "regular_fd";
   let schemeName = null;
 
-  const isRange = ["to", "-", "less", "below", "above", "or more", "<", ">"].some(k => tenLower.includes(k));
+  const isRange = ["to", "-", "–", "—", "less", "below", "above", "or more", "<", ">"].some(k => tenLower.includes(k));
   let isSpecial = false;
 
   if (secLower.includes("green") || tblLower.includes("green")) {
@@ -341,7 +341,7 @@ export function normalizeDateString(dateStr) {
   // 2. Text month formats: e.g. "June 9, 2026", "1 June 2026", "June 2026"
   const monthsMap = {
     jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
-    jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
+    jul: 7, aug: 8, sep: 9, sept: 9, oct: 10, nov: 11, dec: 12,
     january: 1, february: 2, march: 3, april: 4, june: 6,
     july: 7, august: 8, september: 9, october: 10, november: 11, december: 12
   };
@@ -388,16 +388,18 @@ export function normalizeDateString(dateStr) {
 
 export function extractEffectiveDate(text) {
   if (!text) return null;
-  const match = /\bw\.e\.f\.?\s*(?:from|date)?\s*([A-Za-z0-9\.\-\/\,\s]{6,25})/i.exec(text);
+  const normalizedText = text.replace(/[‘’]/g, "'");
+  const match = /\bw\.e\.f\.?\s*(?:from|date)?\s*([A-Za-z0-9\.\-\/\,\s']{6,25})/i.exec(normalizedText);
   if (match) {
     const dateStr = match[1].replace(/[*#$\s]+$/, "").trim();
     return normalizeDateString(dateStr);
   }
 
-  const directNormalized = normalizeDateString(text);
+  const directNormalized = normalizeDateString(normalizedText);
   if (directNormalized) {
     return directNormalized;
   }
 
   return null;
 }
+

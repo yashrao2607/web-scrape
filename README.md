@@ -80,15 +80,40 @@ The final generated data file is stored in `output/results.json`. It is strictly
   - **`senior_citizen_interest_rate`**: Validated interest rate for senior citizens (number).
 
 No other fields, placeholders, null rates, or invalid values are written into `output/results.json`.
+---
+
+## 5. PostgreSQL Database Pipeline
+
+The scraping platform includes a native, automated data ingestion pipeline to persist Fixed Deposit data directly into a **PostgreSQL** instance at the end of each scraping cycle.
+
+### Table Schema
+The data is stored as a `JSONB` array document inside the `json_import` table, matching your existing schema:
+```sql
+CREATE TABLE json_import (
+    id SERIAL PRIMARY KEY,
+    data JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP -- (Optional timestamping column)
+);
+```
+
+### Connection Configuration
+The pool client dynamically reads credentials from the following standard PostgreSQL environment variables:
+*   `PGHOST`: Target server hostname (defaults to `localhost`)
+*   `PGPORT`: Connection port (defaults to `5432`)
+*   `PGUSER`: Username (defaults to `postgres`)
+*   `PGPASSWORD`: User authentication password
+*   `PGDATABASE`: Target database name (defaults to `postgres`)
+
+You can supply these variables directly before executing your commands.
 
 ---
 
-## 5. Directory Structure
+## 6. Directory Structure
 
 ```text
 web-scrape/
-├── main.js                  # CLI runner and scraping orchestrator
-├── package.json             # Node.js dependencies & test scripts
+├── main.js                  # CLI runner and scraping orchestrator (with pg integration)
+├── package.json             # Node.js dependencies & test scripts (includes pg dependency)
 ├── package-lock.json        # Node.js lockfile
 ├── README.md                # Comprehensive documentation (this file)
 │
@@ -99,6 +124,7 @@ web-scrape/
 │   ├── jsonWriter.js        # File saving & validation report output
 │   ├── logger.js            # Pino logger instance
 │   ├── normalizer.js        # Tenure parsing & rate formatting logic
+│   ├── postgres.js          # PostgreSQL connection pool and insertion helper [NEW]
 │   └── validators.js        # Zod schemas & quality score transforms
 │
 ├── scrapers/                # Scraper modules
@@ -116,6 +142,7 @@ web-scrape/
 │
 ├── scratch/
 │   ├── verify_schema.js     # Schema cross-verification script
+│   ├── test_postgres.js     # Standalone database pipeline test script [NEW]
 │   └── *.js                 # Temporary verification scripts
 │
 └── output/                  # Data outputs and reports
@@ -127,10 +154,11 @@ web-scrape/
 
 ---
 
-## 6. Installation & Execution
+## 7. Installation & Execution
 
 ### Prerequisites
 *   [Node.js](https://nodejs.org/) (v20+ recommended)
+*   [PostgreSQL](https://www.postgresql.org/) database instance
 *   Windows, macOS, or Linux OS
 
 ### Local Setup
@@ -143,11 +171,43 @@ web-scrape/
     npx playwright install chromium
     ```
 
-### Running the Scraper Pipeline
+### Running the Scraper Pipeline (with Database Insertion)
+To run the full scraping cycle and automatically insert the result JSON into the database, set the password variable and execute:
+*   **PowerShell:**
+    ```powershell
+    $env:PGPASSWORD="your_postgres_password"
+    node main.js
+    ```
+*   **Command Prompt (cmd):**
+    ```cmd
+    set PGPASSWORD=your_postgres_password
+    node main.js
+    ```
+
+---
+
+## 8. Verifications & Audits
+
+The platform includes two dedicated scripts to check data integrity and database uploads:
+
+### Checking Database Uploads (PostgreSQL Integration)
+To verify that the database connection works, and that the scraped JSON can be uploaded and queried back from the `json_import` table:
+*   **PowerShell:**
+    ```powershell
+    $env:PGPASSWORD="your_postgres_password"
+    node scratch/test_postgres.js
+    ```
+*   **Command Prompt (cmd):**
+    ```cmd
+    set PGPASSWORD=your_postgres_password
+    node scratch/test_postgres.js
+    ```
+
+### Running the Schema Verification Script
+To verify the output file format matches our schema and validation guidelines:
 ```bash
-node main.js
+node scratch/verify_schema.js
 ```
-This runs the full scraping pipeline concurrently. Once finished, inspect the outputs in the `output/` folder.
 
 ### Running the Test Suite
 The tests leverage Node.js's native test runner (`node --test`), which requires zero external testing frameworks:
@@ -155,13 +215,3 @@ The tests leverage Node.js's native test runner (`node --test`), which requires 
 node --test tests/normalizer.test.js tests/validators.test.js
 ```
 
-### Running the Schema Verification Script
-To verify the output file format matches our schema and validation guidelines:
-```bash
-node scratch/verify_schema.js
-```
-Expected output:
-```text
-Verifying 12 banks in results.json...
-All banks verified successfully. The results.json strictly matches the required schema and constraints!
-```

@@ -1,4 +1,5 @@
 import { chromium } from 'playwright';
+import { logger } from './logger.js';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
@@ -12,6 +13,7 @@ export class PlaywrightBrowserManager {
 
   async start() {
     if (!this._browser) {
+      logger.info("launching_browser", { headless: this.headless });
       this._browser = await chromium.launch({
         headless: this.headless,
         args: [
@@ -26,6 +28,7 @@ export class PlaywrightBrowserManager {
 
   async close() {
     if (this._browser) {
+      logger.info("closing_browser");
       await this._browser.close();
       this._browser = null;
     }
@@ -46,14 +49,17 @@ export class PlaywrightBrowserManager {
   }
 
   async navigateTo(page, url) {
+    logger.info("navigating_to_url", { url });
     try {
       await page.goto(url, { waitUntil: "networkidle", timeout: this.timeoutMs });
     } catch (e) {
+      logger.warn("networkidle_failed_falling_back_to_load", { url, error: e.message });
       await page.goto(url, { waitUntil: "load", timeout: this.timeoutMs });
     }
   }
 
   async downloadFile(page, downloadUrl, destDir) {
+    logger.info("initiating_download", { url: downloadUrl });
     fs.mkdirSync(destDir, { recursive: true });
 
     const downloadPromise = page.waitForEvent('download', { timeout: this.timeoutMs });
@@ -63,6 +69,7 @@ export class PlaywrightBrowserManager {
     const suggestedFilename = download.suggestedFilename();
     const destPath = path.join(destDir, suggestedFilename);
     await download.saveAs(destPath);
+    logger.info("download_complete", { path: destPath });
     return destPath;
   }
 }
@@ -87,6 +94,7 @@ export async function clickAndDownloadPdf(page, opts) {
     timeoutMs = 30000
   } = opts;
 
+  logger.info("clicking_and_downloading_pdf", { urlMustMatch, urlMustNotMatch });
 
   // 1. Wait for any matching anchor to be in the DOM
   await page.waitForSelector(`a[href*="${urlMustMatch}"]`, { timeout: timeoutMs });
@@ -116,6 +124,7 @@ export async function clickAndDownloadPdf(page, opts) {
     );
   }
 
+  logger.info("matching_anchor_found_initiating_click", { chosen });
 
   // 3. Register download listener BEFORE the click
   const downloadPromise = page.waitForEvent('download', { timeout: timeoutMs });
@@ -132,6 +141,8 @@ export async function clickAndDownloadPdf(page, opts) {
   const tmpPath = path.join(os.tmpdir(), `axis_pdf_${Date.now()}.pdf`);
   await download.saveAs(tmpPath);
   const fileSize = fs.statSync(tmpPath).size;
+
+  logger.info("pdf_download_completed", { path: tmpPath, url: downloadedUrl, size: fileSize });
 
   return { filePath: tmpPath, downloadUrl: downloadedUrl, suggestedName };
 }

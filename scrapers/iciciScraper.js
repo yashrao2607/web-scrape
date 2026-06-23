@@ -6,6 +6,7 @@ import { LayeredExtractor } from '../core/extractor.js';
 
 export class ICICIScraper extends BaseScraper {
   async scrape(page) {
+    this.logger.info("starting_icici_scrape");
     let rates = [];
 
     if (this.url.toLowerCase().endsWith(".pdf")) {
@@ -17,16 +18,19 @@ export class ICICIScraper extends BaseScraper {
       try {
         await page.waitForSelector("table, [role='table']", { timeout: 5000 });
       } catch (e) {
+        this.logger.warn("timeout_waiting_for_tables_attempting_anyway");
       }
 
       // Click "Less than 3 Cr." button if it exists
       try {
         const btn = page.locator("button:has-text('Less than')").filter({ hasText: "3 Cr" });
         if (await btn.count() > 0) {
+          this.logger.info("clicking_less_than_3cr_button_for_icici");
           await btn.first().click();
           await page.waitForTimeout(2000);
         }
       } catch (e) {
+        this.logger.warn("failed_to_click_less_than_3cr_button", { error: e.message });
       }
 
       const tables = await LayeredExtractor.extractFromPage(page);

@@ -3,11 +3,13 @@ import { LayeredExtractor } from '../core/extractor.js';
 
 export class SouthIndianBankScraper extends BaseScraper {
   async scrape(page) {
+    this.logger.info("starting_south_indian_bank_scrape");
     let rates = [];
 
     try {
       await page.waitForSelector("table, [role='table']", { timeout: 5000 });
     } catch (e) {
+      this.logger.warn("timeout_waiting_for_tables_attempting_anyway");
     }
 
     const tables = await LayeredExtractor.extractFromPage(page);

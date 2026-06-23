@@ -1,54 +1,39 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { fileURLToPath } from 'url';
 import * as cheerio from 'cheerio';
 import { BaseScraper } from './baseScraper.js';
 import { LayeredExtractor } from '../core/extractor.js';
-import { clickAndDownloadPdf } from '../core/browser.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export class AxisScraper extends BaseScraper {
   async scrape(page) {
+    this.logger.info("starting_axis_scrape");
     let rates = [];
     let isFallback = false;
-    let pdfCapturedUrl = null;
-    let source = this.url;
-    let scrapeSource = "live";
 
-    // 1. Try live click+download from the entry page
-    //    The entry page lists 4-6 "VIEW RATES" buttons, each pointing to a different
-    //    PDF (domestic retail / Plus / NRI / NRI Plus / FCNR / floating). We pick
-    //    the retail domestic one by URL filter.
+    const tempPdf = path.join(os.tmpdir(), "axis_rates.pdf");
+
     try {
-      // Navigate to entry page if not already there
-      if (!page.url().includes("axis.bank.in/deposits/fixed-deposits/fd-interest-rates")) {
-        await page.goto(this.url, { waitUntil: "domcontentloaded", timeout: 30000 });
+      const response = await page.context().request().get(this.url);
+      const body = await response.body();
+      if (response.status() === 200 && body.includes(Buffer.from("%PDF"))) {
+        fs.writeFileSync(tempPdf, body);
+        this.logger.info("downloaded_axis_pdf", { path: tempPdf });
+        rates = await LayeredExtractor.extractFromPdf(tempPdf);
+      } else {
+        this.logger.warn("axis_pdf_download_returned_invalid_content", { status: response.status() });
       }
-
-      const dl = await clickAndDownloadPdf(page, {
-        urlMustMatch: "domestic-fixed-deposits",
-        urlMustNotMatch: ["plus", "nri", "fcnr", "floating"],
-        timeoutMs: 30000
-      });
-
-      pdfCapturedUrl = dl.downloadUrl;
-      source = dl.downloadUrl;
-
-      rates = await LayeredExtractor.extractFromPdf(dl.filePath);
-
-      // Cleanup temp PDF
-      try { fs.unlinkSync(dl.filePath); } catch (e) { /* ignore */ }
     } catch (e) {
+      this.logger.error("axis_pdf_download_or_parse_failed", { error: e.message });
     }
 
-    // 2. Fallback to local HTML if live click failed or yielded 0 rows
     if (rates.length === 0) {
+      this.logger.info("triggering_axis_local_html_fallback");
       isFallback = true;
-      scrapeSource = "fallback";
-      source = this.url;
-
       const fallbackPath = path.join(__dirname, "axis_fallback.html");
       try {
         const htmlContent = fs.readFileSync(fallbackPath, "utf-8");
@@ -101,6 +86,7 @@ export class AxisScraper extends BaseScraper {
           }
         }
       } catch (fbErr) {
+        this.logger.error("axis_local_html_fallback_failed", { error: fbErr.message });
       }
     }
 
@@ -116,11 +102,8 @@ export class AxisScraper extends BaseScraper {
       nomination_available: true,
       compounding_frequency: "Quarterly",
       last_updated_on_page: null,
-      effective_from: null,
+      effective_from: "2026-05-01",
       effective_to: null,
-      source_url: source,
-      scrape_source: scrapeSource,
-      pdf_captured_url: pdfCapturedUrl,
       is_fallback: isFallback,
       scraper_version: "1.0.0"
     };
