@@ -224,17 +224,24 @@ async function main() {
   if (!skipDb && successfulResults.length > 0) {
     try {
       logger.info("writing_scraped_data_to_postgres_sequelize_hybrid");
-      const dbOk = await pingDb();
-      if (!dbOk) throw new Error("pingDb returned falsy");
+
+      // Log connection info (mask password) for debugging
+      const dbUrl = process.env.DATABASE_URL || 'not-set';
+      const masked = dbUrl.replace(/:[^:@]+@/, ':****@');
+      logger.info("db_connection_info", { DATABASE_URL: masked, PGHOST: process.env.PGHOST || 'not-set' });
+
       const ingest = await ingestResults({
         resultsPath: OUTPUT_RESULTS_PATH,
         scraperVersion: "1.0.0"
       });
       logger.info("postgres_sequelize_write_success", ingest);
     } catch (dbErr) {
-      logger.error("postgres_sequelize_write_failed", { error: dbErr.message });
+      logger.error("postgres_sequelize_write_failed", {
+        error: dbErr.message,
+        stack: dbErr.stack?.split('\n').slice(0, 3).join(' | ')
+      });
     } finally {
-      await closeDb();
+      try { await closeDb(); } catch (_) {}
     }
   }
 
