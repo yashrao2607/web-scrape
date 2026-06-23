@@ -49,97 +49,8 @@
   },
   {
     "bank": "IDFC First Bank",
-    "changes_detected": true,
-    "rate_changes": [
-      {
-        "tenure": "7 days – 14 days",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 3.25,
-        "old_senior_rate": null,
-        "new_senior_rate": 3.5
-      },
-      {
-        "tenure": "15 days – 29 days",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 3.25,
-        "old_senior_rate": null,
-        "new_senior_rate": 3.5
-      },
-      {
-        "tenure": "30 days – 45 days",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 3.5,
-        "old_senior_rate": null,
-        "new_senior_rate": 3.75
-      },
-      {
-        "tenure": "46 days – 90 days",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 4.5,
-        "old_senior_rate": null,
-        "new_senior_rate": 4.75
-      },
-      {
-        "tenure": "91 days – 180 days",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 5,
-        "old_senior_rate": null,
-        "new_senior_rate": 5.25
-      },
-      {
-        "tenure": "1 year 1 day – 370 days",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 6.5,
-        "old_senior_rate": null,
-        "new_senior_rate": 6.75
-      },
-      {
-        "tenure": "371 days – 499 days",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.25
-      },
-      {
-        "tenure": "500 days – 2 years",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7.25,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.5
-      },
-      {
-        "tenure": "2 years 1 day – 3 years",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7.25,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.5
-      },
-      {
-        "tenure": "3 years 1 day – 5 years",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7.15,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.4
-      },
-      {
-        "tenure": "5 years 1 day – 10 years",
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 6,
-        "old_senior_rate": null,
-        "new_senior_rate": 6.25
-      }
-    ],
+    "changes_detected": false,
+    "rate_changes": [],
     "metadata_changes": []
   },
   {
@@ -156,6 +67,84 @@
   },
   {
     "bank": "Federal Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Canara Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Bank of Baroda",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Bank of India",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Bank of Maharashtra",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "RBL Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "IDBI Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Indian Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Central Bank of India",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Bandhan Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "PNB Housing Finance",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "KTDFC",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "LIC Housing Finance",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Shriram Finance",
     "changes_detected": false,
     "rate_changes": [],
     "metadata_changes": []

@@ -1,0 +1,43 @@
+import { BaseScraper } from './baseScraper.js';
+import { LayeredExtractor } from '../core/extractor.js';
+
+export class KTDFCScraper extends BaseScraper {
+  async scrape(page) {
+    this.logger.info("starting_ktdfc_scrape");
+    let rates = [];
+
+    try {
+      await page.waitForSelector("table, [role='table']", { timeout: 5000 });
+    } catch (e) {
+      this.logger.warn("timeout_waiting_for_tables_attempting_anyway");
+    }
+
+    const tables = await LayeredExtractor.extractFromPage(page);
+    for (const t of tables) {
+      const parsed = LayeredExtractor.parseExtractedTable(t);
+      if (parsed && parsed.length > 0) {
+        rates.push(...parsed);
+      }
+    }
+
+    if (rates.length === 0) {
+      rates = await LayeredExtractor.extractFromUnstructuredText(page);
+    }
+
+    return {
+      fd_rates: rates,
+      minimum_deposit: 1000.0,
+      maximum_deposit: 50000000.0,
+      premature_withdrawal_available: true,
+      premature_withdrawal_penalty: "1.00% penalty",
+      loan_against_fd_available: true,
+      tax_saver_fd_available: false,
+      nomination_available: true,
+      compounding_frequency: "Quarterly",
+      last_updated_on_page: null,
+      effective_from: null,
+      effective_to: null,
+      scraper_version: "1.0.0"
+    };
+  }
+}

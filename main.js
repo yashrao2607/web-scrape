@@ -84,32 +84,47 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
 async function main() {
   logger.info("starting_scraping_pipeline");
 
-  // 1. Initialize input file containing all 12 banks
-  const inputDir = path.dirname(INPUT_EXCEL_PATH);
-  if (!os.existsSync(inputDir)) {
-    os.mkdirSync(inputDir, { recursive: true });
-  }
+  // 1. Initialize input file containing all 25 banks if it does not exist
+  if (!os.existsSync(INPUT_EXCEL_PATH)) {
+    const inputDir = path.dirname(INPUT_EXCEL_PATH);
+    if (!os.existsSync(inputDir)) {
+      os.mkdirSync(inputDir, { recursive: true });
+    }
 
-  const wb = XLSX.utils.book_new();
-  const wsData = [
-    ["Bank Name", "FD URL"],
-    ["HDFC Bank", "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates"],
-    ["SBI", "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits"],
-    ["ICICI Bank", "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"],
-    ["Axis Bank", "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1"],
-    ["Kotak Mahindra Bank", "https://www.kotak.com/en/rates/interest-rates.html"],
-    ["PNB", "https://www.pnbindia.in/interest-rates-deposit.html"],
-    ["IndusInd Bank", "https://www.indusind.bank.in/in/en/personal/rates.html"],
-    ["Yes Bank", "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit"],
-    ["IDFC First Bank", "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"],
-    ["Indian Overseas Bank", "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates"],
-    ["South Indian Bank", "https://www.southindianbank.com/interestrates/interestrates.aspx"],
-    ["Federal Bank", "https://www.federalbank.co.in/interest-rates"]
-  ];
-  const ws = XLSX.utils.aoa_to_sheet(wsData);
-  XLSX.utils.book_append_sheet(wb, ws, "Banks");
-  XLSX.writeFile(wb, INPUT_EXCEL_PATH);
-  logger.info("initialized_input_excel_with_12_banks", { path: INPUT_EXCEL_PATH });
+    const wb = XLSX.utils.book_new();
+    const wsData = [
+      ["Bank Name", "FD URL"],
+      ["HDFC Bank", "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates"],
+      ["SBI", "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits"],
+      ["ICICI Bank", "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"],
+      ["Axis Bank", "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-06-june-26.pdf?sfvrsn=5eb4a7d0_1"],
+      ["Kotak Mahindra Bank", "https://www.kotak.com/en/rates/interest-rates.html"],
+      ["PNB", "https://www.pnbindia.in/interest-rates-deposit.html"],
+      ["IndusInd Bank", "https://www.indusind.bank.in/in/en/personal/rates.html"],
+      ["Yes Bank", "https://www.yes.bank.in/personal-banking/yes-individual/deposits/fixed-deposit"],
+      ["IDFC First Bank", "https://www.idfcfirstbank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"],
+      ["Indian Overseas Bank", "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates"],
+      ["South Indian Bank", "https://www.southindianbank.com/interestrates/interestrates.aspx"],
+      ["Federal Bank", "https://www.federalbank.co.in/interest-rates"],
+      ["Canara Bank", "https://www.canarabank.bank.in/pages/deposit-interest-rates"],
+      ["Bank of Baroda", "https://www.bankbazaar.com/fixed-deposit/bank-of-baroda-fixed-deposit-rate.html"],
+      ["Bank of India", "https://www.bankbazaar.com/fixed-deposit/bank-of-india-fixed-deposit-rate.html"],
+      ["Bank of Maharashtra", "https://www.bankbazaar.com/fixed-deposit/bank-of-maharashtra-fixed-deposit-rate.html"],
+      ["RBL Bank", "https://www.bankbazaar.com/fixed-deposit/rbl-bank-fixed-deposit-rate.html"],
+      ["IDBI Bank", "https://www.bankbazaar.com/fixed-deposit/idbi-fixed-deposit-rate.html"],
+      ["Indian Bank", "https://www.bankbazaar.com/fixed-deposit/indian-bank-fixed-deposit-rate.html"],
+      ["Central Bank of India", "https://www.bankbazaar.com/fixed-deposit/central-bank-of-india-fixed-deposit-rate.html"],
+      ["Bandhan Bank", "https://www.bankbazaar.com/fixed-deposit/bandhan-bank-fixed-deposit-rate.html"],
+      ["PNB Housing Finance", "https://www.bankbazaar.com/fixed-deposit/pnbhfl-fixed-deposit-rate.html"],
+      ["KTDFC", "https://www.bankbazaar.com/fixed-deposit/ktdfc-fixed-deposit-rate.html"],
+      ["LIC Housing Finance", "https://www.bankbazaar.com/fixed-deposit/lic-housing-fixed-deposit-rate.html"],
+      ["Shriram Finance", "https://www.bankbazaar.com/fixed-deposit/shriram-finance-fixed-deposit-rate.html"]
+    ];
+    const ws = XLSX.utils.aoa_to_sheet(wsData);
+    XLSX.utils.book_append_sheet(wb, ws, "Banks");
+    XLSX.writeFile(wb, INPUT_EXCEL_PATH);
+    logger.info("initialized_input_excel_with_banks", { path: INPUT_EXCEL_PATH, count: wsData.length - 1 });
+  }
 
   // 2. Read banks list from Excel
   let banksList = [];

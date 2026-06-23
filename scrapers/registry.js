@@ -10,6 +10,19 @@ import { IDFCFirstScraper } from './idfcFirstScraper.js';
 import { IOBScraper } from './iobScraper.js';
 import { SouthIndianBankScraper } from './southIndianBankScraper.js';
 import { FederalBankScraper } from './federalBankScraper.js';
+import { CanaraBankScraper } from './canaraBankScraper.js';
+import { BankOfBarodaScraper } from './bankOfBarodaScraper.js';
+import { BankOfIndiaScraper } from './bankOfIndiaScraper.js';
+import { BankOfMaharashtraScraper } from './bankOfMaharashtraScraper.js';
+import { RBLBankScraper } from './rblBankScraper.js';
+import { IDBIBankScraper } from './idbiBankScraper.js';
+import { IndianBankScraper } from './indianBankScraper.js';
+import { CentralBankOfIndiaScraper } from './centralBankOfIndiaScraper.js';
+import { BandhanBankScraper } from './bandhanBankScraper.js';
+import { PNBHousingFinanceScraper } from './pnbHousingFinanceScraper.js';
+import { KTDFCScraper } from './ktdfcScraper.js';
+import { LICHousingFinanceScraper } from './licHousingFinanceScraper.js';
+import { ShriramFinanceScraper } from './shriramFinanceScraper.js';
 
 const SCRAPER_REGISTRY = {
   "HDFC Bank": HDFCScraper,
@@ -23,7 +36,20 @@ const SCRAPER_REGISTRY = {
   "IDFC": IDFCFirstScraper,
   "Indian Overseas Bank": IOBScraper,
   "South Indian bank": SouthIndianBankScraper,
-  "Federal bank": FederalBankScraper
+  "Federal bank": FederalBankScraper,
+  "Canara Bank": CanaraBankScraper,
+  "Bank of Baroda": BankOfBarodaScraper,
+  "Bank of India": BankOfIndiaScraper,
+  "Bank of Maharashtra": BankOfMaharashtraScraper,
+  "RBL Bank": RBLBankScraper,
+  "IDBI Bank": IDBIBankScraper,
+  "Indian Bank": IndianBankScraper,
+  "Central Bank of India": CentralBankOfIndiaScraper,
+  "Bandhan Bank": BandhanBankScraper,
+  "PNB Housing Finance": PNBHousingFinanceScraper,
+  "KTDFC": KTDFCScraper,
+  "LIC Housing Finance": LICHousingFinanceScraper,
+  "Shriram Finance": ShriramFinanceScraper
 };
 
 export function getScraperForBank(bankName) {
