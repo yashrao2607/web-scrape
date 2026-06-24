@@ -3,7 +3,7 @@ import path from 'path';
 import XLSX from 'xlsx';
 import pLimit from 'p-limit';
 import { logger, logAccumulator } from './core/logger.js';
-import { PlaywrightBrowserManager, resolveHostnames } from './core/browser.js';
+import { PlaywrightBrowserManager } from './core/browser.js';
 import { getScraperForBank } from './scrapers/registry.js';
 import { ChangeDetector } from './core/changeDetector.js';
 import { JsonWriter } from './core/jsonWriter.js';
@@ -95,7 +95,7 @@ async function main() {
     const wb = XLSX.utils.book_new();
     const wsData = [
       ["Bank Name", "FD URL"],
-      ["HDFC Bank", "https://www.hdfcbank.com/personal/save/deposits/fixed-deposit-interest-rates"],
+      ["HDFC Bank", "https://www.hdfc.bank.in/fixed-deposit/fd-interest-rate"],
       ["SBI", "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits"],
       ["ICICI Bank", "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"],
       ["Axis Bank", "https://www.axis.bank.in/deposits/fixed-deposits/fd-interest-rates"],
@@ -108,18 +108,18 @@ async function main() {
       ["South Indian Bank", "https://www.southindianbank.com/interestrates/interestrates.aspx"],
       ["Federal Bank", "https://www.federalbank.co.in/interest-rates"],
       ["Canara Bank", "https://www.canarabank.bank.in/pages/deposit-interest-rates"],
-      ["Bank of Baroda", "https://bankofbaroda.bank.in/interest-rate-and-service-charges/deposits-interest-rates/fixed-deposits-callable-and-non-callable-upto-ten-crores"],
-      ["Bank of India", "https://bankofindia.bank.in/interest-rate/rupee-term-deposit-rate"],
-      ["Bank of Maharashtra", "https://bankofmaharashtra.bank.in/domestic-term-deposits"],
-      ["RBL Bank", "https://www.rbl.bank.in/interest-rates"],
+      ["Bank of Baroda", "https://www.bankbazaar.com/fixed-deposit/bank-of-baroda-fixed-deposit-rate.html"],
+      ["Bank of India", "https://www.bankbazaar.com/fixed-deposit/bank-of-india-fixed-deposit-rate.html"],
+      ["Bank of Maharashtra", "https://www.bankbazaar.com/fixed-deposit/bank-of-maharashtra-fixed-deposit-rate.html"],
+      ["RBL Bank", "https://www.bankbazaar.com/fixed-deposit/rbl-bank-fixed-deposit-rate.html"],
       ["IDBI Bank", "https://www.idbi.bank.in/interest-rates.aspx"],
-      ["Indian Bank", "https://indianbank.bank.in/en/deposit-rates"],
-      ["Central Bank of India", "https://centralbank.bank.in/en/interest-rates-on-deposit"],
-      ["Bandhan Bank", "https://bandhan.bank.in/fixed-deposit#rctabtwo"],
-      ["PNB Housing Finance", "https://www.pnbhousing.com/fixed-deposit/interests-rates"],
+      ["Indian Bank", "https://www.bankbazaar.com/fixed-deposit/indian-bank-fixed-deposit-rate.html"],
+      ["Central Bank of India", "https://www.bankbazaar.com/fixed-deposit/central-bank-of-india-fixed-deposit-rate.html"],
+      ["Bandhan Bank", "https://www.bankbazaar.com/fixed-deposit/bandhan-bank-fixed-deposit-rate.html"],
+      ["PNB Housing Finance", "https://www.bankbazaar.com/fixed-deposit/pnbhfl-fixed-deposit-rate.html"],
       ["KTDFC", "https://www.bankbazaar.com/fixed-deposit/ktdfc-fixed-deposit-rate.html"],
-      ["LIC Housing Finance", "https://www.lichousing.com/sanchay-public-deposit"],
-      ["Shriram Finance", "https://www.shriramfinance.in/fixed-deposit-interest-rates"]
+      ["LIC Housing Finance", "https://www.bankbazaar.com/fixed-deposit/lic-housing-fixed-deposit-rate.html"],
+      ["Shriram Finance", "https://www.bankbazaar.com/fixed-deposit/shriram-finance-fixed-deposit-rate.html"]
     ];
     const ws = XLSX.utils.aoa_to_sheet(wsData);
     XLSX.utils.book_append_sheet(wb, ws, "Banks");
@@ -141,13 +141,9 @@ async function main() {
 
   logger.info("loaded_banks_from_excel", { count: banksList.length });
 
-  // 3. Pre-resolve DNS using system resolver (bypass Chrome's async DNS)
-  const dnsRules = await resolveHostnames(banksList.map(b => b["FD URL"]));
-  logger.info("dns_preresolved", { total: dnsRules.length });
-
-  // 4. Setup Playwright browser manager with DNS overrides
+  // 3. Setup Playwright browser manager
   const browserManager = new PlaywrightBrowserManager(true);
-  await browserManager.start(dnsRules);
+  await browserManager.start();
 
   const validationRecords = {};
   const limit = pLimit(CONCURRENCY_LIMIT);
@@ -160,7 +156,7 @@ async function main() {
 
   await browserManager.close();
 
-  // 5. Process successful results
+  // 4. Process successful results
   const successfulResults = results.filter(r => r && r.status === "SUCCESS");
 
   // Map to simplified schema containing only: bank_name, url, rates (tenure, interest_rate, senior_citizen_interest_rate, tier)
@@ -234,7 +230,7 @@ async function main() {
 
   logger.info("scraping_pipeline_complete", { successful: successfulResults.length, total: banksList.length });
 
-  // 6. Ingest into Postgres (append-mode: full history preserved).
+  // 5. Ingest into Postgres (append-mode: full history preserved).
   //    Skip if --skip-db is passed on the CLI.
   const skipDb = process.argv.includes("--skip-db");
   if (!skipDb && successfulResults.length > 0) {
@@ -261,7 +257,7 @@ async function main() {
     }
   }
 
-  // 7. Regenerate reference-banks.cjs from the latest DB rates.
+  // 6. Regenerate reference-banks.cjs from the latest DB rates.
   //    mig.js requires this file, so every successful scrape keeps it fresh.
   //    Non-fatal: if the generator fails, the existing reference-banks.js is unchanged.
   if (!skipDb) {

@@ -1,6 +1,6 @@
-const DAYS_PATTERNS = [/(\d+)\s*d(?:ay|a)?s?\s*/i];
-const MONTHS_PATTERNS = [/(\d+)\s*m(?:onth|th)?s?\s*/i];
-const YEARS_PATTERNS = [/(\d+)\s*y(?:ear|r)?s?\s*/i];
+const DAYS_PATTERNS = [/(\d+)\s*d(ay)?s?/i];
+const MONTHS_PATTERNS = [/(\d+)\s*m(onth)?s?/i];
+const YEARS_PATTERNS = [/(\d+)\s*y(ear)?s?/i];
 
 export function parseTenure(tenureStr) {
   if (!tenureStr) return [null, null, null];
@@ -279,7 +279,6 @@ export function classifyFDProduct(sectionName, tableName, tenureRaw) {
   let schemeType = "regular_fd";
   let schemeName = null;
 
-  const isRange = ["to", "-", "–", "—", "less", "below", "above", "or more", "<", ">"].some(k => tenLower.includes(k));
   let isSpecial = false;
 
   if (secLower.includes("green") || tblLower.includes("green")) {
@@ -289,17 +288,11 @@ export function classifyFDProduct(sectionName, tableName, tenureRaw) {
     isSpecial = true;
     schemeType = "tax_saver_fd";
     schemeName = "Tax Saver FD";
-  } else if (!isRange && ["day", "month", "year"].some(k => tenLower.includes(k))) {
-    const cleanedTen = tenureRaw.replace(/[*#$\s]+$/, "").trim().toLowerCase();
-    const standardTenures = [
-      "1 year", "2 years", "3 years", "4 years", "5 years", "6 years", "7 years", "8 years", "9 years", "10 years",
-      "7 days", "15 days", "30 days", "45 days", "90 days", "180 days"
-    ];
-    if (!standardTenures.includes(cleanedTen)) {
-      isSpecial = true;
-      schemeName = tenureRaw.trim() + " FD";
-    }
   }
+  // NOTE: single-point tenures (e.g. "181 days", "13 months", "15 months",
+  // "36 months", "444 days") are ordinary published rate slabs, not special
+  // schemes, so they stay regular_fd. Only genuinely-named special products
+  // (green / tax-saver, detected above) are flagged special.
 
   if (isSpecial && schemeType === "regular_fd") {
     schemeType = "special_fd";

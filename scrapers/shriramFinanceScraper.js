@@ -1,36 +1,34 @@
 import { BaseScraper } from './baseScraper.js';
 import { LayeredExtractor } from '../core/extractor.js';
 
-const NON_FD_LINE = /bps|mark.?up|repo|mclr|savings|card|mortgage|apr|credit|agri|penalty|lock.?in|pre.?matur|tender|tax/i;
-
-function isValidFDRate(val) {
-  return val >= 2.0 && val <= 12.0;
-}
-
 export class ShriramFinanceScraper extends BaseScraper {
   async scrape(page) {
     this.logger.info("starting_shriram_finance_scrape");
     let rates = [];
 
     try {
-      await page.waitForSelector("table, [role='table']", { timeout: 10000 });
+      await page.waitForSelector("table, [role='table']", { timeout: 5000 });
     } catch (e) {
       this.logger.warn("timeout_waiting_for_tables_attempting_anyway");
     }
 
     const tables = await LayeredExtractor.extractFromPage(page);
-    rates = LayeredExtractor.extractPrimaryRateRows(tables);
+    const parsedTables = [];
 
-    if (rates.length < 5) {
-      rates = await this.parseRatesFromText(page);
+    for (const t of tables) {
+      const parsed = LayeredExtractor.parseExtractedTable(t);
+      if (parsed && parsed.length > 0) {
+        parsedTables.push(...parsed);
+      }
     }
 
     // The cumulative deposit table has month-only numbers as tenure
     // (e.g. "12", "15 (digital)") without "months" suffix.
-    // Use manual DOM extraction only as a last resort if text parse fails.
-    if (rates.length < 3) {
+    // The standard parser may miss some rows. Use manual DOM extraction
+    // for the Cumulative Deposit table as a supplement.
+    if (parsedTables.length === 0 || parsedTables.length < 5) {
       this.logger.info("using_manual_shriram_cumulative_extraction");
-      rates = await page.evaluate(() => {
+      const manualRates = await page.evaluate(() => {
         function getPrecedingHeading(el) {
           let current = el;
           while (current) {
@@ -85,21 +83,19 @@ export class ShriramFinanceScraper extends BaseScraper {
         }
         return results;
       });
+
+      if (manualRates.length > parsedTables.length) {
+        rates.push(...manualRates);
+      }
+    }
+
+    if (rates.length === 0) {
+      rates = parsedTables;
     }
 
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);
     }
-
-    rates.forEach(r => {
-      const gen = parseFloat(r.general_raw?.replace(/%/g, ''));
-      if (!isNaN(gen)) {
-        const senStr = String(r.senior_raw ?? '').replace(/%/g, '').trim();
-        const sen = parseFloat(senStr);
-        if (!isNaN(sen) && senStr.length > 0 && sen > gen + 0.01) return;
-        r.senior_raw = `${(gen + 0.50).toFixed(2)}%`;
-      }
-    });
 
     return {
       fd_rates: rates,
@@ -114,67 +110,7 @@ export class ShriramFinanceScraper extends BaseScraper {
       last_updated_on_page: null,
       effective_from: null,
       effective_to: null,
-      scraper_version: "2.0.1"
+      scraper_version: "1.0.0"
     };
-  }
-
-  async parseRatesFromText(page) {
-    const text = await page.evaluate(() => document.body ? document.body.innerText : '');
-    const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-    const parsed = [];
-    const seen = new Set();
-
-    for (const line of lines) {
-      if (line.length > 200) continue;
-      if (NON_FD_LINE.test(line)) continue;
-
-      const pcts = line.match(/\d+\.\d+/g);
-      if (!pcts || pcts.length < 5) continue;
-
-      const nums = pcts.map(parseFloat).filter(v => isValidFDRate(v));
-      if (nums.length < 5) continue;
-
-      // Try to extract tenure from text before the first rate number
-      const firstNumIdx = line.search(/\d+\.\d+/);
-      if (firstNumIdx < 0) continue;
-
-      let period = line.substring(0, firstNumIdx).trim();
-      if (!period || period.length > 40) continue;
-
-      // Append " Months" if the raw period is just a number or number range without a time unit
-      const periodLower = period.toLowerCase();
-      if (!periodLower.includes('month') && !periodLower.includes('year') && !periodLower.includes('day')) {
-        if (/^\d/.test(period)) {
-          period = period + " Months";
-        }
-      }
-
-      // Strip leading/trailing junk like bullets, asterisks, dashes
-      period = period.replace(/^[\s•\-–—*#]+/, '').replace(/[\s•\-–—*#]+$/, '').trim();
-
-      // Normalize spaces around dash
-      period = period.replace(/\s*-\s*/g, '-');
-
-      const general = nums[4];
-      if (!isValidFDRate(general)) continue;
-
-      let senior = nums[5] || general + 0.50;
-      if (senior > 12.0) senior = 12.0;
-
-      const key = period + '|' + general;
-      if (seen.has(key)) continue;
-      seen.add(key);
-
-      parsed.push({
-        tenure_raw: period,
-        general_raw: String(general),
-        senior_raw: String(senior),
-        section_name: "Shriram Unnati FD",
-        table_name: "",
-        rate_effective_date: null
-      });
-    }
-
-    return parsed;
   }
 }

@@ -48,7 +48,7 @@ export class AxisScraper extends BaseScraper {
 
     for (const pdfUrl of candidatePdfs) {
       try {
-        const response = await page.context().request().get(pdfUrl);
+        const response = await page.request.get(pdfUrl);
         const body = await response.body();
         if (response.status() === 200 && body.includes(Buffer.from("%PDF"))) {
           fs.writeFileSync(tempPdf, body);

@@ -370,7 +370,7 @@ export class LayeredExtractor {
     logger.info("level_3_4_unstructured_text_extraction");
     let textContent = "";
     try {
-      textContent = await page.evaluate(() => document.body ? document.body.innerText : '');
+      textContent = await page.innerText("body");
     } catch (e) {
       return [];
     }
@@ -416,18 +416,39 @@ export class LayeredExtractor {
       //                       tenure + 1-4 rate numbers on the SAME line
       //
       //   (B) Two-line:    "7 – 14 days"           ← tenure
-      //                    "3.00 3.50 3.50 4.00"   ← 1-4 rate numbers on the NEXT line
+      //                    "3.00 3.50 3.50 4.00"   ← rate numbers on the NEXT line
       //       (Axis Bank's live PDF uses this layout with 4 rate columns)
       //
-      const singleLinePattern = /([\d\s]+(?:days?|months?|years?|d|m|y)(?:\s*(?:to|-|less\s+than|<)\s*[\d\s]+(?:days?|months?|years?|d|m|y))?)\s+(\d+\.\d+)(?:\s+(\d+\.\d+))?(?:\s+(\d+\.\d+))?(?:\s+(\d+\.\d+))?/i;
-      const tenureOnlyPattern  = /^([\d\s]+(?:days?|months?|years?|d|m|y)(?:\s*(?:to|-|less\s+than|<)\s*[\d\s]+(?:days?|months?|years?|d|m|y))?)\s*$/i;
-      const rateOnlyPattern    = /^(\d+\.\d+)(?:\s+(\d+\.\d+))?(?:\s+(\d+\.\d+))?(?:\s+(\d+\.\d+))?\s*$/i;
+      // Layout B is detected structurally (a tenure-shaped line followed by a
+      // pure rate line) rather than with a rigid tenure regex, so it tolerates
+      // any dash variant (-, –, —), the "<" / "less than" separators, and
+      // multi-unit tenures such as "88 days – 3 months 24 days" or
+      // "1 year 11 days < 13 months".
 
-      const emitRow = (tenure, rateCols, sectionName) => {
-        if (rateCols.length >= 4) {
+      // A rate line is purely 1+ space-separated numbers (optionally decimal).
+      const isRateLine = (s) => /^(\d{1,3}(?:\.\d{1,2})?)(?:\s+\d{1,3}(?:\.\d{1,2})?)*$/.test(s.trim());
+
+      // A tenure line carries a digit and a time unit, isn't itself a rate
+      // line, and isn't a disclaimer/header line that merely mentions a unit.
+      const looksLikeTenure = (s) => {
+        const t = s.trim();
+        if (!t || t.length > 80) return false;
+        if (isRateLine(t)) return false;
+        if (!/\d/.test(t)) return false;
+        if (!/(days?|months?|years?|yrs?|mths?)\b/i.test(t)) return false;
+        if (/^(note|disclaimer|effective|table|rate|interest|deposits?|maturity|w\.e\.f|\*)/i.test(t)) return false;
+        return true;
+      };
+
+      const singleLinePattern = /([\d\s]+(?:days?|months?|years?|d|m|y)(?:\s*(?:to|-|less\s+than|<)\s*[\d\s]+(?:days?|months?|years?|d|m|y))?)\s+(\d+\.\d+)(?:\s+(\d+\.\d+))?(?:\s+(\d+\.\d+))?(?:\s+(\d+\.\d+))?/i;
+
+      const emitRow = (tenure, rateColsRaw, sectionName) => {
+        const rateCols = rateColsRaw.filter(r => r !== undefined && r !== null && r !== "");
+        if (rateCols.length === 4) {
           // 4-col PDF (Axis-style): 2 deposit brackets × 2 customer types.
           // Emit 2 rows — one per deposit bracket. The tier-mapper in main.js
-          // assigns tier=1 to the first row, tier=2 to the second.
+          // assigns tier=1 to the first row, tier=2 to the second. The ≥3 Cr
+          // bracket is later classified as bulk and filtered out for retail.
           //   col 1: general <3Cr,  col 3: senior <3Cr   → row 1
           //   col 2: general 3-5Cr, col 4: senior 3-5Cr  → row 2
           aggregatedRows.push({
@@ -444,7 +465,7 @@ export class LayeredExtractor {
             section_name: sectionName + " ₹3 Cr to <₹5 Cr",
             table_name: ""
           });
-        } else if (rateCols.length >= 2) {
+        } else if (rateCols.length === 2 || rateCols.length === 3) {
           aggregatedRows.push({
             tenure_raw: tenure,
             general_raw: rateCols[0],
@@ -461,6 +482,8 @@ export class LayeredExtractor {
             table_name: ""
           });
         }
+        // rateCols.length >= 5 → a bulk/wholesale table (many amount brackets);
+        // skip it so retail extraction isn't polluted with wholesale rates.
       };
 
       for (let i = 0; i < lines.length; i++) {
@@ -481,17 +504,12 @@ export class LayeredExtractor {
         }
 
         // Layout B: tenure on this line, rates on the next line
-        const tenureMatch = tenureOnlyPattern.exec(line);
-        if (tenureMatch) {
-          const tenure = tenureMatch[1].trim();
+        if (looksLikeTenure(line)) {
           const nextLine = lines[i + 1];
-          if (nextLine) {
-            const rateMatch = rateOnlyPattern.exec(nextLine);
-            if (rateMatch) {
-              const rateCols = [rateMatch[1], rateMatch[2], rateMatch[3], rateMatch[4]].filter(r => r !== undefined);
-              emitRow(tenure, rateCols, "PDF Interest Rates");
-              i++;  // skip the rate line we just consumed
-            }
+          if (nextLine && isRateLine(nextLine)) {
+            const rateCols = nextLine.trim().split(/\s+/);
+            emitRow(line.trim(), rateCols, "PDF Interest Rates");
+            i++;  // skip the rate line we just consumed
           }
         }
       }
