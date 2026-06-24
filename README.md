@@ -148,7 +148,7 @@ web-scrape/
 │   ├── browser.js           # Headless Playwright browser wrapper
 │   ├── changeDetector.js    # Delta comparison logic
 │   ├── extractor.js         # DOM/Cheerio table extractor
-│   ├── jsonWriter.js        # File saving & validation report output
+│   ├── jsonWriter.js        # File  saving & validation report output
 │   ├── logger.js            # Log accumulator
 │   ├── migrate.js           # Migration helper
 │   ├── normalizer.js        # Tenure parsing & rate formatting logic
