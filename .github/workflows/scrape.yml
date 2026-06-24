@@ -31,6 +31,17 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
 
+      - name: Generate Excel
+        run: node scripts/json-to-excel.js
+
+      - name: Commit Excel to repo
+        run: |
+          git config user.name "fd-scraper-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add output/FD_Rates.xlsx
+          git commit -m "Update FD_Rates.xlsx [skip ci]" || echo "No changes"
+          git push
+
       - name: Upload output artifacts
         uses: actions/upload-artifact@v4
         with:
