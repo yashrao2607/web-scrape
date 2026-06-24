@@ -11,7 +11,7 @@ export class SBIScraper extends BaseScraper {
 
     if (this.url.toLowerCase().endsWith(".pdf")) {
       const tempPdf = path.join(os.tmpdir(), "sbi_rates.pdf");
-      const response = await page.context().request().get(this.url);
+      const response = await page.context().request.get(this.url);
       fs.writeFileSync(tempPdf, await response.body());
       rates = await LayeredExtractor.extractFromPdf(tempPdf);
     } else {

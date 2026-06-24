@@ -3,6 +3,7 @@ import { logger } from './logger.js';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
+import dns from 'dns';
 
 export class PlaywrightBrowserManager {
   constructor(headless = true, timeoutMs = 30000) {
@@ -11,16 +12,21 @@ export class PlaywrightBrowserManager {
     this._browser = null;
   }
 
-  async start() {
+  async start(dnsRules = []) {
     if (!this._browser) {
-      logger.info("launching_browser", { headless: this.headless });
+      const args = [
+        "--disable-dev-shm-usage",
+        "--no-sandbox",
+        "--disable-setuid-sandbox"
+      ];
+      if (dnsRules.length > 0) {
+        args.push(`--host-resolver-rules=${dnsRules.join(", ")}`);
+        logger.info("dns_rules_applied", { count: dnsRules.length });
+      }
+      logger.info("launching_browser", { headless: this.headless, dnsRules: dnsRules.length > 0 });
       this._browser = await chromium.launch({
         headless: this.headless,
-        args: [
-          "--disable-dev-shm-usage",
-          "--no-sandbox",
-          "--disable-setuid-sandbox"
-        ]
+        args
       });
     }
     return this._browser;
@@ -50,11 +56,28 @@ export class PlaywrightBrowserManager {
 
   async navigateTo(page, url) {
     logger.info("navigating_to_url", { url });
+    const attempts = [ "networkidle", "load", "domcontentloaded" ];
+    for (const waitUntil of attempts) {
+      try {
+        await page.goto(url, { waitUntil, timeout: this.timeoutMs });
+        // Quick sanity: if we landed on a chrome error page, retry
+        const isError = await page.evaluate(() => document.title && document.title.includes("chromewebdata")).catch(() => false);
+        if (isError) {
+          logger.warn("chrome_error_page_detected_retrying", { url, waitUntil });
+          await new Promise(r => setTimeout(r, 3000));
+          continue;
+        }
+        return;
+      } catch (e) {
+        logger.warn("navigation_attempt_failed", { url, waitUntil, error: e.message });
+        await new Promise(r => setTimeout(r, 3000));
+      }
+    }
+    // Final attempt — let the scraper deal with whatever page state
     try {
-      await page.goto(url, { waitUntil: "networkidle", timeout: this.timeoutMs });
+      await page.goto(url, { waitUntil: "load", timeout: this.timeoutMs * 2 });
     } catch (e) {
-      logger.warn("networkidle_failed_falling_back_to_load", { url, error: e.message });
-      await page.goto(url, { waitUntil: "load", timeout: this.timeoutMs });
+      logger.warn("navigation_failed_attempting_scraper_fallback", { url, error: e.message });
     }
   }
 
@@ -72,6 +95,38 @@ export class PlaywrightBrowserManager {
     logger.info("download_complete", { path: destPath });
     return destPath;
   }
+}
+
+/**
+ * Pre-resolve all unique hostnames using Node.js system DNS and return
+ * `--host-resolver-rules` entries (e.g. `MAP example.com:443 1.2.3.4`).
+ * Unresolvable hostnames are silently skipped.  All resolutions run in
+ * parallel, and each times out after 5 s to keep the pipeline flowing.
+ */
+export async function resolveHostnames(urls) {
+  const hostnames = [...new Set(urls.map(u => {
+    try { return new URL(u).hostname; } catch { return null; }
+  }).filter(Boolean))];
+
+  const results = await Promise.allSettled(
+    hostnames.map(hostname =>
+      Promise.race([
+        dns.promises.resolve4(hostname),
+        new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 5000))
+      ]).then(addrs => ({ hostname, addrs }))
+    )
+  );
+
+  const rules = [];
+  for (const r of results) {
+    if (r.status === "fulfilled" && r.value.addrs.length > 0) {
+      rules.push(`MAP ${r.value.hostname}:443 ${r.value.addrs[0]}`);
+      rules.push(`MAP ${r.value.hostname}:80 ${r.value.addrs[0]}`);
+    } else {
+      logger.warn("dns_resolve_failed_skipping", { hostname: r.value?.hostname ?? "unknown" });
+    }
+  }
+  return rules;
 }
 
 /**

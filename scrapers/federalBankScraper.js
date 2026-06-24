@@ -12,13 +12,11 @@ export class FederalBankScraper extends BaseScraper {
       this.logger.warn("timeout_waiting_for_tables_attempting_anyway");
     }
 
+    // The Federal page renders several rate tables (standard retail, a long-term
+    // continuation, and a special <₹3 Cr scheme). Use only the primary retail
+    // table to avoid pulling in overlapping/duplicate rows from the others.
     const tables = await LayeredExtractor.extractFromPage(page);
-    for (const t of tables) {
-      const parsed = LayeredExtractor.parseExtractedTable(t);
-      if (parsed && parsed.length > 0) {
-        rates.push(...parsed);
-      }
-    }
+    rates = LayeredExtractor.extractPrimaryRateRows(tables);
 
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);

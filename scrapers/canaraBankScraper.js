@@ -13,13 +13,11 @@ export class CanaraBankScraper extends BaseScraper {
       this.logger.warn("timeout_waiting_for_tables_attempting_anyway");
     }
 
+    // The Canara page renders many rate tables (retail <₹3 Cr, bulk ≥3 Cr
+    // callable/non-callable, NRI, special-tenure schemes). Use only the primary
+    // retail table; the bulk/special tables would otherwise inject wrong rows.
     const tables = await LayeredExtractor.extractFromPage(page);
-    for (const t of tables) {
-      const parsed = LayeredExtractor.parseExtractedTable(t);
-      if (parsed && parsed.length > 0) {
-        rates.push(...parsed);
-      }
-    }
+    rates = LayeredExtractor.extractPrimaryRateRows(tables);
 
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);
@@ -29,10 +27,15 @@ export class CanaraBankScraper extends BaseScraper {
     // Policy: "Additional interest of 0.50% for Senior Citizens (General Public)
     // is available for Deposits (Other than NRO/NRE and CGA Deposits)
     // less than Rs. 3 Cr and with tenor of 180 Days and above."
+    // Only apply formula if senior rate was not already scraped from page.
     rates.forEach(item => {
       const genRateStr = String(item.general_raw || "").replace(/%/g, "").trim();
       const genRateVal = parseFloat(genRateStr);
       if (isNaN(genRateVal)) return;
+
+      const senRateStr = String(item.senior_raw || "").replace(/%/g, "").trim();
+      const senRateVal = parseFloat(senRateStr);
+      if (!isNaN(senRateVal) && senRateVal > genRateVal + 0.01) return;
 
       const [minDays] = parseTenureRange(item.tenure_raw);
       if (minDays !== null && minDays >= 180) {

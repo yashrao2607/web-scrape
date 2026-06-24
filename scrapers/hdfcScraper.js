@@ -13,6 +13,7 @@ export class HDFCScraper extends BaseScraper {
   async scrape(page) {
     this.logger.info("starting_hdfc_scrape");
     let rates = [];
+    let isFallback = false;
 
     if (this.url.toLowerCase().endsWith(".pdf")) {
       const tempPdf = path.join(os.tmpdir(), "hdfc_rates.pdf");
@@ -30,13 +31,12 @@ export class HDFCScraper extends BaseScraper {
       } else {
         try {
           await page.waitForSelector("table, [role='table']", { timeout: 5000 });
+          // The HDFC page renders multiple rate tables: the standard retail
+          // (< ₹3 Crore) table, the ≥3 Cr–<5 Cr bracket, and the ≥5 Cr bulk
+          // table. Use only the primary retail table so higher-bracket rows
+          // (e.g. "2 year 1 day to 3 years") don't leak into the output.
           const tables = await LayeredExtractor.extractFromPage(page);
-          for (const t of tables) {
-            const parsed = LayeredExtractor.parseExtractedTable(t);
-            if (parsed && parsed.length > 0) {
-              rates.push(...parsed);
-            }
-          }
+          rates = LayeredExtractor.extractPrimaryRateRows(tables);
           if (rates.length === 0) {
             rates = await LayeredExtractor.extractFromUnstructuredText(page);
           }
@@ -46,6 +46,7 @@ export class HDFCScraper extends BaseScraper {
       }
 
       if (rates.length === 0) {
+        isFallback = true;
         this.logger.info("triggering_hdfc_local_html_fallback");
         const fallbackPath = path.join(__dirname, "hdfc_fallback.html");
         try {
@@ -93,12 +94,7 @@ export class HDFCScraper extends BaseScraper {
             }
           });
 
-          for (const t of fallbackTables) {
-            const parsed = LayeredExtractor.parseExtractedTable(t);
-            if (parsed && parsed.length > 0) {
-              rates.push(...parsed);
-            }
-          }
+          rates = LayeredExtractor.extractPrimaryRateRows(fallbackTables);
         } catch (fbErr) {
           this.logger.error("hdfc_local_html_fallback_failed", { error: fbErr.message });
         }
@@ -119,6 +115,7 @@ export class HDFCScraper extends BaseScraper {
       last_updated_on_page: null,
       effective_from: null,
       effective_to: null,
+      is_fallback: isFallback,
       scraper_version: "1.0.0"
     };
   }

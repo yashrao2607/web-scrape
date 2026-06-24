@@ -13,25 +13,24 @@ export class IOBScraper extends BaseScraper {
     }
 
     const tables = await LayeredExtractor.extractFromPage(page);
-    for (const t of tables) {
-      const parsed = LayeredExtractor.parseExtractedTable(t);
-      if (parsed && parsed.length > 0) {
-        rates.push(...parsed);
-      }
-    }
+    // Page renders several rate tables (retail, bulk >=3 Cr, non-callable, NRI).
+    // Use only the primary retail table to avoid merging overlapping/duplicate rows.
+    rates = LayeredExtractor.extractPrimaryRateRows(tables);
 
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);
     }
 
-    // Post-process to add the +0.50% senior citizen premium
+    // Apply +0.50% senior citizen premium only if senior rate not already scraped
     rates.forEach(item => {
       try {
         const genRateStr = String(item.general_raw || "").replace(/%/g, "").trim();
         const genRateVal = parseFloat(genRateStr);
-        if (!isNaN(genRateVal)) {
-          item.senior_raw = `${(genRateVal + 0.50).toFixed(2)}%`;
-        }
+        if (isNaN(genRateVal)) return;
+        const senRateStr = String(item.senior_raw || "").replace(/%/g, "").trim();
+        const senRateVal = parseFloat(senRateStr);
+        if (!isNaN(senRateVal) && senRateVal > genRateVal + 0.01) return;
+        item.senior_raw = `${(genRateVal + 0.50).toFixed(2)}%`;
       } catch (e) {}
     });
 

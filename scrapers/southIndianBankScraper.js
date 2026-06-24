@@ -13,12 +13,9 @@ export class SouthIndianBankScraper extends BaseScraper {
     }
 
     const tables = await LayeredExtractor.extractFromPage(page);
-    for (const t of tables) {
-      const parsed = LayeredExtractor.parseExtractedTable(t);
-      if (parsed && parsed.length > 0) {
-        rates.push(...parsed);
-      }
-    }
+    // Page renders several rate tables (retail, bulk >=3 Cr, non-callable, NRI).
+    // Use only the primary retail table to avoid merging overlapping/duplicate rows.
+    rates = LayeredExtractor.extractPrimaryRateRows(tables);
 
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);

@@ -52,28 +52,31 @@ export class ChangeDetector {
       let changesDetected = false;
       const rateChanges = [];
 
-      // Compare rates using simplified keys
+      // Compare rates using composite keys (tenure + tier) to handle multi-tier banks
+      const makeKey = r => `${r.tenure}||${r.tier ?? ''}`;
+
       const oldRatesMap = {};
       (oldBank.rates || []).forEach(r => {
         if (r && r.tenure) {
-          oldRatesMap[r.tenure] = r;
+          oldRatesMap[makeKey(r)] = r;
         }
       });
 
       const newRatesMap = {};
       (newBank.rates || []).forEach(r => {
         if (r && r.tenure) {
-          newRatesMap[r.tenure] = r;
+          newRatesMap[makeKey(r)] = r;
         }
       });
 
-      for (const [tenure, newVal] of Object.entries(newRatesMap)) {
+      for (const [key, newVal] of Object.entries(newRatesMap)) {
         const newGen = newVal.interest_rate;
         const newSr = newVal.senior_citizen_interest_rate;
 
-        if (!oldRatesMap[tenure]) {
+        if (!oldRatesMap[key]) {
           rateChanges.push({
-            tenure: tenure,
+            tenure: newVal.tenure,
+            tier: newVal.tier ?? null,
             change_type: "added",
             old_general_rate: null,
             new_general_rate: newGen,
@@ -82,13 +85,14 @@ export class ChangeDetector {
           });
           changesDetected = true;
         } else {
-          const oldVal = oldRatesMap[tenure];
+          const oldVal = oldRatesMap[key];
           const oldGen = oldVal.interest_rate;
           const oldSr = oldVal.senior_citizen_interest_rate;
 
           if (oldGen !== newGen || oldSr !== newSr) {
             rateChanges.push({
-              tenure: tenure,
+              tenure: newVal.tenure,
+              tier: newVal.tier ?? null,
               change_type: "rate_changed",
               old_general_rate: oldGen,
               new_general_rate: newGen,
@@ -100,11 +104,11 @@ export class ChangeDetector {
         }
       }
 
-      for (const tenure of Object.keys(oldRatesMap)) {
-        if (!newRatesMap[tenure]) {
-          const oldVal = oldRatesMap[tenure];
+      for (const [key, oldVal] of Object.entries(oldRatesMap)) {
+        if (!newRatesMap[key]) {
           rateChanges.push({
-            tenure: tenure,
+            tenure: oldVal.tenure,
+            tier: oldVal.tier ?? null,
             change_type: "removed",
             old_general_rate: oldVal.interest_rate,
             new_general_rate: null,

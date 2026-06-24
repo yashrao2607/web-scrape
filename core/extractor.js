@@ -336,11 +336,41 @@ export class LayeredExtractor {
     return parsedRows;
   }
 
+  /**
+   * Select the single PRIMARY retail rate table from a list of extracted tables
+   * and return its parsed rows.
+   *
+   * Bank pages routinely render several rate tables on one page: the standard
+   * retail (< ?3 Crore) table plus higher-bracket tables (?3 Cr / ?5 Cr bulk),
+   * non-callable variants, NRI tables, and special-scheme tables. Blindly
+   * concatenating rows from all of them pollutes the result with duplicate /
+   * overlapping tenures carrying the wrong (bulk/special) rates, and the dedup
+   * collisions can even drop valid rows from the correct table.
+   *
+   * The standard retail table is reliably the FIRST table (in document order)
+   * that yields a full set of parsed rows, so we pick that one and ignore the
+   * rest. Penalty / recurring tables already parse to zero rows and are skipped
+   * automatically. Falls back to the first non-empty table if none reach the
+   * row threshold.
+   */
+  static extractPrimaryRateRows(tables, minRows = 5) {
+    let fallback = [];
+    for (const t of tables) {
+      const parsed = this.parseExtractedTable(t);
+      if (!parsed || parsed.length === 0) continue;
+      if (parsed.length >= minRows) {
+        return parsed;
+      }
+      if (fallback.length === 0) fallback = parsed;
+    }
+    return fallback;
+  }
+
   static async extractFromUnstructuredText(page) {
     logger.info("level_3_4_unstructured_text_extraction");
     let textContent = "";
     try {
-      textContent = await page.innerText("body");
+      textContent = await page.evaluate(() => document.body ? document.body.innerText : '');
     } catch (e) {
       return [];
     }

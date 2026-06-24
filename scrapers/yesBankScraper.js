@@ -12,6 +12,7 @@ export class YesBankScraper extends BaseScraper {
   async scrape(page) {
     this.logger.info("starting_yes_bank_scrape");
     let rates = [];
+    let isFallback = false;
 
     try {
       await page.goto(this.url, { waitUntil: "domcontentloaded", timeout: 5000 });
@@ -31,6 +32,7 @@ export class YesBankScraper extends BaseScraper {
     }
 
     if (rates.length === 0) {
+      isFallback = true;
       this.logger.info("triggering_yes_bank_local_html_fallback");
       const fallbackPath = path.join(__dirname, "yes_bank_fallback.html");
       try {
@@ -102,6 +104,7 @@ export class YesBankScraper extends BaseScraper {
       last_updated_on_page: null,
       effective_from: "2026-06-02",
       effective_to: null,
+      is_fallback: isFallback,
       scraper_version: "1.0.0"
     };
   }

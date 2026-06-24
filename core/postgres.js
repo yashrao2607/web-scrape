@@ -227,6 +227,11 @@ export async function ensureLatestRatesViewExists() {
         WHERE r2.bank_id = r.bank_id
           AND r2.tenure  = r.tenure
           AND r2.tier IS NOT DISTINCT FROM r.tier
+    )
+    AND r.scrape_run_id = (
+        SELECT MAX(r3.scrape_run_id)
+        FROM rates r3
+        WHERE r3.bank_id = r.bank_id
     );
   `;
   try {

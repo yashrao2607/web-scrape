@@ -4,15 +4,6 @@ const supabaseUrl = process.env.SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_ANON_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-async function getLatestRunId() {
-  const { data } = await supabase
-    .from('scrape_runs')
-    .select('scrape_run_id')
-    .order('scrape_run_id', { ascending: false })
-    .limit(1)
-  return data?.[0]?.scrape_run_id ?? null
-}
-
 function dedupRates(rates) {
   const seen = new Set()
   const out = []
@@ -24,6 +15,25 @@ function dedupRates(rates) {
     }
   }
   return out
+}
+
+async function getLatestRunForBank(bankId) {
+  const { data } = await supabase
+    .from('rates')
+    .select('scrape_run_id')
+    .eq('bank_id', bankId)
+    .order('scrape_run_id', { ascending: false })
+    .limit(1)
+  return data?.[0]?.scrape_run_id ?? null
+}
+
+function mapRates(rates) {
+  return (rates || []).map(r => ({
+    tenure: r.tenure,
+    interest_rate: r.general_rate,
+    senior_citizen_interest_rate: r.senior_citizen_rate,
+    ...(r.tier != null ? { tier: r.tier } : {})
+  }))
 }
 
 export default async function handler(req, res) {
@@ -39,41 +49,32 @@ export default async function handler(req, res) {
     }
 
     if (pathname === '/api/latest' || pathname === '/api/all-rates') {
-      const runId = await getLatestRunId()
-      if (!runId) return res.status(200).json([])
-
       const { data: banks } = await supabase.from('banks').select('bank_id, bank_name, source_url')
       if (!banks) return res.status(200).json([])
 
       const result = await Promise.all(banks.map(async (bank) => {
+        const runId = await getLatestRunForBank(bank.bank_id)
+        if (!runId) return null
+
         const { data: rates } = await supabase
           .from('rates')
           .select('tenure, general_rate, senior_citizen_rate, tier')
           .eq('bank_id', bank.bank_id)
           .eq('scrape_run_id', runId)
 
-        const mapped = (rates || []).map(r => ({
-          tenure: r.tenure,
-          interest_rate: r.general_rate,
-          senior_citizen_interest_rate: r.senior_citizen_rate,
-          ...(r.tier != null ? { tier: r.tier } : {})
-        }))
-
         return {
           bank_name: bank.bank_name,
           url: bank.source_url,
-          rates: dedupRates(mapped)
+          rates: dedupRates(mapRates(rates))
         }
       }))
 
-      return res.status(200).json(result)
+      return res.status(200).json(result.filter(Boolean))
     }
 
     const bankMatch = pathname.match(/^\/api\/rates\/(.+)$/)
     if (bankMatch) {
       const bankName = decodeURIComponent(bankMatch[1])
-      const runId = await getLatestRunId()
-      if (!runId) return res.status(404).json({ error: 'No data found' })
 
       const { data: banks } = await supabase
         .from('banks')
@@ -85,23 +86,19 @@ export default async function handler(req, res) {
       }
 
       const bank = banks[0]
+      const runId = await getLatestRunForBank(bank.bank_id)
+      if (!runId) return res.status(404).json({ error: 'No data found for this bank' })
+
       const { data: rates } = await supabase
         .from('rates')
         .select('tenure, general_rate, senior_citizen_rate, tier')
         .eq('bank_id', bank.bank_id)
         .eq('scrape_run_id', runId)
 
-      const mapped = (rates || []).map(r => ({
-        tenure: r.tenure,
-        interest_rate: r.general_rate,
-        senior_citizen_interest_rate: r.senior_citizen_rate,
-        ...(r.tier != null ? { tier: r.tier } : {})
-      }))
-
       return res.status(200).json({
         bank_name: bank.bank_name,
         url: bank.source_url,
-        rates: dedupRates(mapped)
+        rates: dedupRates(mapRates(rates))
       })
     }
 

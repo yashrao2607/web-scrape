@@ -1,6 +1,10 @@
 import { BaseScraper } from './baseScraper.js';
 import { LayeredExtractor } from '../core/extractor.js';
 
+const TENURE_PATTERN = /(\d[\d\s]*(?:days?|months?|years?|d|m|y)(?:\s*(?:to|-|–)\s*\d*\s*(?:days?|months?|years?|d|m|y))?(?:\s*(?:and\s+above|above|& above|less\s+than|<)\s*\d*\s*(?:days?|months?|years?|d|m|y))?(?:\s*\([^)]*\))?)/i;
+
+const RATE_VALUE = /(\d+(?:\.\d+))/g;
+
 export class CentralBankOfIndiaScraper extends BaseScraper {
   async scrape(page) {
     this.logger.info("starting_central_bank_of_india_scrape");
@@ -13,11 +17,12 @@ export class CentralBankOfIndiaScraper extends BaseScraper {
     }
 
     const tables = await LayeredExtractor.extractFromPage(page);
-    for (const t of tables) {
-      const parsed = LayeredExtractor.parseExtractedTable(t);
-      if (parsed && parsed.length > 0) {
-        rates.push(...parsed);
-      }
+    // Page renders several rate tables (retail, bulk >=3 Cr, non-callable, NRI).
+    // Use only the primary retail table to avoid merging overlapping/duplicate rows.
+    rates = LayeredExtractor.extractPrimaryRateRows(tables);
+
+    if (rates.length === 0) {
+      rates = await this.parseRatesFromText(page);
     }
 
     if (rates.length === 0) {
@@ -40,5 +45,60 @@ export class CentralBankOfIndiaScraper extends BaseScraper {
       effective_to: null,
       scraper_version: "1.0.0"
     };
+  }
+
+  async parseRatesFromText(page) {
+    const text = await page.evaluate(() => document.body ? document.body.innerText : '');
+    const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+
+    const fdSection = [];
+    let inFDSection = false;
+
+    for (const line of lines) {
+      const lc = line.toLowerCase();
+      if (/maturity period.*general public|rates for deposits less than.*3.*crore/i.test(lc)) {
+        inFDSection = true;
+      }
+      if (/rates for deposits.*3.*cr|callable.*333|savings.*deposit|non-callable/i.test(lc)) {
+        inFDSection = false;
+      }
+      if (inFDSection && /^\d/.test(line)) {
+        fdSection.push(line);
+      }
+    }
+
+    if (fdSection.length === 0) {
+      for (const line of lines) {
+        if (/^\s*\d/.test(line) && TENURE_PATTERN.test(line)) {
+          const matches = [...line.matchAll(RATE_VALUE)];
+          if (matches.length >= 3) fdSection.push(line);
+        }
+      }
+    }
+
+    const parsed = [];
+    for (const line of fdSection) {
+      if (line.length > 150) continue;
+
+      TENURE_PATTERN.lastIndex = 0;
+      const tenureMatch = TENURE_PATTERN.exec(line);
+      if (!tenureMatch) continue;
+
+      const tenureRaw = tenureMatch[1].trim();
+      RATE_VALUE.lastIndex = 0;
+      const rateMatches = [...line.matchAll(RATE_VALUE)];
+      if (rateMatches.length < 2) continue;
+
+      parsed.push({
+        tenure_raw: tenureRaw,
+        general_raw: rateMatches[0][1],
+        senior_raw: rateMatches.length >= 2 ? rateMatches[1][1] : rateMatches[0][1],
+        section_name: "Domestic Term Deposits (<3 Cr)",
+        table_name: "",
+        rate_effective_date: null
+      });
+    }
+
+    return parsed;
   }
 }

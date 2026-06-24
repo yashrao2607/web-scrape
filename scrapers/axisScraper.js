@@ -17,18 +17,58 @@ export class AxisScraper extends BaseScraper {
 
     const tempPdf = path.join(os.tmpdir(), "axis_rates.pdf");
 
-    try {
-      const response = await page.context().request().get(this.url);
-      const body = await response.body();
-      if (response.status() === 200 && body.includes(Buffer.from("%PDF"))) {
-        fs.writeFileSync(tempPdf, body);
-        this.logger.info("downloaded_axis_pdf", { path: tempPdf });
-        rates = await LayeredExtractor.extractFromPdf(tempPdf);
-      } else {
-        this.logger.warn("axis_pdf_download_returned_invalid_content", { status: response.status() });
+    // Resolve the PDF(s) to extract from.
+    // If this.url is already a direct PDF link, use it as-is (backward compatible).
+    // Otherwise this.url is the FD landing page, which links out to one or more
+    // rate PDFs ("VIEW RATES" anchors) -- discover those links from the DOM.
+    let candidatePdfs = [];
+    if (this.url.toLowerCase().includes(".pdf")) {
+      candidatePdfs = [this.url];
+    } else {
+      try {
+        const hrefs = await page.$$eval("a[href]", anchors =>
+          anchors.map(a => a.href).filter(Boolean)
+        );
+        const pdfLinks = [...new Set(hrefs.filter(h => /\.pdf(\?|$)/i.test(h)))];
+        // Exclude non-resident / specialised products; keep the standard domestic retail FD.
+        const exclude = /(nri|nre|nro|fcnr|plus|floating|bulk|rfc|recurring|loan)/i;
+        const preferred = pdfLinks.filter(h =>
+          /(domestic|fixed.?deposit|\bfd\b|interest.?rate)/i.test(h) && !exclude.test(h)
+        );
+        const fallbackLinks = pdfLinks.filter(h => !exclude.test(h));
+        candidatePdfs = preferred.length ? preferred : fallbackLinks;
+        this.logger.info("axis_discovered_pdf_links", {
+          total: pdfLinks.length,
+          chosen: candidatePdfs.slice(0, 5)
+        });
+      } catch (e) {
+        this.logger.warn("axis_pdf_link_discovery_failed", { error: e.message });
       }
-    } catch (e) {
-      this.logger.error("axis_pdf_download_or_parse_failed", { error: e.message });
+    }
+
+    for (const pdfUrl of candidatePdfs) {
+      try {
+        const response = await page.context().request().get(pdfUrl);
+        const body = await response.body();
+        if (response.status() === 200 && body.includes(Buffer.from("%PDF"))) {
+          fs.writeFileSync(tempPdf, body);
+          this.logger.info("downloaded_axis_pdf", { url: pdfUrl, path: tempPdf });
+          const extracted = await LayeredExtractor.extractFromPdf(tempPdf);
+          if (extracted.length > 0) {
+            rates = extracted;
+            this.url = pdfUrl; // record the PDF actually used as the source URL
+            break;
+          }
+          this.logger.warn("axis_pdf_yielded_no_rates", { url: pdfUrl });
+        } else {
+          this.logger.warn("axis_pdf_download_returned_invalid_content", {
+            url: pdfUrl,
+            status: response.status()
+          });
+        }
+      } catch (e) {
+        this.logger.error("axis_pdf_download_or_parse_failed", { url: pdfUrl, error: e.message });
+      }
     }
 
     if (rates.length === 0) {

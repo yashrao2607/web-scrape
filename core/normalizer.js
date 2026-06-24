@@ -1,6 +1,6 @@
-const DAYS_PATTERNS = [/(\d+)\s*d(ay)?s?/i];
-const MONTHS_PATTERNS = [/(\d+)\s*m(onth)?s?/i];
-const YEARS_PATTERNS = [/(\d+)\s*y(ear)?s?/i];
+const DAYS_PATTERNS = [/(\d+)\s*d(?:ay|a)?s?\s*/i];
+const MONTHS_PATTERNS = [/(\d+)\s*m(?:onth|th)?s?\s*/i];
+const YEARS_PATTERNS = [/(\d+)\s*y(?:ear|r)?s?\s*/i];
 
 export function parseTenure(tenureStr) {
   if (!tenureStr) return [null, null, null];

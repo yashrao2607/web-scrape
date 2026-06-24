@@ -13,12 +13,9 @@ export class IndusIndScraper extends BaseScraper {
     }
 
     const tables = await LayeredExtractor.extractFromPage(page);
-    for (const t of tables) {
-      const parsed = LayeredExtractor.parseExtractedTable(t);
-      if (parsed && parsed.length > 0) {
-        rates.push(...parsed);
-      }
-    }
+    // Page renders several rate tables (retail, bulk >=3 Cr, non-callable, NRI).
+    // Use only the primary retail table to avoid merging overlapping/duplicate rows.
+    rates = LayeredExtractor.extractPrimaryRateRows(tables);
 
     // Filter out older historical FD tables if multiple effective dates are present
     const fdRates = rates.filter(r => 
