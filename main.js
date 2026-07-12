@@ -85,7 +85,7 @@ async function scrapeBankTask(bankInfo, browserManager, validationRecords) {
 async function main() {
   logger.info("starting_scraping_pipeline");
 
-  // 1. Initialize input file containing all 25 banks if it does not exist
+  // 1. Initialize input file containing all 31 banks if it does not exist
   if (!os.existsSync(INPUT_EXCEL_PATH)) {
     const inputDir = path.dirname(INPUT_EXCEL_PATH);
     if (!os.existsSync(inputDir)) {
@@ -95,6 +95,13 @@ async function main() {
     const wb = XLSX.utils.book_new();
     const wsData = [
       ["Bank Name", "FD URL"],
+      ["Shivalik Small Finance Bank", "https://www.paisabazaar.com/fixed-deposit/shivalik-small-finance-bank-fd-rates/"],
+      ["Suryoday Small Finance Bank", "https://www.paisabazaar.com/suryoday-bank/fixed-deposits/"],
+      ["Utkarsh Small Finance Bank", "https://www.paisabazaar.com/utkarsh-bank/fixed-deposits/"],
+      ["Unity Small Finance Bank", "https://www.paisabazaar.com/fixed-deposit/unity-small-finance-bank-fd-rates/"],
+      ["Bajaj Finance", "https://www.paisabazaar.com/bajaj-finserv/fixed-deposits/"],
+      ["Mahindra Finance", "https://www.paisabazaar.com/fixed-deposit/mahindra-finance-fixed-deposit/"],
+      ["Shriram City Union Finance", "https://www.paisabazaar.com/fixed-deposit/shriram-city-union-finance-fd-rates/"],
       ["HDFC Bank", "https://www.hdfc.bank.in/fixed-deposit/fd-interest-rate"],
       ["SBI", "https://sbi.co.in/web/interest-rates/deposit-rates/retail-domestic-term-deposits"],
       ["ICICI Bank", "https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-interest-rates"],
@@ -118,8 +125,7 @@ async function main() {
       ["Bandhan Bank", "https://www.bankbazaar.com/fixed-deposit/bandhan-bank-fixed-deposit-rate.html"],
       ["PNB Housing Finance", "https://www.bankbazaar.com/fixed-deposit/pnbhfl-fixed-deposit-rate.html"],
       ["KTDFC", "https://www.bankbazaar.com/fixed-deposit/ktdfc-fixed-deposit-rate.html"],
-      ["LIC Housing Finance", "https://www.bankbazaar.com/fixed-deposit/lic-housing-fixed-deposit-rate.html"],
-      ["Shriram Finance", "https://www.bankbazaar.com/fixed-deposit/shriram-finance-fixed-deposit-rate.html"]
+      ["LIC Housing Finance", "https://www.bankbazaar.com/fixed-deposit/lic-housing-fixed-deposit-rate.html"]
     ];
     const ws = XLSX.utils.aoa_to_sheet(wsData);
     XLSX.utils.book_append_sheet(wb, ws, "Banks");

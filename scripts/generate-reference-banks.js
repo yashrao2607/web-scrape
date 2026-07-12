@@ -34,7 +34,7 @@ const BANK_MAPPING = {
   'PNB Housing Finance':  { key: 'PNBHousing',    name: 'PNB Housing' },
   'KTDFC':                { key: 'KTDFC',         name: 'KTDFC' },
   'LIC Housing Finance':  { key: 'LICHousing',    name: 'LIC Housing' },
-  'Shriram Finance':      { key: 'Shriram',       name: 'Shriram Finance' }
+  'Shriram City Union Finance': { key: 'Shriram', name: 'Shriram Finance' }
 };
 
 // ── 2. The 5 day-range buckets (labels must match TENURE_BUCKETS in mig.js) ─

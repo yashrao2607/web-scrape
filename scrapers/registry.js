@@ -1,3 +1,10 @@
+import { ShivalikSmallFinanceBankScraper } from './shivalikSmallFinanceBankScraper.js';
+import { SuryodaySmallFinanceBankScraper } from './suryodaySmallFinanceBankScraper.js';
+import { UtkarshSmallFinanceBankScraper } from './utkarshSmallFinanceBankScraper.js';
+import { UnitySmallFinanceBankScraper } from './unitySmallFinanceBankScraper.js';
+import { BajajFinanceScraper } from './bajajFinanceScraper.js';
+import { MahindraFinanceScraper } from './mahindraFinanceScraper.js';
+import { ShriramCityUnionFinanceScraper } from './shriramCityUnionFinanceScraper.js';
 import { HDFCScraper } from './hdfcScraper.js';
 import { SBIScraper } from './sbiScraper.js';
 import { ICICIScraper } from './iciciScraper.js';
@@ -22,9 +29,15 @@ import { BandhanBankScraper } from './bandhanBankScraper.js';
 import { PNBHousingFinanceScraper } from './pnbHousingFinanceScraper.js';
 import { KTDFCScraper } from './ktdfcScraper.js';
 import { LICHousingFinanceScraper } from './licHousingFinanceScraper.js';
-import { ShriramFinanceScraper } from './shriramFinanceScraper.js';
 
 const SCRAPER_REGISTRY = {
+  "Shivalik Small Finance Bank": ShivalikSmallFinanceBankScraper,
+  "Suryoday Small Finance Bank": SuryodaySmallFinanceBankScraper,
+  "Utkarsh Small Finance Bank": UtkarshSmallFinanceBankScraper,
+  "Unity Small Finance Bank": UnitySmallFinanceBankScraper,
+  "Bajaj Finance": BajajFinanceScraper,
+  "Mahindra Finance": MahindraFinanceScraper,
+  "Shriram City Union Finance": ShriramCityUnionFinanceScraper,
   "HDFC Bank": HDFCScraper,
   "SBI": SBIScraper,
   "ICICI Bank": ICICIScraper,
@@ -48,8 +61,7 @@ const SCRAPER_REGISTRY = {
   "Bandhan Bank": BandhanBankScraper,
   "PNB Housing Finance": PNBHousingFinanceScraper,
   "KTDFC": KTDFCScraper,
-  "LIC Housing Finance": LICHousingFinanceScraper,
-  "Shriram Finance": ShriramFinanceScraper
+  "LIC Housing Finance": LICHousingFinanceScraper
 };
 
 export function getScraperForBank(bankName) {

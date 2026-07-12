@@ -1,7 +1,7 @@
 {
   "validation_summary": {
-    "total_banks_checked": 25,
-    "banks_with_issues": 22
+    "total_banks_checked": 32,
+    "banks_with_issues": 27
   },
   "failures_and_warnings": {
     "Kotak Mahindra Bank": [
@@ -12,6 +12,12 @@
       "Interval overlap detected: '3 years and above but less than 4 years' (max_days 36500) overlaps with '4 years and above but less than 5 years' (min_days 1460) for group retail_fd|regular|mixed|true.",
       "Interval overlap detected: '4 years and above but less than 5 years' (max_days 36500) overlaps with '5 years and above upto and inclusive of 10 years' (min_days 1825) for group retail_fd|regular|mixed|true."
     ],
+    "SBI": [
+      "Interval overlap detected: '211 days to less than 1 year' (max_days 365) overlaps with '1 Year to less than 2 years' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 Year to less than 2 years' (max_days 730) overlaps with '1 Year' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '2 years to less than 3 years' (max_days 1095) overlaps with '2 Years' (min_days 730) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '3 years to less than 5 years' (max_days 1825) overlaps with '5 years and up to 10 years' (min_days 1825) for group retail_fd|regular|resident|true."
+    ],
     "HDFC Bank": [
       "Interval overlap detected: '9 months 1 day to < 1 Year' (max_days 365) overlaps with '1 Year to < 15 months' (min_days 365) for group retail_fd|regular|mixed|true.",
       "Interval overlap detected: '1 Year to < 15 months' (max_days 456) overlaps with '15 months to < 18 months' (min_days 456) for group retail_fd|regular|mixed|true.",
@@ -20,22 +26,36 @@
       "Interval overlap detected: '2 Years 1 day to < 2 Year 11 Months' (max_days 1065) overlaps with '2 Years 11 Months (35 months)' (min_days 1065) for group retail_fd|regular|mixed|true.",
       "Interval overlap detected: '3 Years 1 day to < 4 Years 7 Months' (max_days 1673) overlaps with '4 Year 7 Months (55 months)' (min_days 1673) for group retail_fd|regular|mixed|true."
     ],
-    "SBI": [
-      "Interval overlap detected: '211 days to less than 1 year' (max_days 365) overlaps with '1 Year to less than 2 years' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 Year to less than 2 years' (max_days 730) overlaps with '1 Year' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '2 years to less than 3 years' (max_days 1095) overlaps with '2 Years' (min_days 730) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '3 years to less than 5 years' (max_days 1825) overlaps with '5 years and up to 10 years' (min_days 1825) for group retail_fd|regular|resident|true."
-    ],
-    "ICICI Bank": [
-      "Interval overlap detected: '185 to < 1 Year' (max_days 365) overlaps with '1 Year to < 18 Months' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 Year to < 18 Months' (max_days 548) overlaps with '18 Months to 2 Years' (min_days 548) for group retail_fd|regular|resident|true."
-    ],
     "Yes Bank": [
       "Interval overlap detected: '272 days to less than 12 months' (max_days 365) overlaps with '12 months' (min_days 365) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '12 months 1 day to less than 18 months' (max_days 548) overlaps with '18 months' (min_days 548) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '18 months 1 day to less than 24 months' (max_days 730) overlaps with '24 months to less than 36 months' (min_days 730) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '24 months to less than 36 months' (max_days 1095) overlaps with '36 months to less than 60 months' (min_days 1095) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '36 months to less than 60 months' (max_days 1825) overlaps with '60 months to 120 months' (min_days 1825) for group retail_fd|regular|resident|true."
+    ],
+    "ICICI Bank": [
+      "Interval overlap detected: '185 to < 1 Year' (max_days 365) overlaps with '1 Year to < 18 Months' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 Year to < 18 Months' (max_days 548) overlaps with '18 Months to 2 Years' (min_days 548) for group retail_fd|regular|resident|true."
+    ],
+    "Axis Bank": [
+      "Interval overlap detected: '3 months 25 days < 4 months' (max_days 122) overlaps with '4 months < 6 months' (min_days 122) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '4 months < 6 months' (max_days 183) overlaps with '88 days – 3 months 24 days' (min_days 179) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '6 months < 9 months' (max_days 274) overlaps with '9 months < 1 year' (min_days 274) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 year 11 days < 13 months' (max_days 395) overlaps with '13 months < 15 months' (min_days 395) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '13 months < 15 months' (max_days 456) overlaps with '15 months < 18 months' (min_days 456) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '15 months < 18 months' (max_days 548) overlaps with '18 Months < 2 years' (min_days 548) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '18 Months < 2 years' (max_days 730) overlaps with '2 years < 3 years' (min_days 730) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '2 years < 3 years' (max_days 1095) overlaps with '3 years < 5 years' (min_days 1095) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '3 years < 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '3 months 25 days < 4 months' (max_days 122) overlaps with '4 months < 6 months' (min_days 122) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '4 months < 6 months' (max_days 183) overlaps with '88 days – 3 months 24 days' (min_days 179) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '6 months < 9 months' (max_days 274) overlaps with '9 months < 1 year' (min_days 274) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '1 year 11 days < 13 months' (max_days 395) overlaps with '13 months < 15 months' (min_days 395) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '13 months < 15 months' (max_days 456) overlaps with '15 months < 18 months' (min_days 456) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '15 months < 18 months' (max_days 548) overlaps with '18 Months < 2 years' (min_days 548) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '18 Months < 2 years' (max_days 730) overlaps with '2 years < 3 years' (min_days 730) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '2 years < 3 years' (max_days 1095) overlaps with '3 years < 5 years' (min_days 1095) for group bulk_fd|regular|resident|true.",
+      "Interval overlap detected: '3 years < 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group bulk_fd|regular|resident|true."
     ],
     "IDFC First Bank": [
       "Interval overlap detected: '181 days – less than 1 Year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true."
@@ -60,12 +80,7 @@
       "Interval overlap detected: 'Above 3 Years up to below 61 Months' (max_days 1855) overlaps with '61 Months and above' (min_days 1855) for group retail_fd|regular|mixed|true."
     ],
     "Canara Bank": [
-      "Row 12 ($-Non-callable term deposits are deposits where PREMATURE WITHDRAWAL IS NOT PERMITTED.\n\n \n\n* Rates are applicable only for single deposit of Rs.5 Lakh & above. Below Rs.5 Lakh, Minimum tenor of deposit is 15 Days.\n\n \n\n# Additional interest of 0.50% for Senior Citizens (General Public) is available for Deposits (Other than NRO/NRE and CGA Deposits) less than Rs. 3 Cr and with tenor of 180 Days and above.\n\n \n\n** Approximate Annualized Yield in % terms at the beginning of the slab. Effective Annualized rate of return on Bank's Re-investment Deposit Plan (Kamadhenu Deposit) is based on quarterly compounding of interest.\n\n \n\n# Additional rate of interest 0.60% for Super Senior Citizen (80 years & above) is extended under Canara 444 & Canara 555 products only, for both Callable & Non- Callable deposits.\n\n\nThe above Rate of interest is applicable to Recurring deposits also.\n\nAUTO RENEWAL FACILITY:\n\nThe deposit will be renewed automatically from the date of maturity for a similar period at the interest rate prevailing on the date of maturity for the original period of deposit. (except for Canara Tax Saver Deposits, Capital Gains Accounts, Court Deposits, Non-KYC Complied Term Deposits, Canara Samriddhi deposits (discontinued w.e.f. 01.10.2015),CanaraKhazana, CanaraShikhar Deposits (discontinued w.e.f. 26.03.2020),Canara Unique Deposits(discontinued w.e.f. 31.03.2022), CanaraAmrit (discontinued w.e.f. 26.01.2022), Non-callable deposits etc.)\n\n \n\n\nPENALTY:\nA penalty of 1.00% shall be levied for premature closure/part withdrawal/ premature extension of Domestic/NRO term deposits of less than Rs.3 Crore that are accepted /renewed on or after 12.03.2019.\n\n \n\n\"For premature closure/part withdrawal/premature extension of Domestic/NRO term deposits, the Bank imposes a penalty of 1.00%. Such prematurely closed/part withdrawn/prematurely extended deposits will earn interest at 1.00% below the rate as applicable for the relevant amount slab as ruling on the date of deposit and as applicable for the period run OR 1.00% below the rate at which the deposit has been accepted, whichever is lower.\" However, no interest will be payable on term deposits prematurely closed/prematurely extended before completion of 7th day.\n\n \n\nPenalty is waived for premature extension of Domestic / NRO term deposits of less than Rs.3 Crore during the tenure, where extension is for a period longer than the period originally agreed to.\n\n \n\nOVERDUE DEPOSITS:\nIf a Domestic Term Deposit matures and proceeds are unpaid, the amount left unclaimed with the Bank shall attract rate of interest as applicable to saving account or the contracted rate of interest on the matured Term Deposit, whichever is lower.\n\n \n\nBank is not accepting term deposits under Non-Callable segment for maturities of below 46 Days for Domestic/NRO, maturities of below 1 year for NRE and 3 years and above for deposit Above Rs.1 Crore to less than Rs.3 Crore.): Rejected due to invalid/unparseable tenure.",
-      "Interval overlap detected: '270 Days to less than 1 Year' (max_days 365) overlaps with '1 Year & above to 1 year 3 months Only (Except 444 days)' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 Year & above to 1 year 3 months Only (Except 444 days)' (max_days 900) overlaps with '444 Days*' (min_days 444) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 1 Year 3 months to less than 2 Years (Except 555 days)' (max_days 1285) overlaps with '555 Days*' (min_days 555) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '2 Years & above to less than 3 Years' (max_days 1095) overlaps with '3 Years & above to less than 5 Years' (min_days 1095) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '3 Years & above to less than 5 Years' (max_days 1825) overlaps with '5 Years & above to 10 Years' (min_days 1825) for group retail_fd|regular|resident|true."
+      "Scraping yielded zero valid interest rates."
     ],
     "Bank of Baroda": [
       "Interval overlap detected: '271 days & above and less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true.",
@@ -79,40 +94,6 @@
       "Interval overlap detected: '3 years to less than 5 years' (max_days 1825) overlaps with '5 years to less than 8 years' (min_days 1825) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '5 years to less than 8 years' (max_days 2920) overlaps with '8 years and above to 10 years' (min_days 2920) for group retail_fd|regular|resident|true."
     ],
-    "Axis Bank": [
-      "Interval overlap detected: '3 months 25 days < 4 months' (max_days 122) overlaps with '4 months < 6 months' (min_days 122) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '4 months < 6 months' (max_days 183) overlaps with '88 days – 3 months 24 days' (min_days 179) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '6 months < 9 months' (max_days 274) overlaps with '9 months < 1 year' (min_days 274) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '1 year 11 days < 13 months' (max_days 395) overlaps with '13 months < 15 months' (min_days 395) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '13 months < 15 months' (max_days 456) overlaps with '15 months < 18 months' (min_days 456) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '15 months < 18 months' (max_days 548) overlaps with '18 Months < 2 years' (min_days 548) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '18 Months < 2 years' (max_days 730) overlaps with '2 years < 3 years' (min_days 730) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '2 years < 3 years' (max_days 1095) overlaps with '3 years < 5 years' (min_days 1095) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '3 years < 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '3 months 25 days < 4 months' (max_days 122) overlaps with '4 months < 6 months' (min_days 122) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '4 months < 6 months' (max_days 183) overlaps with '88 days – 3 months 24 days' (min_days 179) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '6 months < 9 months' (max_days 274) overlaps with '9 months < 1 year' (min_days 274) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '1 year 11 days < 13 months' (max_days 395) overlaps with '13 months < 15 months' (min_days 395) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '13 months < 15 months' (max_days 456) overlaps with '15 months < 18 months' (min_days 456) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '15 months < 18 months' (max_days 548) overlaps with '18 Months < 2 years' (min_days 548) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '18 Months < 2 years' (max_days 730) overlaps with '2 years < 3 years' (min_days 730) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '2 years < 3 years' (max_days 1095) overlaps with '3 years < 5 years' (min_days 1095) for group bulk_fd|regular|resident|true.",
-      "Interval overlap detected: '3 years < 5 years' (max_days 1825) overlaps with '5 years to 10 years' (min_days 1825) for group bulk_fd|regular|resident|true."
-    ],
-    "Bank of Maharashtra": [
-      "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to 2 years' (min_days 365) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 1 year to 2 years' (max_days 730) overlaps with 'Above 2 years to 3 years' (min_days 730) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above 2 years to 3 years' (max_days 1095) overlaps with 'Above3 years to 5 years' (min_days 1095) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: 'Above3 years to 5 years' (max_days 1825) overlaps with 'Above 5 years' (min_days 1825) for group retail_fd|regular|resident|true."
-    ],
-    "IDBI Bank": [
-      "Scraping yielded zero valid interest rates."
-    ],
-    "RBL Bank": [
-      "Interval overlap detected: '365 days to (12 months) 500 days' (max_days 865) overlaps with '501 days to less than 18 months)' (min_days 501) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '501 days to less than 18 months)' (max_days 548) overlaps with '18 months to 24 months' (min_days 548) for group retail_fd|regular|resident|true.",
-      "Interval overlap detected: '36 months 1 day to 60 months' (max_days 1825) overlaps with '60 months to 120 months' (min_days 1825) for group retail_fd|regular|resident|true."
-    ],
     "South Indian Bank": [
       "Interval overlap detected: '271 days to less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to 371 days' (min_days 365) for group retail_fd|regular|resident|true.",
@@ -124,6 +105,20 @@
       "Interval overlap detected: '3 years to less than 5 years' (max_days 1825) overlaps with '5 years to less than 66 months' (min_days 1825) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '5 years to less than 66 months' (max_days 2008) overlaps with 'Tax Gain ( 5 Years )' (min_days 1825) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '66 months (Green deposit)' (max_days 2008) overlaps with 'Above 66 months to upto and including 10 years' (min_days 2008) for group retail_fd|regular|resident|true."
+    ],
+    "Bank of Maharashtra": [
+      "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to 2 years' (min_days 365) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 1 year to 2 years' (max_days 730) overlaps with 'Above 2 years to 3 years' (min_days 730) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 2 years to 3 years' (max_days 1095) overlaps with 'Above3 years to 5 years' (min_days 1095) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above3 years to 5 years' (max_days 1825) overlaps with 'Above 5 years' (min_days 1825) for group retail_fd|regular|resident|true."
+    ],
+    "RBL Bank": [
+      "Interval overlap detected: '365 days to (12 months) 500 days' (max_days 865) overlaps with '501 days to less than 18 months)' (min_days 501) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '501 days to less than 18 months)' (max_days 548) overlaps with '18 months to 24 months' (min_days 548) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '36 months 1 day to 60 months' (max_days 1825) overlaps with '60 months to 120 months' (min_days 1825) for group retail_fd|regular|resident|true."
+    ],
+    "IDBI Bank": [
+      "Scraping yielded zero valid interest rates."
     ],
     "Indian Bank": [
       "Row 15: Duplicate tenure 'Above 5 years' for product retail_fd in section 'Indian Bank FD interest Rates: Less than Rs. 3 crore'.",
@@ -148,6 +143,7 @@
       "Interval overlap detected: '2 years - less than 3 years' (max_days 1095) overlaps with '3 years - less than 5 years' (min_days 1095) for group retail_fd|regular|resident|true."
     ],
     "KTDFC": [],
+    "PNB Housing Finance": [],
     "LIC Housing Finance": [
       "Interval overlap detected: '1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '15 months' (max_days 456) overlaps with '15 months' (min_days 456) for group retail_fd|regular|resident|true.",
@@ -156,8 +152,43 @@
       "Interval overlap detected: '3 years' (max_days 1095) overlaps with '3 years' (min_days 1095) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '5 years' (max_days 1825) overlaps with '5 years' (min_days 1825) for group retail_fd|regular|resident|true."
     ],
-    "PNB Housing Finance": [],
     "Shriram Finance": [],
+    "Suryoday Small Finance Bank": [
+      "Interval overlap detected: '6 month 1 day' (max_days 184) overlaps with 'Above 6 months 1 day to 9 months' (min_days 184) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: 'Above 6 months 1 day to 9 months' (max_days 274) overlaps with 'Above 9 months to less than 1 year' (min_days 274) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: 'Above 9 months to less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to less than 18 months' (min_days 365) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: 'Above 1 year to less than 18 months' (max_days 548) overlaps with '18 months' (min_days 548) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: '18 months' (max_days 548) overlaps with 'Above 18 months to 2 years' (min_days 548) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: 'Above 18 months to 2 years' (max_days 730) overlaps with 'Above 2 years to less than 30 months' (min_days 730) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: 'Above 2 years to less than 30 months' (max_days 913) overlaps with '30 months' (min_days 913) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: '30 months' (max_days 913) overlaps with 'Above 30 months to 3 years' (min_days 913) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: 'Above 30 months to 3 years' (max_days 1095) overlaps with 'Above 3 years to less than 5 years' (min_days 1095) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: 'Above 3 years to less than 5 years' (max_days 1825) overlaps with '5 years' (min_days 1825) for group retail_fd|regular|mixed|true.",
+      "Interval overlap detected: '5 years' (max_days 1825) overlaps with 'Above 5 years to 10 years' (min_days 1825) for group retail_fd|regular|mixed|true."
+    ],
+    "Shivalik Small Finance Bank": [
+      "Interval overlap detected: '6 months to less than 9 months' (max_days 274) overlaps with '9 months to 12 months' (min_days 274) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '12 months 1 day to 18 months' (max_days 548) overlaps with '18 months  to 23 months' (min_days 548) for group retail_fd|regular|resident|true."
+    ],
+    "Utkarsh Small Finance Bank": [
+      "Interval overlap detected: 'Above 3 years to less than 4 years' (max_days 1460) overlaps with '2 years (730 days) to 3 years (1095 days)' (min_days 1460) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '2 years (730 days) to 3 years (1095 days)' (max_days 2190) overlaps with 'Above 5 years to 10 years' (min_days 1825) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 5 years to 10 years' (max_days 3650) overlaps with '4 years (1461 days) to 5 years (1826 days)' (min_days 2921) for group retail_fd|regular|resident|true."
+    ],
+    "Unity Small Finance Bank": [
+      "Interval overlap detected: '165 days to 6 months' (max_days 183) overlaps with 'Above 6 months to 201 days' (min_days 183) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '1 year 1 day' (max_days 366) overlaps with 'Above 1 year 1 day to 500 days' (min_days 366) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '502 days to 18 months' (max_days 548) overlaps with 'Above 18 months to 700 days' (min_days 548) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '999 days to 34 months' (max_days 1034) overlaps with '34 months to 3 years' (min_days 1034) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: '34 months to 3 years' (max_days 1095) overlaps with 'Above 3 years to 5 years' (min_days 1095) for group retail_fd|regular|resident|true.",
+      "Interval overlap detected: 'Above 3 years to 5 years' (max_days 1825) overlaps with 'Above 5 years to 10 years' (min_days 1825) for group retail_fd|regular|resident|true."
+    ],
+    "Mahindra Finance": [],
+    "Bajaj Finance": [
+      "Row 0 (Tenor (in months)): Rejected due to invalid/unparseable tenure."
+    ],
+    "Shriram City Union Finance": [],
     "Federal Bank": [
       "Interval overlap detected: '271 days to less than 1 year' (max_days 365) overlaps with '1 year' (min_days 365) for group retail_fd|regular|resident|true.",
       "Interval overlap detected: '1 year' (max_days 365) overlaps with 'Above 1 year to less than 15 Months' (min_days 365) for group retail_fd|regular|resident|true.",
