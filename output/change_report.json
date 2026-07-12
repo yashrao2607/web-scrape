@@ -1,5 +1,47 @@
 [
   {
+    "bank": "Shivalik Small Finance Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Suryoday Small Finance Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Utkarsh Small Finance Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Unity Small Finance Bank",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Bajaj Finance",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Mahindra Finance",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Shriram City Union Finance",
+    "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
     "bank": "HDFC Bank",
     "changes_detected": false,
     "rate_changes": [],
@@ -127,182 +169,6 @@
   },
   {
     "bank": "LIC Housing Finance",
-    "changes_detected": false,
-    "rate_changes": [],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Shriram Finance",
-    "changes_detected": false,
-    "rate_changes": [],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Shivalik Small Finance Bank",
-    "changes_detected": false,
-    "rate_changes": [],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Suryoday Small Finance Bank",
-    "changes_detected": false,
-    "rate_changes": [],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Utkarsh Small Finance Bank",
-    "changes_detected": false,
-    "rate_changes": [],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Unity Small Finance Bank",
-    "changes_detected": false,
-    "rate_changes": [],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Bajaj Finance",
-    "changes_detected": true,
-    "event": "new_bank_added",
-    "rate_changes": [],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Mahindra Finance",
-    "changes_detected": true,
-    "rate_changes": [
-      {
-        "tenure": "18 months",
-        "tier": null,
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 6.6,
-        "old_senior_rate": null,
-        "new_senior_rate": 6.85
-      },
-      {
-        "tenure": "24 months",
-        "tier": null,
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 6.85,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.1
-      },
-      {
-        "tenure": "30 months",
-        "tier": null,
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 6.85,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.1
-      },
-      {
-        "tenure": "36 months",
-        "tier": null,
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7.4,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.75
-      },
-      {
-        "tenure": "42 months",
-        "tier": null,
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7.4,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.75
-      },
-      {
-        "tenure": "48 months",
-        "tier": null,
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7.45,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.8
-      },
-      {
-        "tenure": "60 months",
-        "tier": null,
-        "change_type": "added",
-        "old_general_rate": null,
-        "new_general_rate": 7.45,
-        "old_senior_rate": null,
-        "new_senior_rate": 7.8
-      },
-      {
-        "tenure": "18",
-        "tier": null,
-        "change_type": "removed",
-        "old_general_rate": 6.6,
-        "new_general_rate": null,
-        "old_senior_rate": 6.85,
-        "new_senior_rate": null
-      },
-      {
-        "tenure": "24",
-        "tier": null,
-        "change_type": "removed",
-        "old_general_rate": 6.85,
-        "new_general_rate": null,
-        "old_senior_rate": 7.1,
-        "new_senior_rate": null
-      },
-      {
-        "tenure": "30",
-        "tier": null,
-        "change_type": "removed",
-        "old_general_rate": 6.85,
-        "new_general_rate": null,
-        "old_senior_rate": 7.1,
-        "new_senior_rate": null
-      },
-      {
-        "tenure": "36",
-        "tier": null,
-        "change_type": "removed",
-        "old_general_rate": 7.4,
-        "new_general_rate": null,
-        "old_senior_rate": 7.75,
-        "new_senior_rate": null
-      },
-      {
-        "tenure": "42",
-        "tier": null,
-        "change_type": "removed",
-        "old_general_rate": 7.4,
-        "new_general_rate": null,
-        "old_senior_rate": 7.75,
-        "new_senior_rate": null
-      },
-      {
-        "tenure": "48",
-        "tier": null,
-        "change_type": "removed",
-        "old_general_rate": 7.45,
-        "new_general_rate": null,
-        "old_senior_rate": 7.8,
-        "new_senior_rate": null
-      },
-      {
-        "tenure": "60",
-        "tier": null,
-        "change_type": "removed",
-        "old_general_rate": 7.45,
-        "new_general_rate": null,
-        "old_senior_rate": 7.8,
-        "new_senior_rate": null
-      }
-    ],
-    "metadata_changes": []
-  },
-  {
-    "bank": "Shriram City Union Finance",
     "changes_detected": false,
     "rate_changes": [],
     "metadata_changes": []

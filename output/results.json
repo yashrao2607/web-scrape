@@ -1,5 +1,497 @@
 [
   {
+    "bank_name": "Shivalik Small Finance Bank",
+    "url": "https://www.paisabazaar.com/fixed-deposit/shivalik-small-finance-bank-fd-rates/",
+    "rates": [
+      {
+        "tenure": "7 days to 14 days",
+        "interest_rate": 3.5,
+        "senior_citizen_interest_rate": 4,
+        "tier": null
+      },
+      {
+        "tenure": "15 days to 29 days",
+        "interest_rate": 3.75,
+        "senior_citizen_interest_rate": 4.25,
+        "tier": null
+      },
+      {
+        "tenure": "30 days to 90 days",
+        "interest_rate": 4.25,
+        "senior_citizen_interest_rate": 4.75,
+        "tier": null
+      },
+      {
+        "tenure": "91 days to 180 days",
+        "interest_rate": 4.75,
+        "senior_citizen_interest_rate": 5.25,
+        "tier": null
+      },
+      {
+        "tenure": "6 months to less than 9 months",
+        "interest_rate": 6,
+        "senior_citizen_interest_rate": 6.5,
+        "tier": null
+      },
+      {
+        "tenure": "9 months to 12 months",
+        "interest_rate": 6,
+        "senior_citizen_interest_rate": 6.5,
+        "tier": null
+      },
+      {
+        "tenure": "12 months 1 day to 18 months",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "18 months  to 23 months",
+        "interest_rate": 7.5,
+        "senior_citizen_interest_rate": 8,
+        "tier": null
+      },
+      {
+        "tenure": "23 months 1 day to 27 months",
+        "interest_rate": 8,
+        "senior_citizen_interest_rate": 8.5,
+        "tier": null
+      },
+      {
+        "tenure": "27 months 1 day to 36 months",
+        "interest_rate": 7.5,
+        "senior_citizen_interest_rate": 8,
+        "tier": null
+      },
+      {
+        "tenure": "36 months 1 day to 60 months",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "60 months 1 day to 120 months",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "Suryoday Small Finance Bank",
+    "url": "https://www.paisabazaar.com/suryoday-bank/fixed-deposits/",
+    "rates": [
+      {
+        "tenure": "7 days to 14 days",
+        "interest_rate": 4,
+        "senior_citizen_interest_rate": 4.15,
+        "tier": null
+      },
+      {
+        "tenure": "15 days to 45 days",
+        "interest_rate": 4.25,
+        "senior_citizen_interest_rate": 4.4,
+        "tier": null
+      },
+      {
+        "tenure": "46 days to 90 days",
+        "interest_rate": 4.5,
+        "senior_citizen_interest_rate": 4.65,
+        "tier": null
+      },
+      {
+        "tenure": "91 days to 6 months",
+        "interest_rate": 5,
+        "senior_citizen_interest_rate": 5.15,
+        "tier": null
+      },
+      {
+        "tenure": "6 month 1 day",
+        "interest_rate": 6.5,
+        "senior_citizen_interest_rate": 6.65,
+        "tier": null
+      },
+      {
+        "tenure": "Above 6 months 1 day to 9 months",
+        "interest_rate": 5.5,
+        "senior_citizen_interest_rate": 5.65,
+        "tier": null
+      },
+      {
+        "tenure": "Above 9 months to less than 1 year",
+        "interest_rate": 6,
+        "senior_citizen_interest_rate": 6.15,
+        "tier": null
+      },
+      {
+        "tenure": "1 year",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.4,
+        "tier": null
+      },
+      {
+        "tenure": "Above 1 year to less than 18 months",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.4,
+        "tier": null
+      },
+      {
+        "tenure": "18 months",
+        "interest_rate": 7.6,
+        "senior_citizen_interest_rate": 7.75,
+        "tier": null
+      },
+      {
+        "tenure": "Above 18 months to 2 years",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.4,
+        "tier": null
+      },
+      {
+        "tenure": "Above 2 years to less than 30 months",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.4,
+        "tier": null
+      },
+      {
+        "tenure": "30 months",
+        "interest_rate": 8.1,
+        "senior_citizen_interest_rate": 8.25,
+        "tier": null
+      },
+      {
+        "tenure": "Above 30 months to 3 years",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.4,
+        "tier": null
+      },
+      {
+        "tenure": "Above 3 years to less than 5 years",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 6.9,
+        "tier": null
+      },
+      {
+        "tenure": "5 years",
+        "interest_rate": 7.9,
+        "senior_citizen_interest_rate": 8.05,
+        "tier": null
+      },
+      {
+        "tenure": "Above 5 years to 10 years",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.4,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "Utkarsh Small Finance Bank",
+    "url": "https://www.paisabazaar.com/utkarsh-bank/fixed-deposits/",
+    "rates": [
+      {
+        "tenure": "7 days to 45 days",
+        "interest_rate": 4,
+        "senior_citizen_interest_rate": 4.5,
+        "tier": null
+      },
+      {
+        "tenure": "46 days to 90 days",
+        "interest_rate": 4.5,
+        "senior_citizen_interest_rate": 5,
+        "tier": null
+      },
+      {
+        "tenure": "91 days to 180 days",
+        "interest_rate": 5,
+        "senior_citizen_interest_rate": 5.5,
+        "tier": null
+      },
+      {
+        "tenure": "181 days to 370 days",
+        "interest_rate": 6,
+        "senior_citizen_interest_rate": 6.5,
+        "tier": null
+      },
+      {
+        "tenure": "371 days to 665 days",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.75,
+        "tier": null
+      },
+      {
+        "tenure": "666 days",
+        "interest_rate": 8.1,
+        "senior_citizen_interest_rate": 8.25,
+        "tier": null
+      },
+      {
+        "tenure": "667 days to 2 years",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.75,
+        "tier": null
+      },
+      {
+        "tenure": "2 years (730 days) to 3 years (1095 days)",
+        "interest_rate": 7.5,
+        "senior_citizen_interest_rate": 8,
+        "tier": null
+      },
+      {
+        "tenure": "Above 3 years to less than 4 years",
+        "interest_rate": 7.25,
+        "senior_citizen_interest_rate": 7.75,
+        "tier": null
+      },
+      {
+        "tenure": "4 years (1461 days) to 5 years (1826 days)",
+        "interest_rate": 7,
+        "senior_citizen_interest_rate": 7.5,
+        "tier": null
+      },
+      {
+        "tenure": "Above 5 years to 10 years",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "Unity Small Finance Bank",
+    "url": "https://www.paisabazaar.com/fixed-deposit/unity-small-finance-bank-fd-rates/",
+    "rates": [
+      {
+        "tenure": "7 days to 14 days",
+        "interest_rate": 4,
+        "senior_citizen_interest_rate": 4,
+        "tier": null
+      },
+      {
+        "tenure": "15 days to 45 days",
+        "interest_rate": 4,
+        "senior_citizen_interest_rate": 4,
+        "tier": null
+      },
+      {
+        "tenure": "46 days to 60 days",
+        "interest_rate": 4.75,
+        "senior_citizen_interest_rate": 5.25,
+        "tier": null
+      },
+      {
+        "tenure": "61 days to 90 days",
+        "interest_rate": 5,
+        "senior_citizen_interest_rate": 5.5,
+        "tier": null
+      },
+      {
+        "tenure": "91 days to 164 days",
+        "interest_rate": 5,
+        "senior_citizen_interest_rate": 5.5,
+        "tier": null
+      },
+      {
+        "tenure": "165 days to 6 months",
+        "interest_rate": 5.5,
+        "senior_citizen_interest_rate": 6,
+        "tier": null
+      },
+      {
+        "tenure": "Above 6 months to 201 days",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "202 days to 364 days",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "1 year",
+        "interest_rate": 7.5,
+        "senior_citizen_interest_rate": 8,
+        "tier": null
+      },
+      {
+        "tenure": "1 year 1 day",
+        "interest_rate": 6.5,
+        "senior_citizen_interest_rate": 7,
+        "tier": null
+      },
+      {
+        "tenure": "Above 1 year 1 day to 500 days",
+        "interest_rate": 6.5,
+        "senior_citizen_interest_rate": 7,
+        "tier": null
+      },
+      {
+        "tenure": "501 days",
+        "interest_rate": 7.8,
+        "senior_citizen_interest_rate": 8.3,
+        "tier": null
+      },
+      {
+        "tenure": "502 days to 18 months",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "Above 18 months to 700 days",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "701 days",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "702 days to 998 days",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "999 days to 34 months",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "34 months to 3 years",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "Above 3 years to 5 years",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.25,
+        "tier": null
+      },
+      {
+        "tenure": "Above 5 years to 10 years",
+        "interest_rate": 6,
+        "senior_citizen_interest_rate": 6.5,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "Bajaj Finance",
+    "url": "https://www.paisabazaar.com/bajaj-finserv/fixed-deposits/",
+    "rates": [
+      {
+        "tenure": "12 months to 14 months",
+        "interest_rate": 6.6,
+        "senior_citizen_interest_rate": 6.6,
+        "tier": null
+      },
+      {
+        "tenure": "15 months to 23 months",
+        "interest_rate": 6.75,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "24 months to 60 months",
+        "interest_rate": 6.95,
+        "senior_citizen_interest_rate": 6.95,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "Mahindra Finance",
+    "url": "https://www.paisabazaar.com/fixed-deposit/mahindra-finance-fixed-deposit/",
+    "rates": [
+      {
+        "tenure": "18 months",
+        "interest_rate": 6.6,
+        "senior_citizen_interest_rate": 6.85,
+        "tier": null
+      },
+      {
+        "tenure": "24 months",
+        "interest_rate": 6.85,
+        "senior_citizen_interest_rate": 7.1,
+        "tier": null
+      },
+      {
+        "tenure": "30 months",
+        "interest_rate": 6.85,
+        "senior_citizen_interest_rate": 7.1,
+        "tier": null
+      },
+      {
+        "tenure": "36 months",
+        "interest_rate": 7.4,
+        "senior_citizen_interest_rate": 7.75,
+        "tier": null
+      },
+      {
+        "tenure": "42 months",
+        "interest_rate": 7.4,
+        "senior_citizen_interest_rate": 7.75,
+        "tier": null
+      },
+      {
+        "tenure": "48 months",
+        "interest_rate": 7.45,
+        "senior_citizen_interest_rate": 7.8,
+        "tier": null
+      },
+      {
+        "tenure": "60 months",
+        "interest_rate": 7.45,
+        "senior_citizen_interest_rate": 7.8,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "Shriram City Union Finance",
+    "url": "https://www.paisabazaar.com/fixed-deposit/shriram-city-union-finance-fd-rates/",
+    "rates": [
+      {
+        "tenure": "12 months",
+        "interest_rate": 6.85,
+        "senior_citizen_interest_rate": 7.35,
+        "tier": null
+      },
+      {
+        "tenure": "15 months (digital only)",
+        "interest_rate": 7.1,
+        "senior_citizen_interest_rate": 7.6,
+        "tier": null
+      },
+      {
+        "tenure": "18 months – 23 months",
+        "interest_rate": 7.05,
+        "senior_citizen_interest_rate": 7.55,
+        "tier": null
+      },
+      {
+        "tenure": "24 months – 35 months",
+        "interest_rate": 7.1,
+        "senior_citizen_interest_rate": 7.6,
+        "tier": null
+      },
+      {
+        "tenure": "36 months – 60 months",
+        "interest_rate": 7.5,
+        "senior_citizen_interest_rate": 8,
+        "tier": null
+      }
+    ]
+  },
+  {
     "bank_name": "HDFC Bank",
     "url": "https://www.hdfc.bank.in/fixed-deposit/fd-interest-rate",
     "rates": [
@@ -1891,534 +2383,6 @@
         "tenure": "5 years",
         "interest_rate": 6.9,
         "senior_citizen_interest_rate": 6.9,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Shriram Finance",
-    "url": "https://www.bankbazaar.com/fixed-deposit/shriram-finance-fixed-deposit-rate.html",
-    "rates": [
-      {
-        "tenure": "12 Months",
-        "interest_rate": 7,
-        "senior_citizen_interest_rate": 7,
-        "tier": null
-      },
-      {
-        "tenure": "15 Months",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "18-23",
-        "interest_rate": 7,
-        "senior_citizen_interest_rate": 7,
-        "tier": null
-      },
-      {
-        "tenure": "24-35",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "36-60",
-        "interest_rate": 7.6,
-        "senior_citizen_interest_rate": 7.6,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Shivalik Small Finance Bank",
-    "url": "https://www.paisabazaar.com/fixed-deposit/shivalik-small-finance-bank-fd-rates/",
-    "rates": [
-      {
-        "tenure": "7 days to 14 days",
-        "interest_rate": 3.5,
-        "senior_citizen_interest_rate": 4,
-        "tier": null
-      },
-      {
-        "tenure": "15 days to 29 days",
-        "interest_rate": 3.75,
-        "senior_citizen_interest_rate": 4.25,
-        "tier": null
-      },
-      {
-        "tenure": "30 days to 90 days",
-        "interest_rate": 4.25,
-        "senior_citizen_interest_rate": 4.75,
-        "tier": null
-      },
-      {
-        "tenure": "91 days to 180 days",
-        "interest_rate": 4.75,
-        "senior_citizen_interest_rate": 5.25,
-        "tier": null
-      },
-      {
-        "tenure": "6 months to less than 9 months",
-        "interest_rate": 6,
-        "senior_citizen_interest_rate": 6.5,
-        "tier": null
-      },
-      {
-        "tenure": "9 months to 12 months",
-        "interest_rate": 6,
-        "senior_citizen_interest_rate": 6.5,
-        "tier": null
-      },
-      {
-        "tenure": "12 months 1 day to 18 months",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "18 months  to 23 months",
-        "interest_rate": 7.5,
-        "senior_citizen_interest_rate": 8,
-        "tier": null
-      },
-      {
-        "tenure": "23 months 1 day to 27 months",
-        "interest_rate": 8,
-        "senior_citizen_interest_rate": 8.5,
-        "tier": null
-      },
-      {
-        "tenure": "27 months 1 day to 36 months",
-        "interest_rate": 7.5,
-        "senior_citizen_interest_rate": 8,
-        "tier": null
-      },
-      {
-        "tenure": "36 months 1 day to 60 months",
-        "interest_rate": 6.25,
-        "senior_citizen_interest_rate": 6.75,
-        "tier": null
-      },
-      {
-        "tenure": "60 months 1 day to 120 months",
-        "interest_rate": 6.25,
-        "senior_citizen_interest_rate": 6.75,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Suryoday Small Finance Bank",
-    "url": "https://www.paisabazaar.com/suryoday-bank/fixed-deposits/",
-    "rates": [
-      {
-        "tenure": "7 days to 14 days",
-        "interest_rate": 4,
-        "senior_citizen_interest_rate": 4.15,
-        "tier": null
-      },
-      {
-        "tenure": "15 days to 45 days",
-        "interest_rate": 4.25,
-        "senior_citizen_interest_rate": 4.4,
-        "tier": null
-      },
-      {
-        "tenure": "46 days to 90 days",
-        "interest_rate": 4.5,
-        "senior_citizen_interest_rate": 4.65,
-        "tier": null
-      },
-      {
-        "tenure": "91 days to 6 months",
-        "interest_rate": 5,
-        "senior_citizen_interest_rate": 5.15,
-        "tier": null
-      },
-      {
-        "tenure": "6 month 1 day",
-        "interest_rate": 6.5,
-        "senior_citizen_interest_rate": 6.65,
-        "tier": null
-      },
-      {
-        "tenure": "Above 6 months 1 day to 9 months",
-        "interest_rate": 5.5,
-        "senior_citizen_interest_rate": 5.65,
-        "tier": null
-      },
-      {
-        "tenure": "Above 9 months to less than 1 year",
-        "interest_rate": 6,
-        "senior_citizen_interest_rate": 6.15,
-        "tier": null
-      },
-      {
-        "tenure": "1 year",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.4,
-        "tier": null
-      },
-      {
-        "tenure": "Above 1 year to less than 18 months",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.4,
-        "tier": null
-      },
-      {
-        "tenure": "18 months",
-        "interest_rate": 7.6,
-        "senior_citizen_interest_rate": 7.75,
-        "tier": null
-      },
-      {
-        "tenure": "Above 18 months to 2 years",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.4,
-        "tier": null
-      },
-      {
-        "tenure": "Above 2 years to less than 30 months",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.4,
-        "tier": null
-      },
-      {
-        "tenure": "30 months",
-        "interest_rate": 8.1,
-        "senior_citizen_interest_rate": 8.25,
-        "tier": null
-      },
-      {
-        "tenure": "Above 30 months to 3 years",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.4,
-        "tier": null
-      },
-      {
-        "tenure": "Above 3 years to less than 5 years",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 6.9,
-        "tier": null
-      },
-      {
-        "tenure": "5 years",
-        "interest_rate": 7.9,
-        "senior_citizen_interest_rate": 8.05,
-        "tier": null
-      },
-      {
-        "tenure": "Above 5 years to 10 years",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.4,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Utkarsh Small Finance Bank",
-    "url": "https://www.paisabazaar.com/utkarsh-bank/fixed-deposits/",
-    "rates": [
-      {
-        "tenure": "7 days to 45 days",
-        "interest_rate": 4,
-        "senior_citizen_interest_rate": 4.5,
-        "tier": null
-      },
-      {
-        "tenure": "46 days to 90 days",
-        "interest_rate": 4.5,
-        "senior_citizen_interest_rate": 5,
-        "tier": null
-      },
-      {
-        "tenure": "91 days to 180 days",
-        "interest_rate": 5,
-        "senior_citizen_interest_rate": 5.5,
-        "tier": null
-      },
-      {
-        "tenure": "181 days to 370 days",
-        "interest_rate": 6,
-        "senior_citizen_interest_rate": 6.5,
-        "tier": null
-      },
-      {
-        "tenure": "371 days to 665 days",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.75,
-        "tier": null
-      },
-      {
-        "tenure": "666 days",
-        "interest_rate": 8.1,
-        "senior_citizen_interest_rate": 8.25,
-        "tier": null
-      },
-      {
-        "tenure": "667 days to 2 years",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.75,
-        "tier": null
-      },
-      {
-        "tenure": "2 years (730 days) to 3 years (1095 days)",
-        "interest_rate": 7.5,
-        "senior_citizen_interest_rate": 8,
-        "tier": null
-      },
-      {
-        "tenure": "Above 3 years to less than 4 years",
-        "interest_rate": 7.25,
-        "senior_citizen_interest_rate": 7.75,
-        "tier": null
-      },
-      {
-        "tenure": "4 years (1461 days) to 5 years (1826 days)",
-        "interest_rate": 7,
-        "senior_citizen_interest_rate": 7.5,
-        "tier": null
-      },
-      {
-        "tenure": "Above 5 years to 10 years",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Unity Small Finance Bank",
-    "url": "https://www.paisabazaar.com/fixed-deposit/unity-small-finance-bank-fd-rates/",
-    "rates": [
-      {
-        "tenure": "7 days to 14 days",
-        "interest_rate": 4,
-        "senior_citizen_interest_rate": 4,
-        "tier": null
-      },
-      {
-        "tenure": "15 days to 45 days",
-        "interest_rate": 4,
-        "senior_citizen_interest_rate": 4,
-        "tier": null
-      },
-      {
-        "tenure": "46 days to 60 days",
-        "interest_rate": 4.75,
-        "senior_citizen_interest_rate": 5.25,
-        "tier": null
-      },
-      {
-        "tenure": "61 days to 90 days",
-        "interest_rate": 5,
-        "senior_citizen_interest_rate": 5.5,
-        "tier": null
-      },
-      {
-        "tenure": "91 days to 164 days",
-        "interest_rate": 5,
-        "senior_citizen_interest_rate": 5.5,
-        "tier": null
-      },
-      {
-        "tenure": "165 days to 6 months",
-        "interest_rate": 5.5,
-        "senior_citizen_interest_rate": 6,
-        "tier": null
-      },
-      {
-        "tenure": "Above 6 months to 201 days",
-        "interest_rate": 6.25,
-        "senior_citizen_interest_rate": 6.75,
-        "tier": null
-      },
-      {
-        "tenure": "202 days to 364 days",
-        "interest_rate": 6.25,
-        "senior_citizen_interest_rate": 6.75,
-        "tier": null
-      },
-      {
-        "tenure": "1 year",
-        "interest_rate": 7.5,
-        "senior_citizen_interest_rate": 8,
-        "tier": null
-      },
-      {
-        "tenure": "1 year 1 day",
-        "interest_rate": 6.5,
-        "senior_citizen_interest_rate": 7,
-        "tier": null
-      },
-      {
-        "tenure": "Above 1 year 1 day to 500 days",
-        "interest_rate": 6.5,
-        "senior_citizen_interest_rate": 7,
-        "tier": null
-      },
-      {
-        "tenure": "501 days",
-        "interest_rate": 7.8,
-        "senior_citizen_interest_rate": 8.3,
-        "tier": null
-      },
-      {
-        "tenure": "502 days to 18 months",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "Above 18 months to 700 days",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "701 days",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "702 days to 998 days",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "999 days to 34 months",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "34 months to 3 years",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "Above 3 years to 5 years",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
-        "tier": null
-      },
-      {
-        "tenure": "Above 5 years to 10 years",
-        "interest_rate": 6,
-        "senior_citizen_interest_rate": 6.5,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Bajaj Finance",
-    "url": "https://www.paisabazaar.com/bajaj-finserv/fixed-deposits/",
-    "rates": [
-      {
-        "tenure": "12 months to 14 months",
-        "interest_rate": 6.6,
-        "senior_citizen_interest_rate": 6.6,
-        "tier": null
-      },
-      {
-        "tenure": "15 months to 23 months",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 6.75,
-        "tier": null
-      },
-      {
-        "tenure": "24 months to 60 months",
-        "interest_rate": 6.95,
-        "senior_citizen_interest_rate": 6.95,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Mahindra Finance",
-    "url": "https://www.paisabazaar.com/fixed-deposit/mahindra-finance-fixed-deposit/",
-    "rates": [
-      {
-        "tenure": "18 months",
-        "interest_rate": 6.6,
-        "senior_citizen_interest_rate": 6.85,
-        "tier": null
-      },
-      {
-        "tenure": "24 months",
-        "interest_rate": 6.85,
-        "senior_citizen_interest_rate": 7.1,
-        "tier": null
-      },
-      {
-        "tenure": "30 months",
-        "interest_rate": 6.85,
-        "senior_citizen_interest_rate": 7.1,
-        "tier": null
-      },
-      {
-        "tenure": "36 months",
-        "interest_rate": 7.4,
-        "senior_citizen_interest_rate": 7.75,
-        "tier": null
-      },
-      {
-        "tenure": "42 months",
-        "interest_rate": 7.4,
-        "senior_citizen_interest_rate": 7.75,
-        "tier": null
-      },
-      {
-        "tenure": "48 months",
-        "interest_rate": 7.45,
-        "senior_citizen_interest_rate": 7.8,
-        "tier": null
-      },
-      {
-        "tenure": "60 months",
-        "interest_rate": 7.45,
-        "senior_citizen_interest_rate": 7.8,
-        "tier": null
-      }
-    ]
-  },
-  {
-    "bank_name": "Shriram City Union Finance",
-    "url": "https://www.paisabazaar.com/fixed-deposit/shriram-city-union-finance-fd-rates/",
-    "rates": [
-      {
-        "tenure": "12 months",
-        "interest_rate": 6.85,
-        "senior_citizen_interest_rate": 7.35,
-        "tier": null
-      },
-      {
-        "tenure": "15 months (digital only)",
-        "interest_rate": 7.1,
-        "senior_citizen_interest_rate": 7.6,
-        "tier": null
-      },
-      {
-        "tenure": "18 months – 23 months",
-        "interest_rate": 7.05,
-        "senior_citizen_interest_rate": 7.55,
-        "tier": null
-      },
-      {
-        "tenure": "24 months – 35 months",
-        "interest_rate": 7.1,
-        "senior_citizen_interest_rate": 7.6,
-        "tier": null
-      },
-      {
-        "tenure": "36 months – 60 months",
-        "interest_rate": 7.5,
-        "senior_citizen_interest_rate": 8,
         "tier": null
       }
     ]
