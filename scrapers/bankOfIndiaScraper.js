@@ -1,5 +1,6 @@
 import { BaseScraper } from './baseScraper.js';
 import { LayeredExtractor } from '../core/extractor.js';
+import { parseTenureRange } from '../core/normalizer.js';
 
 export class BankOfIndiaScraper extends BaseScraper {
   async scrape(page) {
@@ -20,6 +21,24 @@ export class BankOfIndiaScraper extends BaseScraper {
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);
     }
+
+    // Bank of India: the retail domestic-deposit table only publishes a
+    // "General Public" column (no senior column) — the +0.50% senior premium
+    // is stated as page policy text instead ("Senior citizens are eligible
+    // for an additional interest rate of 0.5%... applicable only to
+    // investment tenures of 6 months and above"). Apply it here so senior
+    // rows aren't silently left equal to general (same pattern as
+    // CanaraBankScraper's senior premium).
+    rates.forEach(item => {
+      const genRateVal = parseFloat(String(item.general_raw || "").replace(/%/g, "").trim());
+      if (isNaN(genRateVal)) return;
+      const senRateVal = parseFloat(String(item.senior_raw || "").replace(/%/g, "").trim());
+      if (!isNaN(senRateVal) && senRateVal > genRateVal + 0.01) return;
+      const [minDays] = parseTenureRange(item.tenure_raw);
+      if (minDays !== null && minDays >= 180) {
+        item.senior_raw = `${(genRateVal + 0.50).toFixed(2)}%`;
+      }
+    });
 
     return {
       fd_rates: rates,

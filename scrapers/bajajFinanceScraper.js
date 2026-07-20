@@ -2,8 +2,9 @@ import { BaseScraper } from './baseScraper.js';
 import { LayeredExtractor } from '../core/extractor.js';
 
 // Bajaj Finance's rate table gives bare month numbers under a "Tenor (in
-// months)" header (e.g. "12 – 14") with no unit text, which the shared
-// tenure parser can't read. Tag the unit back on before validation.
+// months)" header (e.g. "12 – 14") with no unit text. Decimal rate cells
+// ("6.60") never match this (the dot blocks it), so it's safe to apply
+// across every cell in the table.
 function tagMonthUnit(raw) {
   const cleaned = (raw || "").replace(/[–—]/g, "-").trim();
   const range = /^(\d+)\s*-\s*(\d+)$/.exec(cleaned);
@@ -29,8 +30,23 @@ export class BajajFinanceScraper extends BaseScraper {
     // "Credit Rating Agency" box; both misparse as false-positive rate tables and
     // must be dropped so the real domestic-deposit rate table is selected instead.
     tables = tables.filter(t => !/highlight|credit rating/i.test(t.section_name || ""));
-    rates = LayeredExtractor.extractPrimaryRateRows(tables, 3)
-      .map(r => ({ ...r, tenure_raw: tagMonthUnit(r.tenure_raw) }));
+
+    // Tag the bare tenure cells with a "months" unit INSIDE the raw matrix,
+    // before parsing. Doing this only after extraction (on the already-parsed
+    // tenure_raw) is too late: with no unit anywhere in the table, the
+    // extractor's own "find the first data row" scan finds nothing tenure-like
+    // in the header rows either, so it defaults to treating only row 0 as the
+    // header and misreads the real "Regular Citizens / Senior Citizens"
+    // sub-header row as a data row instead — which erases the general/senior
+    // column distinction before it can be matched, collapsing both to the
+    // same rate. Tagging the matrix first lets the row-detection succeed and
+    // keeps both header rows intact.
+    tables = tables.map(t => ({
+      ...t,
+      matrix: t.matrix.map(row => row.map(cell => tagMonthUnit(cell)))
+    }));
+
+    rates = LayeredExtractor.extractPrimaryRateRows(tables, 3);
 
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);

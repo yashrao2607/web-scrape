@@ -19,9 +19,19 @@ export class IDBIBankScraper extends BaseScraper {
     }
 
     const tables = await LayeredExtractor.extractFromPage(page);
-    // Page renders several rate tables (retail, bulk >=3 Cr, non-callable, NRI).
-    // Use only the primary retail table to avoid merging overlapping/duplicate rows.
-    rates = LayeredExtractor.extractPrimaryRateRows(tables);
+    // IDBI's rates page is a single mega-page listing every product (MCLR,
+    // home/auto/education loans, KCC, term deposits, ...) as ~60+ tables. The
+    // MCLR table alone parses to enough rows to win the generic "first table
+    // with >=5 rows" selection before the real term-deposit table is ever
+    // reached, and it then gets fully stripped by the NON_FD_LINE filter
+    // below — leaving zero rows. Positively select "Term Deposit" sections
+    // (excluding bulk/floating/NRI variants) so the right table is picked;
+    // fall back to the unrestricted set only if no such section exists.
+    const depositTables = tables.filter(t => {
+      const s = t.section_name || "";
+      return /term\s*deposit/i.test(s) && !/bulk|floating|nre|nro|fcnr/i.test(s);
+    });
+    rates = LayeredExtractor.extractPrimaryRateRows(depositTables.length ? depositTables : tables);
 
     if (rates.length < 4) {
       rates = await this.parseRatesFromText(page);

@@ -2,9 +2,9 @@ import { BaseScraper } from './baseScraper.js';
 import { LayeredExtractor } from '../core/extractor.js';
 
 // Mahindra Finance's rate table gives bare numbers under a "Tenure (in
-// months)" header (e.g. "18", "12-14") with no unit text. Without a unit,
-// the shared tenure parser silently reads bare numbers as DAYS, not months —
-// tag the unit back on before validation so tenures aren't mislabeled.
+// months)" header (e.g. "12", "18") with no unit text. Decimal rate cells
+// ("6.60") never match this (the dot blocks it), so it's safe to apply
+// across every cell in the table.
 function tagMonthUnit(raw) {
   const cleaned = (raw || "").replace(/[–—]/g, "-").trim();
   const range = /^(\d+)\s*-\s*(\d+)$/.exec(cleaned);
@@ -29,8 +29,23 @@ export class MahindraFinanceScraper extends BaseScraper {
     // Drop the marketing "Highlights" box and the >Rs 5 Cr Bulk Deposit table so
     // only the Retail Fixed Deposit (Cumulative) table is used for retail rates.
     tables = tables.filter(t => !/highlight|credit rating|bulk deposit/i.test(t.section_name || ""));
-    rates = LayeredExtractor.extractPrimaryRateRows(tables)
-      .map(r => ({ ...r, tenure_raw: tagMonthUnit(r.tenure_raw) }));
+
+    // Tag bare tenure cells with a "months" unit INSIDE the raw matrix, before
+    // parsing. Doing this only after extraction is too late: with no unit
+    // anywhere in the table, the extractor's "find the first data row" scan
+    // finds nothing tenure-like until it happens to reach a bare number >= 15
+    // (its own separate heuristic for rejecting ambiguous short numbers), so
+    // "12" — being < 15 — gets swallowed into the header rows as if it were a
+    // header label instead of being recognized as the first data row, and is
+    // silently dropped from the output entirely. Tagging the matrix first
+    // fixes both the missing row and the mislabeled DAYS-instead-of-months
+    // fallback the bare "18" etc. would otherwise get.
+    tables = tables.map(t => ({
+      ...t,
+      matrix: t.matrix.map(row => row.map(cell => tagMonthUnit(cell)))
+    }));
+
+    rates = LayeredExtractor.extractPrimaryRateRows(tables);
 
     if (rates.length === 0) {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);

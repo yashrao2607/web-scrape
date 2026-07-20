@@ -24,6 +24,19 @@ export class PNBHousingFinanceScraper extends BaseScraper {
       rates = await LayeredExtractor.extractFromUnstructuredText(page);
     }
 
+    // PNB Housing Finance: +0.25% senior citizen premium is stated as page
+    // policy text ("An additional interest rate of 0.25% is offered to senior
+    // citizens"), not a table column, so parseExtractedTable finds no senior
+    // column and defaults senior_raw to the general rate. Apply the stated
+    // premium here (same pattern as CanaraBankScraper's senior premium).
+    rates.forEach(item => {
+      const genRateVal = parseFloat(String(item.general_raw || "").replace(/%/g, "").trim());
+      if (isNaN(genRateVal)) return;
+      const senRateVal = parseFloat(String(item.senior_raw || "").replace(/%/g, "").trim());
+      if (!isNaN(senRateVal) && senRateVal > genRateVal + 0.01) return;
+      item.senior_raw = `${(genRateVal + 0.25).toFixed(2)}%`;
+    });
+
     return {
       fd_rates: rates,
       minimum_deposit: 10000.0,

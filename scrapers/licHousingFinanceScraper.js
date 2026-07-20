@@ -41,7 +41,11 @@ export class LICHousingFinanceScraper extends BaseScraper {
 
       for (const table of tables) {
         const precedingText = getPrecedingHeading(table);
-        const isCumulative = precedingText.toLowerCase().includes("cumulative public deposit");
+        const headingLower = precedingText.toLowerCase();
+        // "Non-Cumulative Public Deposit" contains "cumulative public deposit"
+        // as a substring, so it must be excluded explicitly or both tables
+        // get scraped and merged into duplicate rows.
+        const isCumulative = headingLower.includes("cumulative public deposit") && !headingLower.includes("non-cumulative");
         if (!isCumulative) continue;
 
         const rows = table.querySelectorAll("tr");
@@ -70,6 +74,17 @@ export class LICHousingFinanceScraper extends BaseScraper {
     if (manualRates.length > 0) {
       rates.push(...manualRates);
     }
+
+    // LIC Housing Finance: +0.25% senior citizen premium for deposits Rs.20,000
+    // to less than Rs.2 Crore. This is stated as page policy text, not a table
+    // column, so the manual extraction above has no senior column to read and
+    // defaults senior_raw to the general rate. Apply the stated premium here
+    // (same pattern as CanaraBankScraper's tenure-based senior premium).
+    rates.forEach(item => {
+      const genRateVal = parseFloat(String(item.general_raw || "").replace(/%/g, "").trim());
+      if (isNaN(genRateVal)) return;
+      item.senior_raw = `${(genRateVal + 0.25).toFixed(2)}%`;
+    });
 
     if (rates.length === 0) {
       const tables = await LayeredExtractor.extractFromPage(page);

@@ -114,7 +114,7 @@ async function main() {
       ["Indian Overseas Bank", "https://www.iob.bank.in/en/domestic-nro-nre-retail-term-deposit-rates"],
       ["South Indian Bank", "https://www.southindianbank.com/interestrates/interestrates.aspx"],
       ["Federal Bank", "https://www.federalbank.co.in/interest-rates"],
-      ["Canara Bank", "https://www.canarabank.bank.in/pages/deposit-interest-rates"],
+      ["Canara Bank", "https://www.canarabank.bank.in/term-deposits-rate-of-interest-p.a."],
       ["Bank of Baroda", "https://www.bankbazaar.com/fixed-deposit/bank-of-baroda-fixed-deposit-rate.html"],
       ["Bank of India", "https://www.bankbazaar.com/fixed-deposit/bank-of-india-fixed-deposit-rate.html"],
       ["Bank of Maharashtra", "https://www.bankbazaar.com/fixed-deposit/bank-of-maharashtra-fixed-deposit-rate.html"],

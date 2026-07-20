@@ -390,19 +390,19 @@
       {
         "tenure": "12 months to 14 months",
         "interest_rate": 6.6,
-        "senior_citizen_interest_rate": 6.6,
+        "senior_citizen_interest_rate": 6.95,
         "tier": null
       },
       {
         "tenure": "15 months to 23 months",
         "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7.1,
         "tier": null
       },
       {
         "tenure": "24 months to 60 months",
         "interest_rate": 6.95,
-        "senior_citizen_interest_rate": 6.95,
+        "senior_citizen_interest_rate": 7.3,
         "tier": null
       }
     ]
@@ -411,6 +411,12 @@
     "bank_name": "Mahindra Finance",
     "url": "https://www.paisabazaar.com/fixed-deposit/mahindra-finance-fixed-deposit/",
     "rates": [
+      {
+        "tenure": "12 months",
+        "interest_rate": 6.6,
+        "senior_citizen_interest_rate": 6.85,
+        "tier": null
+      },
       {
         "tenure": "18 months",
         "interest_rate": 6.6,
@@ -739,7 +745,7 @@
   },
   {
     "bank_name": "Axis Bank",
-    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-11-july-26.pdf?sfvrsn=1d63767b_1",
+    "url": "https://www.axis.bank.in/docs/default-source/default-document-library/interest-rates/domestic-fixed-deposits-18-july-26.pdf?sfvrsn=f233af65_1",
     "rates": [
       {
         "tenure": "7 – 14 days",
@@ -1637,26 +1643,104 @@
       },
       {
         "tenure": "15 Months",
-        "interest_rate": 6.8,
-        "senior_citizen_interest_rate": 7.3,
+        "interest_rate": 6.6,
+        "senior_citizen_interest_rate": 7.1,
         "tier": null
       },
       {
-        "tenure": "Above 15 months to less than 36 months",
+        "tenure": "Above 15 months to less than 48 months",
         "interest_rate": 6.4,
         "senior_citizen_interest_rate": 6.9,
         "tier": null
       },
       {
-        "tenure": "36 months",
-        "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 7.25,
+        "tenure": "48 months",
+        "interest_rate": 6.7,
+        "senior_citizen_interest_rate": 7.2,
         "tier": null
       },
       {
-        "tenure": "Above 36 months to 10 years",
+        "tenure": "Above 48 months to 10 years",
         "interest_rate": 6.4,
         "senior_citizen_interest_rate": 6.9,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "Canara Bank",
+    "url": "https://www.canarabank.bank.in/term-deposits-rate-of-interest-p.a.",
+    "rates": [
+      {
+        "tenure": "7 Days to 45 Days*",
+        "interest_rate": 3,
+        "senior_citizen_interest_rate": 3,
+        "tier": null
+      },
+      {
+        "tenure": "46 Days to 90 Days",
+        "interest_rate": 4,
+        "senior_citizen_interest_rate": 4,
+        "tier": null
+      },
+      {
+        "tenure": "91 Days to 179 Days",
+        "interest_rate": 4.25,
+        "senior_citizen_interest_rate": 4.25,
+        "tier": null
+      },
+      {
+        "tenure": "180 Days to 269 Days",
+        "interest_rate": 5.25,
+        "senior_citizen_interest_rate": 5.75,
+        "tier": null
+      },
+      {
+        "tenure": "270 Days to less than 1 Year",
+        "interest_rate": 5.5,
+        "senior_citizen_interest_rate": 6,
+        "tier": null
+      },
+      {
+        "tenure": "1 Year & above to 1 year 3 months Only (Except 444 days)",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "444 Days*",
+        "interest_rate": 6.5,
+        "senior_citizen_interest_rate": 7,
+        "tier": null
+      },
+      {
+        "tenure": "555 Days*",
+        "interest_rate": 6.6,
+        "senior_citizen_interest_rate": 7.1,
+        "tier": null
+      },
+      {
+        "tenure": "Above 1 Year 3 months to less than 2 Years (Except 555 days)",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "2 Years & above to less than 3 Years",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "3 Years & above to less than 5 Years",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "5 Years & above to 10 Years",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
         "tier": null
       }
     ]
@@ -1794,61 +1878,61 @@
       {
         "tenure": "180 days to 210 days",
         "interest_rate": 5.5,
-        "senior_citizen_interest_rate": 5.5,
+        "senior_citizen_interest_rate": 6,
         "tier": null
       },
       {
         "tenure": "211 days to 269 days",
         "interest_rate": 5.5,
-        "senior_citizen_interest_rate": 5.5,
+        "senior_citizen_interest_rate": 6,
         "tier": null
       },
       {
         "tenure": "270 days to less than 1 year",
         "interest_rate": 5.5,
-        "senior_citizen_interest_rate": 5.5,
+        "senior_citizen_interest_rate": 6,
         "tier": null
       },
       {
         "tenure": "1 year",
         "interest_rate": 6.25,
-        "senior_citizen_interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
         "tier": null
       },
       {
         "tenure": "Above 1 year to less than 2 years (except 400 days)",
         "interest_rate": 6.3,
-        "senior_citizen_interest_rate": 6.3,
+        "senior_citizen_interest_rate": 6.8,
         "tier": null
       },
       {
         "tenure": "450 days",
         "interest_rate": 6.6,
-        "senior_citizen_interest_rate": 6.6,
+        "senior_citizen_interest_rate": 7.1,
         "tier": null
       },
       {
         "tenure": "2 years to less than 3 years",
         "interest_rate": 6.3,
-        "senior_citizen_interest_rate": 6.3,
+        "senior_citizen_interest_rate": 6.8,
         "tier": null
       },
       {
         "tenure": "3 years to less than 5 years",
         "interest_rate": 6.25,
-        "senior_citizen_interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
         "tier": null
       },
       {
         "tenure": "5 years to less than 8 years",
         "interest_rate": 6,
-        "senior_citizen_interest_rate": 6,
+        "senior_citizen_interest_rate": 6.5,
         "tier": null
       },
       {
         "tenure": "8 years and above to 10 years",
         "interest_rate": 6,
-        "senior_citizen_interest_rate": 6,
+        "senior_citizen_interest_rate": 6.5,
         "tier": null
       }
     ]
@@ -1878,55 +1962,55 @@
       {
         "tenure": "91 days to 119 days",
         "interest_rate": 4,
-        "senior_citizen_interest_rate": 4,
+        "senior_citizen_interest_rate": 4.5,
         "tier": null
       },
       {
         "tenure": "120 days to 180 days",
         "interest_rate": 4.75,
-        "senior_citizen_interest_rate": 4.75,
+        "senior_citizen_interest_rate": 5.25,
         "tier": null
       },
       {
         "tenure": "181 days to 270 days",
         "interest_rate": 5,
-        "senior_citizen_interest_rate": 5,
+        "senior_citizen_interest_rate": 5.5,
         "tier": null
       },
       {
         "tenure": "271 days to 364 days",
         "interest_rate": 5.25,
-        "senior_citizen_interest_rate": 5.25,
+        "senior_citizen_interest_rate": 5.75,
         "tier": null
       },
       {
         "tenure": "1 year",
         "interest_rate": 6.2,
-        "senior_citizen_interest_rate": 6.2,
+        "senior_citizen_interest_rate": 6.7,
         "tier": null
       },
       {
         "tenure": "Above 1 year to 2 years",
         "interest_rate": 6.15,
-        "senior_citizen_interest_rate": 6.15,
+        "senior_citizen_interest_rate": 6.65,
         "tier": null
       },
       {
         "tenure": "Above 2 years to 3 years",
         "interest_rate": 5.25,
-        "senior_citizen_interest_rate": 5.25,
+        "senior_citizen_interest_rate": 5.75,
         "tier": null
       },
       {
         "tenure": "Above3 years to 5 years",
         "interest_rate": 5,
-        "senior_citizen_interest_rate": 5,
+        "senior_citizen_interest_rate": 5.5,
         "tier": null
       },
       {
         "tenure": "Above 5 years",
         "interest_rate": 5,
-        "senior_citizen_interest_rate": 5,
+        "senior_citizen_interest_rate": 5.5,
         "tier": null
       }
     ]
@@ -2005,6 +2089,114 @@
         "tenure": "60 months to 120 months",
         "interest_rate": 6.7,
         "senior_citizen_interest_rate": 7.2,
+        "tier": null
+      }
+    ]
+  },
+  {
+    "bank_name": "IDBI Bank",
+    "url": "https://www.idbi.bank.in/interest-rates.aspx",
+    "rates": [
+      {
+        "tenure": "07-30 days",
+        "interest_rate": 3,
+        "senior_citizen_interest_rate": 3.5,
+        "tier": null
+      },
+      {
+        "tenure": "31-45 days",
+        "interest_rate": 3.15,
+        "senior_citizen_interest_rate": 3.65,
+        "tier": null
+      },
+      {
+        "tenure": "46- 60 days",
+        "interest_rate": 4.35,
+        "senior_citizen_interest_rate": 4.85,
+        "tier": null
+      },
+      {
+        "tenure": "61- 90 days",
+        "interest_rate": 4.6,
+        "senior_citizen_interest_rate": 5.1,
+        "tier": null
+      },
+      {
+        "tenure": "91 days to 6 months",
+        "interest_rate": 5.35,
+        "senior_citizen_interest_rate": 5.85,
+        "tier": null
+      },
+      {
+        "tenure": "6 months 1 day to 270 Days",
+        "interest_rate": 5.5,
+        "senior_citizen_interest_rate": 6,
+        "tier": null
+      },
+      {
+        "tenure": "271 days to < 1 year",
+        "interest_rate": 5.8,
+        "senior_citizen_interest_rate": 6.3,
+        "tier": null
+      },
+      {
+        "tenure": "1 Year",
+        "interest_rate": 6.2,
+        "senior_citizen_interest_rate": 6.7,
+        "tier": null
+      },
+      {
+        "tenure": ">1 Year to 2 Years\n(except 555 days & 700 Days)",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": "> 2 Years to <3years",
+        "interest_rate": 6.5,
+        "senior_citizen_interest_rate": 7,
+        "tier": null
+      },
+      {
+        "tenure": "3 years to <5 years",
+        "interest_rate": 6.35,
+        "senior_citizen_interest_rate": 6.85,
+        "tier": null
+      },
+      {
+        "tenure": "5 years",
+        "interest_rate": 6.25,
+        "senior_citizen_interest_rate": 6.75,
+        "tier": null
+      },
+      {
+        "tenure": ">5 years to 7 years",
+        "interest_rate": 5.95,
+        "senior_citizen_interest_rate": 6.45,
+        "tier": null
+      },
+      {
+        "tenure": ">7 years to 10 years",
+        "interest_rate": 5.9,
+        "senior_citizen_interest_rate": 6.4,
+        "tier": null
+      },
+      {
+        "tenure": ">10 years to 20 years$",
+        "interest_rate": 4.8,
+        "senior_citizen_interest_rate": 5.3,
+        "tier": null
+      },
+      {
+        "tenure": "1111 Days",
+        "interest_rate": 6.35,
+        "senior_citizen_interest_rate": 6.85,
+        "tier": null
+      },
+      {
+        "tenure": "370 Days",
+        "interest_rate": 6.1,
+        "senior_citizen_interest_rate": 6.1,
         "tier": null
       }
     ]
@@ -2268,43 +2460,43 @@
       {
         "tenure": "12 months - 23 months",
         "interest_rate": 7.45,
-        "senior_citizen_interest_rate": 7.45,
+        "senior_citizen_interest_rate": 7.7,
         "tier": null
       },
       {
         "tenure": "24 months - 35 months",
         "interest_rate": 7,
-        "senior_citizen_interest_rate": 7,
+        "senior_citizen_interest_rate": 7.25,
         "tier": null
       },
       {
         "tenure": "36 months - 47 months",
         "interest_rate": 7.85,
-        "senior_citizen_interest_rate": 7.85,
+        "senior_citizen_interest_rate": 8.1,
         "tier": null
       },
       {
         "tenure": "48 months - 59 months",
         "interest_rate": 7.4,
-        "senior_citizen_interest_rate": 7.4,
+        "senior_citizen_interest_rate": 7.65,
         "tier": null
       },
       {
         "tenure": "60 months - 71 months",
         "interest_rate": 7.65,
-        "senior_citizen_interest_rate": 7.65,
+        "senior_citizen_interest_rate": 7.9,
         "tier": null
       },
       {
         "tenure": "72 months - 84 months",
         "interest_rate": 7.4,
-        "senior_citizen_interest_rate": 7.4,
+        "senior_citizen_interest_rate": 7.65,
         "tier": null
       },
       {
         "tenure": "120 months",
         "interest_rate": 7.4,
-        "senior_citizen_interest_rate": 7.4,
+        "senior_citizen_interest_rate": 7.65,
         "tier": null
       }
     ]
@@ -2352,37 +2544,37 @@
       {
         "tenure": "1 year",
         "interest_rate": 6.7,
-        "senior_citizen_interest_rate": 6.7,
+        "senior_citizen_interest_rate": 6.95,
         "tier": null
       },
       {
         "tenure": "15 months",
         "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7,
         "tier": null
       },
       {
         "tenure": "18 months",
         "interest_rate": 6.75,
-        "senior_citizen_interest_rate": 6.75,
+        "senior_citizen_interest_rate": 7,
         "tier": null
       },
       {
         "tenure": "2 years",
         "interest_rate": 6.8,
-        "senior_citizen_interest_rate": 6.8,
+        "senior_citizen_interest_rate": 7.05,
         "tier": null
       },
       {
         "tenure": "3 years",
         "interest_rate": 6.85,
-        "senior_citizen_interest_rate": 6.85,
+        "senior_citizen_interest_rate": 7.1,
         "tier": null
       },
       {
         "tenure": "5 years",
         "interest_rate": 6.9,
-        "senior_citizen_interest_rate": 6.9,
+        "senior_citizen_interest_rate": 7.15,
         "tier": null
       }
     ]

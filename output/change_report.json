@@ -25,14 +25,52 @@
   },
   {
     "bank": "Bajaj Finance",
-    "changes_detected": false,
-    "rate_changes": [],
+    "changes_detected": true,
+    "rate_changes": [
+      {
+        "tenure": "12 months to 14 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.6,
+        "new_general_rate": 6.6,
+        "old_senior_rate": 6.6,
+        "new_senior_rate": 6.95
+      },
+      {
+        "tenure": "15 months to 23 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.75,
+        "new_general_rate": 6.75,
+        "old_senior_rate": 6.75,
+        "new_senior_rate": 7.1
+      },
+      {
+        "tenure": "24 months to 60 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.95,
+        "new_general_rate": 6.95,
+        "old_senior_rate": 6.95,
+        "new_senior_rate": 7.3
+      }
+    ],
     "metadata_changes": []
   },
   {
     "bank": "Mahindra Finance",
-    "changes_detected": false,
-    "rate_changes": [],
+    "changes_detected": true,
+    "rate_changes": [
+      {
+        "tenure": "12 months",
+        "tier": null,
+        "change_type": "added",
+        "old_general_rate": null,
+        "new_general_rate": 6.6,
+        "old_senior_rate": null,
+        "new_senior_rate": 6.85
+      }
+    ],
     "metadata_changes": []
   },
   {
@@ -109,7 +147,78 @@
   },
   {
     "bank": "Federal Bank",
-    "changes_detected": false,
+    "changes_detected": true,
+    "rate_changes": [
+      {
+        "tenure": "15 Months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.8,
+        "new_general_rate": 6.6,
+        "old_senior_rate": 7.3,
+        "new_senior_rate": 7.1
+      },
+      {
+        "tenure": "Above 15 months to less than 48 months",
+        "tier": null,
+        "change_type": "added",
+        "old_general_rate": null,
+        "new_general_rate": 6.4,
+        "old_senior_rate": null,
+        "new_senior_rate": 6.9
+      },
+      {
+        "tenure": "48 months",
+        "tier": null,
+        "change_type": "added",
+        "old_general_rate": null,
+        "new_general_rate": 6.7,
+        "old_senior_rate": null,
+        "new_senior_rate": 7.2
+      },
+      {
+        "tenure": "Above 48 months to 10 years",
+        "tier": null,
+        "change_type": "added",
+        "old_general_rate": null,
+        "new_general_rate": 6.4,
+        "old_senior_rate": null,
+        "new_senior_rate": 6.9
+      },
+      {
+        "tenure": "Above 15 months to less than 36 months",
+        "tier": null,
+        "change_type": "removed",
+        "old_general_rate": 6.4,
+        "new_general_rate": null,
+        "old_senior_rate": 6.9,
+        "new_senior_rate": null
+      },
+      {
+        "tenure": "36 months",
+        "tier": null,
+        "change_type": "removed",
+        "old_general_rate": 6.75,
+        "new_general_rate": null,
+        "old_senior_rate": 7.25,
+        "new_senior_rate": null
+      },
+      {
+        "tenure": "Above 36 months to 10 years",
+        "tier": null,
+        "change_type": "removed",
+        "old_general_rate": 6.4,
+        "new_general_rate": null,
+        "old_senior_rate": 6.9,
+        "new_senior_rate": null
+      }
+    ],
+    "metadata_changes": []
+  },
+  {
+    "bank": "Canara Bank",
+    "changes_detected": true,
+    "event": "new_bank_added",
     "rate_changes": [],
     "metadata_changes": []
   },
@@ -121,19 +230,199 @@
   },
   {
     "bank": "Bank of India",
-    "changes_detected": false,
-    "rate_changes": [],
+    "changes_detected": true,
+    "rate_changes": [
+      {
+        "tenure": "180 days to 210 days",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5.5,
+        "new_general_rate": 5.5,
+        "old_senior_rate": 5.5,
+        "new_senior_rate": 6
+      },
+      {
+        "tenure": "211 days to 269 days",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5.5,
+        "new_general_rate": 5.5,
+        "old_senior_rate": 5.5,
+        "new_senior_rate": 6
+      },
+      {
+        "tenure": "270 days to less than 1 year",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5.5,
+        "new_general_rate": 5.5,
+        "old_senior_rate": 5.5,
+        "new_senior_rate": 6
+      },
+      {
+        "tenure": "1 year",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.25,
+        "new_general_rate": 6.25,
+        "old_senior_rate": 6.25,
+        "new_senior_rate": 6.75
+      },
+      {
+        "tenure": "Above 1 year to less than 2 years (except 400 days)",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.3,
+        "new_general_rate": 6.3,
+        "old_senior_rate": 6.3,
+        "new_senior_rate": 6.8
+      },
+      {
+        "tenure": "450 days",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.6,
+        "new_general_rate": 6.6,
+        "old_senior_rate": 6.6,
+        "new_senior_rate": 7.1
+      },
+      {
+        "tenure": "2 years to less than 3 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.3,
+        "new_general_rate": 6.3,
+        "old_senior_rate": 6.3,
+        "new_senior_rate": 6.8
+      },
+      {
+        "tenure": "3 years to less than 5 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.25,
+        "new_general_rate": 6.25,
+        "old_senior_rate": 6.25,
+        "new_senior_rate": 6.75
+      },
+      {
+        "tenure": "5 years to less than 8 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6,
+        "new_general_rate": 6,
+        "old_senior_rate": 6,
+        "new_senior_rate": 6.5
+      },
+      {
+        "tenure": "8 years and above to 10 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6,
+        "new_general_rate": 6,
+        "old_senior_rate": 6,
+        "new_senior_rate": 6.5
+      }
+    ],
     "metadata_changes": []
   },
   {
     "bank": "Bank of Maharashtra",
-    "changes_detected": false,
-    "rate_changes": [],
+    "changes_detected": true,
+    "rate_changes": [
+      {
+        "tenure": "91 days to 119 days",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 4,
+        "new_general_rate": 4,
+        "old_senior_rate": 4,
+        "new_senior_rate": 4.5
+      },
+      {
+        "tenure": "120 days to 180 days",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 4.75,
+        "new_general_rate": 4.75,
+        "old_senior_rate": 4.75,
+        "new_senior_rate": 5.25
+      },
+      {
+        "tenure": "181 days to 270 days",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5,
+        "new_general_rate": 5,
+        "old_senior_rate": 5,
+        "new_senior_rate": 5.5
+      },
+      {
+        "tenure": "271 days to 364 days",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5.25,
+        "new_general_rate": 5.25,
+        "old_senior_rate": 5.25,
+        "new_senior_rate": 5.75
+      },
+      {
+        "tenure": "1 year",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.2,
+        "new_general_rate": 6.2,
+        "old_senior_rate": 6.2,
+        "new_senior_rate": 6.7
+      },
+      {
+        "tenure": "Above 1 year to 2 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.15,
+        "new_general_rate": 6.15,
+        "old_senior_rate": 6.15,
+        "new_senior_rate": 6.65
+      },
+      {
+        "tenure": "Above 2 years to 3 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5.25,
+        "new_general_rate": 5.25,
+        "old_senior_rate": 5.25,
+        "new_senior_rate": 5.75
+      },
+      {
+        "tenure": "Above3 years to 5 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5,
+        "new_general_rate": 5,
+        "old_senior_rate": 5,
+        "new_senior_rate": 5.5
+      },
+      {
+        "tenure": "Above 5 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 5,
+        "new_general_rate": 5,
+        "old_senior_rate": 5,
+        "new_senior_rate": 5.5
+      }
+    ],
     "metadata_changes": []
   },
   {
     "bank": "RBL Bank",
     "changes_detected": false,
+    "rate_changes": [],
+    "metadata_changes": []
+  },
+  {
+    "bank": "IDBI Bank",
+    "changes_detected": true,
+    "event": "new_bank_added",
     "rate_changes": [],
     "metadata_changes": []
   },
@@ -157,8 +446,72 @@
   },
   {
     "bank": "PNB Housing Finance",
-    "changes_detected": false,
-    "rate_changes": [],
+    "changes_detected": true,
+    "rate_changes": [
+      {
+        "tenure": "12 months - 23 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 7.45,
+        "new_general_rate": 7.45,
+        "old_senior_rate": 7.45,
+        "new_senior_rate": 7.7
+      },
+      {
+        "tenure": "24 months - 35 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 7,
+        "new_general_rate": 7,
+        "old_senior_rate": 7,
+        "new_senior_rate": 7.25
+      },
+      {
+        "tenure": "36 months - 47 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 7.85,
+        "new_general_rate": 7.85,
+        "old_senior_rate": 7.85,
+        "new_senior_rate": 8.1
+      },
+      {
+        "tenure": "48 months - 59 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 7.4,
+        "new_general_rate": 7.4,
+        "old_senior_rate": 7.4,
+        "new_senior_rate": 7.65
+      },
+      {
+        "tenure": "60 months - 71 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 7.65,
+        "new_general_rate": 7.65,
+        "old_senior_rate": 7.65,
+        "new_senior_rate": 7.9
+      },
+      {
+        "tenure": "72 months - 84 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 7.4,
+        "new_general_rate": 7.4,
+        "old_senior_rate": 7.4,
+        "new_senior_rate": 7.65
+      },
+      {
+        "tenure": "120 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 7.4,
+        "new_general_rate": 7.4,
+        "old_senior_rate": 7.4,
+        "new_senior_rate": 7.65
+      }
+    ],
     "metadata_changes": []
   },
   {
@@ -169,8 +522,63 @@
   },
   {
     "bank": "LIC Housing Finance",
-    "changes_detected": false,
-    "rate_changes": [],
+    "changes_detected": true,
+    "rate_changes": [
+      {
+        "tenure": "1 year",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.7,
+        "new_general_rate": 6.7,
+        "old_senior_rate": 6.7,
+        "new_senior_rate": 6.95
+      },
+      {
+        "tenure": "15 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.75,
+        "new_general_rate": 6.75,
+        "old_senior_rate": 6.75,
+        "new_senior_rate": 7
+      },
+      {
+        "tenure": "18 months",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.75,
+        "new_general_rate": 6.75,
+        "old_senior_rate": 6.75,
+        "new_senior_rate": 7
+      },
+      {
+        "tenure": "2 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.8,
+        "new_general_rate": 6.8,
+        "old_senior_rate": 6.8,
+        "new_senior_rate": 7.05
+      },
+      {
+        "tenure": "3 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.85,
+        "new_general_rate": 6.85,
+        "old_senior_rate": 6.85,
+        "new_senior_rate": 7.1
+      },
+      {
+        "tenure": "5 years",
+        "tier": null,
+        "change_type": "rate_changed",
+        "old_general_rate": 6.9,
+        "new_general_rate": 6.9,
+        "old_senior_rate": 6.9,
+        "new_senior_rate": 7.15
+      }
+    ],
     "metadata_changes": []
   }
 ]
